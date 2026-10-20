@@ -1,0 +1,28 @@
+{
+  "chart": {
+    "result": [
+      {
+        "meta": {
+          "currency": "USD",
+          "symbol": "SPY",
+          "exchangeName": "PCX",
+          "fullExchangeName": "NYSEArca",
+          "instrumentType": "ETF",
+          "exchangeTimezoneName": "America/New_York",
+          "longName": "SPDR S&P 500 ETF Trust",
+          "currentTradingPeriod": {
+            "pre": {"start": 1792483200, "end": 1792502999},
+            "regular": {"start": 1792503000, "end": 1792526400},
+            "post": {"start": 1792526400, "end": 1792540800}
+          }
+        },
+        "timestamp": [1792071000, 1792157400, 1792416600, 1792503000],
+        "indicators": {
+          "quote": [{"close": [760.5, null, 766.48, 768.1]}],
+          "adjclose": [{"adjclose": [758.9, null, 766.48, 768.1]}]
+        }
+      }
+    ],
+    "error": null
+  }
+}

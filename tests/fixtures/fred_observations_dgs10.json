@@ -1,0 +1,14 @@
+{
+  "realtime_start": "2026-10-19",
+  "realtime_end": "2026-10-19",
+  "count": 5,
+  "offset": 0,
+  "limit": 100000,
+  "observations": [
+    {"realtime_start": "2026-10-19", "realtime_end": "2026-10-19", "date": "2026-10-12", "value": "."},
+    {"realtime_start": "2026-10-19", "realtime_end": "2026-10-19", "date": "2026-10-13", "value": "5.21"},
+    {"realtime_start": "2026-10-19", "realtime_end": "2026-10-19", "date": "2026-10-14", "value": "5.19"},
+    {"realtime_start": "2026-10-19", "realtime_end": "2026-10-19", "date": "2026-10-15", "value": "5.1"},
+    {"realtime_start": "2026-10-19", "realtime_end": "2026-10-19", "date": "2026-10-16", "value": "5.09"}
+  ]
+}

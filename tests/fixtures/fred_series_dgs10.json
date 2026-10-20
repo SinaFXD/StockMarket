@@ -1,0 +1,22 @@
+{
+  "realtime_start": "2026-10-19",
+  "realtime_end": "2026-10-19",
+  "seriess": [
+    {
+      "id": "DGS10",
+      "realtime_start": "2026-10-19",
+      "realtime_end": "2026-10-19",
+      "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity",
+      "observation_start": "2026-10-01",
+      "observation_end": "2026-10-16",
+      "frequency": "Daily",
+      "frequency_short": "D",
+      "units": "Percent",
+      "units_short": "%",
+      "seasonal_adjustment": "Not Seasonally Adjusted",
+      "seasonal_adjustment_short": "NSA",
+      "last_updated": "2026-10-19 15:16:46-05",
+      "popularity": 90
+    }
+  ]
+}
