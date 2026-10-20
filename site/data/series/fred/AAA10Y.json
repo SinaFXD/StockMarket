@@ -1,4 +1,4 @@
-{"key":"fred/AAA10Y","source":"FRED","id":"AAA10Y","label":"Moody's Aaa minus 10y (long history)","block":"money_markets","url":"https://fred.stlouisfed.org/series/AAA10Y","title":"Moody's Seasoned Aaa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 16:03:23-05","fetched_at":"2026-10-20T13:25:19Z","columns":["date","value"],"observations":[
+{"key":"fred/AAA10Y","source":"FRED","id":"AAA10Y","label":"Moody's Aaa minus 10y (long history)","block":"money_markets","url":"https://fred.stlouisfed.org/series/AAA10Y","title":"Moody's Seasoned Aaa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 16:03:23-05","fetched_at":"2026-10-20T13:28:59Z","columns":["date","value"],"observations":[
 ["1983-01-03",1.45],
 ["1983-01-04",1.42],
 ["1983-01-05",1.44],
