@@ -4,13 +4,21 @@ Each phase ends with: tests passing, pipeline green on GitHub Actions, site depl
 for the user, and this file updated (tick the boxes).
 
 ## Phase 0 — Skeleton & automation
-- [ ] Repo layout (`pipeline/`, `site/`, `data/raw/`, `data/manual/`, `tests/`), `pyproject.toml`/requirements.
-- [ ] FRED fetcher (+ ALFRED vintages), Yahoo fetcher, manual CSV loader with validation (clear error messages
+- [x] Repo layout (`pipeline/`, `site/`, `data/raw/`, `data/manual/`, `tests/`), `pyproject.toml`/requirements.
+- [x] FRED fetcher (+ ALFRED vintages), Yahoo fetcher, manual CSV loader with validation (clear error messages
       for the user: wrong month format, value out of 0–100, duplicate month).
-- [ ] `update.yml`: daily cron, on push to `data/manual/**`, manual dispatch; commit JSON; deploy GitHub Pages.
-- [ ] Data-health page.
-- [ ] Persian step-by-step for the user: enable Pages (Settings → Pages → Source: GitHub Actions), add
+- [x] `update.yml`: daily cron, on push to `data/manual/**`, manual dispatch; commit JSON; deploy GitHub Pages.
+- [x] Data-health page.
+- [x] Persian step-by-step for the user: enable Pages (Settings → Pages → Source: GitHub Actions), add
       `FRED_API_KEY` secret (Settings → Secrets and variables → Actions → New repository secret).
+      → `docs/06-setup.md`
+- [ ] Phase exit: first green `update.yml` run on `main` and site deployed. Waiting on the owner: Pages needs a
+      public repo (or GitHub Pro), the `FRED_API_KEY` secret, and the branch merged into `main`.
+
+Phase 0 notes (2026-10-20): 76 series in `pipeline/catalog.yaml` (48 FRED incl. 8 with ALFRED vintages, 28 Yahoo),
+all verified live; full run ≈ 75 s, later runs ≈ 45 s (FRED observations are only re-downloaded when the series
+changed). 90 offline tests. Last good copy: raw cache in `data/raw/` (kept between Actions runs with
+`actions/cache`) → published `site/data/series/*.json` (committed by the workflow).
 
 ## Phase 1 — Macro Desk (lessons 1–15)
 - [ ] All indicators in `docs/02-indicator-rules.md`, four blocks, bias with overrides, "what changed" brief.

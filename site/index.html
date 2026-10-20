@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PTM Fundamental Dashboard</title>
+    <meta
+      name="description"
+      content="Self-updating fundamental dashboard following the ITPM PTM process: macro bias, sector screening, trade ideas and portfolio risk."
+    />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/home.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./" aria-current="page">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 12 6 7l3 3 5-7"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>PTM Fundamental Dashboard</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="./" aria-current="page">Overview</a>
+          <a href="health.html">Data health</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <section class="card hero">
+          <h1>A fundamental process for 20–60 day long/short ideas</h1>
+          <p>
+            This site follows the PTM course from top to bottom: macro leading indicators set the portfolio bias, sector
+            screening finds positive and negative outliers, the trade-idea template turns them into ideas, and the
+            portfolio lab keeps risk in check. It updates itself every day from free data.
+          </p>
+        </section>
+
+        <div class="grid-2">
+          <section class="card panel" aria-labelledby="roadmap-title">
+            <h2 id="roadmap-title">Roadmap</h2>
+            <ol class="phases">
+              <li>
+                <span class="p-name">Phase 0 · Skeleton &amp; automation</span>
+                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
+                <span class="p-desc">Daily data pipeline, manual data checks, data health page.</span>
+              </li>
+              <li>
+                <span class="p-name">Phase 1 · Macro Desk</span>
+                <span class="badge"><span class="dot" aria-hidden="true">1</span>Next</span>
+                <span class="p-desc"
+                  >Leading indicators (lessons 1–15), four blocks, portfolio bias with overrides, evidence on real-time
+                  data.</span
+                >
+              </li>
+              <li>
+                <span class="p-name">Phase 2 · Sector Screener</span>
+                <span class="badge"><span class="dot" aria-hidden="true">2</span>Planned</span>
+                <span class="p-desc"
+                  >The 11 numbers, sector averages, outliers, volatility filter, SEC evidence metrics.</span
+                >
+              </li>
+              <li>
+                <span class="p-name">Phase 3 · Trade Idea Workbench</span>
+                <span class="badge"><span class="dot" aria-hidden="true">3</span>Planned</span>
+                <span class="p-desc">Trade-idea template, price targets, earnings and catalysts, idea pipeline.</span>
+              </li>
+              <li>
+                <span class="p-name">Phase 4 · Portfolio Lab</span>
+                <span class="badge"><span class="dot" aria-hidden="true">4</span>Planned</span>
+                <span class="p-desc"
+                  >CEW and non-rebalanced backtests, volatility, correlation, beta-adjusted exposure.</span
+                >
+              </li>
+              <li>
+                <span class="p-name">Phase 5 · Macro-driven ideas &amp; ADRs</span>
+                <span class="badge"><span class="dot" aria-hidden="true">5</span>Planned</span>
+                <span class="p-desc">Macro signals mapped to sectors, ADR screener for international ideas.</span>
+              </li>
+            </ol>
+          </section>
+
+          <section class="card panel" aria-labelledby="pipeline-title">
+            <h2 id="pipeline-title">Data pipeline</h2>
+            <dl class="kv" id="pipeline">
+              <dt>Last update</dt>
+              <dd>Loading…</dd>
+            </dl>
+            <a class="button" href="health.html">Open data health</a>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="disclaimer">Educational tool, not investment advice.</span>
+        <span
+          >Built for the ITPM Professional Trading Masterclass final project. Data: FRED / ALFRED (Federal Reserve Bank
+          of St. Louis), Yahoo Finance, and reports entered by hand (ISM, NFIB, NBS, RatingDog / S&amp;P Global).</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>
