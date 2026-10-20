@@ -12,8 +12,8 @@ for the user, and this file updated (tick the boxes).
 - [x] Persian step-by-step for the user: enable Pages (Settings → Pages → Source: GitHub Actions), add
       `FRED_API_KEY` secret (Settings → Secrets and variables → Actions → New repository secret).
       → `docs/06-setup.md`
-- [ ] Phase exit: first green `update.yml` run on `main` and site deployed. Waiting on the owner: Pages needs a
-      public repo (or GitHub Pro), the `FRED_API_KEY` secret, and the branch merged into `main`.
+- [x] Phase exit: first green `update.yml` run on `main` (2026-10-20: 76/76 series ok) and site deployed at
+      https://sinafxd.github.io/StockMarket/.
 
 Phase 0 notes (2026-10-20): 76 series in `pipeline/catalog.yaml` (48 FRED incl. 8 with ALFRED vintages, 28 Yahoo),
 all verified live; full run ≈ 75 s, later runs ≈ 45 s (FRED observations are only re-downloaded when the series

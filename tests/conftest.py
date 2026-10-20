@@ -6,11 +6,28 @@ import json
 from pathlib import Path
 from typing import Any
 
+import pytest
+
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
 def fixture_json(name: str) -> Any:
     return json.loads((FIXTURES / name).read_text(encoding="utf-8"))
+
+
+@pytest.fixture(autouse=True)
+def not_in_github_actions(monkeypatch: pytest.MonkeyPatch) -> None:
+    """When the tests run inside a workflow, keep them out of that run's summary and annotations."""
+    for name in (
+        "GITHUB_ACTIONS",
+        "GITHUB_STEP_SUMMARY",
+        "GITHUB_RUN_ID",
+        "GITHUB_REPOSITORY",
+        "GITHUB_SHA",
+        "GITHUB_EVENT_NAME",
+        "GITHUB_SERVER_URL",
+    ):
+        monkeypatch.delenv(name, raising=False)
 
 
 class FakeResponse:
