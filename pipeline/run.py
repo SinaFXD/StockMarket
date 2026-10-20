@@ -187,11 +187,15 @@ def _report(health: dict[str, Any]) -> None:
     problems = [x for x in health["series"] if x["status"] != "ok"]
     if problems:
         lines += ["| Series | Status | Last observation | Detail |", "|---|---|---|---|"]
+    grouped: dict[tuple[str, str], list[str]] = {}
     for x in problems:
         detail = x["fetch"]["error"] or f"{x['age_days']} days old (limit {x['max_age_days']})"
         lines.append(f"| {x['key']} | {x['status']} | {x['last_date'] or '-'} | {detail} |")
         level = "warning" if x["status"] in ("failed", "missing") else "notice"
-        gha.annotate(level, f"{x['key']} ({x['label']}): {x['status']} - {detail}", title="Data health")
+        grouped.setdefault((level, f"{x['status']} - {detail}"), []).append(x["key"])
+    for (level, what), keys in grouped.items():  # one annotation per distinct problem (GitHub shows only 10)
+        names = ", ".join(keys[:5]) + (f" and {len(keys) - 5} more" if len(keys) > 5 else "")
+        gha.annotate(level, f"{len(keys)} series {what}: {names}", title="Data health")
     gha.step_summary("\n".join(lines))
 
 

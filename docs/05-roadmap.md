@@ -17,7 +17,7 @@ for the user, and this file updated (tick the boxes).
 
 Phase 0 notes (2026-10-20): 76 series in `pipeline/catalog.yaml` (48 FRED incl. 8 with ALFRED vintages, 28 Yahoo),
 all verified live; full run ≈ 75 s, later runs ≈ 45 s (FRED observations are only re-downloaded when the series
-changed). 89 offline tests. Last good copy: raw cache in `data/raw/` (kept between Actions runs with
+changed). 90 offline tests. Last good copy: raw cache in `data/raw/` (kept between Actions runs with
 `actions/cache`) → published `site/data/series/*.json` (committed by the workflow).
 
 ## Phase 1 — Macro Desk (lessons 1–15)

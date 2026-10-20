@@ -138,3 +138,28 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
     assert ism["status"] == "ok" and ism["last_month"] == "2026-09"
     site_ism = json.loads((tmp_path / "site" / "manual" / "ism_manufacturing.json").read_text())
     assert site_ism["rows"][0][:2] == ["2026-09", 49.1]
+
+
+def test_repeated_problems_become_one_annotation(monkeypatch, capsys):
+    monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    problem = {
+        "status": "missing",
+        "last_date": None,
+        "age_days": None,
+        "max_age_days": 10,
+        "fetch": {"error": "FRED_API_KEY is not set"},
+    }
+    health = {
+        "summary": {
+            "series": {"total": 7, "ok": 0, "stale": 0, "failed": 0, "missing": 7},
+            "manual": {"ok": 0, "due": 0, "awaiting": 0, "files_with_errors": 0},
+        },
+        "series": [dict(problem, key=f"fred/S{i}", label=f"S{i}") for i in range(7)],
+    }
+    run._report(health)
+    annotations = [line for line in capsys.readouterr().out.splitlines() if line.startswith("::warning")]
+    assert len(annotations) == 1
+    assert (
+        "7 series missing - FRED_API_KEY is not set: fred/S0" in annotations[0]
+        and "and 2 more" in annotations[0]
+    )
