@@ -140,8 +140,10 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
     assert site_ism["rows"][0][:2] == ["2026-09", 49.1]
 
 
-def test_repeated_problems_become_one_annotation(monkeypatch, capsys):
+def test_repeated_problems_become_one_annotation(monkeypatch, capsys, tmp_path):
+    summary = tmp_path / "summary.md"
     monkeypatch.setenv("GITHUB_ACTIONS", "true")
+    monkeypatch.setenv("GITHUB_STEP_SUMMARY", str(summary))
     problem = {
         "status": "missing",
         "last_date": None,
@@ -163,3 +165,4 @@ def test_repeated_problems_become_one_annotation(monkeypatch, capsys):
         "7 series missing - FRED_API_KEY is not set: fred/S0" in annotations[0]
         and "and 2 more" in annotations[0]
     )
+    assert "| fred/S6 | missing | - | FRED_API_KEY is not set |" in summary.read_text()
