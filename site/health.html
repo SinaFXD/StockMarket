@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data health · PTM Dashboard</title>
+    <meta
+      name="description"
+      content="Freshness and fetch status of every series behind the PTM Fundamental Dashboard."
+    />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/health.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 12 6 7l3 3 5-7"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>PTM Fundamental Dashboard</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="./">Overview</a>
+          <a href="health.html" aria-current="page">Data health</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <h1 class="page-title">Data health</h1>
+        <p class="lede" id="run-info">Loading…</p>
+
+        <div id="content">
+          <section aria-label="Summary">
+            <div class="tiles" id="tiles"></div>
+          </section>
+
+          <section aria-labelledby="manual-title">
+            <h2 id="manual-title">Manual data (entered by you)</h2>
+            <p class="section-note">
+              ISM, NFIB and the China PMIs have no free API, so they are typed into
+              <span class="mono">data/manual/*.csv</span>. A report that has been out for more than 5 days without being
+              entered is shown as <b>awaiting data</b>: it keeps its last date and is left out of the scores. Rows with
+              errors are never used.
+            </p>
+            <div class="manual-grid" id="manual"></div>
+          </section>
+
+          <section aria-labelledby="series-title">
+            <h2 id="series-title">Automatic series</h2>
+            <p class="section-note">
+              Fetched every day from FRED (with ALFRED real-time vintages for revised series) and Yahoo Finance. If a
+              source fails, the last good copy is kept and marked here.
+            </p>
+            <div class="filters">
+              <div class="seg" role="group" aria-label="Filter series">
+                <button type="button" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" data-filter="problems" aria-pressed="false">Problems only</button>
+              </div>
+              <input
+                class="search"
+                id="search"
+                type="search"
+                placeholder="Search series, e.g. CPI or DGS10"
+                aria-label="Search series"
+              />
+              <span class="muted" id="series-count"></span>
+            </div>
+            <div class="card table-card">
+              <table class="series">
+                <caption
+                  class="muted"
+                  style="caption-side: bottom; padding: 10px 14px; text-align: left; font-size: 12.5px"
+                >
+                  Age = days since the last observation. Trend = last two years (hover or focus for values).
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Series</th>
+                    <th scope="col" class="num">Latest</th>
+                    <th scope="col">2-year trend</th>
+                    <th scope="col" class="num">Age</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="series-body"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="disclaimer">Educational tool, not investment advice.</span>
+        <span
+          >Built for the ITPM Professional Trading Masterclass final project. Data: FRED / ALFRED (Federal Reserve Bank
+          of St. Louis), Yahoo Finance, and reports entered by hand (ISM, NFIB, NBS, RatingDog / S&amp;P Global).</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>

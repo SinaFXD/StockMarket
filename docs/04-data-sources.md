@@ -2,6 +2,9 @@
 
 Status: ✅ well-known ID · 🔎 verify before use · ✍️ entered manually by the user (`data/manual/`)
 
+Everything fetched automatically is listed in `pipeline/catalog.yaml`; all of those IDs and symbols were checked
+live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and the public chart endpoint).
+
 ## US money markets (FRED, `api.stlouisfed.org`; ALFRED vintages via the same API with `realtime_start/end`)
 | Item | Series | |
 |---|---|---|
@@ -10,7 +13,7 @@ Status: ✅ well-known ID · 🔎 verify before use · ✍️ entered manually b
 | CPI (headline, core) | CPIAUCSL, CPILFESL | ✅ |
 | 10y TIPS real yield (cross-check) | DFII10 | ✅ |
 | Fed funds, Fed balance sheet | DFF / FEDFUNDS, WALCL | ✅ |
-| ICE BofA OAS: AA, BBB, CCC & lower, IG, HY | BAMLC0A2CAA, BAMLC0A4CBBB, BAMLH0A3HYC, BAMLC0A0CM, BAMLH0A0HYM2 | ✅ (short history on FRED) |
+| ICE BofA OAS: AA, BBB, CCC & lower, IG, HY | BAMLC0A2CAA, BAMLC0A4CBBB, BAMLH0A3HYC, BAMLC0A0CM, BAMLH0A0HYM2 | ✅ (FRED history starts 2023-10-20 only) |
 | Long-history credit spreads | BAA10Y, AAA10Y (Moody's) | ✅ |
 | M2 | M2SL | ✅ |
 | VIX | VIXCLS (also Yahoo `^VIX`) | ✅ |
@@ -29,13 +32,13 @@ Status: ✅ well-known ID · 🔎 verify before use · ✍️ entered manually b
 | Item | Source | |
 |---|---|---|
 | WTI, Brent (daily) | FRED DCOILWTICO, DCOILBRENTEU; Yahoo `CL=F`, `BZ=F` | ✅ |
-| Copper | FRED PCOPPUSDM (monthly); Yahoo `HG=F` (COMEX daily) | ✅ |
+| Copper | FRED PCOPPUSDM (monthly, IMF, ~2.5 months behind); Yahoo `HG=F` (COMEX daily) | ✅ |
 | Iron ore | FRED PIORECRUSDM (monthly) | ✅ |
 | Lumber | FRED WPU081 (PPI lumber & wood); futures via Yahoo 🔎 | ✅/🔎 |
 | PPI final demand, PPI industrial commodities sub-indices | FRED PPIFIS + WPU series 🔎 | ✅/🔎 |
 | US dollar trade-weighted: Broad, AFE, EME | FRED DTWEXBGS, DTWEXAFEGS, DTWEXEMEGS | ✅ |
 | COT managed-money positioning | CFTC public reporting API (`publicreporting.cftc.gov`) | 🔎 |
-| Equity indices / ETFs (regional dispersion) | Yahoo: `^GSPC`, `^STOXX`, `^N225`, `000001.SS`, ETFs SPY, VGK, EWJ, FXI, MCHI, EEM, ACWI, IWM, XHB, sector SPDRs | ✅ (unofficial API) |
+| Equity indices / ETFs (regional dispersion) | Yahoo: `^GSPC`, `^STOXX` (STOXX Europe 600, from 2004), `^N225`, `000001.SS`, ETFs SPY, VGK, EWJ, FXI, MCHI, EEM, ACWI, IWM, XHB, sector SPDRs | ✅ (unofficial API) |
 
 ## International
 | Item | Source | |

@@ -44,6 +44,15 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - Tests: `pytest` for every signal rule with hand-made fixtures; a data-health report (`site/data/health.json`)
   listing each series, last observation, staleness, and fetch status — shown on a "Data health" page.
 
+## Conventions (established in Phase 0)
+- Commands: `pip install -e ".[dev]"`, `pytest`, `ruff check . && ruff format --check .`,
+  `python -m pipeline.manual --check`, `python -m pipeline.run [--offline] [--only fred,yahoo]`.
+- New automatic series go in `pipeline/catalog.yaml` (verify the ID live first); tunable thresholds in
+  `pipeline/config.py`; manual-file schemas and release calendars in `pipeline/manual/`.
+- `site/data/` is generated and git-ignored; **only the workflow commits it** (`git add -f`). Never commit it from a
+  session, or work branches will conflict with the daily data commits on `main`.
+- Error messages can reach the public `health.json`: pass them through `pipeline.http.redact`.
+
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
   "potential lie" flag, UMich expectations, international money markets Japan/UK/Germany/Italy/China,

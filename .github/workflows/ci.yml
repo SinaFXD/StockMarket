@@ -1,0 +1,47 @@
+# Checks for work branches (main is covered by update.yml): lint, tests, manual-data check, and a dry run
+# of the pipeline. Nothing is committed or deployed; the built site/data is attached to the run.
+name: CI
+
+on:
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint, test & dry run
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: python -m pip install -e ".[dev]"
+      - name: Lint
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Unit tests
+        run: python -m pytest
+      - name: Validate data/manual/*.csv
+        run: python -m pipeline.manual --check
+      - name: Pipeline dry run (real sources, nothing committed)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python -m pipeline.run
+      - name: Attach the built data
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-data
+          path: site/data
+          retention-days: 7

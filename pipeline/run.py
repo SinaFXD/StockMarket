@@ -142,17 +142,12 @@ class Runner:
             return self._vintage_info(
                 payload, cached_at if reused else self.now_iso, "unchanged" if reused else "ok", None
             )
-        except FetchError as exc:
-            log.warning("%s: ALFRED vintages failed: %s", entry.key, exc)
+        except Exception as exc:  # vintages are extra: never let them fail the series itself
+            error = redact(str(exc) if isinstance(exc, FetchError) else f"{type(exc).__name__}: {exc}")
+            log.warning("%s: ALFRED vintages failed: %s", entry.key, error)
             if cached:
-                return self._vintage_info(cached, cached_at, "failed", str(exc))
-            return {
-                "status": "failed",
-                "rows": 0,
-                "latest_vintage": None,
-                "saved_at": None,
-                "error": str(exc),
-            }
+                return self._vintage_info(cached, cached_at, "failed", error)
+            return {"status": "failed", "rows": 0, "latest_vintage": None, "saved_at": None, "error": error}
 
     def prune(self, entries: list[CatalogEntry]) -> None:
         """Remove published series that are no longer in the catalog."""

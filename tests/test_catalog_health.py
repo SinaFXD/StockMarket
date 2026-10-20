@@ -70,7 +70,8 @@ def test_spark_is_short_and_ends_on_the_last_value():
     data = daily()
     points = spark(data)
     assert len(points) == 60
-    assert points[-1] == data.last_value
+    assert points[-1] == [data.last_date, data.last_value]
+    assert points[0][0] >= "2024-10-16"
 
 
 def test_health_summary_counts():

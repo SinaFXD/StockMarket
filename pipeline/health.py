@@ -33,12 +33,12 @@ def max_age_days(entry: CatalogEntry, frequency: str | None) -> int:
     return MAX_AGE_DAYS.get(frequency or "", MAX_AGE_DAYS["monthly"])
 
 
-def spark(data: SeriesData) -> list[float]:
-    """Up to ``SPARK_POINTS`` evenly spaced values from the last two years, for a tiny trend line."""
+def spark(data: SeriesData) -> list[list[Any]]:
+    """Up to ``SPARK_POINTS`` evenly spaced ``[date, value]`` points from the last two years (trend line)."""
     if not data.rows:
         return []
     cutoff = (date.fromisoformat(data.rows[-1][0]) - timedelta(days=SPARK_DAYS)).isoformat()
-    recent = [r[1] for r in data.rows if r[0] >= cutoff and r[1] is not None]
+    recent = [[r[0], r[1]] for r in data.rows if r[0] >= cutoff and r[1] is not None]
     if len(recent) <= SPARK_POINTS:
         return recent
     step = (len(recent) - 1) / (SPARK_POINTS - 1)
@@ -50,7 +50,7 @@ def series_entry(res: SeriesResult, today: date) -> dict[str, Any]:
     meta = data.meta if data else {}
     frequency = meta.get("frequency")
     limit = max_age_days(e, frequency)
-    age = (today - date.fromisoformat(data.last_date)).days if data and data.last_date else None
+    age = max(0, (today - date.fromisoformat(data.last_date)).days) if data and data.last_date else None
     if data is None or not data.rows:
         status = "missing"
     elif res.fetch_status == "failed":
