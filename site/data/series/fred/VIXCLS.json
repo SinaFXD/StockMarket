@@ -1,4 +1,4 @@
-{"key":"fred/VIXCLS","source":"FRED","id":"VIXCLS","label":"VIX (FRED)","block":"money_markets","url":"https://fred.stlouisfed.org/series/VIXCLS","title":"CBOE Volatility Index: VIX","units":"Index","units_short":"Index","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 08:38:30-05","fetched_at":"2026-10-20T13:28:59Z","columns":["date","value"],"observations":[
+{"key":"fred/VIXCLS","source":"FRED","id":"VIXCLS","label":"VIX (FRED)","block":"money_markets","url":"https://fred.stlouisfed.org/series/VIXCLS","title":"CBOE Volatility Index: VIX","units":"Index","units_short":"Index","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-20 08:38:29-05","fetched_at":"2026-10-20T13:45:57Z","columns":["date","value"],"observations":[
 ["1990-01-02",17.24],
 ["1990-01-03",18.19],
 ["1990-01-04",19.22],
@@ -9295,5 +9295,6 @@
 ["2026-10-13",15.27],
 ["2026-10-14",16.87],
 ["2026-10-15",16.46],
-["2026-10-16",19.99]
+["2026-10-16",19.99],
+["2026-10-19",18.44]
 ]}
