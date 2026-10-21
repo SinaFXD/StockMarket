@@ -1,4 +1,4 @@
-{"key":"fred/FEDFUNDS","source":"FRED","id":"FEDFUNDS","label":"Fed funds effective rate (monthly)","block":"money_markets","url":"https://fred.stlouisfed.org/series/FEDFUNDS","title":"Federal Funds Effective Rate","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-01 15:16:52-05","fetched_at":"2026-10-20T13:45:57Z","columns":["date","value"],"observations":[
+{"key":"fred/FEDFUNDS","source":"FRED","id":"FEDFUNDS","label":"Fed funds effective rate (monthly)","block":"money_markets","url":"https://fred.stlouisfed.org/series/FEDFUNDS","title":"Federal Funds Effective Rate","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-01 15:16:52-05","fetched_at":"2026-10-21T00:42:41Z","columns":["date","value"],"observations":[
 ["1954-07-01",0.8],
 ["1954-08-01",1.22],
 ["1954-09-01",1.07],
