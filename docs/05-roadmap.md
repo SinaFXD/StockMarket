@@ -40,6 +40,12 @@ money markets & regional dispersion (done 2026-10-22), **1d** evidence page, con
       Done in 1d (2026-10-22): confirmers on the Macro Desk (`site/data/macro/confirmers.json`, not scored);
       `calendar.html` from FRED release dates, the Fed/ECB/BoJ/BoE meeting pages and the manual-report rules
       (`pipeline/calendar/`, `site/data/calendar.json`).
+- [x] Data-vs-prices alert on the Macro Desk (bias vs the S&P 500's own trend), information only (2026-10-22).
+- [ ] Complete the history of the most important hand-entered data so the backtest tests today's model: ISM
+      Manufacturing PMI + New Orders (and ideally ISM Services, NFIB) back to 2000, through a bulk-import file.
+      Planned with the user for later; the user will find the historical source (no proxies).
+- [ ] Shadow variants: run alternative rules side by side from today and compare them on the Evidence page
+      (out-of-sample only), listing every variant tried.
 - [x] Evidence page using real-time vintages where possible; sample sizes; no in-sample weight tuning.
       Done in 1d (2026-10-22): `evidence.html` (`site/data/macro/evidence.json`). First result, reported as is:
       over 2000–2026 net short readings were followed by *higher* 1–6 month index returns than net long ones

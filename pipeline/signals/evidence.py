@@ -120,6 +120,46 @@ def by_signal(history: dict[str, Any], prices: pd.Series, horizon: str = "3m") -
     return out
 
 
+PRICE_ALERT_ROWS = [
+    ("net_short", "data_weak_price_up", "Net short, S&P 500 in an uptrend (alert)"),
+    ("net_short", None, "Net short, no alert"),
+    ("net_long", "data_strong_price_down", "Net long, S&P 500 in a downtrend (alert)"),
+    ("net_long", None, "Net long, no alert"),
+]
+PRICE_ALERT_ADDED = "2026-10"  # designed after reviewing 2022-24, so its history is in-sample
+
+
+def by_price_alert(history: dict[str, Any], prices: pd.Series) -> dict[str, Any]:
+    """How the S&P 500 did after months with and without the data-vs-prices alert (information only)."""
+    flags = history.get("price_alert") or [None] * len(history["months"])
+    fwd = {
+        h: [forward_return(prices, month_end(m), k) for m in history["months"]] for h, k in HORIZONS.items()
+    }
+    rows = []
+    for st, kind, label in PRICE_ALERT_ROWS:
+        keep = [s == st and f == kind for s, f in zip(history["state"], flags, strict=True)]
+        rows.append(
+            {
+                "state": st,
+                "alert": kind,
+                "label": label,
+                **{
+                    h: stats([x for x, ok in zip(fwd[h], keep, strict=True) if ok], k)
+                    for h, k in HORIZONS.items()
+                },
+            }
+        )
+    return {
+        "added": PRICE_ALERT_ADDED,
+        "fired": sum(1 for f in flags if f),
+        "rows": rows,
+        "note": (
+            "Added in October 2026 after reviewing the 2022-24 net short readings, so these numbers are in-sample: "
+            "they show why the alert exists, not proof that it works. Its live record starts with the daily log."
+        ),
+    }
+
+
 def exposure_curve(history: dict[str, Any], prices: pd.Series) -> dict[str, Any] | None:
     """Illustration only: hold the index with exposure +1 / 0 / -1 set by each month-end bias, no costs."""
     months, states = history["months"], history["state"]
@@ -244,6 +284,7 @@ def build_evidence(
         "assets": assets,
         "signals": [{**row, "name": names.get(row["id"], row["id"])} for row in by_signal(history, sp)],
         "exposure": curve,
+        "price_alert": by_price_alert(history, sp),
         "panels": panels,
         "live_log_start": log_start,
     }

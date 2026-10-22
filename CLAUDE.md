@@ -65,7 +65,7 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - Context outputs never feed the bias: `global.json`, `confirmers.json`, `evidence.json` (built in `signals/build.py`)
   and `calendar.json` (`pipeline/calendar/`). Evidence reports results; never tune rules to it.
 - `python -m pipeline.signals` rebuilds only the Macro Desk from local data; `site/assets/macro.js` repeats the
-  bias arithmetic of `signals/bias.py` (keep them in sync).
+  bias arithmetic and the data-vs-prices alert of `signals/bias.py` (keep them in sync).
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
