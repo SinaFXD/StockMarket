@@ -1,4 +1,4 @@
-{"key":"oecd/CPI_GB","source":"OECD","id":"CPI_GB","label":"UK CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"UK consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0","fetched_at":"2026-10-22T09:35:57Z","columns":["date","value"],"observations":[
+{"key":"oecd/CPI_GB","source":"OECD","id":"CPI_GB","label":"UK CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"UK consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL,1.0","fetched_at":"2026-10-22T10:54:05Z","columns":["date","value"],"observations":[
 ["1956-01-01",5.08167],
 ["1956-02-01",5.08167],
 ["1956-03-01",6.447731],
