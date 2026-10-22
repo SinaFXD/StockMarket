@@ -54,7 +54,7 @@ def test_build_writes_one_file_per_indicator_even_without_data(tmp_path):
     )
     build.build(tmp_path, TODAY, lib, start="2026-08")
     files = sorted(p.stem for p in (tmp_path / "macro" / "indicators").glob("*.json"))
-    assert len(files) == 18
+    assert len(files) == 19
     curve = json.loads((tmp_path / "macro" / "indicators" / "curve.json").read_text())
     assert curve["guide"]["what"] and curve["panels"][0]["series"][0]["name"] == "10y-2y"
     nfib = json.loads((tmp_path / "macro" / "indicators" / "nfib.json").read_text())

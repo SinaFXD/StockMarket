@@ -45,7 +45,12 @@ def fetch(series_id: str, http: HttpClient) -> dict[str, Any]:
     if series_id not in SERIES:
         raise FetchError(f"unknown UMich series {series_id}")
     filename, column, title = SERIES[series_id]
-    return {"id": series_id, "column": column, "title": title, "csv": http.get_text(BASE_URL + filename)}
+    return {
+        "id": series_id,
+        "column": column,
+        "title": title,
+        "csv": http.get_text(BASE_URL + filename, memo=True),
+    }
 
 
 def normalize(payload: dict[str, Any]) -> SeriesData:

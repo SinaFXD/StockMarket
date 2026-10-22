@@ -59,6 +59,9 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - `pipeline/signals/`: one function per indicator (`money_markets`, `surveys`, `prices`, `international`), all
   reading data through the point-in-time `View` (`data.py`) so the same code serves today and every past month.
   Thresholds in `config.SIGNALS`; record every interpretation in `docs/02` ("Implementation notes").
+- Site charts live in `site/assets/charts.js` (shared by the indicator and Global pages); their panels come from
+  `pipeline/signals/charts.py` and `global_view.py`. Format site files with `npx prettier@3 --write site`
+  (`.prettierrc.json`: width 120).
 - `python -m pipeline.signals` rebuilds only the Macro Desk from local data; `site/assets/macro.js` repeats the
   bias arithmetic of `signals/bias.py` (keep them in sync).
 

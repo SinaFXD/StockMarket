@@ -43,10 +43,9 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 ## International
 | Item | Source | |
 |---|---|---|
-| Euro-area ESI + sector & country components | Eurostat API `.../statistics/1.0/data/ei_bssi_m_r2?indic=BS-ESI-I&s_adj=SA` (geo `EA21` = euro area since 2026, history back-calculated to 1980; countries: DE, FR, IT, ES, NL) | ✅ verified 2026-10-22 (ESI); sectors 🔎 |
-| Japan, UK, Germany, Italy 10y yields | FRED IRLTLT01JPM156N, IRLTLT01GBM156N, IRLTLT01DEM156N, IRLTLT01ITM156N (monthly) | ✅ |
-| Those countries' CPI YoY | FRED/OECD CPI series (e.g. CPALTT01…M659N) or DBnomics | 🔎 |
-| China 10y yield, China CPI | DBnomics / FRED 🔎; else manual | 🔎 |
+| Euro-area ESI + sector & country components | Eurostat API `.../statistics/1.0/data/ei_bssi_m_r2?indic=<code>&s_adj=SA` (one request per indicator returns every country; geo `EA21` = euro area since 2026, history back-calculated to 1980). ESI `BS-ESI-I` for EA, DE, FR, IT, ES, NL; sector confidence for EA: `BS-ICI-BAL` industry, `BS-SCI-BAL` services, `BS-CSMCI-BAL` consumers, `BS-RCI-BAL` retail, `BS-CCI-BAL` construction | ✅ verified 2026-10-22 |
+| Japan, UK, Germany, Italy, China: 10y yield, short rate | OECD SDMX `sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_FINMARK,/<areas>.M.IRLT+IRSTCI+IR3TIB.PA.....?format=csvfile` (monthly averages). Short rate = `IRSTCI` overnight (JP, GB, DE, IT); China `IR3TIB` 3m interbank (its `IRSTCI` ended 2025-06; UK `IR3TIB` ended 2026-02). China 10y from 2014. FRED's `IRLTLT01…` copies are the same OECD data; no longer used. | ✅ verified 2026-10-22 |
+| Those countries' CPI YoY | OECD `DSD_PRICES@DF_PRICES_ALL,1.0` key `GBR+DEU+CHN.M.N.CPI.PA._T.N.GY`; Japan and Italy only current in `DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL` (same key). FRED's `CPALTT01…` copies stopped in 2021–2025. | ✅ verified 2026-10-22 |
 | China PMIs: NBS official (mfg & non-mfg) and RatingDog (ex-Caixin, since Aug 2025) | NBS release / S&P Global press release | ✍️ `china_pmi.csv` |
 | Other PMIs (Japan, UK, Brazil, Canada) | S&P Global press releases | ✍️ optional later |
 

@@ -5,6 +5,7 @@ Writes ``site/data/macro/``:
 - ``history.json``    compact monthly scores since ``SIGNAL_HISTORY_START`` (charts, evidence);
 - ``snapshots/<year>.json``  full month-end snapshots (the "as of" view on the website);
 - ``indicators/<id>.json``  chart panels and the reading guide for each indicator page;
+- ``global.json``     money markets by country and regional equity dispersion (the Global page);
 - ``log.csv``         one row per day the pipeline ran: the live record of what the system said.
 """
 
@@ -24,6 +25,7 @@ from .base import Signal
 from .bias import alerts, combine, what_changed
 from .charts import build_charts
 from .data import Library, View, month_ends
+from .global_view import build_global
 
 log = logging.getLogger("pipeline.signals")
 
@@ -119,6 +121,10 @@ def build(
     macro = out_dir / "macro"
     write_json(macro / "latest.json", latest, indent=None)
     build_charts(lib.view(today), params, macro / "indicators", [s["id"] for s in latest["signals"]])
+    try:  # the Global page is context; a bug there must not stop the Macro Desk
+        write_json(macro / "global.json", build_global(lib.view(today), params), indent=None)
+    except Exception:
+        log.exception("global page data failed")
     write_json(macro / "history.json", compact, indent=None)
     by_year: dict[str, list] = {}
     for s in snaps:

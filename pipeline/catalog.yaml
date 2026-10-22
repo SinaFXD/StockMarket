@@ -49,12 +49,6 @@ fred:
   - {id: DTWEXAFEGS, label: "US dollar vs advanced economies", block: prices_fx_equities}
   - {id: DTWEXEMEGS, label: "US dollar vs emerging markets", block: prices_fx_equities}
 
-  # --- International money markets (lesson 4 homework) ---
-  - {id: IRLTLT01JPM156N, label: "Japan 10y government yield", block: international}
-  - {id: IRLTLT01GBM156N, label: "UK 10y government yield", block: international}
-  - {id: IRLTLT01DEM156N, label: "Germany 10y government yield", block: international}
-  - {id: IRLTLT01ITM156N, label: "Italy 10y government yield", block: international, max_age_days: 125}
-
   # --- Coincident & lagging confirmers (lessons 3, 15) ---
   - {id: PAYEMS, label: "Nonfarm payrolls", block: confirmers, vintages: true}
   - {id: UNRATE, label: "Unemployment rate", block: confirmers, vintages: true}
@@ -111,3 +105,32 @@ umich:
 eurostat:
   # Business and consumer surveys (lesson 13): euro-area Economic Sentiment Indicator.
   - {id: ESI_EA, label: "Euro-area economic sentiment (ESI)", block: international, max_age_days: 75}
+  # Big-country ESIs and the euro-area sector confidence indicators (lesson 13: read the components too).
+  - {id: ESI_DE, label: "Germany economic sentiment (ESI)", block: international, max_age_days: 75}
+  - {id: ESI_FR, label: "France economic sentiment (ESI)", block: international, max_age_days: 75}
+  - {id: ESI_IT, label: "Italy economic sentiment (ESI)", block: international, max_age_days: 75}
+  - {id: ESI_ES, label: "Spain economic sentiment (ESI)", block: international, max_age_days: 75}
+  - {id: ESI_NL, label: "Netherlands economic sentiment (ESI)", block: international, max_age_days: 75}
+  - {id: ICI_EA, label: "Euro-area industry confidence", block: international, max_age_days: 75}
+  - {id: SCI_EA, label: "Euro-area services confidence", block: international, max_age_days: 75}
+  - {id: CSMCI_EA, label: "Euro-area consumer confidence", block: international, max_age_days: 75}
+  - {id: RCI_EA, label: "Euro-area retail confidence", block: international, max_age_days: 75}
+  - {id: CCI_EA, label: "Euro-area construction confidence", block: international, max_age_days: 75}
+
+oecd:
+  # International money markets (lessons 4 and 14): 10y yield, short rate and CPI YoY per country, monthly.
+  - {id: Y10_JP, label: "Japan 10y government yield", block: international}
+  - {id: RATE_JP, label: "Japan overnight rate", block: international}
+  - {id: CPI_JP, label: "Japan CPI YoY", block: international}
+  - {id: Y10_GB, label: "UK 10y government yield", block: international}
+  - {id: RATE_GB, label: "UK overnight rate", block: international}
+  - {id: CPI_GB, label: "UK CPI YoY", block: international}
+  - {id: Y10_DE, label: "Germany 10y government yield", block: international}
+  - {id: RATE_DE, label: "Germany (euro) overnight rate", block: international}
+  - {id: CPI_DE, label: "Germany CPI YoY", block: international}
+  - {id: Y10_IT, label: "Italy 10y government yield", block: international}
+  - {id: RATE_IT, label: "Italy (euro) overnight rate", block: international}
+  - {id: CPI_IT, label: "Italy CPI YoY", block: international}
+  - {id: Y10_CN, label: "China 10y government yield", block: international}
+  - {id: RATE_CN, label: "China 3m interbank rate (SHIBOR)", block: international}
+  - {id: CPI_CN, label: "China CPI YoY", block: international}
