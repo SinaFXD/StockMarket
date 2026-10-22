@@ -299,6 +299,26 @@ async function main() {
               : ""),
     );
   }
+  if (health.screener) {
+    const s = health.screener;
+    const est = s.estimates || {};
+    info.append(
+      el("br"),
+      "Screener: ",
+      badge(
+        s.status === "ok"
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: s.status === "failed" ? "Not updated" : "Partly updated", tone: "warning", icon: "!" },
+      ),
+      s.status === "failed"
+        ? ` ${s.error}. The Screener shows the previous run.`
+        : ` ${s.stocks} stocks, ${s.in_averages} in the sector averages; ${est.downloaded ?? 0} estimate sets downloaded` +
+            (est.failed ? `, ${est.failed} failed (${est.error})` : "") +
+            (s.universe && s.universe.status !== "ok"
+              ? `; universe: last good copy (${s.universe.error || s.universe.status})`
+              : ""),
+    );
+  }
   renderTiles(health);
   renderManual(health);
   renderSeries(health);

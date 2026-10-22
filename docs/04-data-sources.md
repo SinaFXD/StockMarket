@@ -66,8 +66,9 @@ CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP),
 ## Micro (Phase 2+)
 | Item | Source | |
 |---|---|---|
-| Universe + sector/industry | Yahoo screener / Nasdaq screener endpoint 🔎, SEC `company_tickers.json` | 🔎 |
-| Forward EPS & revenue estimates (current/next FY), growth, analyst ranges, # analysts, price targets, ratings | `yfinance` (`earnings_estimate`, `revenue_estimate`, `growth_estimates`, `eps_trend`, `analyst_price_targets`, `recommendations`) | ✅ (unofficial; rate-limit; cache) |
+| Universe + sector | Yahoo equity screener via `yfinance.screen` (`EquityQuery`: region us, sector, exchange NYQ/NMS/NGM/NCM/ASE, intradaymarketcap > $2bn), 250 per page | ✅ verified 2026-10-22 (2,101 stocks; sector sums match the unfiltered total) |
+| Forward EPS & revenue estimates (current/next FY), # analysts, EPS trend/revisions, industry, country, next earnings date | Yahoo `quoteSummary` (`earningsTrend,assetProfile,calendarEvents,price`) via `yfinance`'s session, one request per stock (~0.15 s) | ✅ verified 2026-10-22 (2,033 stocks, 0 failures) |
+| Analyst price targets, ratings | `yfinance` (`analyst_price_targets`, `recommendations`) | ✅ (unofficial; Phase 3) |
 | Next earnings date | `yfinance` calendar / earnings dates | ✅ |
 | Historical statements (income, balance sheet, cash flow), shares outstanding | SEC EDGAR XBRL `data.sec.gov/api/xbrl/companyfacts/CIK##########.json` (needs `User-Agent` with email) | ✅ |
 | Insider transactions & holders | `yfinance` insider/institutional tables; SEC Form 4 🔎 | ✅/🔎 |

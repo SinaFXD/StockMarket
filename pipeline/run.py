@@ -3,7 +3,8 @@
 1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo, UMich, Eurostat, OECD) with last-good-copy
    fallback;
 2. validate the hand-entered CSVs in ``data/manual/``;
-3. build the release calendar (``site/data/calendar.json``);
+3. build the release calendar (``site/data/calendar.json``) and the Sector Screener
+   (``site/data/screener/stocks.json``);
 4. compute the Macro Desk (signals, bias, monthly point-in-time history, daily log) into ``site/data/macro/``;
 5. write ``site/data/series/**.json``, ``site/data/manual/*.json`` and ``site/data/health.json``.
 
@@ -29,6 +30,9 @@ from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_
 from .fetchers import eurostat, fred, oecd, umich, yahoo
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
+from .screener.build import ScreenerBuilder
+from .screener.build import status_of as screener_status
+from .screener.build import write as write_screener
 from .signals.build import build as build_macro
 from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
@@ -220,10 +224,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--offline", action="store_true", help="no network: rebuild from the raw cache")
     parser.add_argument(
         "--only",
-        default=",".join([*SOURCES, "calendar"]),
-        help="comma list of sources to fetch (default: all, plus the release calendar)",
+        default=",".join([*SOURCES, "calendar", "screener"]),
+        help="comma list of sources to fetch (default: all, plus the release calendar and the screener)",
     )
     parser.add_argument("--no-vintages", action="store_true", help="skip ALFRED vintages")
+    parser.add_argument(
+        "--screener-budget", type=int, default=None, help="max screener estimate downloads (default: config)"
+    )
     parser.add_argument("--refresh", action="store_true", help="re-download even if the source is unchanged")
     parser.add_argument("--today", type=date.fromisoformat, default=None, help="pretend today is YYYY-MM-DD")
     parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
@@ -286,6 +293,19 @@ def main(argv: list[str] | None = None) -> int:
         log.exception("calendar build failed")
         calendar = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}"), "sources": []}
 
+    screener: dict[str, Any]
+    try:  # the screener is a separate module: a failure must not stop the data update
+        budget = {"summary_budget": args.screener_budget} if args.screener_budget is not None else None
+        data = ScreenerBuilder(
+            runner.cache, offline=args.offline or "screener" not in only, params=budget
+        ).build(today)
+        write_screener(args.out_dir, data)
+        screener = screener_status(data)
+        log.info("screener: %d stocks, %d in sector averages", screener["stocks"], screener["in_averages"])
+    except Exception as exc:
+        log.exception("screener build failed")
+        screener = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
     macro: dict[str, Any] = {"status": "ok", "error": None}
     try:  # a bug in the Macro Desk must not stop the data update
         latest = build_macro(
@@ -313,6 +333,7 @@ def main(argv: list[str] | None = None) -> int:
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
     health["calendar"] = calendar
+    health["screener"] = screener
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

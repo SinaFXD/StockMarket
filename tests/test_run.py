@@ -126,6 +126,8 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
             str(manual_dir),
             "--catalog",
             str(catalog),
+            "--only",
+            "fred",  # calendar and screener use their (empty) caches: no network in tests
         ]
     )
     assert code == 0
@@ -138,6 +140,7 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
     assert ism["status"] == "ok" and ism["last_month"] == "2026-09"
     site_ism = json.loads((tmp_path / "site" / "manual" / "ism_manufacturing.json").read_text())
     assert site_ism["rows"][0][:2] == ["2026-09", 49.1]
+    assert health["screener"]["stocks"] == 0 and health["calendar"]["events"] > 0
 
 
 def test_repeated_problems_become_one_annotation(monkeypatch, capsys, tmp_path):

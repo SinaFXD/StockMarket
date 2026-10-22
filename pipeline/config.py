@@ -94,5 +94,18 @@ CONFIRMERS: dict[str, float] = {
     "inflation_move_pp": 0.2,  # 3-month change in YoY that counts as rising/falling
 }
 
+# Phase 2 Sector Screener (lessons 22-29). Every number here is our choice (tune) unless marked otherwise.
+SCREENER: dict[str, float] = {
+    "min_market_cap": 2e9,  # universe filter: ~2,100 US-listed stocks (Anton: a universe of ~2,200+)
+    "summary_max_age_hours": 20,  # re-download a stock's estimates when older than this
+    "summary_budget": 2500,  # at most this many estimate downloads per run (CI passes a small number)
+    "summary_fail_stop": 25,  # stop downloading after this many failures in a row (Yahoo throttling)
+    "stale_estimates_days": 10,  # estimates older than this are flagged
+    "min_analysts": 3,  # fewer analysts behind the EPS estimates -> flagged
+    "extreme_growth_pct": 300,  # |EPS growth| above this -> flagged "check"
+    "extreme_pe": 200,  # P/E above this -> flagged "check"
+    "feed_mismatch_pct": 25,  # Yahoo's two estimate feeds disagree by more than this -> excluded
+}
+
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.
 SIGNAL_HISTORY_START = "2000-01"

@@ -1591,3 +1591,36 @@ table.data .down {
     margin-left: 6px;
   }
 }
+
+/* ---------- Screener ---------- */
+table.data th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+table.data th.sortable:hover {
+  color: var(--ink);
+}
+
+table.data tr.muted-row td {
+  opacity: 0.55;
+}
+
+table.screener-table td:first-child {
+  min-width: 170px;
+  max-width: 260px;
+  white-space: normal;
+}
+
+table.screener-table td.text {
+  min-width: 140px;
+}
+
+.tag-warn {
+  background: var(--neg-wash);
+  color: var(--neg-ink);
+}
+
+.tag + .tag {
+  margin-left: 4px;
+}
