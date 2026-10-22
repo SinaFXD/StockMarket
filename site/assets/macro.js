@@ -55,6 +55,23 @@ function combine(signals, threshold, overrides) {
   };
 }
 
+// Data vs prices (bias.py price_alert): redone here so it follows the user's overrides.
+function alertsWith(snap, bias, overrides) {
+  const pa = state.latest.price_alerts;
+  const list = snap.alerts || [];
+  if (!pa) return list;
+  const sp = snap.signals.find((s) => s.id === "sp500");
+  const spScore = sp ? (sp.id in overrides ? overrides[sp.id] : sp.score) : null;
+  const kind =
+    bias.state === "net_short" && spScore === 1
+      ? "data_weak_price_up"
+      : bias.state === "net_long" && spScore === -1
+        ? "data_strong_price_down"
+        : null;
+  const rest = list.filter((a) => !a.startsWith(pa.prefix));
+  return kind ? [pa.texts[kind], ...rest] : rest;
+}
+
 // ---------- formatting ----------
 const tone = (x) => (x === null || x === undefined ? "none" : x > 0 ? "pos" : x < 0 ? "neg" : "zero");
 const fmtScore = (x) =>
@@ -316,7 +333,7 @@ function render() {
   renderChanges();
   renderNotes(
     "alerts",
-    (snap.alerts || []).map((a) => el("li", { text: a })),
+    alertsWith(snap, bias, overrides).map((a) => el("li", { text: a })),
     "No disagreements between blocks.",
   );
   renderBoard();

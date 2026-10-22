@@ -239,6 +239,59 @@ function exposure() {
   );
 }
 
+function priceAlert() {
+  const a = state.ev.price_alert;
+  if (!a) return null;
+  const val = (s) =>
+    s.n
+      ? el("td", { class: tone(s.mean) }, pct(s.mean), el("span", { class: "sub", text: `up ${s.pct_up.toFixed(0)}%` }))
+      : el("td", { text: "–" });
+  return el(
+    "section",
+    { class: "card panel", style: "margin-top:12px" },
+    el("h2", { class: "panel-title", text: "The data-vs-prices alert" }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text:
+        "Shown on the Macro Desk when the bias and the S&P 500's own trend point opposite ways (it never changes the " +
+        `score). It would have fired in ${a.fired} of ${state.ev.months} month-ends. ${a.note}`,
+    }),
+    el(
+      "div",
+      { class: "scroll-x" },
+      el(
+        "table",
+        { class: "data" },
+        el(
+          "thead",
+          {},
+          el(
+            "tr",
+            {},
+            ["S&P 500 after", "Months", "1 month", "3 months", "6 months"].map((h) => el("th", { text: h })),
+          ),
+        ),
+        el(
+          "tbody",
+          {},
+          a.rows.map((r) =>
+            el(
+              "tr",
+              {},
+              el("td", {}, r.alert ? el("b", { text: r.label }) : r.label),
+              el("td", { text: `${r["3m"].n || 0}` }),
+              val(r["1m"]),
+              val(r["3m"]),
+              val(r["6m"]),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 function renderTables() {
   const asset = state.ev.assets.find((a) => a.id === state.asset) || state.ev.assets[0];
   document.getElementById("tables").replaceChildren(
@@ -297,6 +350,7 @@ async function main() {
         el("div", { id: "tables" }),
       ),
       exposure(),
+      priceAlert(),
       el("div", { style: "margin-top:24px" }),
       rangeButtons(charts),
       ...renderPanels(charts, state.ev.panels),

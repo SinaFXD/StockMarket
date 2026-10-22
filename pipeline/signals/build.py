@@ -24,7 +24,7 @@ from ..config import SIGNAL_HISTORY_START, SIGNALS
 from ..store import write_json
 from . import international, money_markets, prices, surveys
 from .base import Signal
-from .bias import alerts, combine, what_changed
+from .bias import PRICE_ALERT_PREFIX, PRICE_ALERTS, alerts, combine, price_alert, what_changed
 from .charts import build_charts
 from .confirmers import build_confirmers
 from .data import Library, View, month_ends
@@ -58,6 +58,9 @@ def snapshot(view: View, params: dict) -> dict[str, Any]:
         "bias": bias,
         "signals": signals,
         "alerts": alerts(signals, bias, params["bias_threshold"]),
+        "price_alert": price_alert(
+            bias["state"], next((s["score"] for s in signals if s["id"] == "sp500"), None)
+        ),
         "revised_inputs": sorted(used_revised),
     }
 
@@ -70,6 +73,7 @@ def _compact(snaps: list[dict[str, Any]]) -> dict[str, Any]:
         "state": [s["bias"]["state"] for s in snaps],
         "used": [s["bias"]["used"] for s in snaps],
         "revised": [bool(s["revised_inputs"]) for s in snaps],
+        "price_alert": [s.get("price_alert") for s in snaps],
         "blocks": {
             k: [s["bias"]["blocks"][k]["score"] for s in snaps]
             for k in (snaps[0]["bias"]["blocks"] if snaps else {})
@@ -120,6 +124,10 @@ def build(
             [m, sc] for m, sc in zip(compact["months"], compact["signals"].get(s["id"], []), strict=False)
         ]
     latest["params"] = params
+    latest["price_alerts"] = {
+        "prefix": PRICE_ALERT_PREFIX,
+        "texts": PRICE_ALERTS,
+    }  # macro.js redoes the check
     latest["blocks"] = {k: b["label"] for k, b in latest["bias"]["blocks"].items()}
 
     macro = out_dir / "macro"

@@ -88,3 +88,16 @@ def test_exposure_curve_needs_a_year_and_goes_short_on_net_short():
     curve = evidence.exposure_curve(up_year, px)
     assert curve["bias_scaled"]["cagr"] < 0 < curve["buy_and_hold"]["cagr"]
     assert evidence.exposure_curve(history(["net_long"] * 6), px) is None
+
+
+def test_price_alert_rows_split_each_state_by_the_alert():
+    px = daily([("2019-12-31", 100.0), ("2020-12-31", 130.0)])
+    h = history(["net_short", "net_short", "net_long", "net_long", "neutral"])
+    h["price_alert"] = ["data_weak_price_up", None, None, "data_strong_price_down", None]
+    out = evidence.by_price_alert(h, px)
+    assert out["fired"] == 2 and out["added"] == "2026-10"
+    counts = {r["label"]: r["1m"]["n"] for r in out["rows"]}
+    assert list(counts.values()) == [1, 1, 1, 1]
+    assert "in-sample" in out["note"]
+    old = history(["net_long"] * 3)  # histories built before the alert existed
+    assert evidence.by_price_alert(old, px)["fired"] == 0

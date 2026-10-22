@@ -250,6 +250,11 @@ How the rules above are coded in `pipeline/signals/`. Every number lives in `pip
   signal's score, with n and an "independent windows" count (n / horizon). Samples: all months, 2000–2012,
   2013–now, and months with no revised input. An exposure illustration holds the S&P 500 at +1 / 0 / −1 per
   the bias, no costs. Nothing on this page feeds back into the rules.
+- **Data-vs-prices alert (added 2026-10, after the Evidence review)**: when the bias is net short while the S&P 500
+  trend signal is +1 (above its 200-day average and up over 3 months), or net long while it is −1, the Macro Desk
+  shows an alert (lesson 1: prices move before the reports; Anton's 2019 example of weak data, a Fed that reacts
+  and a rising market). It never changes a score. Its history on the Evidence page is in-sample (it was designed
+  after looking at 2022–24), so it is reported as context, not as proof.
 - **Bias**: block = mean of its available signals, bias = mean of blocks, ±0.25 *(tune)*. Awaiting-data signals are
   excluded. Overrides on the website recalculate the same arithmetic in the browser.
 - **Point in time**: month-end snapshots since 2000 use ALFRED vintages (CPI, M2, permits, iron ore, lumber, …),

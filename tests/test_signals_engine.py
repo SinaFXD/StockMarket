@@ -8,7 +8,7 @@ import pandas as pd
 from signal_helpers import TODAY, P, daily, frame, library, monthly
 
 from pipeline.signals import build, data
-from pipeline.signals.bias import alerts, combine, what_changed
+from pipeline.signals.bias import PRICE_ALERT_PREFIX, alerts, combine, price_alert, what_changed
 
 # ------------------------------------------------------------------ as of ------------------------------------
 
@@ -109,6 +109,20 @@ def test_alerts_for_disagreement_m2_and_flags():
     assert any(a.startswith("Blocks disagree") for a in out)
     assert any("what does the Fed see" in a for a in out)
     assert any("Potential lie" in a for a in out)
+
+
+def test_data_vs_prices_alert_only_when_bias_and_the_sp500_trend_disagree():
+    assert price_alert("net_short", 1) == "data_weak_price_up"
+    assert price_alert("net_long", -1) == "data_strong_price_down"
+    assert price_alert("net_short", -1) is None and price_alert("neutral", 1) is None
+    assert price_alert("net_long", None) is None  # S&P trend awaiting data: no alert
+    weak = [sig("a", "money_markets", -1), sig("b", "surveys", -1), sig("sp500", "prices_fx_equities", 1)]
+    bias = combine(weak, 0.25)
+    assert bias["state"] == "net_short"  # (-1 - 1 + 1) / 3 blocks
+    first = alerts(weak, bias, 0.25)[0]
+    assert first.startswith(PRICE_ALERT_PREFIX) and "uptrend" in first
+    calm = [sig("a", "money_markets", 1), sig("sp500", "prices_fx_equities", 1)]
+    assert not any(a.startswith(PRICE_ALERT_PREFIX) for a in alerts(calm, combine(calm, 0.25), 0.25))
 
 
 def test_what_changed_lists_score_moves():

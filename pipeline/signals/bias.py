@@ -51,9 +51,37 @@ def combine(signals: list[dict[str, Any]], threshold: float, overrides: dict[str
     }
 
 
+PRICE_ALERT_PREFIX = "Data vs prices:"
+PRICE_ALERTS = {
+    "data_weak_price_up": (
+        f"{PRICE_ALERT_PREFIX} the bias is net short but the S&P 500 is in an uptrend (above its 200-day average "
+        "and up over 3 months). Prices move before the reports: in 2019 and 2023 the market rose through weak data "
+        "while the Fed reacted. Check what the market is pricing before going net short."
+    ),
+    "data_strong_price_down": (
+        f"{PRICE_ALERT_PREFIX} the bias is net long but the S&P 500 is in a downtrend (below its 200-day average "
+        "and down over 3 months). Prices may be discounting a slowdown the data does not show yet. Check what the "
+        "market is pricing before adding net long exposure."
+    ),
+}
+
+
+def price_alert(bias_state: str | None, sp500_score: int | None) -> str | None:
+    """The leading data and the market's own trend point opposite ways (lesson 1: prices move before reports).
+    Information only: the bias is not changed. site/assets/macro.js repeats this with the user's overrides."""
+    if bias_state == "net_short" and sp500_score == 1:
+        return "data_weak_price_up"
+    if bias_state == "net_long" and sp500_score == -1:
+        return "data_strong_price_down"
+    return None
+
+
 def alerts(signals: list[dict[str, Any]], bias: dict[str, Any], threshold: float) -> list[str]:
     """Disagreements between blocks and the cross-checks Anton asks for."""
     out = []
+    sp = next((s for s in signals if s["id"] == "sp500"), None)
+    if kind := price_alert(bias["state"], sp["score"] if sp else None):
+        out.append(PRICE_ALERTS[kind])
     blocks = bias["blocks"]
     strong = {k: b for k, b in blocks.items() if b["score"] is not None and abs(b["score"]) >= threshold}
     pos = [b["label"] for b in strong.values() if b["score"] > 0]
