@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXEMEGS","source":"FRED","id":"DTWEXEMEGS","label":"US dollar vs emerging markets","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXEMEGS","title":"Nominal Emerging Market Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 15:16:58-05","fetched_at":"2026-10-22T06:08:37Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXEMEGS","source":"FRED","id":"DTWEXEMEGS","label":"US dollar vs emerging markets","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXEMEGS","title":"Nominal Emerging Market Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 15:16:58-05","fetched_at":"2026-10-22T06:36:39Z","columns":["date","value"],"observations":[
 ["2006-01-02",100.9386],
 ["2006-01-03",100.8318],
 ["2006-01-04",100.4582],

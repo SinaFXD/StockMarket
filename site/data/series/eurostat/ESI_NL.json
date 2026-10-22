@@ -1,4 +1,4 @@
-{"key":"eurostat/ESI_NL","source":"Eurostat","id":"ESI_NL","label":"Netherlands economic sentiment (ESI)","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Economic Sentiment Indicator (long-term average = 100), Netherlands, seasonally adjusted [NL]","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T06:08:37Z","columns":["date","value"],"observations":[
+{"key":"eurostat/ESI_NL","source":"Eurostat","id":"ESI_NL","label":"Netherlands economic sentiment (ESI)","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Economic Sentiment Indicator (long-term average = 100), Netherlands, seasonally adjusted [NL]","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T06:36:39Z","columns":["date","value"],"observations":[
 ["1980-01-01",97.3],
 ["1980-02-01",88.2],
 ["1980-03-01",84.9],

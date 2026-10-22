@@ -1,4 +1,4 @@
-{"key":"fred/DGS10","source":"FRED","id":"DGS10","label":"US 10y Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS10","title":"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-21 15:29:34-05","fetched_at":"2026-10-22T06:08:37Z","columns":["date","value"],"observations":[
+{"key":"fred/DGS10","source":"FRED","id":"DGS10","label":"US 10y Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS10","title":"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-21 15:29:34-05","fetched_at":"2026-10-22T06:36:39Z","columns":["date","value"],"observations":[
 ["1962-01-02",4.06],
 ["1962-01-03",4.03],
 ["1962-01-04",3.99],
