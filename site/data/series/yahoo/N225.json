@@ -1,4 +1,4 @@
-{"key":"yahoo/N225","source":"Yahoo Finance","id":"^N225","label":"Nikkei 225","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EN225","title":"Nikkei 225","units":"JPY","units_short":"JPY","frequency":"daily","exchange":"Osaka","via":"yfinance","fetched_at":"2026-10-22T04:16:18Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/N225","source":"Yahoo Finance","id":"^N225","label":"Nikkei 225","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EN225","title":"Nikkei 225","units":"JPY","units_short":"JPY","frequency":"daily","exchange":"Osaka","via":"yfinance","fetched_at":"2026-10-22T04:30:26Z","columns":["date","close","adj_close"],"observations":[
 ["1965-01-05",1257.72,1257.72],
 ["1965-01-06",1263.99,1263.99],
 ["1965-01-07",1274.27,1274.27],

@@ -1,4 +1,4 @@
-{"key":"fred/PIORECRUSDM","source":"FRED","id":"PIORECRUSDM","label":"Iron ore, global price (IMF)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PIORECRUSDM","title":"Global price of Iron Ore","units":"U.S. Dollars per Metric Ton","units_short":"U.S. $ per Metric Ton","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-08-17 13:51:20-05","fetched_at":"2026-10-21T00:43:07Z","columns":["date","value"],"observations":[
+{"key":"fred/PIORECRUSDM","source":"FRED","id":"PIORECRUSDM","label":"Iron ore, global price (IMF)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PIORECRUSDM","title":"Global price of Iron Ore","units":"U.S. Dollars per Metric Ton","units_short":"U.S. $ per Metric Ton","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-08-17 13:51:20-05","fetched_at":"2026-10-22T04:30:26Z","columns":["date","value"],"observations":[
 ["1992-01-01",14.31],
 ["1992-02-01",14.31],
 ["1992-03-01",14.31],

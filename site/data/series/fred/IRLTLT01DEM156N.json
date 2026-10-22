@@ -1,4 +1,4 @@
-{"key":"fred/IRLTLT01DEM156N","source":"FRED","id":"IRLTLT01DEM156N","label":"Germany 10y government yield","block":"international","url":"https://fred.stlouisfed.org/series/IRLTLT01DEM156N","title":"Interest Rates: Long-Term Government Bond Yields: 10-Year: Main (Including Benchmark) for Germany","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:49:36-05","fetched_at":"2026-10-21T00:43:11Z","columns":["date","value"],"observations":[
+{"key":"fred/IRLTLT01DEM156N","source":"FRED","id":"IRLTLT01DEM156N","label":"Germany 10y government yield","block":"international","url":"https://fred.stlouisfed.org/series/IRLTLT01DEM156N","title":"Interest Rates: Long-Term Government Bond Yields: 10-Year: Main (Including Benchmark) for Germany","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:49:36-05","fetched_at":"2026-10-22T04:30:26Z","columns":["date","value"],"observations":[
 ["1956-05-01",6.4],
 ["1956-06-01",6.8],
 ["1956-07-01",6.8],
