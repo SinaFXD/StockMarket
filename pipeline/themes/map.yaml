@@ -1,0 +1,202 @@
+# Macro -> sectors and industries (Phase 5, lessons 34-35). Industry names are Yahoo Finance's (the screener's).
+# Every link is our reading of how a macro driver reaches an industry's earnings; the method is in
+# docs/10-macro-ideas-method.md. Edit here, then run `python -m pipeline.themes`.
+
+# Macro Desk signals -> industries. Effect = sign x the signal's score. Scores are oriented for equities
+# (+1 = supportive) except the commodities, where +1 = price rising and -1 = falling (docs/02, lesson 12).
+signals:
+  - id: oil
+    signal: brent
+    label: Oil price (Brent)
+    etf: XLE
+    why: Higher oil lifts producers' revenue and raises fuel costs for transport.
+    industries:
+      Oil & Gas E&P: 1
+      Oil & Gas Integrated: 1
+      Oil & Gas Drilling: 1
+      Oil & Gas Equipment & Services: 1
+      Airlines: -1
+      Trucking: -1
+  - id: copper
+    signal: copper
+    label: Copper price
+    why: Copper prices feed straight into miners' revenue.
+    industries:
+      Copper: 1
+      Other Industrial Metals & Mining: 1
+  - id: iron_ore
+    signal: iron_ore
+    label: Iron ore price
+    why: Iron ore and steel prices move together; miners and steelmakers gain from firm prices.
+    industries:
+      Steel: 1
+      Other Industrial Metals & Mining: 1
+  - id: lumber
+    signal: lumber
+    label: Lumber price
+    why: Rising lumber prices lift wood producers' revenue.
+    industries:
+      Lumber & Wood Production: 1
+  - id: housing
+    signal: permits
+    label: Housing (building permits)
+    etf: XHB
+    why: Permits lead starts and completions; builders, building products and home retail follow.
+    industries:
+      Residential Construction: 1
+      Building Products & Equipment: 1
+      Building Materials: 1
+      Home Improvement Retail: 1
+      Furnishings, Fixtures & Appliances: 1
+      Mortgage Finance: 1
+      Real Estate Services: 1
+  - id: consumer
+    signal: umich
+    label: Consumer sentiment (UMich)
+    etf: XLY
+    why: Consumer expectations lead discretionary spending.
+    industries:
+      Apparel Manufacturing: 1
+      Apparel Retail: 1
+      Auto Manufacturers: 1
+      Auto & Truck Dealerships: 1
+      Department Stores: 1
+      Footwear & Accessories: 1
+      Internet Retail: 1
+      Leisure: 1
+      Lodging: 1
+      Luxury Goods: 1
+      Recreational Vehicles: 1
+      Resorts & Casinos: 1
+      Restaurants: 1
+      Specialty Retail: 1
+      Travel Services: 1
+  - id: curve
+    signal: curve
+    label: Yield curve (10y-2y)
+    etf: XLF
+    why: A steepening curve widens banks' lending margins; flattening squeezes them.
+    industries:
+      Banks - Diversified: 1
+      Banks - Regional: 1
+  - id: real_rates
+    signal: real_rate
+    label: Real interest rates
+    etf: XLRE
+    why: High and rising real rates weigh on rate-sensitive, bond-like and housing stocks (the signal is -1 then).
+    industries:
+      REIT - Diversified: 1
+      REIT - Healthcare Facilities: 1
+      REIT - Hotel & Motel: 1
+      REIT - Industrial: 1
+      REIT - Mortgage: 1
+      REIT - Office: 1
+      REIT - Residential: 1
+      REIT - Retail: 1
+      REIT - Specialty: 1
+      Utilities - Regulated Electric: 1
+      Utilities - Regulated Gas: 1
+      Utilities - Regulated Water: 1
+      Residential Construction: 1
+  - id: credit
+    signal: credit
+    label: Corporate credit spreads
+    why: Widening spreads (signal -1) mean tighter credit for lenders and leveraged borrowers.
+    industries:
+      Credit Services: 1
+      Mortgage Finance: 1
+      Banks - Regional: 1
+  - id: dollar
+    signal: dollar
+    label: US dollar
+    why: A weaker dollar (signal +1) lifts dollar-priced precious metals.
+    industries:
+      Gold: 1
+      Silver: 1
+      Other Precious Metals & Mining: 1
+  - id: china
+    signal: china
+    label: China (RatingDog PMI)
+    etf: FXI
+    why: Chinese demand drives industrial metals and luxury goods (and Chinese ADRs, below).
+    industries:
+      Copper: 1
+      Other Industrial Metals & Mining: 1
+      Luxury Goods: 1
+
+# ISM Report On Business industries (data/manual/ism_industries.csv) -> Yahoo industries.
+# Growth -> +1, contraction -> -1, not listed that month -> 0.
+ism:
+  manufacturing:
+    Apparel, Leather & Allied Products: [Apparel Manufacturing, Footwear & Accessories, Luxury Goods]
+    Chemical Products: [Chemicals, Specialty Chemicals, Agricultural Inputs]
+    Computer & Electronic Products:
+      [Computer Hardware, Electronic Components, Semiconductors, Semiconductor Equipment & Materials,
+       Communication Equipment, Scientific & Technical Instruments, Consumer Electronics]
+    Electrical Equipment, Appliances & Components: [Electrical Equipment & Parts, "Furnishings, Fixtures & Appliances", Solar]
+    Fabricated Metal Products: [Metal Fabrication, Tools & Accessories]
+    Food, Beverage & Tobacco Products:
+      [Packaged Foods, Beverages - Brewers, Beverages - Non-Alcoholic, Beverages - Wineries & Distilleries,
+       Confectioners, Tobacco]
+    Furniture & Related Products: ["Furnishings, Fixtures & Appliances"]
+    Machinery: [Specialty Industrial Machinery, Farm & Heavy Construction Machinery]
+    Miscellaneous Manufacturing: [Medical Instruments & Supplies, Medical Devices]
+    Nonmetallic Mineral Products: [Building Materials]
+    Paper Products: [Paper & Paper Products, Packaging & Containers]
+    Petroleum & Coal Products: [Oil & Gas Refining & Marketing]
+    Plastics & Rubber Products: [Packaging & Containers]
+    Primary Metals: [Steel, Aluminum, Copper, Other Industrial Metals & Mining]
+    Printing & Related Support Activities: [Publishing]
+    Textile Mills: [Apparel Manufacturing]
+    Transportation Equipment: [Auto Manufacturers, Auto Parts, Aerospace & Defense, Recreational Vehicles]
+    Wood Products: [Lumber & Wood Production]
+  services:
+    Accommodation & Food Services: [Lodging, Restaurants, Resorts & Casinos, REIT - Hotel & Motel]
+    Agriculture, Forestry, Fishing & Hunting: [Farm Products, Agricultural Inputs]
+    Arts, Entertainment & Recreation: [Entertainment, Leisure, Gambling]
+    Construction: [Engineering & Construction, Residential Construction, Building Products & Equipment]
+    Educational Services: [Education & Training Services]
+    Finance & Insurance:
+      [Banks - Diversified, Banks - Regional, Capital Markets, Credit Services, Asset Management,
+       Financial Data & Stock Exchanges, Insurance - Diversified, Insurance - Life, Insurance - Property & Casualty,
+       Insurance - Reinsurance, Insurance - Specialty, Insurance Brokers, Mortgage Finance]
+    Health Care & Social Assistance: [Medical Care Facilities, Healthcare Plans, Diagnostics & Research, Health Information Services]
+    Information:
+      [Internet Content & Information, Telecom Services, Software - Application, Software - Infrastructure,
+       Broadcasting, Publishing, Entertainment, Electronic Gaming & Multimedia]
+    Management of Companies & Support Services:
+      [Specialty Business Services, Staffing & Employment Services, Security & Protection Services, Waste Management]
+    Mining:
+      [Oil & Gas E&P, Oil & Gas Drilling, Oil & Gas Equipment & Services, Gold, Silver, Copper, Coking Coal,
+       Thermal Coal, Uranium, Other Industrial Metals & Mining, Other Precious Metals & Mining]
+    Other Services: [Personal Services]
+    Professional, Scientific & Technical Services: [Consulting Services, Information Technology Services, Advertising Agencies]
+    Public Administration: []
+    Real Estate, Rental & Leasing:
+      [REIT - Diversified, REIT - Healthcare Facilities, REIT - Hotel & Motel, REIT - Industrial, REIT - Office,
+       REIT - Residential, REIT - Retail, REIT - Specialty, Real Estate Services, Real Estate - Development,
+       Real Estate - Diversified, Rental & Leasing Services]
+    Retail Trade:
+      [Apparel Retail, Department Stores, Discount Stores, Grocery Stores, Home Improvement Retail, Internet Retail,
+       Specialty Retail, Auto & Truck Dealerships]
+    Transportation & Warehousing:
+      [Airlines, Railroads, Trucking, Integrated Freight & Logistics, Marine Shipping, Airports & Air Services,
+       Oil & Gas Midstream]
+    Utilities:
+      [Utilities - Diversified, Utilities - Independent Power Producers, Utilities - Regulated Electric,
+       Utilities - Regulated Gas, Utilities - Regulated Water, Utilities - Renewable]
+    Wholesale Trade: [Industrial Distribution, Food Distribution, Medical Distribution, Electronics & Computer Distribution]
+
+# Headquarters country -> region for the international (ADR) view
+regions:
+  China: [China, Hong Kong, Macau]
+  Japan: [Japan]
+  United Kingdom: [United Kingdom]
+  Europe:
+    [Germany, France, Netherlands, Switzerland, Ireland, Italy, Spain, Belgium, Denmark, Sweden, Norway, Finland,
+     Luxembourg, Austria, Portugal, Greece, Monaco, Jersey, Guernsey, Isle of Man]
+  Canada: [Canada]
+  Latin America: [Brazil, Mexico, Argentina, Chile, Colombia, Peru, Uruguay, Panama]
+  India: [India]
+  Taiwan & Korea: [Taiwan, South Korea]
+  Israel: [Israel]

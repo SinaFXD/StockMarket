@@ -28,6 +28,7 @@ COLUMNS = [
     "name",
     "sector",
     "industry",
+    "country",
     "price",
     "mcap",
     "eps0",
