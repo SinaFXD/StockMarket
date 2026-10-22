@@ -1,4 +1,4 @@
-{"key":"yahoo/000001_SS","source":"Yahoo Finance","id":"000001.SS","label":"Shanghai Composite","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/000001.SS","title":"SSE Composite Index","units":"CNY","units_short":"CNY","frequency":"daily","exchange":"Shanghai","via":"yfinance","fetched_at":"2026-10-22T07:47:14Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/000001_SS","source":"Yahoo Finance","id":"000001.SS","label":"Shanghai Composite","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/000001.SS","title":"SSE Composite Index","units":"CNY","units_short":"CNY","frequency":"daily","exchange":"Shanghai","via":"yfinance","fetched_at":"2026-10-22T08:14:32Z","columns":["date","close","adj_close"],"observations":[
 ["1997-07-02",1199.061,1199.061],
 ["1997-07-03",1150.623,1150.623],
 ["1997-07-04",1159.342,1159.342],

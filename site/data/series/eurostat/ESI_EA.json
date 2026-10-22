@@ -1,4 +1,4 @@
-{"key":"eurostat/ESI_EA","source":"Eurostat","id":"ESI_EA","label":"Euro-area economic sentiment (ESI)","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Economic Sentiment Indicator (long-term average = 100), euro area, seasonally adjusted [EA21]","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T07:47:14Z","columns":["date","value"],"observations":[
+{"key":"eurostat/ESI_EA","source":"Eurostat","id":"ESI_EA","label":"Euro-area economic sentiment (ESI)","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Economic Sentiment Indicator (long-term average = 100), euro area, seasonally adjusted [EA21]","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T08:14:32Z","columns":["date","value"],"observations":[
 ["1980-01-01",101.2],
 ["1980-02-01",102.4],
 ["1980-03-01",100.5],

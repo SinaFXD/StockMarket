@@ -1,4 +1,4 @@
-{"key":"oecd/CPI_IT","source":"OECD","id":"CPI_IT","label":"Italy CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Italy consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-10-22T07:47:14Z","columns":["date","value"],"observations":[
+{"key":"oecd/CPI_IT","source":"OECD","id":"CPI_IT","label":"Italy CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Italy consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-10-22T08:14:32Z","columns":["date","value"],"observations":[
 ["1956-01-01",1.811249],
 ["1956-02-01",3.154876],
 ["1956-03-01",3.824092],

@@ -1,4 +1,4 @@
-{"key":"fred/CPIAUCSL","source":"FRED","id":"CPIAUCSL","label":"US CPI (headline)","block":"money_markets","url":"https://fred.stlouisfed.org/series/CPIAUCSL","title":"Consumer Price Index for All Urban Consumers: All Items in U.S. City Average","units":"Index 1982-1984=100","units_short":"Index 1982-1984=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-14 08:08:29-05","fetched_at":"2026-10-22T07:47:14Z","columns":["date","value"],"observations":[
+{"key":"fred/CPIAUCSL","source":"FRED","id":"CPIAUCSL","label":"US CPI (headline)","block":"money_markets","url":"https://fred.stlouisfed.org/series/CPIAUCSL","title":"Consumer Price Index for All Urban Consumers: All Items in U.S. City Average","units":"Index 1982-1984=100","units_short":"Index 1982-1984=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-14 08:08:29-05","fetched_at":"2026-10-22T08:14:32Z","columns":["date","value"],"observations":[
 ["1947-01-01",21.48],
 ["1947-02-01",21.62],
 ["1947-03-01",22.0],
