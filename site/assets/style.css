@@ -1995,7 +1995,8 @@ table.screener-table td.text .tag {
   }
 
   .nav a {
-    padding: 6px 7px;
+    padding: 6px 5px;
+    font-size: 14.5px;
   }
 }
 
@@ -2634,4 +2635,146 @@ svg.bubbles {
   .sec-cards {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---------- Regime ---------- */
+svg.regime-map {
+  display: block;
+  width: 100%;
+  height: 420px;
+  margin-top: 8px;
+  font-size: 12px;
+  fill: var(--ink-2);
+  font-family: var(--font);
+}
+
+svg.regime-map .map-now {
+  font-weight: 700;
+  fill: var(--ink);
+}
+
+.regime-reason {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+svg.regime-strip {
+  display: block;
+  width: 100%;
+  height: 64px;
+  margin-top: 6px;
+  font-size: 11.5px;
+  fill: var(--ink-2);
+  font-family: var(--font);
+}
+
+table.heat-table td.heat {
+  text-align: center;
+  min-width: 78px;
+  font-variant-numeric: tabular-nums;
+}
+
+table.heat-table td.heat .sub {
+  display: block;
+}
+
+table.heat-table th {
+  text-align: center;
+}
+
+table.heat-table th.cur {
+  color: var(--ink);
+}
+
+table.heat-table th .sub {
+  display: block;
+  font-weight: 700;
+  color: var(--accent-ink);
+}
+
+table.heat-table .group-row td {
+  background: var(--surface-2);
+  font-weight: 600;
+  font-size: 13px;
+  text-align: left;
+  color: var(--ink-2);
+}
+
+svg.curve-chart {
+  display: block;
+  width: 100%;
+  height: 320px;
+  margin-top: 8px;
+  font-size: 12px;
+  fill: var(--ink-2);
+  font-family: var(--font);
+}
+
+.curve-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.curve-controls input[type="range"] {
+  flex: 1 1 220px;
+  accent-color: var(--accent);
+}
+
+.curve-controls .quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.cmp-date {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+table.curve-table td,
+table.curve-table th {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.curve-table .swatch-line.dashed {
+  background: repeating-linear-gradient(90deg, var(--s2) 0 5px, transparent 5px 8px) !important;
+}
+
+@media (max-width: 640px) {
+  svg.regime-map {
+    height: 340px;
+  }
+
+  svg.curve-chart {
+    height: 260px;
+  }
+}
+
+/* ---------- light / dark switch ---------- */
+.theme-toggle {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--hairline);
+  background: var(--surface);
+  color: var(--ink-2);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }

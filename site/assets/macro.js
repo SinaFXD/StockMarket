@@ -1,6 +1,7 @@
 // Macro Desk: bias card, block tiles, signal board with overrides, "as of" picker and the bias history chart.
 // The bias arithmetic mirrors pipeline/signals/bias.py so overrides recalculate in the browser.
 
+import { boardCsv, briefText } from "./brief.js";
 import { el, loadJSON } from "./common.js";
 
 const STORE = "ptm.overrides.v1";
@@ -8,7 +9,16 @@ const STATES = { net_long: "Net long", neutral: "Neutral (balanced)", net_short:
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const STRIP_MONTHS = 36;
 
-const state = { latest: null, history: null, years: {}, current: null, isLatest: true, overrides: {} };
+const state = {
+  latest: null,
+  history: null,
+  years: {},
+  current: null,
+  isLatest: true,
+  overrides: {},
+  regime: null,
+  view: null, // what is on screen: {bias, alerts, overrides}
+};
 
 // ---------- overrides (this browser only) ----------
 function loadOverrides() {
@@ -165,16 +175,16 @@ function changesFor(index) {
   return out;
 }
 
+function changeItems() {
+  return state.isLatest
+    ? state.latest.what_changed
+    : changesFor(state.history.months.indexOf(state.current.as_of.slice(0, 7)));
+}
+
 function renderChanges() {
-  let items;
-  if (state.isLatest) {
-    items = state.latest.what_changed;
-  } else {
-    items = changesFor(state.history.months.indexOf(state.current.as_of.slice(0, 7)));
-  }
   renderNotes(
     "changes",
-    items.map((c) =>
+    changeItems().map((c) =>
       el(
         "li",
         {},
@@ -329,11 +339,13 @@ function render() {
   const snap = state.current;
   const overrides = state.isLatest ? state.overrides : {};
   const bias = combine(snap.signals, state.latest.params.bias_threshold, overrides);
+  const alerts = alertsWith(snap, bias, overrides);
+  state.view = { bias, alerts, overrides };
   renderBias(bias);
   renderChanges();
   renderNotes(
     "alerts",
-    alertsWith(snap, bias, overrides).map((a) => el("li", { text: a })),
+    alerts.map((a) => el("li", { text: a })),
     "No disagreements between blocks.",
   );
   renderBoard();
@@ -415,8 +427,10 @@ function drawChart() {
   const h = state.history;
   const W = svg.clientWidth || 800;
   const H = svg.clientHeight || 240;
+  const sp = h.sp500 || [];
+  const spVals = sp.filter((v) => v > 0);
   const L = 44;
-  const R = 8;
+  const R = spVals.length ? 50 : 8;
   const T = 8;
   const B = 22;
   const n = h.months.length;
@@ -450,6 +464,26 @@ function drawChart() {
       nodes.push(t);
     }
   });
+  if (spVals.length) {
+    // the S&P 500 on its own log scale (right axis), under the bias line
+    const lo = Math.log(Math.min(...spVals));
+    const hi = Math.log(Math.max(...spVals));
+    const ys = (v) => T + (1 - (Math.log(v) - lo) / Math.max(1e-9, hi - lo)) * (H - T - B);
+    let p = "";
+    sp.forEach((v, i) => {
+      if (!(v > 0)) return;
+      p += `${p && sp[i - 1] > 0 ? "L" : "M"}${x(i).toFixed(1)},${ys(v).toFixed(1)}`;
+    });
+    nodes.push(
+      svgEl("path", { d: p, fill: "none", stroke: "var(--ink-2)", "stroke-width": 1.3, "stroke-opacity": 0.55 }),
+    );
+    // round ticks that double: ..., 500, 1k, 2k, 4k, 8k
+    for (let tick = 1000 * 2 ** Math.ceil(Math.log2(Math.exp(lo) / 1000)); tick <= Math.exp(hi); tick *= 2) {
+      const t = svgEl("text", { x: W - R + 6, y: ys(tick) + 4, "text-anchor": "start" });
+      t.textContent = tick >= 1000 ? `${tick / 1000}k` : String(Math.round(tick));
+      nodes.push(t);
+    }
+  }
   let d = "";
   h.bias.forEach((v, i) => {
     if (v === null) return;
@@ -494,6 +528,12 @@ function drawChart() {
         style: "display:block",
         text: `${h.used[i]} indicators${h.revised[i] ? " · some revised data" : ""}`,
       }),
+      sp[i] > 0
+        ? el("span", {
+            style: "display:block",
+            text: `S&P 500 ${sp[i].toLocaleString("en-US", { maximumFractionDigits: 0 })}`,
+          })
+        : null,
     );
     t.hidden = false;
     const box = t.getBoundingClientRect();
@@ -514,6 +554,14 @@ function drawChart() {
   document.getElementById("chart-legend").replaceChildren(
     el("span", {}, el("span", { class: "key", style: "background:var(--pos-wash)" }), `Net long zone (≥ +${thr})`),
     el("span", {}, el("span", { class: "key", style: "background:var(--neg-wash)" }), `Net short zone (≤ −${thr})`),
+    spVals.length
+      ? el(
+          "span",
+          {},
+          el("span", { class: "swatch-line", style: "background:var(--ink-2);opacity:.55" }),
+          "S&P 500 at each month-end (right axis, log scale)",
+        )
+      : null,
     firstVintage > 0
       ? el("span", {
           class: "muted",
@@ -522,6 +570,65 @@ function drawChart() {
       : null,
     el("span", { class: "muted", text: "Hand-entered surveys exist only from the dates you entered them." }),
   );
+}
+
+// ---------- copy brief / download CSV ----------
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {
+    const area = el("textarea", { style: "position:fixed;opacity:0", "aria-hidden": "true" });
+    area.value = text;
+    document.body.append(area);
+    area.select();
+    let ok = false;
+    try {
+      ok = document.execCommand("copy");
+    } catch {
+      ok = false;
+    }
+    area.remove();
+    return ok;
+  }
+}
+
+function flash(button, text) {
+  const old = button.dataset.label || button.textContent.trim();
+  button.dataset.label = old;
+  button.textContent = text;
+  setTimeout(() => (button.textContent = old), 2200);
+}
+
+function wireExports() {
+  const copy = document.getElementById("copy-brief");
+  copy.addEventListener("click", async () => {
+    const { bias, alerts, overrides } = state.view;
+    const text = briefText({
+      asOf: state.current.as_of,
+      bias,
+      signals: state.current.signals,
+      overrides,
+      changes: changeItems(),
+      alerts,
+      regime: state.isLatest ? state.regime : null,
+      url: location.href.split("#")[0],
+    });
+    flash(copy, (await copyText(text)) ? "Copied ✓" : "Copy failed");
+  });
+  document.getElementById("download-csv").addEventListener("click", () => {
+    const csv = boardCsv({
+      signals: state.current.signals,
+      blocks: state.latest.blocks,
+      overrides: state.view.overrides,
+    });
+    const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+    const a = el("a", { href: url, download: `ptm-signal-board-${state.current.as_of}.csv` });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
 }
 
 // ---------- as of ----------
@@ -581,7 +688,11 @@ async function main() {
   });
   state.current = state.latest;
   render();
+  wireExports();
   renderConfirmers();
+  loadJSON("data/regime.json")
+    .then((r) => (state.regime = r))
+    .catch(() => null);
   document.title = `Macro Desk · ${state.latest.bias.label} · PTM Dashboard`;
 }
 

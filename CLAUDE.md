@@ -110,6 +110,11 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - "Sectors" (`sectors.html`): `pipeline/sectors/build.py` -> `site/data/sectors.json` (after the Macro ideas, from the
   published files; context only). Thresholds in `config.SECTORS`; rules in `docs/13-sectors-method.md`.
   `python -m pipeline.sectors` rebuilds it from local data.
+- "Regime" (`regime.html`): `pipeline/regime/build.py` -> `site/data/regime.json` (after the Macro Desk, same `Library`;
+  context only). Thresholds in `config.REGIME`; rules in `docs/14-regime-method.md`. `python -m pipeline.regime` rebuilds
+  it. The Macro Desk's Copy brief / CSV live in `site/assets/brief.js` (pure, `tests/js/brief.test.mjs`).
+- Theme: `site/assets/theme.js` adds the light/dark switch; every page also needs the small inline `<head>` script that
+  applies `localStorage` `ptm.theme` before paint (copy it from any page into a new one, with the `theme.js` tag).
 
 - Forward tests (`pipeline/forward/`): `site/data/forward/outliers.csv` is a live record committed by the workflow
   (one cohort per ISO week, returns filled when due); never rewrite or backfill it, never tune rules to it. The

@@ -161,5 +161,29 @@ SECTORS: dict[str, float] = {
     "candidates": 5,  # long and short candidates listed per sector
 }
 
+# Regime page: growth vs inflation, recession odds, Taylor rule, Treasury curve (docs/14-regime-method.md).
+# Context only: nothing here feeds the bias.
+REGIME: dict[str, float] = {
+    "growth_months": 3,  # CFNAI averaged over 3 months (the Chicago Fed's own CFNAI-MA3)
+    "growth_trend": 0,  # CFNAI-MA3 >= 0: growth at or above its historical trend
+    "inflation_short": 6,  # core PCE inflation over the last 6 months, annualised ...
+    "inflation_long": 12,  # ... minus the 12-month rate: >= 0 = inflation rising
+    "borderline_growth": 0.1,  # |CFNAI-MA3| below this, or ...
+    "borderline_inflation": 0.15,  # ... |inflation momentum| below this (pp): the regime can flip on the next release
+    "trail_months": 24,  # months shown as a trail on the regime map
+    "history_start": "1999-01",  # point-in-time regime per month-end (the sector SPDRs start Dec 1998)
+    "horizon_months": 3,  # forward return measured after each regime month
+    "probit_alpha": -0.5333,  # New York Fed yield-curve model (Prob_Rec.pdf, parameters fitted 1959-2009)
+    "probit_beta": -0.6330,
+    "recession_ahead_months": 12,
+    "recession_start": "1982-01",  # FRED's daily 10y-3m spread starts in January 1982
+    "taylor_r_star": 2.0,  # Taylor (1993): neutral real rate 2%, inflation target 2%, weights 0.5 and 0.5
+    "taylor_target": 2.0,
+    "taylor_w_inflation": 0.5,
+    "taylor_w_gap": 0.5,
+    "taylor_start": "1990-01",
+    "curve_years": 10,  # weekly Treasury curves kept for the comparison slider
+}
+
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.
 SIGNAL_HISTORY_START = "2000-01"

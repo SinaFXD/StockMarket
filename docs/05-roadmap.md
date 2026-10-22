@@ -110,3 +110,7 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
       (context only): rotation map against the S&P 500, sector cards (relative strength, growth, P/E, revisions, outliers,
       macro wind), growth vs valuation, cyclicals vs defensives against the bias, candidates per sector. Method:
       `docs/13-sectors-method.md`.
+- [x] Benchmark gaps, 2026-10-22 (`docs/03-reza-benchmark.md`, re-review): Regime page (`regime.html`: growth vs
+      inflation regime with point-in-time history, sectors and asset classes by regime, NY Fed recession odds, Taylor
+      rule, Treasury curve with a slider; `docs/14-regime-method.md`); Macro Desk: S&P 500 under the bias history,
+      Copy brief, Download CSV; a light/dark switch on every page.

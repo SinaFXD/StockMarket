@@ -58,7 +58,8 @@ export function dataStep(health, calendar, today) {
   );
 }
 
-export function macroStep(latest) {
+// regime: data/regime.json (optional): the bigger picture of the Regime page, one line
+export function macroStep(latest, regime = null) {
   if (!latest)
     return step("macro", "Read the Macro Desk: portfolio bias", "lessons 1–15", "macro.html", "todo", [
       "No Macro Desk data yet.",
@@ -70,6 +71,8 @@ export function macroStep(latest) {
   for (const c of changes)
     items.push(`Changed since ${latest.compared_with}: ${c.name} ${c.from_state} → ${c.to_state}.`);
   for (const a of latest.alerts || []) items.push(a); // includes the data-vs-prices alert
+  const line = regimeLine(regime);
+  if (line) items.push(line);
   const biasChanged = changes.some((c) => c.id === "bias");
   return step(
     "macro",
@@ -78,6 +81,16 @@ export function macroStep(latest) {
     "macro.html",
     biasChanged || (latest.alerts || []).length ? "attention" : "todo",
     items,
+  );
+}
+
+function regimeLine(regime) {
+  if (!regime || !regime.now) return null;
+  const r = regime.recession && regime.recession.latest;
+  return (
+    `Regime: ${regime.now.label}${regime.now.borderline ? " (close to a line)" : ""}` +
+    (r ? `; recession odds for ${r.for_month}: ${r.prob.toFixed(1)}%` : "") +
+    " (Regime page)."
   );
 }
 
