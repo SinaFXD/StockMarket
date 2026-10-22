@@ -1,4 +1,4 @@
-{"key":"fred/CPILFESL","source":"FRED","id":"CPILFESL","label":"US CPI (core)","block":"money_markets","url":"https://fred.stlouisfed.org/series/CPILFESL","title":"Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average","units":"Index 1982-1984=100","units_short":"Index 1982-1984=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-14 08:08:29-05","fetched_at":"2026-10-21T00:42:41Z","columns":["date","value"],"observations":[
+{"key":"fred/CPILFESL","source":"FRED","id":"CPILFESL","label":"US CPI (core)","block":"money_markets","url":"https://fred.stlouisfed.org/series/CPILFESL","title":"Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average","units":"Index 1982-1984=100","units_short":"Index 1982-1984=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-14 08:08:29-05","fetched_at":"2026-10-21T00:42:51Z","columns":["date","value"],"observations":[
 ["1957-01-01",28.5],
 ["1957-02-01",28.6],
 ["1957-03-01",28.7],
