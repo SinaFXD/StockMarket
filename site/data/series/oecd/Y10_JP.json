@@ -1,4 +1,4 @@
-{"key":"oecd/Y10_JP","source":"OECD","id":"Y10_JP","label":"Japan 10y government yield","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan 10-year government bond yield (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-22T15:10:36Z","columns":["date","value"],"observations":[
+{"key":"oecd/Y10_JP","source":"OECD","id":"Y10_JP","label":"Japan 10y government yield","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan 10-year government bond yield (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-22T15:55:45Z","columns":["date","value"],"observations":[
 ["1989-01-01",4.8],
 ["1989-02-01",4.894],
 ["1989-03-01",5.147],
