@@ -30,7 +30,7 @@ from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_
 from .fetchers import eurostat, fred, oecd, umich, yahoo
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
-from .screener.build import ScreenerBuilder
+from .screener.build import ScreenerBuilder, market_inputs
 from .screener.build import status_of as screener_status
 from .screener.build import write as write_screener
 from .signals.build import build as build_macro
@@ -295,9 +295,16 @@ def main(argv: list[str] | None = None) -> int:
 
     screener: dict[str, Any]
     try:  # the screener is a separate module: a failure must not stop the data update
-        budget = {"summary_budget": args.screener_budget} if args.screener_budget is not None else None
+        budget = (
+            {"summary_budget": args.screener_budget, "iv_budget": args.screener_budget}
+            if args.screener_budget is not None
+            else None
+        )
         data = ScreenerBuilder(
-            runner.cache, offline=args.offline or "screener" not in only, params=budget
+            runner.cache,
+            offline=args.offline or "screener" not in only,
+            params=budget,
+            **market_inputs(args.out_dir),
         ).build(today)
         write_screener(args.out_dir, data)
         screener = screener_status(data)

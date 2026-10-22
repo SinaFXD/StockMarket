@@ -50,11 +50,46 @@ metric only where it is meaningful (see above). The website recomputes the same 
 market-cap filter (`site/assets/screener.js`, keep in sync with `numbers.py`).
 
 ## Refresh
-Universe and prices every run. Estimates: one `quoteSummary` per stock, re-downloaded when older than 20 hours,
+Universe, prices and realised volatility every run. Estimates: one `quoteSummary` per stock, re-downloaded when older than 20 hours,
 at most 2,500 per run (CI dry runs: 100), oldest first; after 25 failures in a row the run stops downloading and
 keeps the cached copies. A full refresh takes ~5 minutes.
 
+## Outlier types (2b)
+Each stock is placed against its sector's clean stocks (no "left out" check): the percentile of its EG1, EG2 and
+PE1 among them. A sector with fewer than **10** clean stocks is compared with the whole universe *(tune)*. The
+course names the types but gives no cut-offs; ours are the **top and bottom quarter** *(tune)*. Rules are tried in
+this order; the first that matches wins (`pipeline/screener/outliers.py`):
+
+| Type | Rule | Course |
+|---|---|---|
+| Not classified | a "left out" data check | lesson 28 |
+| Negative outlier | EPS1 > 0 and EPS2 ≤ 0 (profits turning into losses) | lesson 26 |
+| Positive outlier | EG1 > 0 and EG2 > 0, both ≥ 75th percentile | lesson 25: highest growth, ideally consecutive |
+| Negative outlier | EG1 < 0 and EG2 < 0, both ≤ 25th percentile | lesson 26: lowest, ideally consecutive negative |
+| Post-growth | EG1 > 0 at ≥ 75th percentile, EG2 ≤ 25th percentile | lesson 26: post-growth "stage two" shorts |
+| Turnaround | EPS0 ≤ 0 < EPS1 (back to profit) | lesson 27 |
+| Loss-making | EPS1 ≤ 0 and EPS2 ≤ 0 | growth and P/E not meaningful |
+| Turnaround | EG1 < 0 < EG2 with EG2 ≥ sector median | lesson 27 |
+| Value trap | PE1 ≤ 25th percentile (cheap) while EG1 or EG2 < 0 | lesson 27: cheap for a reason |
+| Boring | EG1 and EG2 both between the 25th and 75th percentile | lesson 22 |
+| In between | anything else | |
+
+Next to the type, the reason text and the supporting evidence the course looks for: sales growing or falling in
+both years ("revenue estimates expanding"), the EPS1 consensus raised or cut by ≥ 2% in 90 days, and the P/E
+premium or discount to the sector median ≥ 20% ("money likes it") *(tune)*.
+
+## Volatility filter (2b)
+Anton: realised and implied volatility roughly **≥ 1.5× VIX**, so a stock can move enough within 20–60 days.
+- Realised: annualised standard deviation of daily log returns over the last **63** trading days (~3 months) and
+  the **14**-day ATR in % of the price, from one batch download of six months of daily bars for the universe.
+- Implied: at-the-money options (the 2 strikes nearest the price, calls and puts, median) of the expiry closest to
+  **45** days. Yahoo's `impliedVolatility` field is unusable when bid/ask are zero (outside market hours), so the
+  volatility is backed out with Black-Scholes from the mid price, else the last trade, with the 3-month T-bill rate.
+  Only for the candidate types (positive/negative outliers, post-growth, turnarounds, value traps), largest first,
+  at most **400** chains per run, refreshed after 20 hours; an empty answer from Yahoo (throttling) is retried
+  next run, not cached.
+- `vol_ok` = every available measure (realised, implied) ≥ 1.5 × the latest VIX close; the page's "Vol ÷ VIX"
+  shows the lower of the two ratios.
+
 ## Next
-- 2b: outlier classification (positive/negative outliers, consecutive growth, turnaround, value trap,
-  post-growth, boring) and the volatility filter (realised and implied ≥ ~1.5× VIX).
 - 2c: Evidence metrics from SEC EDGAR (margins, EV/EBIT, EV/EBITDA, balance-sheet and cash-flow ratios).

@@ -68,8 +68,8 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   bias arithmetic and the data-vs-prices alert of `signals/bias.py` (keep them in sync).
 
 ## Conventions (Phase 2)
-- `pipeline/screener/`: `yahoo.py` (downloads), `numbers.py` (11 numbers, checks, averages), `build.py` (cache,
-  budget, output). Thresholds in `config.SCREENER`; record every rule in `docs/07-screener-method.md`.
+- `pipeline/screener/`: `yahoo.py` (downloads), `numbers.py` (11 numbers, checks, averages), `outliers.py` (types vs
+  the sector), `volatility.py` (realised, implied, VIX filter), `build.py` (cache, budgets, output). Thresholds in `config.SCREENER`; record every rule in `docs/07-screener-method.md`.
   `site/assets/screener.js` repeats the averaging rule of `numbers.group_stats` (keep in sync).
 - `python -m pipeline.screener [--offline] [--budget N]` rebuilds only the screener; tests never touch the network
   (`run.main` tests pass `--only fred`).

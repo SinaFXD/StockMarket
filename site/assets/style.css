@@ -1624,3 +1624,25 @@ table.screener-table td.text {
 .tag + .tag {
   margin-left: 4px;
 }
+
+.tag-pos {
+  background: var(--pos-wash);
+  color: var(--pos-ink);
+}
+
+.tag-neg {
+  background: var(--neg-wash);
+  color: var(--neg-ink);
+}
+
+.wrap-seg {
+  flex-wrap: wrap;
+}
+
+table.data td.text-left {
+  text-align: left;
+}
+
+table.screener-table td.text {
+  min-width: 260px;
+}
