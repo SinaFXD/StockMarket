@@ -673,6 +673,11 @@ const GLOSSARY = [
     "Macro Desk",
     "Leading indicators move before the economy (money markets, surveys, prices); coincident with it (CPI, payrolls); lagging after it (earnings, GDP).",
   ],
+  [
+    "Long-short spread",
+    "Evidence (forward test)",
+    "Average return of the positive outliers minus that of the negative outliers in the same weekly cohort. Positive = the types separate winners from losers.",
+  ],
   ["M2", "Macro Desk", "US money supply; its growth confirms what the Fed is doing with liquidity."],
   ["Net exposure", "Portfolio", "Longs minus shorts, as % of the account."],
   [
@@ -694,6 +699,11 @@ const GLOSSARY = [
     "Override",
     "Macro Desk",
     "Your own score for an indicator (−1 / 0 / +1). The bias recalculates; saved only in your browser.",
+  ],
+  [
+    "Payoff ratio",
+    "Ideas (track record)",
+    "Average winning trade ÷ average losing trade. With a hit rate below 50% you need a payoff well above 1.",
   ],
   ["P/E (PE1, PE2)", "Screener", "Price ÷ EPS. Only meaningful when EPS is positive."],
   ["P/S", "Trade idea", "Price-to-sales: market cap ÷ sales. Used for the sales-based target."],
@@ -741,6 +751,11 @@ const GLOSSARY = [
     "Tailwind / headwind",
     "Macro ideas",
     "Macro drivers that help (tailwind) or hurt (headwind) an industry's earnings in the next 20–60 days.",
+  ],
+  [
+    "t-statistic",
+    "Evidence",
+    "How many standard errors an average is away from zero. Above about 2 (in absolute value), the result is unlikely to be luck; it needs enough independent observations.",
   ],
   ["Turnaround", "Screener", "A company coming back to profit, or falling this year and recovering next year."],
   [

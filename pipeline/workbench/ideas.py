@@ -11,7 +11,8 @@ File format: a YAML header between ``---`` lines, then one ``## Heading`` per no
     updated: 2026-10-22
     horizon_days: 40       # the course's window is 20-60 days
     structure: stock       # stock | margin | cfd
-    entry_price: 239.34    # optional
+    entry_price: 239.34    # optional; with entry_date, exit_price, exit_date it feeds the track record
+    entry_date: 2026-10-22
     assumptions:           # optional: your own numbers for the price targets
       pe: 120
     ---
@@ -152,7 +153,7 @@ def parse(text: str, ticker: str) -> tuple[dict[str, Any], list[str], list[str]]
     if not isinstance(head, dict):
         raise IdeaError("the header must be lines like 'side: long'")
     known = {"ticker", "side", "status", "opened", "updated", "horizon_days", "structure", "entry_price"}
-    known |= {"assumptions"}
+    known |= {"assumptions", "entry_date", "exit_price", "exit_date"}
     for k in head:
         if k not in known:
             warnings.append(f"unknown header field '{k}' (ignored)")
@@ -166,6 +167,9 @@ def parse(text: str, ticker: str) -> tuple[dict[str, Any], list[str], list[str]]
         "updated": _date(head.get("updated"), "updated", errors),
         "structure": _choice(head.get("structure"), "structure", STRUCTURES, "stock", errors),
         "entry_price": _number(head.get("entry_price"), "entry_price", errors),
+        "entry_date": _date(head.get("entry_date"), "entry_date", errors),
+        "exit_price": _number(head.get("exit_price"), "exit_price", errors),
+        "exit_date": _date(head.get("exit_date"), "exit_date", errors),
         "horizon_days": None,
         "assumptions": {},
     }
@@ -194,6 +198,16 @@ def parse(text: str, ticker: str) -> tuple[dict[str, Any], list[str], list[str]]
             idea["assumptions"][k] = x
     if idea["opened"] and idea["updated"] and idea["updated"] < idea["opened"]:
         warnings.append("updated is before opened")
+    # the track record counts a trade with an entry and an exit (price and date)
+    start = idea["entry_date"] or idea["opened"]
+    if idea["exit_date"] and start and idea["exit_date"] < start:
+        errors.append("exit_date is before the entry")
+    if (idea["exit_price"] is None) != (idea["exit_date"] is None):
+        warnings.append("give both exit_price and exit_date, or neither")
+    if idea["exit_price"] is not None and idea["status"] != "closed":
+        warnings.append("an exit is recorded but the status is not 'closed'")
+    if idea["status"] == "closed" and (idea["entry_price"] is None or idea["exit_price"] is None):
+        warnings.append("closed without an entry and exit price: left out of the track record")
     notes, unknown = sections(body)
     for u in unknown:
         warnings.append(f"text outside the known sections ignored: '{u}'")

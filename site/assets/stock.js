@@ -358,6 +358,22 @@ function ideaBar() {
     );
   }
   const idea = S.idea;
+  const dateInput = (label, key, value) =>
+    el(
+      "label",
+      {},
+      `${label} `,
+      el("input", {
+        class: "select",
+        type: "date",
+        value: value || "",
+        "aria-label": key.replace("_", " "),
+        onchange: (ev) => {
+          idea[key] = ev.target.value || null;
+          touch();
+        },
+      }),
+    );
   const select = (label, value, options, onchange) =>
     el(
       "label",
@@ -399,7 +415,10 @@ function ideaBar() {
       ),
       select("Status", idea.status, store.STATUS_LABEL, (v) => {
         idea.status = v;
+        if (v === "closed" && !idea.exit_date) idea.exit_date = todayISO();
+        if (v === "closed" && !idea.exit_price && S.row) idea.exit_price = S.row.price;
         touch();
+        render();
       }),
       el(
         "label",
@@ -438,6 +457,26 @@ function ideaBar() {
           },
         }),
       ),
+      dateInput("on", "entry_date", idea.entry_date || idea.opened),
+      idea.status === "closed"
+        ? el(
+            "label",
+            {},
+            "Exit ",
+            el("input", {
+              class: "select num-input",
+              type: "number",
+              min: 0,
+              step: "any",
+              value: idea.exit_price ?? "",
+              onchange: (ev) => {
+                idea.exit_price = num(ev.target.value);
+                touch();
+              },
+            }),
+          )
+        : null,
+      idea.status === "closed" ? dateInput("on", "exit_date", idea.exit_date) : null,
       S.entry && S.entry.local
         ? el("button", {
             type: "button",
@@ -459,6 +498,12 @@ function ideaBar() {
       ? el("p", { class: "section-note", text: `The course's window is ${S.p.horizon_min}–${S.p.horizon_max} days.` })
       : null,
     sideWarning(),
+    idea.status === "closed"
+      ? el("p", {
+          class: "section-note",
+          text: "A closed idea with entry and exit prices and dates counts in the track record on the Ideas page (return for the side, and alpha after the market move at the stock's beta).",
+        })
+      : null,
     el("div", { id: "checklist" }, checklistNode()),
     publishBox(),
   );

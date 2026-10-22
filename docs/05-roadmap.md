@@ -103,3 +103,6 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
 - [x] "How to use" guide (`guide.html`, "Guide" in the menu, 2026-10-22): the whole site from zero, page by page, with
       screenshots (`site/assets/guide/`), six live teaching tools (bias, 11 numbers, types, price targets, expected
       move, correlation) and a searchable glossary.
+- [x] Forward test of the Screener's types and a track record of closed ideas (2026-10-22): weekly cohorts with
+      20/40/60-day returns vs SPY and sector ETFs (`pipeline/forward/`, Evidence page); entry/exit fields on ideas and
+      a track record with hit rate, payoff and alpha (Ideas page). Method: `docs/12-track-record.md`.

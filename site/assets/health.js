@@ -365,6 +365,22 @@ async function main() {
         : ` ${t.error}`,
     );
   }
+  if (health.forward && health.forward.status !== "skipped") {
+    const f = health.forward;
+    info.append(
+      el("br"),
+      "Forward test: ",
+      badge(
+        f.status === "ok"
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: "Not updated", tone: "critical", icon: "\u00d7" },
+      ),
+      f.status === "ok"
+        ? ` ${f.cohorts} weekly cohort(s), ${f.rows} stocks recorded; ${f.added} added and ${f.filled} returns filled today` +
+            (f.error ? `; ${f.error}` : "")
+        : ` ${f.error}. The previous record is kept.`,
+    );
+  }
   renderTiles(health);
   renderManual(health);
   renderSeries(health);

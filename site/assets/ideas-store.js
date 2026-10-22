@@ -41,6 +41,9 @@ export function newIdea(ticker, side, price, horizon) {
     updated: today,
     structure: "stock",
     entry_price: price || null,
+    entry_date: today,
+    exit_price: null,
+    exit_date: null,
     horizon_days: horizon,
     assumptions: {},
     catalysts: [],
@@ -92,7 +95,8 @@ export async function loadPublished() {
 // Canonical form for comparing a browser copy with the published one.
 function canonical(idea) {
   const out = {};
-  for (const k of ["side", "status", "opened", "updated", "structure", "entry_price", "horizon_days"])
+  const keys = ["side", "status", "opened", "updated", "structure", "entry_price", "horizon_days"];
+  for (const k of [...keys, "entry_date", "exit_price", "exit_date"])
     out[k] = idea[k] === undefined || idea[k] === "" ? null : idea[k];
   out.assumptions = Object.fromEntries(
     ASSUMPTIONS.filter((k) => idea.assumptions && idea.assumptions[k] != null).map((k) => [
@@ -145,6 +149,9 @@ export function toMarkdown(idea) {
   if (idea.horizon_days) head.push(`horizon_days: ${Math.round(idea.horizon_days)}`);
   head.push(`structure: ${idea.structure || "stock"}`);
   if (idea.entry_price) head.push(`entry_price: ${Number(idea.entry_price)}`);
+  if (idea.entry_date) head.push(`entry_date: ${idea.entry_date}`);
+  if (idea.exit_price) head.push(`exit_price: ${Number(idea.exit_price)}`);
+  if (idea.exit_date) head.push(`exit_date: ${idea.exit_date}`);
   const a = ASSUMPTIONS.filter((k) => idea.assumptions && idea.assumptions[k] != null);
   if (a.length) head.push("assumptions:", ...a.map((k) => `  ${k}: ${Number(idea.assumptions[k])}`));
   head.push("---");

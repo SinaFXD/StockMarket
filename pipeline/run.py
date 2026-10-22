@@ -28,6 +28,7 @@ from .calendar import status_of as calendar_status
 from .catalog import SOURCES, CatalogEntry, load_catalog
 from .config import CATALOG_FILE, IDEAS_DIR, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
 from .fetchers import eurostat, fred, oecd, umich, yahoo
+from .forward.build import run as run_forward
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
 from .screener.build import ScreenerBuilder, market_inputs
@@ -298,6 +299,7 @@ def main(argv: list[str] | None = None) -> int:
         calendar = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}"), "sources": []}
 
     screener: dict[str, Any]
+    builder = None
     try:  # the screener is a separate module: a failure must not stop the data update
         budget = (
             {"summary_budget": args.screener_budget, "iv_budget": args.screener_budget}
@@ -318,6 +320,17 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:
         log.exception("screener build failed")
         screener = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
+    forward: dict[str, Any] = {"status": "skipped", "error": None}
+    if builder is not None and builder.rows:
+        try:  # the live record of the screener's types; a failure keeps yesterday's record
+            forward = run_forward(
+                args.out_dir, builder, args.out_dir, offline=args.offline or "screener" not in only
+            )
+            forward["error"] = redact(forward["error"]) if forward.get("error") else None
+        except Exception as exc:
+            log.exception("forward test failed")
+            forward = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
     macro: dict[str, Any] = {"status": "ok", "error": None}
     try:  # a bug in the Macro Desk must not stop the data update
@@ -370,6 +383,7 @@ def main(argv: list[str] | None = None) -> int:
     health["screener"] = screener
     health["ideas"] = ideas
     health["themes"] = themes
+    health["forward"] = forward
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

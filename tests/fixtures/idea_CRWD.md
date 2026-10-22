@@ -1,11 +1,14 @@
 ---
 side: long
-status: active
+status: closed
 opened: 2026-10-20
 updated: 2026-10-22
 horizon_days: 45
 structure: margin
 entry_price: 239.34
+entry_date: 2026-10-21
+exit_price: 251.5
+exit_date: 2026-10-22
 assumptions:
   pe: 120
   sales2: 7500000000

@@ -62,8 +62,11 @@ export const fmt = {
     v === null || v === undefined
       ? "–"
       : v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-  pct: (v, d = 1) =>
-    v === null || v === undefined ? "–" : `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(d)}%`,
+  pct: (v, d = 1) => {
+    if (v === null || v === undefined) return "–";
+    const r = Number(v.toFixed(d)); // no "−0.0%" for a tiny negative
+    return `${r > 0 ? "+" : r < 0 ? "−" : ""}${Math.abs(r).toFixed(d)}%`;
+  },
   plain: (v, d = 1) => (v === null || v === undefined ? "–" : `${v.toFixed(d)}%`),
   x: (v, d = 1) => (v === null || v === undefined ? "–" : `${v.toFixed(d)}×`),
   num: (v, d = 2) => (v === null || v === undefined ? "–" : v.toLocaleString("en-US", { maximumFractionDigits: d })),
