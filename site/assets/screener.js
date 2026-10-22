@@ -538,6 +538,10 @@ async function main() {
   const params = new URLSearchParams(location.search);
   if (params.get("sector")) state.sector = params.get("sector");
   if (params.get("type")) state.cls = params.get("type");
+  if (params.get("industry")) {
+    const hit = state.rows.find((r) => r.industry === params.get("industry"));
+    if (hit) [state.sector, state.industry] = [hit.sector, hit.industry];
+  }
   if (params.get("columns") === "evidence") state.columns = "evidence";
   content.replaceChildren(
     el("div", { id: "controls" }),

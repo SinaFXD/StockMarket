@@ -36,6 +36,8 @@ from .screener.build import write as write_screener
 from .signals.build import build as build_macro
 from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
+from .themes.build import build as build_themes
+from .themes.build import status_of as themes_status
 from .workbench.build import build_ideas, ideas_status, write_ideas, write_stock_pages
 
 log = logging.getLogger("pipeline")
@@ -353,11 +355,21 @@ def main(argv: list[str] | None = None) -> int:
         log.exception("ideas build failed")
         ideas = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
+    themes: dict[str, Any]
+    try:  # macro-driven ideas: context built from the files above, never stops the update
+        theme_data = build_themes(args.out_dir)
+        write_json(args.out_dir / "themes.json", theme_data, indent=None)
+        themes = themes_status(theme_data)
+    except Exception as exc:
+        log.exception("themes build failed")
+        themes = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
     health["calendar"] = calendar
     health["screener"] = screener
     health["ideas"] = ideas
+    health["themes"] = themes
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

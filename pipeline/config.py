@@ -140,5 +140,15 @@ WORKBENCH: dict[str, float] = {
     "ideas_per_week": 2,  # Anton: about two new ideas a week
 }
 
+# Phase 5: macro-driven ideas and international listings (lessons 34-35). docs/10-macro-ideas-method.md.
+THEMES: dict[str, float] = {
+    "tailwind": 1,  # industry net effect >= +1 = macro tailwind, <= -1 = headwind (tune)
+    "strong": 2,  # >= +2 / <= -2 = strong: at least two drivers agree (tune)
+    "max_growth_pct": 300,  # international view: growth beyond this is a data or currency problem, left out
+    "top_pct": 75,  # international growth leaders: EG1 and EG2 both in the top quarter of foreign listings (tune)
+    "bottom_pct": 25,  # laggards: both negative and in the bottom quarter
+    "china_min_stocks": 5,  # fewer Chinese listings with estimates -> no China check
+}
+
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.
 SIGNAL_HISTORY_START = "2000-01"

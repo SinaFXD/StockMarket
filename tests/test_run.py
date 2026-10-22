@@ -147,6 +147,7 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
     assert site_ism["rows"][0][:2] == ["2026-09", 49.1]
     assert health["screener"]["stocks"] == 0 and health["calendar"]["events"] > 0
     assert health["ideas"] == {"status": "ok", "ideas": 1, "errors": 0, "warnings": 0}
+    assert health["themes"]["status"] == "ok" and health["themes"]["long_ideas"] == 0
     ideas = json.loads((tmp_path / "site" / "ideas.json").read_text())
     assert ideas["ideas"][0]["side"] == "short" and ideas["ideas"][0]["business"] == "Widgets."
 

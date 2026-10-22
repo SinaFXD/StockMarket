@@ -1910,3 +1910,28 @@ table.editor td .sub {
     max-width: 6.5em;
   }
 }
+
+/* ---------- Macro ideas (Phase 5) ---------- */
+.linklike {
+  font: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--accent-ink);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.china-check {
+  display: grid;
+  gap: 6px;
+}
+
+.china-check p {
+  margin: 0;
+}
+
+table.screener-table td.text .tag {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+}

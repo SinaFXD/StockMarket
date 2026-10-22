@@ -346,6 +346,25 @@ async function main() {
             (d.warnings ? `, ${d.warnings} warning(s)` : ""),
     );
   }
+  if (health.themes) {
+    const t = health.themes;
+    info.append(
+      el("br"),
+      "Macro ideas: ",
+      badge(
+        t.status === "ok"
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: "Not updated", tone: "critical", icon: "\u00d7" },
+      ),
+      t.status === "ok"
+        ? ` ${t.tailwinds} industries with tailwinds, ${t.headwinds} with headwinds; ${t.long_ideas} long and ${t.short_ideas} short ideas; ${t.international} listings based abroad; ISM lists: ${Object.entries(
+            t.ism || {},
+          )
+            .map(([k, v]) => `${k} ${v}`)
+            .join(", ")}`
+        : ` ${t.error}`,
+    );
+  }
   renderTiles(health);
   renderManual(health);
   renderSeries(health);

@@ -93,6 +93,12 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - Price history comes from `site/data/stocks/<T>.json` (2 years of bars, `SCREENER.chart_days`) and, for ETFs, the
   published Yahoo series; the benchmark is SPY's adjusted close.
 
+## Conventions (Phase 5)
+- `pipeline/themes/`: `map.yaml` (Macro Desk signals and ISM industries -> Yahoo industries, countries -> regions) and
+  `build.py` -> `site/data/themes.json` (built from the published `stocks.json`, `macro/latest.json` and manual
+  files, after the Macro Desk; context only). Thresholds in `config.THEMES`; rules in `docs/10-macro-ideas-method.md`.
+  `python -m pipeline.themes` rebuilds it from local data. ISM lists older than the headline report are never used.
+
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
   "potential lie" flag, UMich expectations, international money markets Japan/UK/Germany/Italy/China,

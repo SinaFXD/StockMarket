@@ -84,8 +84,15 @@ Done in one part (2026-10-22). Method: `docs/09-portfolio-method.md`.
 - [x] Portfolio vol (target 15–30%), correlation matrix & rolling correlation (target −0.3..+0.3), beta & beta-adjusted
       net exposure; position-count guidance by account size; Sharpe/return framing. (Also: risk share per position,
       beta-adjusted net vs the macro bias, long vs short market-cap tilt.)
-- [ ] Phase exit: green `update.yml` run on `main` with the page deployed.
+- [x] Phase exit: green `update.yml` run on `main` with the page deployed (2026-10-22, run 19).
 
 ## Phase 5 — Macro-driven ideas & ADRs (lessons 34–35)
-- [ ] Map macro signals to sectors/industries (ISM industry lists, commodities → sectors, housing → XHB, consumer).
-- [ ] ADR screener for international ideas (incl. Chinese ADRs vs official-data flags).
+Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
+- [x] Map macro signals to sectors/industries (ISM industry lists, commodities → sectors, housing → XHB, consumer).
+      (`themes.html`: every Yahoo industry adds the Macro Desk signals that reach it and its place in the latest ISM
+      growth / contraction lists; `pipeline/themes/map.yaml`; macro-driven ideas = screener outliers in tailwind /
+      headwind industries.)
+- [x] ADR screener for international ideas (incl. Chinese ADRs vs official-data flags). (Listings based abroad by
+      region, growth leaders / laggards among them, currency rules; China check: official NBS PMI vs analysts'
+      revisions for Chinese listings.)
+- [ ] Phase exit: green `update.yml` run on `main` with the page deployed.
