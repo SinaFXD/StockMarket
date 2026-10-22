@@ -1,4 +1,4 @@
-{"key":"fred/INDPRO","source":"FRED","id":"INDPRO","label":"Industrial production","block":"confirmers","url":"https://fred.stlouisfed.org/series/INDPRO","title":"Industrial Production: Total Index","units":"Index 2017=100","units_short":"Index 2017=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-16 08:20:19-05","fetched_at":"2026-10-22T10:54:05Z","columns":["date","value"],"observations":[
+{"key":"fred/INDPRO","source":"FRED","id":"INDPRO","label":"Industrial production","block":"confirmers","url":"https://fred.stlouisfed.org/series/INDPRO","title":"Industrial Production: Total Index","units":"Index 2017=100","units_short":"Index 2017=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-16 08:20:19-05","fetched_at":"2026-10-22T11:20:26Z","columns":["date","value"],"observations":[
 ["1919-01-01",4.8739],
 ["1919-02-01",4.6585],
 ["1919-03-01",4.5238],

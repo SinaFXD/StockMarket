@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXAFEGS","source":"FRED","id":"DTWEXAFEGS","label":"US dollar vs advanced economies","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXAFEGS","title":"Nominal Advanced Foreign Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 15:16:58-05","fetched_at":"2026-10-22T10:54:05Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXAFEGS","source":"FRED","id":"DTWEXAFEGS","label":"US dollar vs advanced economies","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXAFEGS","title":"Nominal Advanced Foreign Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-19 15:16:58-05","fetched_at":"2026-10-22T11:20:26Z","columns":["date","value"],"observations":[
 ["2006-01-02",101.7857],
 ["2006-01-03",100.6967],
 ["2006-01-04",100.0512],

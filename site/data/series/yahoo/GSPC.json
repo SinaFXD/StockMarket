@@ -1,4 +1,4 @@
-{"key":"yahoo/GSPC","source":"Yahoo Finance","id":"^GSPC","label":"S&P 500","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EGSPC","title":"S&P 500","units":"USD","units_short":"USD","frequency":"daily","exchange":"SNP","via":"yfinance","fetched_at":"2026-10-22T10:54:05Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/GSPC","source":"Yahoo Finance","id":"^GSPC","label":"S&P 500","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EGSPC","title":"S&P 500","units":"USD","units_short":"USD","frequency":"daily","exchange":"SNP","via":"yfinance","fetched_at":"2026-10-22T11:20:26Z","columns":["date","close","adj_close"],"observations":[
 ["1927-12-30",17.66,17.66],
 ["1928-01-03",17.76,17.76],
 ["1928-01-04",17.72,17.72],
