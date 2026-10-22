@@ -59,9 +59,11 @@ def run(out_dir: Path, builder, site_data_dir: Path, offline: bool = False, down
         except Exception as exc:  # those rows wait for the next run
             status["error"] = f"{type(exc).__name__}: {str(exc)[:200]}"
             log.warning("forward test: download of %d stocks failed: %s", len(missing), status["error"])
-    # the cohort's day is the screener's last close (the same day for every stock)
+    # the cohort's day: the last trading day both the screener's bars and SPY have closed (during US market hours
+    # the bars already hold today's unfinished session, which SPY's published series leaves out)
     last = max((b["d"][-1] for b in bars.values() if b.get("d")), default=None)
-    added = outliers.add_cohort(rows, last, builder.rows, closes) if last and last in spy else 0
+    day = max((d for d in days if last and d <= last), default=None)
+    added = outliers.add_cohort(rows, day, builder.rows, closes) if day else 0
     filled = outliers.fill(rows, days, closes, spy, etfs, SECTOR_ETF.get)
     _atomic_write_text(path, outliers.write(rows))
     data = {

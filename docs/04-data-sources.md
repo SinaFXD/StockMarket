@@ -64,6 +64,7 @@ CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP),
 | Core CPI (cross-check of core PCE momentum) | FRED CPILFESL (no value for 2025-10: shutdown) | ✅ |
 | Recession probability parameters | New York Fed `newyorkfed.org/medialibrary/media/research/capital_markets/Prob_Rec.pdf` (α −0.5333, β −0.6330) | ✅ verified 2026-10-22 |
 | Asset classes | Yahoo IEF (2002), GLD (2004), DBC (2006), UUP (2007); SPY and the sector SPDRs as above | ✅ verified 2026-10-22 |
+| Style factors (Portfolio Lab) | Yahoo IWD, IWF (2000), MTUM (2013); IWM and SPY as above | ✅ verified 2026-10-22 |
 
 ## Calendars (catalyst page, `pipeline/calendar/`)
 | Item | Source | |

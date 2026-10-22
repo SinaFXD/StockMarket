@@ -372,15 +372,76 @@ function forwardCard(fw) {
         el("td", { text: pct(t.vs_sector.mean) }),
       );
     });
-    body.replaceChildren(
+    const spreadText = (x) =>
+      x && x.n_cohorts
+        ? `${pct(x.mean)} on average across ${x.n_cohorts} cohort${x.n_cohorts > 1 ? "s" : ""} (${x.n_independent} independent window${x.n_independent === 1 ? "" : "s"}), positive in ${x.pct_pos}% of cohorts${x.t === null ? "; too few for a t-statistic" : `, t = ${x.t}`}.`
+        : "no cohort has reached this horizon yet.";
+    const rv = s.revisions;
+    const revRow = (k, label, note) => {
+      const t = rv && rv[k];
+      if (!t) return null;
+      return el(
+        "tr",
+        {},
+        el("td", {}, el("b", { text: label }), el("span", { class: "sub", text: note })),
+        el("td", { text: t.return.n }),
+        el("td", { text: t.cohorts }),
+        el("td", { text: pct(t.return.mean) }),
+        el("td", { text: pct(t.vs_spy.mean) }),
+        el("td", { text: t.vs_spy.pct_pos === null ? "–" : `${t.vs_spy.pct_pos.toFixed(0)}%` }),
+        el("td", { text: pct(t.vs_sector.mean) }),
+      );
+    };
+    const head7 = () =>
       el(
-        "p",
-        { class: "reading" },
-        el("b", { text: `Long-short spread over ${state.h} days: ` }),
-        sp.n_cohorts
-          ? `${pct(sp.mean)} on average across ${sp.n_cohorts} cohort${sp.n_cohorts > 1 ? "s" : ""} (${sp.n_independent} independent window${sp.n_independent === 1 ? "" : "s"}), positive in ${sp.pct_pos}% of cohorts${sp.t === null ? "; too few for a t-statistic" : `, t = ${sp.t}`}.`
-          : "no cohort has reached this horizon yet.",
-      ),
+        "thead",
+        {},
+        el(
+          "tr",
+          {},
+          ["Group", "Stocks", "Cohorts", "Return", "vs S&P 500", "Beat S&P 500", "vs sector ETF"].map((h) =>
+            el("th", { text: h }),
+          ),
+        ),
+      );
+    const revisionPart = rv
+      ? [
+          el("h3", { class: "sub-title", text: "Pre-registered test: estimate revisions vs forecast growth" }),
+          el("p", {
+            class: "section-note",
+            text: "Fixed on 22 Oct 2026, before the first cohort. Research finds that rising analysts' estimates tend to be followed by better returns, while the highest forecast growth is often already in the price. Each week the top and bottom quarter of every sector's 90-day EPS revisions are recorded too. H1: rising beats falling. H2: positive outliers whose estimates are rising beat the other positive outliers. Compare H1 with the types' spread above.",
+          }),
+          el(
+            "p",
+            { class: "reading" },
+            el("b", { text: `H1, rising minus falling estimates (${state.h} days): ` }),
+            spreadText(s.rev_spread),
+          ),
+          el(
+            "p",
+            { class: "reading" },
+            el("b", { text: `H2, positive outliers with rising estimates minus the others: ` }),
+            spreadText(s.positive_rev_spread),
+          ),
+          el(
+            "div",
+            { class: "scroll-x" },
+            el(
+              "table",
+              { class: "data" },
+              head7(),
+              el(
+                "tbody",
+                {},
+                revRow("up", "Estimates rising", "top quarter of the sector's 90-day EPS1 revisions"),
+                revRow("down", "Estimates falling", "bottom quarter"),
+              ),
+            ),
+          ),
+        ]
+      : [];
+    body.replaceChildren(
+      el("p", { class: "reading" }, el("b", { text: `Long-short spread over ${state.h} days: ` }), spreadText(sp)),
       el(
         "div",
         { class: "scroll-x" },
@@ -401,6 +462,7 @@ function forwardCard(fw) {
           el("tbody", {}, rows),
         ),
       ),
+      ...revisionPart,
     );
   };
   const segBtns = (opts, key) =>

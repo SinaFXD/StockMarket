@@ -140,3 +140,84 @@ def test_run_writes_the_record_and_prices_stocks_that_left(tmp_path):
     summary = json.loads((site / "forward" / "summary.json").read_text())
     assert summary["all"]["horizons"]["60"]["spread"]["n_cohorts"] == 1 and summary["missing_prices"] == 0
     assert build.run(tmp_path / "empty", Later(), tmp_path / "empty")["status"] == "failed"
+
+
+def rev_row(t, rev, sector="Technology", cls="boring", vol_ok=True):
+    return {"t": t, "cls": cls, "sector": sector, "vol_ok": vol_ok, "eps1_rev90": rev}
+
+
+def test_revision_groups_are_the_top_and_bottom_quarter_of_each_sector():
+    rows = [rev_row(f"T{i}", float(i)) for i in range(8)]  # 0..7: quarter = 2 stocks
+    rows += [rev_row("SMALL1", 50.0, "Energy"), rev_row("SMALL2", -50.0, "Energy")]  # too few in Energy
+    rows += [rev_row("NONE", None)]
+    g = outliers.revision_groups(rows)
+    assert g == {"T0": "down", "T1": "down", "T6": "up", "T7": "up"}
+    flat = outliers.revision_groups([rev_row(f"F{i}", 1.0) for i in range(8)])
+    assert flat == {}  # all equal: nobody is up or down
+
+
+def test_cohort_adds_revision_groups_and_keeps_their_numbers():
+    prices = {f"T{i}": {DAYS[0]: 10.0} for i in range(8)}
+    rows = [rev_row(f"T{i}", float(i), cls="positive" if i == 3 else "boring") for i in range(8)]
+    log = []
+    assert outliers.add_cohort(log, DAYS[0], rows, lambda t: prices.get(t, {})) == 5  # 4 grouped + 1 positive
+    by = {r["ticker"]: r for r in log}
+    assert by["T7"]["rev_group"] == "up" and by["T7"]["type"] == "boring" and by["T7"]["rev90"] == 7.0
+    assert by["T3"]["rev_group"] is None and by["T3"]["type"] == "positive"
+    back = {r["ticker"]: r for r in outliers.read(outliers.write(log))}
+    assert (
+        back["T0"]["rev_group"] == "down" and back["T0"]["rev90"] == 0.0 and back["T3"]["rev_group"] is None
+    )
+
+
+def test_an_old_record_without_revision_columns_still_reads():
+    old = "cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60,etf60\n"
+    old += "2026-10-01,UP,positive,Technology,1,100.0000,5.000,1.000,,,,,,,\n"
+    r = outliers.read(old)[0]
+    assert r["rev_group"] is None and r["rev90"] is None and r["r20"] == 5.0
+
+
+def test_revision_spreads_h1_and_h2():
+    log = []
+    for c in range(0, 50, 5):  # ten weekly cohorts
+        for t, cls, grp, step in [("A", "positive", "up", 0.01), ("B", "positive", None, 0.0),
+                                  ("C", "boring", "down", -0.01)]:  # fmt: skip
+            p = path(100, step)
+            log.append({"cohort": DAYS[c], "ticker": t, "type": cls, "sector": "Technology", "vol_ok": True,
+                        "entry": p[DAYS[c]], "rev90": 1.0, "rev_group": grp,
+                        **{k: None for k in outliers.RETURNS}})  # fmt: skip
+    series = {"A": path(100, 0.01), "B": path(100, 0.0), "C": path(100, -0.01)}
+    outliers.fill(log, DAYS, lambda t: series[t], path(400, 0.0), {}, lambda s: None)
+    h20 = outliers.summary(log)["horizons"]["20"]
+    up, down = (1.01**20 - 1) * 100, (0.99**20 - 1) * 100
+    assert (
+        h20["rev_spread"]["mean"] == pytest.approx(up - down, abs=1e-3)
+        and h20["rev_spread"]["n_cohorts"] == 10
+    )
+    assert h20["positive_rev_spread"]["mean"] == pytest.approx(up, abs=1e-3)  # A vs B (flat)
+    assert (
+        h20["revisions"]["down"]["return"]["n"] == 10 and h20["revisions"]["up"]["vs_spy"]["pct_pos"] == 100.0
+    )
+    assert h20["spread"]["n_cohorts"] == 0  # no negative outliers in this record
+
+
+def test_cohort_day_is_the_last_day_spy_has_closed(tmp_path):
+    site = tmp_path / "site"
+    p = site / "series" / "yahoo" / "SPY.json"
+    p.parent.mkdir(parents=True)
+    obs = [[d, 400.0, 400.0] for d in DAYS[:-1]]  # SPY leaves out today's unfinished session
+    p.write_text(json.dumps({"columns": ["date", "close", "adj_close"], "observations": obs}))
+
+    class Builder:
+        rows = [screener_row("UP", "positive")]
+
+        def bars(self):
+            return {"UP": {"d": DAYS, "c": list(PRICES["UP"].values())}}
+
+    st = build.run(site, Builder(), site, offline=True)
+    rows = outliers.read((site / "forward" / "outliers.csv").read_text())
+    assert (
+        st["added"] == 1
+        and rows[0]["cohort"] == DAYS[-2]
+        and rows[0]["entry"] == pytest.approx(PRICES["UP"][DAYS[-2]])
+    )

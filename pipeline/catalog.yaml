@@ -102,6 +102,11 @@ yahoo:
   - {id: DBC, label: "DBC (Commodities ETF)", block: prices_fx_equities}
   - {id: UUP, label: "UUP (US dollar ETF)", block: prices_fx_equities}
 
+  # --- Style factors for the Portfolio Lab's factor exposure (verified live 2026-10-22) ---
+  - {id: IWD, label: "IWD (Russell 1000 Value ETF)", block: prices_fx_equities}
+  - {id: IWF, label: "IWF (Russell 1000 Growth ETF)", block: prices_fx_equities}
+  - {id: MTUM, label: "MTUM (US Momentum factor ETF)", block: prices_fx_equities}
+
   # --- US sector SPDRs ---
   - {id: XLB, label: "XLB Materials", block: prices_fx_equities}
   - {id: XLC, label: "XLC Communication services", block: prices_fx_equities}

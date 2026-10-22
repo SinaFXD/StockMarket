@@ -42,6 +42,22 @@ arithmetic is `site/assets/portfolio-math.js`, tested by `tests/js/portfolio.tes
 - Median market cap of the longs and of the shorts, with the course's note that in GDP-growth regimes mid-cap longs
   against large-cap shorts tended to beat large against large.
 
+## Factor exposure (risk check; not a course rule)
+- Four style factors from free ETFs (daily, dividend-adjusted): **market** SPY; **size** IWM − SPY; **value** IWD −
+  IWF (Russell 1000 value minus growth); **momentum** MTUM − SPY (from 2013).
+- The book's daily return at **today's weights** (Σ signed dollars ÷ account × stock return) over the selected history
+  is regressed (OLS with an intercept) on the four factor returns: each **loading** is in % of the account (+30% on
+  momentum = the book moves like 30% of the account long MTUM and short SPY), with its t-statistic. R² = the share of
+  the book's daily moves the factors explain; 1 − R² = stock-specific.
+- **Style bet** = loading ≥ 20% of the account with |t| ≥ 2 *(our choice)*. The hedge that brings a loading to zero is
+  the opposite trade in the factor's ETFs (e.g. +41% momentum on $100k: short $41k MTUM, buy $41k SPY).
+- Alpha (intercept, annualised) is a backtest of today's book, not a track record. Each position's own loadings are
+  listed (before sizing; a short flips the sign in the book). `portfolio-math.js`: `ols`, `factorReturns`,
+  `factorExposure`; tests in `tests/js/portfolio.test.mjs`.
+- Why: long positive outliers and short negative ones tends to be long growth/momentum and short value (example on
+  2026-10-22: the 5 largest positive vs the 5 largest negative outliers loaded +41% momentum, t = 8.2, and −31%
+  value), so a factor rotation can hit the whole book at once.
+
 ## Diversification and Sharpe framing (lessons 20–21)
 - Positions by account size: up to $250k **8–12** (the course's retail $25k–$100k margin account), $250k–$2m **10–14**
   (course: $250k–$1m), $2m and above **12–16** (course: $2–5m; more is over-diversification). The gaps between the

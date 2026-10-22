@@ -643,6 +643,11 @@ const GLOSSARY = [
     "The euro area's Economic Sentiment Indicator (Eurostat). Long-run average 100; above 100 = better than average.",
   ],
   [
+    "Estimate revisions",
+    "Evidence (forward test)",
+    "The change in analysts' consensus EPS over the last 90 days. Rising estimates tend to matter more than a high growth forecast.",
+  ],
+  [
     "EV/EBIT, EV/EBITDA",
     "Screener (Evidence)",
     "Enterprise value (market cap + debt − cash) divided by operating profit (EBIT) or by operating profit before depreciation (EBITDA).",
@@ -656,6 +661,11 @@ const GLOSSARY = [
     "Expected move (1σ)",
     "Trade idea",
     "Annual volatility × √(days ÷ 365): the size of a normal move over the horizon.",
+  ],
+  [
+    "Factor exposure (style bet)",
+    "Portfolio",
+    "How much the book moves with a style (market, small vs large, value vs growth, momentum), in % of capital. A big one means the book is partly a bet on that style, not on its stocks.",
   ],
   [
     "First reading",
@@ -738,6 +748,11 @@ const GLOSSARY = [
     "Post-growth",
     "Screener",
     "Fast growth this year but bottom-quarter growth next year: the growth phase is ending (a short-side type).",
+  ],
+  [
+    "Pre-registered test",
+    "Evidence",
+    "A hypothesis written down before the data exists, so the result cannot be bent to fit afterwards.",
   ],
   [
     "Price targets (EPS / sales)",
