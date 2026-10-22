@@ -135,7 +135,7 @@ def test_build_writes_latest_history_snapshots_and_log(tmp_path):
         }
     )
     latest = build.build(tmp_path, TODAY, lib, start="2026-01")
-    assert latest["bias"]["used"] == 2 and len(latest["signals"]) == 18
+    assert latest["bias"]["used"] == 2 and len(latest["signals"]) == 19
     curve = next(s for s in latest["signals"] if s["id"] == "curve")
     assert curve["history"][0][0] == "2026-01" and curve["reason_en"]
     hist = json.loads((tmp_path / "macro" / "history.json").read_text())

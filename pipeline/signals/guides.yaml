@@ -158,3 +158,14 @@ china:
     - "China's bonds are mostly domestic and weak as a leading indicator."
   watch:
     - "When official data looks fake, use Chinese ADRs (US reporting standards) for ideas."
+
+intl_money_markets:
+  what: "The money markets of Japan, the UK, Germany and Italy, each read with the same template as the US: the yield curve (10y government yield minus the overnight rate) and the real 10y rate (10y yield minus CPI inflation)."
+  read:
+    - "Low or negative real rates relative to a country's own history mean abundant liquidity there; high and rising real rates mean liquidity is getting scarce."
+    - "A curve flattening toward inversion is bearish; steepening out of a flat or inverted curve is bullish. A transitioning curve has often signalled the central bank's next move rather than a crash."
+    - "Germany and Italy share the ECB's overnight rate, so their curves differ only through the 10y yield. The Italy minus Germany spread shows euro-area stress."
+    - "China's real rate is shown on the China page and the Global page but not scored: its bonds are mostly held at home and weak as a leading indicator."
+  watch:
+    - "The data is monthly averages published two to six weeks after the month ends: slower than the US daily series."
+    - "Each country's own central bank (BoJ, BoE, ECB) can move rates against the global cycle; read a lone outlier in that light."

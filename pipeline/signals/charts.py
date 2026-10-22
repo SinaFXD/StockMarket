@@ -351,6 +351,14 @@ def sp500(v, p):
 
 def esi(v, p):
     mid, z = p["esi_neutral"], p["esi_sd"] * p["esi_zone_sd"]
+    countries = {"DE": "Germany", "FR": "France", "IT": "Italy", "ES": "Spain", "NL": "Netherlands"}
+    sectors = {
+        "ICI": "Industry",
+        "SCI": "Services",
+        "CSMCI": "Consumers",
+        "RCI": "Retail trade",
+        "CCI": "Construction",
+    }
     return [
         panel(
             "Euro-area Economic Sentiment Indicator",
@@ -358,7 +366,23 @@ def esi(v, p):
             [line("ESI", v.series("eurostat/ESI_EA"), 1)],
             refs=[(mid, "Long-term average")],
             zones=[(mid + z, mid + 2 * z, "Peak zone", "pos"), (mid - 2 * z, mid - z, "Trough zone", "neg")],
-        )
+        ),
+        grid(
+            "Big countries: ESI",
+            "index (100 = long-term average)",
+            [
+                panel(name, "index", [line(name, v.series(f"eurostat/ESI_{cc}"), 1)], refs=[(mid, "100")])
+                for cc, name in countries.items()
+            ],
+        ),
+        grid(
+            "Euro-area sector confidence",
+            "balance (% positive minus % negative answers)",
+            [
+                panel(name, "balance", [line(name, v.series(f"eurostat/{code}_EA"), 1)])
+                for code, name in sectors.items()
+            ],
+        ),
     ]
 
 
@@ -387,6 +411,48 @@ def china(v, p):
             ],
             refs=[(50, "50")],
         ),
+        panel(
+            "China real 10y rate (context, not scored)",
+            "%",
+            [line("10y yield - CPI YoY", (v.series("oecd/Y10_CN") - v.series("oecd/CPI_CN")).dropna())],
+            refs=[(0, "Zero")],
+            note="China's bonds are mostly held at home, so this is a weak leading indicator (lesson 14).",
+        ),
+    ]
+
+
+def intl_money_markets(v, p):
+    from .international import COUNTRIES, SCORED  # avoid an import cycle at module load
+
+    real, curves = [], []
+    for cc in SCORED:
+        y, short, cpi = (v.series(f"oecd/{k}_{cc}") for k in ("Y10", "RATE", "CPI"))
+        r = (y - cpi).dropna()
+        refs = [(0, "0")] + (_pct_lines(r, p["percentile_years"], 25, 75) if len(r) > 24 else [])
+        real.append(panel(COUNTRIES[cc], "%", [line("Real 10y", r)], refs=refs))
+        curves.append(
+            panel(
+                COUNTRIES[cc],
+                "pp",
+                [line("10y - short rate", (y - short).dropna())],
+                refs=[(0, "Inversion")],
+                zones=[(0, p["curve_flat_max"], "Flat", "neu")],
+            )
+        )
+    it, de = v.series("oecd/Y10_IT"), v.series("oecd/Y10_DE")
+    return [
+        grid(
+            "Real 10y rates (10y yield - CPI YoY); lines at 0 and the 25th/75th percentiles of 10 years",
+            "%",
+            real,
+        ),
+        grid("Yield curves (10y yield - overnight rate); grey band = flat (0-0.5pp)", "pp", curves),
+        panel(
+            "Italy minus Germany 10y yield",
+            "pp",
+            [line("Italy - Germany", (it - de).dropna())],
+            note="Shown for context, not scored: a widening spread has marked euro-area stress (2011-12).",
+        ),
     ]
 
 
@@ -409,6 +475,7 @@ BUILDERS = {
     "sp500": sp500,
     "esi": esi,
     "china": china,
+    "intl_money_markets": intl_money_markets,
 }
 
 

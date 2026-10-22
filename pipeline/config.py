@@ -75,6 +75,8 @@ SIGNALS: dict[str, float] = {
     "esi_sd": 10,
     "esi_zone_sd": 1.5,  # peak/trough zone flags (tune)
     "china_neutral": 50,
+    "intl_net": 2,  # international money markets: net of the four country scores to count (tune)
+    "intl_min_countries": 3,  # fewer countries with data -> awaiting (tune)
     "bias_threshold": 0.25,  # net long >= +0.25, net short <= -0.25 (tune)
 }
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.

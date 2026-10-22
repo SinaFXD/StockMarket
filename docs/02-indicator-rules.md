@@ -223,6 +223,20 @@ How the rules above are coded in `pipeline/signals/`. Every number lives in `pip
 - **ESI** uses the largest euro-area aggregate Eurostat publishes (EA21 since 2026).
 - **China**: "rising/falling" = RatingDog manufacturing vs 3 months earlier *(tune)*; RatingDog services and NBS are
   shown, NBS is never scored.
+- **International money markets (1c)**: Japan, UK, Germany and Italy are each read with the US template (section 1):
+  curve = 10y yield − overnight rate (no free 2y series for all four; the lesson's "watch the short end" view),
+  real 10y = latest 10y − latest CPI YoY, percentile vs the country's last 10 years. Curve and real-rate rules and
+  thresholds are the US ones; "over 3 months" = 3 monthly observations. Country = sign of curve + real score
+  *(tune)*. Signal = net of the four countries: ≥ +2 → +1, ≤ −2 → −1, else 0; fewer than 3 countries with data →
+  awaiting *(tune)*. Data: OECD monthly averages, known 45 days after the month ends; rates and CPI are not
+  revised in practice, so they are not flagged "revised". China's real rate is shown (China and Global pages)
+  but not scored (lesson 14: weak leading indicator). The Italy − Germany 10y spread is shown, not scored.
+- **ESI components (1c)**: big-country ESIs (DE, FR, IT, ES, NL) and the euro-area sector confidence indicators
+  are shown on the ESI page; "countries above 100" is reported, the score still uses the euro-area ESI only.
+- **Regional equity dispersion (1c, Global page)**: US / Europe / Japan / China, local indices and US-dollar ETFs;
+  1/3/6/12-month and YTD returns, distance from the 200-day average and the 12-month high, relative strength
+  vs the US. Context for lesson 15's "global or local?" question, **not scored**: the course gives no rule that
+  turns regional relative strength into a portfolio bias.
 - **Bias**: block = mean of its available signals, bias = mean of blocks, ±0.25 *(tune)*. Awaiting-data signals are
   excluded. Overrides on the website recalculate the same arithmetic in the browser.
 - **Point in time**: month-end snapshots since 2000 use ALFRED vintages (CPI, M2, permits, iron ore, lumber, …),

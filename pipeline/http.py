@@ -58,6 +58,7 @@ class HttpClient:
         self._sleep = sleep
         self._last_request = 0.0
         self.requests_made = 0
+        self._memo: dict[tuple, Any] = {}
 
     def _throttle(self) -> None:
         wait = self.min_interval - (time.monotonic() - self._last_request)
@@ -92,7 +93,17 @@ class HttpClient:
                 continue
         raise FetchError(redact(f"gave up after {self.retries + 1} attempts: {last_problem}", self.secrets))
 
-    def get_json(self, url: str, params: dict[str, Any] | None = None) -> Any:
+    def _memoized(self, kind: str, url: str, params: dict[str, Any] | None, fetch: Callable[[], Any]) -> Any:
+        """One download per URL and run, for sources that deliver several series in one response."""
+        key = (kind, url, tuple(sorted((params or {}).items())))
+        if key not in self._memo:
+            self._memo[key] = fetch()
+        return self._memo[key]
+
+    def get_json(self, url: str, params: dict[str, Any] | None = None, *, memo: bool = False) -> Any:
+        if memo:
+            return self._memoized("json", url, params, lambda: self.get_json(url, params))
+
         def parse(resp: requests.Response) -> Any:
             try:
                 return resp.json()
@@ -105,7 +116,10 @@ class HttpClient:
 
         return self._get(url, params, parse)
 
-    def get_text(self, url: str, params: dict[str, Any] | None = None) -> str:
+    def get_text(self, url: str, params: dict[str, Any] | None = None, *, memo: bool = False) -> str:
+        if memo:
+            return self._memoized("text", url, params, lambda: self.get_text(url, params))
+
         def parse(resp: requests.Response) -> str:
             if _html_title(resp.text):
                 raise ValueError(f"expected data but got the web page '{_html_title(resp.text)}'")

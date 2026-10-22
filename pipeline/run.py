@@ -1,6 +1,6 @@
 """Run the whole pipeline: ``python -m pipeline.run``.
 
-1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo, UMich, Eurostat) with last-good-copy
+1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo, UMich, Eurostat, OECD) with last-good-copy
    fallback;
 2. validate the hand-entered CSVs in ``data/manual/``;
 3. compute the Macro Desk (signals, bias, monthly point-in-time history, daily log) into ``site/data/macro/``;
@@ -23,7 +23,7 @@ from typing import Any
 from . import gha, manual
 from .catalog import SOURCES, CatalogEntry, load_catalog
 from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
-from .fetchers import eurostat, fred, umich, yahoo
+from .fetchers import eurostat, fred, oecd, umich, yahoo
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
 from .signals.build import build as build_macro
@@ -31,7 +31,7 @@ from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
 
 log = logging.getLogger("pipeline")
-OTHER_SOURCES = {"umich": umich, "eurostat": eurostat}
+OTHER_SOURCES = {"umich": umich, "eurostat": eurostat, "oecd": oecd}
 
 
 class Runner:
@@ -216,7 +216,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch all data and rebuild site/data/.")
     parser.add_argument("--offline", action="store_true", help="no network: rebuild from the raw cache")
     parser.add_argument(
-        "--only", default="fred,yahoo,umich,eurostat", help="comma list of sources to fetch (default: all)"
+        "--only", default=",".join(SOURCES), help="comma list of sources to fetch (default: all)"
     )
     parser.add_argument("--no-vintages", action="store_true", help="skip ALFRED vintages")
     parser.add_argument("--refresh", action="store_true", help="re-download even if the source is unchanged")

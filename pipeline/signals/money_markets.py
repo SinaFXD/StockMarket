@@ -10,6 +10,37 @@ from .data import View
 BLOCK = "money_markets"
 
 
+def curve_direction(ch: float | None, p: dict) -> str:
+    if ch is None or abs(ch) <= p["curve_stable_band"]:
+        return "stable"
+    return "steepening" if ch > 0 else "flattening"
+
+
+def curve_reading(cur: float, ch: float | None, p: dict) -> tuple[int, str, str, str]:
+    """The lesson-4 curve template (also used for other countries): (score, state, reason, direction)."""
+    direction = curve_direction(ch, p)
+    if cur < 0:
+        return -1, "Inverted", "the curve is inverted, the market is pricing a contraction.", direction
+    if cur <= p["curve_flat_max"]:
+        if direction == "flattening":
+            return -1, "Flat & flattening", "a flat curve moving toward inversion is bearish.", direction
+        if direction == "steepening":
+            return 1, "Flat & steepening", "steepening out of a flat curve is bullish.", direction
+        return 0, "Flat", "a flat curve signals a transition; wait for the direction.", direction
+    if direction == "steepening":
+        return 1, "Normal & steepening", "an upward-sloping, steepening curve expects expansion.", direction
+    return 0, "Normal", "a normal curve, no transition under way.", direction
+
+
+def real_rate_reading(pct: float | None, rising: bool, p: dict) -> tuple[int, str]:
+    """The lesson-4 real-rate template: (score, state)."""
+    if pct is not None and pct <= p["real_rate_low_pct"]:
+        return 1, "Low vs history"
+    if pct is not None and pct >= p["real_rate_high_pct"]:
+        return (-1, "High & rising") if rising else (0, "High, not rising")
+    return 0, "Mid-range"
+
+
 def curve(v: View, p: dict) -> Signal:
     sig = Signal(
         "curve",
@@ -23,26 +54,10 @@ def curve(v: View, p: dict) -> Signal:
     if why := v.stale("fred/T10Y2Y", s):
         return sig.awaiting(why)
     cur, ch = float(s.iloc[-1]), change(s, p["lookback_days"])
-    band, flat = p["curve_stable_band"], p["curve_flat_max"]
     sig.as_of, sig.metrics = iso(s.index[-1]), {"spread_10y2y": cur, "change_3m": ch}
     sig.percentile_10y = pct_rank(window(s, p["percentile_years"]), cur)
-    direction = "stable"
-    if ch is not None and abs(ch) > band:
-        direction = "steepening" if ch > 0 else "flattening"
-    base = f"10y-2y is {cur:+.2f}pp ({fmt(ch, 2, True)}pp over 3 months, {direction})"
-    if cur < 0:
-        sig.set(-1, "Inverted", f"{base}: the curve is inverted, the market is pricing a contraction.")
-    elif cur <= flat:
-        if direction == "flattening":
-            sig.set(-1, "Flat & flattening", f"{base}: a flat curve moving toward inversion is bearish.")
-        elif direction == "steepening":
-            sig.set(1, "Flat & steepening", f"{base}: steepening out of a flat curve is bullish.")
-        else:
-            sig.set(0, "Flat", f"{base}: a flat curve signals a transition; wait for the direction.")
-    elif direction == "steepening":
-        sig.set(1, "Normal & steepening", f"{base}: an upward-sloping, steepening curve expects expansion.")
-    else:
-        sig.set(0, "Normal", f"{base}: a normal curve, no transition under way.")
+    score, state, why, direction = curve_reading(cur, ch, p)
+    sig.set(score, state, f"10y-2y is {cur:+.2f}pp ({fmt(ch, 2, True)}pp over 3 months, {direction}): {why}")
     short = v.series("fred/T10Y3M")
     if not short.empty and v.stale("fred/T10Y3M", short) is None:
         sig.metrics["spread_10y3m"] = float(short.iloc[-1])
@@ -88,14 +103,12 @@ def real_rate(v: View, p: dict) -> Signal:
         f"Real 10y = {y.iloc[-1]:.2f}% yield - {infl.iloc[-1]:.1f}% CPI YoY = {cur:+.2f}% "
         f"({ordinal(pct)} percentile of 10 years, {'rising' if rising else 'not rising'} over 3 months)"
     )
-    if pct is not None and pct <= p["real_rate_low_pct"]:
-        sig.set(1, "Low vs history", f"{base}: liquidity is abundant relative to history (supports P/E).")
-    elif pct is not None and pct >= p["real_rate_high_pct"] and rising:
-        sig.set(-1, "High & rising", f"{base}: liquidity is getting scarce relative to history.")
-    else:
-        sig.set(
-            0, "Mid-range" if pct is None or pct < p["real_rate_high_pct"] else "High, not rising", f"{base}."
-        )
+    score, state = real_rate_reading(pct, rising, p)
+    tail = {
+        1: ": liquidity is abundant relative to history (supports P/E).",
+        -1: ": liquidity is getting scarce relative to history.",
+    }.get(score, ".")
+    sig.set(score, state, base + tail)
     return sig
 
 

@@ -26,6 +26,18 @@ export async function loadJSON(path) {
   return resp.json();
 }
 
+// A signal score as a pill: ▲ +1 (blue), ● 0, ▼ −1 (red), or "awaiting".
+export function scorePill(score) {
+  if (score === null || score === undefined) return el("span", { class: "score none", text: "awaiting" });
+  const cls = score > 0 ? "pos" : score < 0 ? "neg" : "";
+  return el(
+    "span",
+    { class: `score ${cls}` },
+    el("span", { "aria-hidden": "true", text: score > 0 ? "▲" : score < 0 ? "▼" : "●" }),
+    score > 0 ? "+1" : score < 0 ? "−1" : "0",
+  );
+}
+
 export const SERIES_STATUS = {
   ok: { label: "OK", tone: "good", icon: "✓" },
   stale: { label: "Stale", tone: "warning", icon: "!" },
