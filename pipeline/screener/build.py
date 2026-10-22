@@ -10,15 +10,16 @@
 from __future__ import annotations
 
 import logging
+import os
 import time
 from datetime import UTC, date, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
 from ..config import SCREENER
-from ..http import redact
+from ..http import HttpClient, redact
 from ..store import RawCache, iso, read_series, utc_now, write_json
-from . import numbers, outliers, volatility, yahoo
+from . import edgar, evidence, numbers, outliers, volatility, yahoo
 
 log = logging.getLogger("pipeline.screener")
 COLUMNS = [
@@ -54,6 +55,8 @@ COLUMNS = [
     "atr",
     "iv",
     "vol_ok",
+    "acc_fy",
+    *evidence.METRICS,
 ]
 CANDIDATES = ("positive", "negative", "post_growth", "turnaround", "value_trap")
 
@@ -77,6 +80,8 @@ class ScreenerBuilder:
         option_ticker=None,
         vix: float | None = None,
         rate: float = 0.04,
+        sec_user_agent: str | None = None,
+        sec_http: HttpClient | None = None,
         now: datetime | None = None,
     ) -> None:
         self.cache, self.offline = cache, offline
@@ -84,6 +89,10 @@ class ScreenerBuilder:
         self._screen, self._get_json = screen, get_json
         self._download, self._option_ticker = download, option_ticker  # test doubles
         self.vix, self.rate = vix, rate
+        self.sec_user_agent = (
+            sec_user_agent if sec_user_agent is not None else os.environ.get("SEC_USER_AGENT", "")
+        )
+        self._sec_http = sec_http
         self.now = now or utc_now()
         self.status: dict[str, Any] = {}
 
@@ -232,6 +241,56 @@ class ScreenerBuilder:
             ratios = [x / self.vix for x in (rv, iv) if x is not None and self.vix]
             r["vol_ok"] = None if not ratios else all(x >= need for x in ratios)
 
+    # -- SEC EDGAR evidence --------------------------------------------------------------------------------
+    def edgar(self, today: date) -> dict[str, Any] | None:
+        hit = self.cache.load("screener", "edgar")
+        error = None
+        fresh = hit is not None and hit[1] >= iso(self.now - timedelta(hours=self.p["summary_max_age_hours"]))
+        if not self.offline and not fresh:
+            if not self.sec_user_agent.strip():
+                error = "SEC_USER_AGENT is not set (see docs/06-setup.md)"
+            else:
+                try:
+                    http = self._sec_http or HttpClient(
+                        min_interval=0.12, user_agent=self.sec_user_agent, secrets=[self.sec_user_agent]
+                    )
+                    payload = {
+                        "tickers": edgar.fetch_tickers(http),
+                        "frames": edgar.fetch_frames(http, today),
+                    }
+                    self.cache.save("screener", "edgar", payload, self.now)
+                    self.status["edgar"] = {
+                        "status": "ok",
+                        "frames": len(payload["frames"]),
+                        "saved_at": iso(self.now),
+                    }
+                    return payload
+                except Exception as exc:  # keep the last good copy
+                    error = redact(f"{type(exc).__name__}: {exc}", [self.sec_user_agent])[:300]
+                    log.warning("screener SEC EDGAR: %s", error)
+        self.status["edgar"] = {
+            "status": ("cached" if not error else "failed") if hit else ("missing" if error else "offline"),
+            "frames": len(hit[0]["frames"]) if hit else 0,
+            "saved_at": hit[1] if hit else None,
+            "error": error,
+        }
+        return hit[0] if hit else None
+
+    def attach_evidence(self, rows: list[dict[str, Any]], today: date) -> None:
+        payload = self.edgar(today)
+        index = edgar.index_frames(payload["frames"]) if payload else {}
+        tickers = payload["tickers"] if payload else {}
+        found = 0
+        for r in rows:
+            cik = tickers.get(r["t"].upper())
+            acc = edgar.accounts(index, cik) if cik else {}
+            m = evidence.compute(acc, r["mcap"], r["sector"])
+            r["acc_fy"] = m.get("fy_end")
+            for k in evidence.METRICS:
+                r[k] = m.get(k)
+            found += bool(m.get("fy_end"))
+        self.status.setdefault("edgar", {})["with_accounts"] = found
+
     # -- build -------------------------------------------------------------------------------------------
     def build(self, today: date) -> dict[str, Any]:
         quotes = self.universe()
@@ -243,6 +302,7 @@ class ScreenerBuilder:
         numbers.mark_duplicates(rows)
         medians = outliers.classify(rows, self.p)
         self.attach_volatility(rows, today)
+        self.attach_evidence(rows, today)
         stats = numbers.sector_stats(rows)
         counts = {code: sum(1 for r in rows if code in r["flags"]) for code in numbers.CHECKS}
         return {
@@ -259,6 +319,12 @@ class ScreenerBuilder:
             },
             "status": self.status,
             "vix": self.vix,
+            "evidence": {
+                "metrics": {
+                    k: {"label": v[0], "unit": v[1], "text": v[2]} for k, v in evidence.METRICS.items()
+                },
+                "medians": evidence.sector_medians(rows, numbers.included),
+            },
             "medians": medians,
             "categories": {
                 k: {"label": v[0], "side": v[1], "text": v[2], "count": sum(1 for r in rows if r["cls"] == k)}
@@ -302,6 +368,7 @@ def status_of(data: dict[str, Any]) -> dict[str, Any]:
         "universe": uni,
         "estimates": est,
         "prices": st.get("prices"),
+        "edgar": st.get("edgar"),
         "options": st.get("options"),
     }
 

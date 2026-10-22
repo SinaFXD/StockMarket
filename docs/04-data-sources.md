@@ -70,7 +70,9 @@ CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP),
 | Forward EPS & revenue estimates (current/next FY), # analysts, EPS trend/revisions, industry, country, next earnings date | Yahoo `quoteSummary` (`earningsTrend,assetProfile,calendarEvents,price`) via `yfinance`'s session, one request per stock (~0.15 s) | ✅ verified 2026-10-22 (2,033 stocks, 0 failures) |
 | Analyst price targets, ratings | `yfinance` (`analyst_price_targets`, `recommendations`) | ✅ (unofficial; Phase 3) |
 | Next earnings date | `yfinance` calendar / earnings dates | ✅ |
-| Historical statements (income, balance sheet, cash flow), shares outstanding | SEC EDGAR XBRL `data.sec.gov/api/xbrl/companyfacts/CIK##########.json` (needs `User-Agent` with email) | ✅ |
+| Historical statements (income, balance sheet, cash flow) for the screener | SEC EDGAR XBRL `frames`: `data.sec.gov/api/xbrl/frames/us-gaap/{concept}/USD/{CY2025 or CY2026Q2I}.json` (all companies per request, ~0.5 MB); `User-Agent` with a contact e-mail required (403 without) | ✅ verified 2026-10-22 |
+| One company's full history (trade-idea pages) | SEC `companyfacts/CIK##########.json` (~4 MB per company) | ✅ verified 2026-10-22 |
+| Ticker → CIK | SEC `www.sec.gov/files/company_tickers.json` | ✅ verified 2026-10-22 |
 | Insider transactions & holders | `yfinance` insider/institutional tables; SEC Form 4 🔎 | ✅/🔎 |
 | Prices (realised vol, ATR, beta, correlation) | `yfinance.download` daily OHLC, 200 tickers per batch (~3.5 min for the universe) | ✅ verified 2026-10-22 |
 | Implied volatility | `yfinance` option chains; `impliedVolatility` is wrong when bid/ask are 0 (outside market hours), so IV is computed with Black-Scholes from mid/last prices | ✅ verified 2026-10-22 |

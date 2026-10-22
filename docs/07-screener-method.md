@@ -91,5 +91,33 @@ Anton: realised and implied volatility roughly **≥ 1.5× VIX**, so a stock can
 - `vol_ok` = every available measure (realised, implied) ≥ 1.5 × the latest VIX close; the page's "Vol ÷ VIX"
   shows the lower of the two ratios.
 
+## Evidence from SEC EDGAR (2c)
+Lesson 29's backward-looking step, from the companies' own XBRL filings (`pipeline/screener/edgar.py`,
+`evidence.py`). It explains why money likes or dislikes a stock; it is not a forecast and never feeds the types.
+
+- **Source:** SEC `frames` API, one request per line item and period for all companies (~130 requests, ~40 s).
+  Annual frames for the last three calendar years and instant frames for the last four quarter-ends. SEC requires
+  a contact e-mail in the `User-Agent` (secret `SEC_USER_AGENT`, see `docs/06-setup.md`) and ≤ 10 requests a
+  second; the data is refreshed after 20 hours and the last good copy is kept.
+- **Ticker → company:** SEC `company_tickers.json` (2,052 of 2,053 screener tickers matched on 2026-10-22).
+- **One fiscal year per company:** the latest annual period of revenue (else net income, else operating cash
+  flow) sets the year; every other line must end within 20 days of it, the previous year within 40 days of a year
+  earlier. Balance-sheet lines must share the latest equity (else assets) date. For each line the first tag the
+  company uses wins (e.g. `Revenues` before `RevenueFromContractWithCustomerExcludingAssessedTax`), so one
+  company's numbers never mix two tags.
+- **Fallbacks:** gross profit = revenue − cost of revenue when `GrossProfit` is not tagged; D&A = depreciation +
+  amortisation of intangibles when not tagged as one line; EBIT = operating income, else pre-tax income + interest.
+- **Metrics:** sales growth; gross, EBIT, pre-tax and net margin; EV = market cap + debt − cash and short-term
+  investments; EV/Sales, EV/EBIT, EV/EBITDA; net debt/EBITDA; debt/equity; current ratio; interest cover; ROE; ROA;
+  FCF margin and FCF yield (FCF = operating cash flow − capex); cash conversion (operating cash flow / net
+  income). A ratio is blank when its denominator is missing, zero or negative.
+- **Banks and insurers** (sector Financial Services): EV ratios, net debt/EBITDA, current ratio and interest cover
+  are left blank (debt is their raw material).
+- **Gaps:** foreign filers reporting under IFRS are not in the `us-gaap` frames (~300 stocks); a company that
+  moved to a new holding company keeps its ticker on the new SEC entity, whose annual accounts appear after its
+  first 10-K (seen with XOM in October 2026).
+- **On the page:** "Evidence: accounts" switches the table to these columns, with the medians of the current view
+  (clean stocks only).
+
 ## Next
-- 2c: Evidence metrics from SEC EDGAR (margins, EV/EBIT, EV/EBITDA, balance-sheet and cash-flow ratios).
+Phase 3: the trade-idea template pages (lessons 30–33).

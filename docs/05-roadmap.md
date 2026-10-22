@@ -54,14 +54,15 @@ money markets & regional dispersion (done 2026-10-22), **1d** evidence page, con
 
 ## Phase 2 — Sector Screener (lessons 22–29)
 Built in parts: **2a** universe, 11 numbers, data checks, sector averages, Screener page (2026-10-22); **2b** outliers
-& volatility filter (2026-10-22); **2c** SEC EDGAR evidence metrics. Method: `docs/07-screener-method.md`.
+& volatility filter (2026-10-22); **2c** SEC EDGAR evidence metrics (2026-10-22). Method: `docs/07-screener-method.md`.
 - [x] Universe build + market-cap filter; sector/industry grouping. (2a: ~2,030 US-listed common stocks > $2bn
       from Yahoo's screener; `pipeline/screener/`, `site/data/screener/stocks.json`, `screener.html`.)
 - [x] The 11 numbers per stock; data cleaning checks (lesson 28); sector averages.
 - [x] Outlier classification: positive/negative outliers, consecutive growth patterns, turnaround, value trap,
       post-growth, boring. Volatility filter (realised & implied ≥ ~1.5× VIX). (2b: sector percentiles,
       Black-Scholes implied volatility from option prices; `outliers.py`, `volatility.py`.)
-- [ ] Evidence metrics from SEC EDGAR: margins, EV/EBIT, EV/EBITDA, balance-sheet and cash-flow ratios.
+- [x] Evidence metrics from SEC EDGAR: margins, EV/EBIT, EV/EBITDA, balance-sheet and cash-flow ratios. (2c:
+      SEC frames API, ~1,700 stocks with accounts; needs the `SEC_USER_AGENT` secret.)
 
 ## Phase 3 — Trade Idea Workbench (lessons 30–33)
 - [ ] Stock page = trade-idea template sections 1–5, auto-filled where data exists.

@@ -38,6 +38,7 @@ jobs:
       - name: Pipeline dry run (real sources, nothing committed)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python -m pipeline.run --screener-budget 100
       - name: Attach the built data
         uses: actions/upload-artifact@v7
