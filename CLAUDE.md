@@ -99,6 +99,11 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   files, after the Macro Desk; context only). Thresholds in `config.THEMES`; rules in `docs/10-macro-ideas-method.md`.
   `python -m pipeline.themes` rebuilds it from local data. ISM lists older than the headline report are never used.
 
+## Conventions (after the roadmap)
+- "This week" (`routine.html`): `site/assets/routine-logic.js` (pure, `tests/js/routine.test.mjs`) derives each step's
+  status from the published files and the browser's ideas / portfolio; `docs/11-weekly-routine.md` lists the rules.
+  A new page or check that belongs to the weekly process should get a line there.
+
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
   "potential lie" flag, UMich expectations, international money markets Japan/UK/Germany/Italy/China,

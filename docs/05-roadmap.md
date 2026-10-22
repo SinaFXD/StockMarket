@@ -95,4 +95,8 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
 - [x] ADR screener for international ideas (incl. Chinese ADRs vs official-data flags). (Listings based abroad by
       region, growth leaders / laggards among them, currency rules; China check: official NBS PMI vs analysts'
       revisions for Chinese listings.)
-- [ ] Phase exit: green `update.yml` run on `main` with the page deployed.
+- [x] Phase exit: green `update.yml` run on `main` with the page deployed (2026-10-22, run 20).
+
+## After the roadmap
+- [x] "This week" page (`routine.html`, 2026-10-22): the weekly routine in the course's order with what needs
+      attention from the live data, and a weekly checklist. Method: `docs/11-weekly-routine.md`.

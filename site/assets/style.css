@@ -1935,3 +1935,54 @@ table.screener-table td.text .tag {
   display: inline-block;
   margin: 2px 4px 2px 0;
 }
+
+/* ---------- This week (weekly routine) ---------- */
+.routine-head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.routine-meter {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--neu-wash);
+  overflow: hidden;
+}
+
+.routine-meter span {
+  display: block;
+  height: 100%;
+  background: var(--good);
+}
+
+.routine-step {
+  margin-bottom: 12px;
+}
+
+.routine-step.is-done {
+  opacity: 0.65;
+}
+
+.routine-step-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.routine-step-head .check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.routine-step-head input {
+  width: 20px;
+  height: 20px;
+}
+
+.routine-items {
+  margin: 0 0 12px;
+}
