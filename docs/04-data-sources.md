@@ -24,7 +24,7 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 | ISM Manufacturing (PMI + all sub-indices + industry lists/comments) | ismworld.org monthly Report on Business | ✍️ `ism_manufacturing.csv`, `ism_industries.csv` |
 | ISM Services | ismworld.org | ✍️ `ism_services.csv` |
 | UMich sentiment (composite) | FRED UMCSENT | ✅ |
-| UMich current conditions & expectations | sca.isr.umich.edu data tables (CSV) | 🔎 (if unavailable, add to manual file) |
+| UMich sentiment, current conditions & expectations | sca.isr.umich.edu `files/tbmics.csv`, `files/tbmiccice.csv` (monthly since 1978, final values by month-end) | ✅ verified 2026-10-22 |
 | Building permits (total, 1-unit), starts, completions | FRED PERMIT, PERMIT1, HOUST, COMPUTSA | ✅ |
 | NFIB SBO + 10 components | nfib.com monthly SBET report (PDF) | ✍️ `nfib_sbet.csv` |
 
@@ -43,7 +43,7 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 ## International
 | Item | Source | |
 |---|---|---|
-| Euro-area ESI + sector & country components | Eurostat API dataset `ei_bssi_m_r2` (`ec.europa.eu/eurostat/api/...`) | 🔎 exact query |
+| Euro-area ESI + sector & country components | Eurostat API `.../statistics/1.0/data/ei_bssi_m_r2?indic=BS-ESI-I&s_adj=SA` (geo `EA21` = euro area since 2026, history back-calculated to 1980; countries: DE, FR, IT, ES, NL) | ✅ verified 2026-10-22 (ESI); sectors 🔎 |
 | Japan, UK, Germany, Italy 10y yields | FRED IRLTLT01JPM156N, IRLTLT01GBM156N, IRLTLT01DEM156N, IRLTLT01ITM156N (monthly) | ✅ |
 | Those countries' CPI YoY | FRED/OECD CPI series (e.g. CPALTT01…M659N) or DBnomics | 🔎 |
 | China 10y yield, China CPI | DBnomics / FRED 🔎; else manual | 🔎 |

@@ -52,6 +52,15 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - `site/data/` is generated and git-ignored; **only the workflow commits it** (`git add -f`). Never commit it from a
   session, or work branches will conflict with the daily data commits on `main`.
 - Error messages can reach the public `health.json`: pass them through `pipeline.http.redact`.
+- Commit with explicit paths (`git add pipeline tests site/*.html site/assets docs ...`), never `git add -A`: the
+  generated `site/data/` files are tracked on `main`, so `-A` would stage them.
+
+## Conventions (Phase 1)
+- `pipeline/signals/`: one function per indicator (`money_markets`, `surveys`, `prices`, `international`), all
+  reading data through the point-in-time `View` (`data.py`) so the same code serves today and every past month.
+  Thresholds in `config.SIGNALS`; record every interpretation in `docs/02` ("Implementation notes").
+- `python -m pipeline.signals` rebuilds only the Macro Desk from local data; `site/assets/macro.js` repeats the
+  bias arithmetic of `signals/bias.py` (keep them in sync).
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS

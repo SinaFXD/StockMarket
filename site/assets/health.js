@@ -265,6 +265,21 @@ async function main() {
     health.run_url ? " · " : "",
     health.run_url ? el("a", { href: health.run_url, target: "_blank", rel: "noopener", text: "run log" }) : "",
   );
+  if (health.macro) {
+    const ok = health.macro.status === "ok";
+    info.append(
+      el("br"),
+      "Macro Desk: ",
+      badge(
+        ok
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: "Not updated", tone: "critical", icon: "\u00d7" },
+      ),
+      ok
+        ? ` ${health.macro.used} of ${health.macro.total} indicators in the bias`
+        : ` ${health.macro.error}. The page shows the previous run.`,
+    );
+  }
   renderTiles(health);
   renderManual(health);
   renderSeries(health);
