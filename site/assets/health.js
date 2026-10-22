@@ -384,6 +384,23 @@ async function main() {
         : ` ${t.error}`,
     );
   }
+  if (health.regime) {
+    const g = health.regime;
+    info.append(
+      el("br"),
+      "Regime: ",
+      badge(
+        g.status === "ok"
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: "Not updated", tone: "critical", icon: "\u00d7" },
+      ),
+      g.status === "ok"
+        ? ` ${g.regime || "no reading"} (data for ${g.month || "–"}); recession odds ${
+            g.recession_prob === null || g.recession_prob === undefined ? "–" : `${g.recession_prob}%`
+          }; ${g.history_months} months of history`
+        : ` ${g.error}`,
+    );
+  }
   if (health.forward && health.forward.status !== "skipped") {
     const f = health.forward;
     info.append(

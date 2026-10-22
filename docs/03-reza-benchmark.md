@@ -42,3 +42,24 @@ real GDP), calendar (FOMC, ECB, BEA GDP/PCE; CPI/jobs only with an API key), evi
 5. Credit-spread history only ~3 years (FRED limitation) → our long-history fallback: Moody's BAA10Y/AAA10Y.
 6. Calendar lacks CPI/jobs dates by default → we include BLS schedules.
 7. Entire micro side absent → our Modules 2–5.
+
+## Re-review, 22 Oct 2026
+Single page, 14 tabs, 95 series embedded (data as of 2026-10-21). Still macro only. New since the first review: a
+12-lesson "Learn" tab with a quiz and saved progress, and a data-freshness table by economy. Gaps we had against it,
+and what we did:
+
+| Its feature | Ours |
+|---|---|
+| Regime quadrant (CFNAI vs core PCE) with a 24-month trail | ✅ Regime page: same inputs, our own inflation measure (6m annualised − 12m), point-in-time history since 1999 |
+| Sectors and asset classes by regime (Nasdaq sector indexes from 2011) | ✅ SPDR sector ETFs vs SPY and five asset-class ETFs, since 1999, with a real-time-only view |
+| NY Fed recession probability with NBER shading | ✅ parameters verified from the Fed's PDF; peak-before-recession table and false-alarm note |
+| Fed funds vs Taylor rule | ✅ |
+| Treasury curve with a week slider | ✅ 1M-30Y, 10 years of weekly curves, change table |
+| Bias history against the S&P 500 | ✅ S&P 500 on a right-hand log axis |
+| Copy brief, signal board CSV | ✅ (our brief also lists extremes and the Regime page's readings) |
+| Manual light/dark switch | ✅ every page |
+| 12 interactive lessons with a quiz | partly: the Guide (tools + glossary); no quiz or saved progress yet |
+| One-table "Method" tab | partly: each indicator page shows its rule; the full table is in `docs/02` |
+| Full disclaimer tab | not yet (footer line on every page) |
+| Forex tab (8 currencies, pair matrix, timing light) | out of scope for an equity book |
+| Evidence-weighted scores | deliberately not copied: weights fitted on the sample they are judged on |

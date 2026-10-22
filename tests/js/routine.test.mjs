@@ -118,3 +118,14 @@ test("screen step: outlier counts and the sectors to screen first", () => {
   assert.match(s.items[2], /leading or improving .*: Energy, Materials; lagging: Utilities, Industrials/); // weakest first
   assert.equal(R.screenStep({ as_of: "2026-10-22" }, rows).items.length, 3); // no sector file: no line
 });
+
+test("macro step: one line from the Regime page when it is published", () => {
+  const latest = { bias: { label: "Net long", score: 0.28, used: 19, total: 19 }, what_changed: [], alerts: [] };
+  const regime = {
+    now: { label: "Recovery", borderline: true },
+    recession: { latest: { for_month: "2027-09", prob: 13.55 } },
+  };
+  const s = R.macroStep(latest, regime);
+  assert.equal(s.items[1], "Regime: Recovery (close to a line); recession odds for 2027-09: 13.6% (Regime page).");
+  assert.equal(R.macroStep(latest).items.length, 1);
+});

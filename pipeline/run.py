@@ -31,6 +31,8 @@ from .fetchers import eurostat, fred, oecd, umich, yahoo
 from .forward.build import run as run_forward
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
+from .regime.build import build as build_regime
+from .regime.build import status_of as regime_status
 from .screener.build import ScreenerBuilder, market_inputs
 from .screener.build import status_of as screener_status
 from .screener.build import write as write_screener
@@ -334,18 +336,16 @@ def main(argv: list[str] | None = None) -> int:
             forward = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
     macro: dict[str, Any] = {"status": "ok", "error": None}
+    lib: Library | None = None
     try:  # a bug in the Macro Desk must not stop the data update
-        latest = build_macro(
-            args.out_dir,
+        lib = Library.load(
             today,
-            Library.load(
-                today,
-                site_data_dir=args.out_dir,
-                raw_dir=args.raw_dir,
-                manual_dir=args.manual_dir,
-                catalog=entries,
-            ),
+            site_data_dir=args.out_dir,
+            raw_dir=args.raw_dir,
+            manual_dir=args.manual_dir,
+            catalog=entries,
         )
+        latest = build_macro(args.out_dir, today, lib)
         macro.update(
             bias=latest["bias"]["score"],
             state=latest["bias"]["state"],
@@ -356,6 +356,15 @@ def main(argv: list[str] | None = None) -> int:
         log.exception("Macro Desk build failed")
         macro = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
         gha.annotate("error", f"Macro Desk not updated: {macro['error']}", title="Macro Desk")
+
+    regime: dict[str, Any]
+    try:  # regime, recession odds, Taylor rule, Treasury curve: context only, never stops the update
+        regime_data = build_regime(args.out_dir, today, lib)
+        write_json(args.out_dir / "regime.json", regime_data, indent=None)
+        regime = regime_status(regime_data)
+    except Exception as exc:
+        log.exception("regime build failed")
+        regime = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
     ideas: dict[str, Any]
     try:  # saved trade ideas (data/ideas/*.md): problems are reported, never stop the update
@@ -399,6 +408,7 @@ def main(argv: list[str] | None = None) -> int:
     health["themes"] = themes
     health["forward"] = forward
     health["sectors"] = sectors
+    health["regime"] = regime
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

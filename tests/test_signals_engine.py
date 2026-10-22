@@ -169,3 +169,10 @@ def test_a_failing_rule_does_not_hide_the_others(monkeypatch):
     monkeypatch.setattr(build, "RULES", [boom, *build.RULES[1:]])
     snap = build.snapshot(library().view(TODAY), P)
     assert snap["signals"][0]["status"] == "awaiting" and "internal error" in snap["signals"][0]["reason_en"]
+
+
+def test_month_closes_take_the_last_close_of_each_month():
+    prices = daily([("2026-07-01", 100.0), ("2026-09-30", 130.0)])
+    out = build.month_closes(prices, ["2026-07", "2026-08", "2026-06"])
+    assert abs(out[0] - (100 + 30 * 30 / 91)) < 0.5 and out[1] > out[0] and out[2] is None
+    assert build.month_closes(pd.Series(dtype=float), ["2026-07"]) == [None]

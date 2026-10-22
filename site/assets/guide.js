@@ -581,6 +581,11 @@ const GLOSSARY = [
   ],
   ["CEW", "Portfolio", "Constant equal weight: a backtest where every position has the same weight again each day."],
   [
+    "CFNAI (Chicago Fed activity index)",
+    "Regime",
+    "A monthly average of 85 US indicators of production, jobs, spending and sales. 0 = growth at its long-run trend; the 3-month average is the growth axis of the regime map.",
+  ],
+  [
     "China PMI (NBS / RatingDog)",
     "Macro Desk",
     "Purchasing managers' indices for China. NBS is official; RatingDog (formerly Caixin) is private and preferred by the course. Private minus official is the 'potential lie' gap.",
@@ -591,6 +596,11 @@ const GLOSSARY = [
     "Coincident and lagging data (CPI, payrolls, claims, industrial production, GDP). They confirm the leading indicators; never scored.",
   ],
   ["Consensus", "Screener, Trade idea", "The average of the analysts' estimates (EPS, sales)."],
+  [
+    "Core PCE inflation",
+    "Regime",
+    "Inflation of the prices consumers pay, without food and energy: the Fed's preferred measure.",
+  ],
   [
     "Correlation",
     "Portfolio",
@@ -701,6 +711,11 @@ const GLOSSARY = [
     "A stock whose EPS growth is in the top (positive) or bottom (negative) quarter of its sector in both forward years: long and short candidates.",
   ],
   [
+    "Output gap",
+    "Regime",
+    "Real GDP minus the economy's potential (CBO estimate), in % of potential. Positive = running hot.",
+  ],
+  [
     "Override",
     "Macro Desk",
     "Your own score for an indicator (−1 / 0 / +1). The bias recalculates; saved only in your browser.",
@@ -740,6 +755,16 @@ const GLOSSARY = [
     "The annualised standard deviation of the stock's daily returns over the last ~3 months.",
   ],
   [
+    "Recession probability (yield-curve model)",
+    "Regime",
+    "The New York Fed's estimate of a US recession 12 months later, from the 10-year minus 3-month Treasury spread. Watch the rise, not a level.",
+  ],
+  [
+    "Regime (Recovery, Overheat, Stagflation, Reflation)",
+    "Regime",
+    "Growth above or below trend crossed with inflation speeding up or easing. Context for the bias, not a signal.",
+  ],
+  [
     "Relative strength",
     "Trade idea, Sectors",
     "A stock's or sector ETF's return minus the S&P 500's (or its sector ETF's) over the same period, in percentage points.",
@@ -775,6 +800,11 @@ const GLOSSARY = [
     "t-statistic",
     "Evidence",
     "How many standard errors an average is away from zero. Above about 2 (in absolute value), the result is unlikely to be luck; it needs enough independent observations.",
+  ],
+  [
+    "Taylor rule",
+    "Regime",
+    "A simple formula for where the policy rate 'should' be: 2 + inflation + 0.5 × (inflation − 2) + 0.5 × output gap.",
   ],
   ["Turnaround", "Screener", "A company coming back to profit, or falling this year and recovering next year."],
   [

@@ -9,6 +9,7 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 | Item | Series | |
 |---|---|---|
 | 10y, 2y, 3m, 1m, 6m Treasury | DGS10, DGS2, DGS3MO, DGS1MO, DGS6MO | ✅ |
+| 1y, 3y, 5y, 7y, 20y, 30y Treasury (Regime page curve) | DGS1, DGS3, DGS5, DGS7, DGS20, DGS30 | ✅ verified 2026-10-22 |
 | Curve spreads | T10Y2Y, T10Y3M | ✅ |
 | CPI (headline, core) | CPIAUCSL, CPILFESL | ✅ |
 | 10y TIPS real yield (cross-check) | DFII10 | ✅ |
@@ -51,6 +52,16 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 
 ## Coincident & lagging confirmers (FRED)
 CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP), CP (corporate profits). ✅
+
+## Regime page (FRED + Yahoo)
+| Item | Source | |
+|---|---|---|
+| Chicago Fed National Activity Index (growth axis) | FRED CFNAI, monthly since 1967; ALFRED vintages from 2011-05 | ✅ verified 2026-10-22 |
+| Core PCE price index (inflation axis, Taylor rule) | FRED PCEPILFE; ALFRED vintages from 2000-08 | ✅ verified 2026-10-22 |
+| CBO real potential GDP (output gap) | FRED GDPPOT (quarterly, projections to 2036) | ✅ verified 2026-10-22 |
+| NBER recession dates | FRED USREC (monthly) | ✅ verified 2026-10-22 |
+| Recession probability parameters | New York Fed `newyorkfed.org/medialibrary/media/research/capital_markets/Prob_Rec.pdf` (α −0.5333, β −0.6330) | ✅ verified 2026-10-22 |
+| Asset classes | Yahoo IEF (2002), GLD (2004), DBC (2006), UUP (2007); SPY and the sector SPDRs as above | ✅ verified 2026-10-22 |
 
 ## Calendars (catalyst page, `pipeline/calendar/`)
 | Item | Source | |

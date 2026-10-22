@@ -20,15 +20,17 @@ from datetime import date, timedelta
 from pathlib import Path
 from typing import Any
 
+import pandas as pd
+
 from ..config import SIGNAL_HISTORY_START, SIGNALS
 from ..store import write_json
 from . import international, money_markets, prices, surveys
-from .base import Signal
+from .base import Signal, value_at
 from .bias import PRICE_ALERT_PREFIX, PRICE_ALERTS, alerts, combine, price_alert, what_changed
 from .charts import build_charts
 from .confirmers import build_confirmers
 from .data import Library, View, month_ends
-from .evidence import build_evidence
+from .evidence import build_evidence, month_end
 from .global_view import build_global
 
 log = logging.getLogger("pipeline.signals")
@@ -80,6 +82,15 @@ def _compact(snaps: list[dict[str, Any]]) -> dict[str, Any]:
         },
         "signals": {i: [next(x["score"] for x in s["signals"] if x["id"] == i) for s in snaps] for i in ids},
     }
+
+
+def month_closes(prices: pd.Series, months: list[str]) -> list[float | None]:
+    """The last close on or before each month-end (the S&P 500 drawn under the bias history)."""
+    out = []
+    for m in months:
+        v = None if prices.empty else value_at(prices, month_end(m))
+        out.append(None if v is None else round(v, 2))
+    return out
 
 
 def update_log(path: Path, latest: dict[str, Any]) -> None:
@@ -141,6 +152,7 @@ def build(
             write_json(macro / f"{name}.json", make(), indent=None)
         except Exception:
             log.exception("%s data failed", name)
+    compact["sp500"] = month_closes(lib.view(today).series("yahoo/GSPC"), compact["months"])
     write_json(macro / "history.json", compact, indent=None)
     by_year: dict[str, list] = {}
     for s in snaps:
