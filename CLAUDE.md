@@ -67,6 +67,13 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - `python -m pipeline.signals` rebuilds only the Macro Desk from local data; `site/assets/macro.js` repeats the
   bias arithmetic and the data-vs-prices alert of `signals/bias.py` (keep them in sync).
 
+## Conventions (Phase 2)
+- `pipeline/screener/`: `yahoo.py` (downloads), `numbers.py` (11 numbers, checks, averages), `build.py` (cache,
+  budget, output). Thresholds in `config.SCREENER`; record every rule in `docs/07-screener-method.md`.
+  `site/assets/screener.js` repeats the averaging rule of `numbers.group_stats` (keep in sync).
+- `python -m pipeline.screener [--offline] [--budget N]` rebuilds only the screener; tests never touch the network
+  (`run.main` tests pass `--only fred`).
+
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
   "potential lie" flag, UMich expectations, international money markets Japan/UK/Germany/Italy/China,
