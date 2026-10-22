@@ -1,0 +1,2 @@
+date,bias_score,bias_state,block_money_markets,block_surveys,block_prices_fx_equities,block_international,curve,real_rate,credit,m2,vix,ism_manufacturing,ism_services,umich,permits,nfib,brent,copper,iron_ore,lumber,dollar,sp500,esi,china
+2026-10-22,0.242,neutral,-0.4,0.2,0.667,0.5,0,-1,-1,0,0,1,1,-1,0,0,1,1,0,1,0,1,0,1
