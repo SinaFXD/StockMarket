@@ -49,7 +49,11 @@ class HttpClient:
         sleep=time.sleep,
     ) -> None:
         self.session = session or requests.Session()
-        self.session.headers.setdefault("User-Agent", user_agent)
+        # requests sets "python-requests/x.y" by default, which some sites block (Bank of England, Yahoo 429s)
+        if not str(self.session.headers.get("User-Agent", "")).strip() or str(
+            self.session.headers.get("User-Agent")
+        ).startswith("python-requests"):
+            self.session.headers["User-Agent"] = user_agent
         self.min_interval = min_interval
         self.retries = retries
         self.backoff = backoff
@@ -113,6 +117,16 @@ class HttpClient:
                 if title and "maintenance" in title.lower():
                     hint += " (the source is down for maintenance)"
                 raise ValueError(f"response was not JSON{hint}") from None
+
+        return self._get(url, params, parse)
+
+    def get_page(self, url: str, params: dict[str, Any] | None = None) -> str:
+        """An HTML web page (for sources that only publish one, such as central-bank calendars)."""
+
+        def parse(resp: requests.Response) -> str:
+            if "<html" not in resp.text[:2000].lower():
+                raise ValueError("expected a web page")
+            return resp.text
 
         return self._get(url, params, parse)
 

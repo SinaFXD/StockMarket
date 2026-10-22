@@ -237,6 +237,19 @@ How the rules above are coded in `pipeline/signals/`. Every number lives in `pip
   1/3/6/12-month and YTD returns, distance from the 200-day average and the 12-month high, relative strength
   vs the US. Context for lesson 15's "global or local?" question, **not scored**: the course gives no rule that
   turns regional relative strength into a portfolio bias.
+- **Confirmers (1d)**: coincident (payrolls, unemployment, initial and continuing claims, industrial production,
+  durable goods orders, CPI/core CPI/PPI) and lagging (real GDP, corporate profits) data are shown on the Macro
+  Desk and **never scored** (lesson 1: prices move before the reports). Growth confirmers get a tone with
+  thresholds in `config.CONFIRMERS` *(tune)*: payrolls 3m average ≥ +100k supportive, < 0 weak; unemployment
+  ±0.2pp over 3 months; claims 4-week average ±10% vs 13 weeks earlier; industrial production YoY ±1%; durable
+  orders (3-month sum) YoY ±3%; real GDP ≥ 2% annualised supportive (Anton's "GDP ≥ 2%" band in lesson 9),
+  < 0 weak; profits YoY ≥ 5% supportive, < 0 weak. Inflation shows its direction only. The summary says
+  whether the confirmers agree with the leading bias.
+- **Evidence (1d)**: forward 1/3/6-month price returns of the S&P 500, STOXX 600, Nikkei 225, Shanghai Composite
+  and ACWI from each month-end snapshot (month-end close to month-end close), grouped by bias state and by each
+  signal's score, with n and an "independent windows" count (n / horizon). Samples: all months, 2000–2012,
+  2013–now, and months with no revised input. An exposure illustration holds the S&P 500 at +1 / 0 / −1 per
+  the bias, no costs. Nothing on this page feeds back into the rules.
 - **Bias**: block = mean of its available signals, bias = mean of blocks, ±0.25 *(tune)*. Awaiting-data signals are
   excluded. Overrides on the website recalculate the same arithmetic in the browser.
 - **Point in time**: month-end snapshots since 2000 use ALFRED vintages (CPI, M2, permits, iron ore, lumber, …),

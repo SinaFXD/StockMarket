@@ -280,6 +280,25 @@ async function main() {
         : ` ${health.macro.error}. The page shows the previous run.`,
     );
   }
+  if (health.calendar) {
+    const c = health.calendar;
+    const bad = (c.sources || []).filter((s) => !["ok", "cached"].includes(s.status));
+    info.append(
+      el("br"),
+      "Calendar: ",
+      badge(
+        c.status === "ok"
+          ? { label: "Updated", tone: "good", icon: "\u2713" }
+          : { label: c.status === "failed" ? "Not updated" : "Partly updated", tone: "warning", icon: "!" },
+      ),
+      c.status === "failed"
+        ? ` ${c.error}. The calendar page shows the previous run.`
+        : ` ${c.events} events` +
+            (bad.length
+              ? `; using the last good copy for ${bad.map((s) => `${s.label} (${s.error || s.status})`).join(", ")}`
+              : ""),
+    );
+  }
   renderTiles(health);
   renderManual(health);
   renderSeries(health);

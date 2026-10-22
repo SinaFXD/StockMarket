@@ -6,6 +6,8 @@ Writes ``site/data/macro/``:
 - ``snapshots/<year>.json``  full month-end snapshots (the "as of" view on the website);
 - ``indicators/<id>.json``  chart panels and the reading guide for each indicator page;
 - ``global.json``     money markets by country and regional equity dispersion (the Global page);
+- ``confirmers.json`` coincident and lagging data next to the bias (shown, not scored);
+- ``evidence.json``   forward index returns after each month-end bias reading (the Evidence page);
 - ``log.csv``         one row per day the pipeline ran: the live record of what the system said.
 """
 
@@ -24,7 +26,9 @@ from . import international, money_markets, prices, surveys
 from .base import Signal
 from .bias import alerts, combine, what_changed
 from .charts import build_charts
+from .confirmers import build_confirmers
 from .data import Library, View, month_ends
+from .evidence import build_evidence
 from .global_view import build_global
 
 log = logging.getLogger("pipeline.signals")
@@ -121,10 +125,14 @@ def build(
     macro = out_dir / "macro"
     write_json(macro / "latest.json", latest, indent=None)
     build_charts(lib.view(today), params, macro / "indicators", [s["id"] for s in latest["signals"]])
-    try:  # the Global page is context; a bug there must not stop the Macro Desk
-        write_json(macro / "global.json", build_global(lib.view(today), params), indent=None)
-    except Exception:
-        log.exception("global page data failed")
+    for name, make in (  # context pages: a bug there must not stop the Macro Desk
+        ("global", lambda: build_global(lib.view(today), params)),
+        ("confirmers", lambda: build_confirmers(lib.view(today), latest["bias"])),
+    ):
+        try:
+            write_json(macro / f"{name}.json", make(), indent=None)
+        except Exception:
+            log.exception("%s data failed", name)
     write_json(macro / "history.json", compact, indent=None)
     by_year: dict[str, list] = {}
     for s in snaps:
@@ -132,6 +140,14 @@ def build(
     for year, items in by_year.items():
         write_json(macro / "snapshots" / f"{year}.json", items, indent=None)
     update_log(macro / "log.csv", latest)
+    try:  # the Evidence page reads the history; a bug there must not stop the Macro Desk
+        log_start = (macro / "log.csv").read_text(encoding="utf-8").splitlines()[1].split(",")[0]
+        names = {s["id"]: s["name"] for s in latest["signals"]}
+        write_json(
+            macro / "evidence.json", build_evidence(lib.view(today), compact, names, log_start), indent=None
+        )
+    except Exception:
+        log.exception("evidence data failed")
     log.info(
         "macro: bias %s (%s) from %d of %d signals; %d monthly snapshots",
         latest["bias"]["score"],

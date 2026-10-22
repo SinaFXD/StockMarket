@@ -62,6 +62,8 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - Site charts live in `site/assets/charts.js` (shared by the indicator and Global pages); their panels come from
   `pipeline/signals/charts.py` and `global_view.py`. Format site files with `npx prettier@3 --write site`
   (`.prettierrc.json`: width 120).
+- Context outputs never feed the bias: `global.json`, `confirmers.json`, `evidence.json` (built in `signals/build.py`)
+  and `calendar.json` (`pipeline/calendar/`). Evidence reports results; never tune rules to it.
 - `python -m pipeline.signals` rebuilds only the Macro Desk from local data; `site/assets/macro.js` repeats the
   bias arithmetic of `signals/bias.py` (keep them in sync).
 
@@ -77,7 +79,8 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 ## Network in cloud sessions
 The cloud environment must allow (Custom network access + defaults): `*.stlouisfed.org`, `*.europa.eu`,
 `api.db.nomics.world`, `sdmx.oecd.org`, `*.finance.yahoo.com`, `*.sec.gov`, `*.federalreserve.gov`,
-`*.bls.gov`, `*.bea.gov`, `*.census.gov`, `*.treasury.gov`, `*.umich.edu`, `*.cftc.gov`.
+`*.bls.gov`, `*.bea.gov`, `*.census.gov`, `*.treasury.gov`, `*.umich.edu`, `*.cftc.gov`, `www.boj.or.jp`,
+`www.bankofengland.co.uk` (central-bank calendars; the ECB is under `*.europa.eu`).
 If a request is blocked, tell the user which domain to add instead of working around it.
 GitHub Actions runners have open internet, so production fetching happens there.
 
