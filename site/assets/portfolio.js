@@ -10,6 +10,8 @@ import { fmt, rowsOf } from "./workbench.js";
 
 const KEY = "ptm.portfolio.v1";
 // Course targets (lessons 18-20); the alignment threshold is our choice (docs/09-portfolio-method.md)
+// Factor exposure: a "style bet" is a loading of at least 20% of capital with |t| >= 2 (our choice, docs/09)
+const FT = { loading: 0.2, t: 2 };
 const T = { volLo: 15, volHi: 30, volPracLo: 17.5, volPracHi: 22.5, corr: 0.3, rollWindow: 60, neutralBand: 30 };
 const LOOKBACKS = [
   [63, "3M"],
@@ -121,7 +123,18 @@ function analyse(book) {
     marketCorr: pm.correlation(bh.rets, mret),
     exp: pm.exposures(pos, betas, cap),
     vols: Object.fromEntries(pos.map((p) => [p.t, pm.stats(rets[p.t]).vol])),
+    factors: factorsFor(pos, rets, dates, cap),
   };
+}
+
+// Style-factor loadings of the book (market, size, value, momentum) from the factor ETFs on the same days.
+const FACTOR_ETFS = ["SPY", "IWM", "IWD", "IWF", "MTUM"];
+function factorsFor(pos, rets, dates, cap) {
+  const have = Object.fromEntries(FACTOR_ETFS.filter((t) => S.prices[t]).map((t) => [t, S.prices[t]]));
+  if (!have.SPY) return null;
+  const fr = pm.factorReturns(pm.align(dates, have));
+  const x = pm.factorExposure(pos, rets, fr, cap);
+  return x ? { ...x, missing: pm.FACTORS.filter(([id]) => !fr[id]).map(([, label]) => label) } : null;
 }
 
 // ---------- editor ----------
@@ -603,6 +616,136 @@ function matrixCard(a) {
   );
 }
 
+function factorCard(a) {
+  const f = a.factors;
+  if (!f) return null;
+  const sig = (b, t) => Math.abs(b) >= FT.loading && t !== null && Math.abs(t) >= FT.t;
+  const pctCap = (b) => `${b > 0 ? "+" : b < 0 ? "−" : ""}${Math.abs(b * 100).toFixed(0)}%`;
+  const etf = (id) => {
+    const row = pm.FACTORS.find((x) => x[0] === id);
+    return row[3] ? `${row[2]} − ${row[3]}` : row[2];
+  };
+  const hedgeText = (id, b) => {
+    const usd = `$${Math.round(Math.abs(b) * S.data.capital).toLocaleString("en-US")}`;
+    const row = pm.FACTORS.find((x) => x[0] === id);
+    const [long, short] = [row[2], row[3]];
+    if (!short) return b > 0 ? `short ${usd} ${long}` : `buy ${usd} ${long}`;
+    return b > 0 ? `short ${usd} ${long}, buy ${usd} ${short}` : `buy ${usd} ${long}, short ${usd} ${short}`;
+  };
+  const ids = Object.keys(f.betas);
+  const tilts = ids.filter((id) => id !== "market" && sig(f.betas[id], f.t[id]));
+  const label = (id) => pm.FACTORS.find((x) => x[0] === id)[1];
+  const reading =
+    f.r2 === null
+      ? ""
+      : `The factors explain ${(f.r2 * 100).toFixed(0)}% of the book's daily moves; ${(f.specific * 100).toFixed(0)}% is stock-specific (what your stock picking adds or loses). ` +
+        (tilts.length
+          ? `Style bets to be aware of: ${tilts.map((id) => `${label(id).toLowerCase()} ${pctCap(f.betas[id])} of capital`).join(", ")}. If those styles turn, the book can lose even when every thesis is right.`
+          : "No significant style bet beyond the market: the result depends on the stocks themselves.");
+  const cols = ["", ...ids.map(label)];
+  return el(
+    "section",
+    { class: "card panel", style: "margin-top:12px" },
+    el("h2", { class: "panel-title", text: "Factor exposure: stock picking or a style bet?" }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text: "The book's daily returns at today's weights, regressed on four style factors built from ETFs: market (SPY), size (IWM − SPY), value (IWD − IWF) and momentum (MTUM − SPY). A loading of +30% on momentum means the book moves like 30% of capital long MTUM and short SPY. Long positive outliers and short negative ones often adds up to long growth and momentum, short value.",
+    }),
+    el(
+      "div",
+      { class: "scroll-x" },
+      el(
+        "table",
+        { class: "data" },
+        el(
+          "thead",
+          {},
+          el(
+            "tr",
+            {},
+            ["Factor", "ETFs", "Loading (% of capital)", "t-stat", "Reading", "Hedge to neutralise"].map((h) =>
+              el("th", { text: h }),
+            ),
+          ),
+        ),
+        el(
+          "tbody",
+          {},
+          ids.map((id) => {
+            const b = f.betas[id];
+            const t = f.t[id];
+            const strong = sig(b, t);
+            return el(
+              "tr",
+              {},
+              el("td", {}, el("b", { text: label(id) })),
+              el("td", { text: etf(id) }),
+              el("td", { class: strong ? (b > 0 ? "up" : "down") : "", text: pctCap(b) }),
+              el("td", { text: t === null ? "–" : t.toFixed(1) }),
+              el(
+                "td",
+                {},
+                el("span", {
+                  class: `tag ${strong ? "tag-neg" : ""}`,
+                  text: strong ? (id === "market" ? "net market exposure" : "style bet") : "small / not significant",
+                }),
+              ),
+              el("td", { text: strong ? hedgeText(id, b) : "–" }),
+            );
+          }),
+        ),
+      ),
+    ),
+    el("p", { class: "reading", style: "margin-top:10px", text: reading }),
+    el(
+      "p",
+      { class: "section-note" },
+      `Daily data, ${f.n} days (the "History" setting). Alpha (the part no factor explains): ${f.alphaAnnual >= 0 ? "+" : "−"}${Math.abs(f.alphaAnnual).toFixed(1)}% a year, t = ${f.alphaT === null ? "–" : f.alphaT.toFixed(1)}: a backtest of today's book, not a track record. "Style bet" = loading at least ${FT.loading * 100}% of capital with |t| ≥ ${FT.t}.` +
+        (f.missing.length ? ` Not available yet: ${f.missing.join(", ")}.` : ""),
+    ),
+    el(
+      "details",
+      { class: "factor-detail" },
+      el("summary", { text: "Loadings of each position" }),
+      el(
+        "div",
+        { class: "scroll-x" },
+        el(
+          "table",
+          { class: "data" },
+          el(
+            "thead",
+            {},
+            el(
+              "tr",
+              {},
+              cols.map((h) => el("th", { text: h })),
+            ),
+          ),
+          el(
+            "tbody",
+            {},
+            a.used.map((p) => {
+              const pl = f.perPosition[p.t];
+              return el(
+                "tr",
+                {},
+                el("td", {}, el("b", { text: p.t }), el("span", { class: "sub", text: p.side })),
+                ids.map((id) => el("td", { text: pl && pl[id] !== undefined ? pl[id].toFixed(2) : "–" })),
+              );
+            }),
+          ),
+        ),
+      ),
+      el("p", {
+        class: "section-note",
+        text: "Stock loadings before sizing: a short position flips its sign in the book.",
+      }),
+    ),
+  );
+}
+
 function riskCard(a) {
   const pos = a.used;
   return el(
@@ -741,7 +884,14 @@ async function refresh() {
   const b = book();
   setChildren(document.getElementById("controls"), controls());
   setChildren(document.getElementById("editor"), editor());
-  const tickers = [...new Set([...S.data.current, ...S.data.proposed].map((p) => p.t).filter(Boolean))];
+  const tickers = [
+    ...new Set(
+      [...S.data.current, ...S.data.proposed]
+        .map((p) => p.t)
+        .filter(Boolean)
+        .concat(FACTOR_ETFS),
+    ),
+  ];
   await Promise.all(tickers.map(prices));
   setChildren(document.getElementById("editor"), editor());
   const cur = analyse(S.data.current);
@@ -786,6 +936,7 @@ async function refresh() {
     el("div", { style: "margin-top:12px" }, ...charts(a)),
     matrixCard(a),
     riskCard(a),
+    factorCard(a),
     framingCard(a),
   );
   redraw(S.set);

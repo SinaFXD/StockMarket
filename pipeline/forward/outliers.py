@@ -11,6 +11,12 @@ live record from now on:
   trading days) of the stock, of SPY and of the stock's SPDR sector ETF. A stock that left the screener's universe
   is priced from a separate download; a stock with no price at all keeps an empty cell (reported, never guessed).
 
+A second, pre-registered test (added 2026-10-22, before the first cohort) asks whether **estimate revisions** do
+better than **forecast growth levels**: within each sector, the quarter of stocks whose EPS1 consensus rose most in
+90 days ("up") and the quarter where it fell most ("down") are written down too. Hypotheses, fixed in advance
+(``docs/12-track-record.md``): H1, "up" beats "down"; H2, positive outliers with rising estimates beat the other
+positive outliers. Both spreads are reported next to the types' spread, whatever they show.
+
 The record is ``site/data/forward/outliers.csv`` (committed by the workflow, like ``macro/log.csv``); the results
 are ``summary.json``. Context only: nothing here changes a rule. Never tune the types to this record.
 """
@@ -28,15 +34,11 @@ CANDIDATES = ("positive", "negative", "post_growth", "turnaround", "value_trap")
 LONG_TYPES = ("positive",)
 SHORT_TYPES = ("negative", "post_growth")
 HORIZONS = (20, 40, 60)
-FIELDS = [
-    "cohort",
-    "ticker",
-    "type",
-    "sector",
-    "vol_ok",
-    "entry",
-    *[f"{k}{h}" for h in HORIZONS for k in ("r", "spy", "etf")],
-]
+RETURNS = [f"{k}{h}" for h in HORIZONS for k in ("r", "spy", "etf")]
+FIELDS = ["cohort", "ticker", "type", "sector", "vol_ok", "entry", *RETURNS, "rev90", "rev_group"]
+REV_GROUPS = ("up", "down")
+REV_QUARTER = 0.25  # top / bottom quarter of the sector's 90-day EPS1 revisions
+REV_MIN_STOCKS = 8  # fewer stocks with a revision in a sector: no revision groups there
 
 
 def week_of(day: str) -> tuple[int, int]:
@@ -54,9 +56,10 @@ def read(text: str) -> list[dict[str, Any]]:
             "sector": r["sector"],
         }
         out["vol_ok"] = {"1": True, "0": False}.get(r.get("vol_ok", ""), None)
-        for k in FIELDS[5:]:
+        for k in ["entry", *RETURNS, "rev90"]:
             v = r.get(k, "")
             out[k] = float(v) if v not in ("", None) else None
+        out["rev_group"] = r.get("rev_group") or None
         rows.append(out)
     return rows
 
@@ -79,14 +82,38 @@ def write(rows: list[dict[str, Any]]) -> str:
     return buf.getvalue()
 
 
+def revision_groups(screener_rows: list[dict[str, Any]]) -> dict[str, str]:
+    """Ticker -> "up" / "down": the top and bottom quarter of each sector's 90-day EPS1 revisions."""
+    by_sector: dict[str, list[tuple[float, str]]] = {}
+    for r in screener_rows:
+        v = r.get("eps1_rev90")
+        if v is not None and r.get("sector"):
+            by_sector.setdefault(r["sector"], []).append((float(v), r["t"]))
+    out: dict[str, str] = {}
+    for items in by_sector.values():
+        if len(items) < REV_MIN_STOCKS:
+            continue
+        items.sort()
+        k = max(1, int(len(items) * REV_QUARTER))
+        lo, hi = items[k - 1][0], items[-k][0]
+        for v, t in items:
+            if v >= hi and v > lo:
+                out[t] = "up"
+            elif v <= lo and v < hi:
+                out[t] = "down"
+    return out
+
+
 def add_cohort(log: list[dict[str, Any]], day: str, screener_rows: list[dict[str, Any]], closes) -> int:
-    """Append this week's cohort unless the log already has one for the ISO week of ``day``. ``closes(t)`` gives
-    the stock's ``{date: close}``; the entry is the close on ``day``. Returns the number of rows added."""
+    """Append this week's cohort unless the log already has one for the ISO week of ``day``: every stock of a
+    candidate type or of a revision group. ``closes(t)`` gives the stock's ``{date: close}``; the entry is the close
+    on ``day``. Returns the number of rows added."""
     if any(week_of(r["cohort"]) == week_of(day) for r in log):
         return 0
+    groups = revision_groups(screener_rows)
     added = 0
     for r in screener_rows:
-        if r.get("cls") not in CANDIDATES:
+        if r.get("cls") not in CANDIDATES and r["t"] not in groups:
             continue
         entry = (closes(r["t"]) or {}).get(day)
         if not entry:
@@ -99,8 +126,10 @@ def add_cohort(log: list[dict[str, Any]], day: str, screener_rows: list[dict[str
             "vol_ok": r.get("vol_ok"),
         }
         row["entry"] = float(entry)
-        for k in FIELDS[6:]:
+        for k in RETURNS:
             row[k] = None
+        row["rev90"] = r.get("eps1_rev90")
+        row["rev_group"] = groups.get(r["t"])
         log.append(row)
         added += 1
     return added
@@ -192,25 +221,52 @@ def summary(log: list[dict[str, Any]], vol_only: bool = False) -> dict[str, Any]
                 "vs_sector": _stats([r[f"r{h}"] - r[f"etf{h}"] for r in mine if r[f"etf{h}"] is not None]),
                 "cohorts": len({r["cohort"] for r in mine}),
             }
-        spreads = []
-        for c in sorted({r["cohort"] for r in done}):
-            pos = [r[f"r{h}"] for r in done if r["cohort"] == c and r["type"] == "positive"]
-            neg = [r[f"r{h}"] for r in done if r["cohort"] == c and r["type"] == "negative"]
-            if pos and neg:
-                spreads.append(mean(pos) - mean(neg))
-        n = len(spreads)
-        sd = stdev(spreads) if n >= 2 else None
-        # weekly cohorts overlap when the horizon is longer than 5 trading days: the t-statistic uses the
-        # number of independent windows, not the number of cohorts, so it is not overstated
-        n_ind = n * 5 / h
+        revisions = {}
+        for g in REV_GROUPS:
+            mine = [r for r in done if r.get("rev_group") == g]
+            revisions[g] = {
+                "return": _stats([r[f"r{h}"] for r in mine]),
+                "vs_spy": _stats([r[f"r{h}"] - r[f"spy{h}"] for r in mine if r[f"spy{h}"] is not None]),
+                "vs_sector": _stats([r[f"r{h}"] - r[f"etf{h}"] for r in mine if r[f"etf{h}"] is not None]),
+                "cohorts": len({r["cohort"] for r in mine}),
+            }
         out["horizons"][str(h)] = {
             "types": types,
-            "spread": {
-                "n_cohorts": n,
-                "n_independent": round(n_ind, 1),
-                "mean": round(mean(spreads), 3) if spreads else None,
-                "t": round(mean(spreads) / (sd / math.sqrt(n_ind)), 2) if sd and n_ind >= 2 else None,
-                "pct_pos": round(100 * sum(1 for s in spreads if s > 0) / n, 1) if n else None,
-            },
+            # the types' test: positive outliers minus negative outliers
+            "spread": _spread(done, h, lambda r: r["type"] == "positive", lambda r: r["type"] == "negative"),
+            "revisions": revisions,
+            # H1: rising estimates minus falling estimates
+            "rev_spread": _spread(
+                done, h, lambda r: r.get("rev_group") == "up", lambda r: r.get("rev_group") == "down"
+            ),
+            # H2: positive outliers whose estimates are rising minus the other positive outliers
+            "positive_rev_spread": _spread(
+                done,
+                h,
+                lambda r: r["type"] == "positive" and r.get("rev_group") == "up",
+                lambda r: r["type"] == "positive" and r.get("rev_group") != "up",
+            ),
         }
     return out
+
+
+def _spread(done: list[dict[str, Any]], h: int, long, short) -> dict[str, Any]:
+    """Mean of ``long`` minus mean of ``short`` within each cohort, with its t-statistic."""
+    spreads = []
+    for c in sorted({r["cohort"] for r in done}):
+        a = [r[f"r{h}"] for r in done if r["cohort"] == c and long(r)]
+        b = [r[f"r{h}"] for r in done if r["cohort"] == c and short(r)]
+        if a and b:
+            spreads.append(mean(a) - mean(b))
+    n = len(spreads)
+    sd = stdev(spreads) if n >= 2 else None
+    # weekly cohorts overlap when the horizon is longer than 5 trading days: the t-statistic uses the number of
+    # independent windows, not the number of cohorts, so it is not overstated
+    n_ind = n * 5 / h
+    return {
+        "n_cohorts": n,
+        "n_independent": round(n_ind, 1),
+        "mean": round(mean(spreads), 3) if spreads else None,
+        "t": round(mean(spreads) / (sd / math.sqrt(n_ind)), 2) if sd and n_ind >= 2 else None,
+        "pct_pos": round(100 * sum(1 for s in spreads if s > 0) / n, 1) if n else None,
+    }

@@ -114,3 +114,5 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
       inflation regime with point-in-time history, sectors and asset classes by regime, NY Fed recession odds, Taylor
       rule, Treasury curve with a slider; `docs/14-regime-method.md`); Macro Desk: S&P 500 under the bias history,
       Copy brief, Download CSV; a light/dark switch on every page.
+- [x] Hedge-fund review follow-ups (2026-10-22): a pre-registered test of estimate revisions vs forecast growth in the
+      forward test (`docs/12-track-record.md`) and style-factor exposure in the Portfolio Lab (`docs/09-portfolio-method.md`).

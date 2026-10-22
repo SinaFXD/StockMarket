@@ -27,6 +27,21 @@ exist when the rules were set. Three records do that, all reported as they come,
 - The record is committed daily by the workflow (like `macro/log.csv`); it starts from the first cohort and only
   grows. Costs and borrow fees are not included.
 
+- **Cohort day:** the last trading day both the screener's bars and SPY have closed (a run during US market hours
+  would otherwise see today's unfinished session in the bars, which SPY's published series leaves out).
+
+### Pre-registered: estimate revisions vs forecast growth (fixed 2026-10-22, before the first cohort)
+Research finds that stocks whose analysts' estimates are being **raised** tend to do better afterwards, while stocks
+with the **highest forecast growth** often do not (the growth is already in the price). The Screener's types use
+forecast growth levels, so the same record now also tests revisions:
+- **Groups:** within each sector with at least 8 stocks that have one, the top quarter of the 90-day change in the
+  EPS1 consensus (`eps1_rev90`, measured only from a positive base) = **up**, the bottom quarter = **down**. These
+  stocks join the weekly cohort even when their type is not a candidate; every row keeps `rev90` and `rev_group`.
+- **H1:** "up" minus "down", per cohort (sector-neutral by construction; also shown against SPY and the sector ETF).
+- **H2:** positive outliers in "up" minus the other positive outliers, per cohort.
+- Reported next to the types' spread at 20 / 40 / 60 days with the same independent-window t-statistic, whatever they
+  show. Hypotheses, groups and horizons are not changed after the fact; a new idea gets a new, dated hypothesis.
+
 ## Track record of closed ideas (`site/assets/journal-math.js`)
 - An idea counts when its status is **closed** and it has an entry price and date (default: the date it was
   opened) and an exit price and date (set on the idea's page; the exit defaults to today's price when you close it).

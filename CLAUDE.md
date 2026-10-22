@@ -120,6 +120,10 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   (one cohort per ISO week, returns filled when due); never rewrite or backfill it, never tune rules to it. The
   track record of closed ideas is client-side (`site/assets/journal-math.js`, `tests/js/journal.test.mjs`); idea
   files carry `entry_date`, `exit_price`, `exit_date`. Method: `docs/12-track-record.md`.
+  The record also holds the pre-registered revision groups (`rev90`, `rev_group`; H1/H2 fixed 2026-10-22): never change
+  them after the fact; a new hypothesis gets a new date in docs/12.
+- Portfolio Lab factor exposure: `pm.ols` / `factorReturns` / `factorExposure` (market SPY, size IWM−SPY, value IWD−IWF,
+  momentum MTUM−SPY); thresholds `FT` in `portfolio.js`; method in `docs/09-portfolio-method.md`.
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
