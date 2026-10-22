@@ -114,7 +114,13 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   context only). Thresholds in `config.REGIME`; rules in `docs/14-regime-method.md`. `python -m pipeline.regime` rebuilds
   it. The Macro Desk's Copy brief / CSV live in `site/assets/brief.js` (pure, `tests/js/brief.test.mjs`).
 - Theme: `site/assets/theme.js` adds the light/dark switch; every page also needs the small inline `<head>` script that
-  applies `localStorage` `ptm.theme` before paint (copy it from any page into a new one, with the `theme.js` tag).
+  applies `localStorage` `ptm.theme` before paint (copy it from any page into a new one, with the `theme.js` and
+  `nav.js` tags).
+- Header: every page carries the same `<header>` (copy it from any page): This week, Macro ▾ (Macro Desk, Regime, Global,
+  Calendar, Evidence), Stocks ▾ (Macro ideas, Sectors, Screener, Ideas), Portfolio, Guide; Data health and the theme
+  switch sit in `.header-actions`. `site/assets/nav.js` opens the drop-downs and the phone panel. A new page gets a link
+  (title + one-line description) in its group on every page, with `aria-current="page"` on its own page.
+- Home (`index.html` + `site/assets/home.js`): a summary of today from the published files; context only, no rules.
 
 - Forward tests (`pipeline/forward/`): `site/data/forward/outliers.csv` is a live record committed by the workflow
   (one cohort per ISO week, returns filled when due); never rewrite or backfill it, never tune rules to it. The

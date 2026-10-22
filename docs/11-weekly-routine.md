@@ -1,6 +1,6 @@
 # This week: the weekly routine
 
-`routine.html` ("This week" in the menu, linked from the home page as "Start here") puts the site's pages in the
+`routine.html` ("This week" in the menu, linked from the home page as "This week's routine") puts the site's pages in the
 course's order and says, from the published data, what each step needs this week. Logic:
 `site/assets/routine-logic.js` (tested by `tests/js/routine.test.mjs`); page: `site/assets/routine.js`.
 

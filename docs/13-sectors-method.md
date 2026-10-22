@@ -1,6 +1,6 @@
 # Sectors side by side
 
-`sectors.html` ("Sectors" in the menu) puts the eleven sectors next to each other so the user can choose which
+`sectors.html` ("Stocks → Sectors" in the menu) puts the eleven sectors next to each other so the user can choose which
 ones to screen first. **It is an extension of the course's method, not a lesson step**: the course screens one
 sector at a time against the sector's own averages (lessons 22–29) and reads cyclical vs defensive behaviour as
 part of the macro picture; it does not prescribe a sector-ranking page. Everything here is **context only**: it never

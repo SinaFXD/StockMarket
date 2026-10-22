@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="assets/style.css" />
     <script type="module" src="assets/home.js"></script>
     <script type="module" src="assets/theme.js"></script>
+    <script type="module" src="assets/nav.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -35,111 +36,235 @@
               />
             </svg>
           </span>
-          <span>PTM Fundamental Dashboard</span>
+          <span class="brand-name">PTM <span class="brand-long">Fundamental </span>Dashboard</span>
         </a>
-        <nav class="nav" aria-label="Main">
-          <a href="./" aria-current="page">Overview</a>
-          <a href="routine.html">This week</a>
-          <a href="macro.html">Macro Desk</a>
-          <a href="regime.html">Regime</a>
-          <a href="global.html">Global</a>
-          <a href="calendar.html">Calendar</a>
-          <a href="evidence.html">Evidence</a>
-          <a href="sectors.html">Sectors</a>
-          <a href="screener.html">Screener</a>
-          <a href="ideas.html">Ideas</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="themes.html">Macro ideas</a>
-          <a href="health.html">Data health</a>
-          <a href="guide.html">Guide</a>
+        <nav class="nav" id="site-nav" aria-label="Main">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="routine.html">This week</a></li>
+            <li class="nav-group">
+              <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-macro">
+                Macro<svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                  <path
+                    d="m3 4.5 3 3 3-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="nav-menu" id="menu-macro">
+                <p class="nav-menu-head">Top-down macro · lessons 1–15</p>
+                <a href="macro.html"><b>Macro Desk</b><span>Leading indicators and the portfolio bias</span></a>
+                <a href="regime.html"><b>Regime</b><span>Growth, inflation, recession odds and the Fed</span></a>
+                <a href="global.html"><b>Global</b><span>Countries and regions side by side</span></a>
+                <a href="calendar.html"><b>Calendar</b><span>Reports and central banks in the next 60 days</span></a>
+                <a href="evidence.html"><b>Evidence</b><span>How the bias rules did in the past</span></a>
+              </div>
+            </li>
+            <li class="nav-group">
+              <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-stocks">
+                Stocks<svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                  <path
+                    d="m3 4.5 3 3 3-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="nav-menu" id="menu-stocks">
+                <p class="nav-menu-head">Bottom-up stocks · lessons 22–35</p>
+                <a href="themes.html"><b>Macro ideas</b><span>Industries and regions macro favours</span></a>
+                <a href="sectors.html"><b>Sectors</b><span>Leaders, laggards and estimate revisions</span></a>
+                <a href="screener.html"><b>Screener</b><span>The 11 numbers and sector outliers</span></a>
+                <a href="ideas.html"><b>Ideas</b><span>Your trade-idea pipeline</span></a>
+              </div>
+            </li>
+            <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li><a class="nav-link" href="guide.html">Guide</a></li>
+          </ul>
         </nav>
+        <div class="header-actions">
+          <a class="icon-btn" href="health.html" title="Data health" aria-label="Data health">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                d="M1.5 9.5h3l2-5 4 9 2-4h4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <button
+            class="icon-btn nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Open the menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                class="i-open"
+                d="M3 5h12M3 9h12M3 13h12"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              />
+              <path
+                class="i-close"
+                d="m4.5 4.5 9 9m0-9-9 9"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 
-    <main>
+    <main class="home">
+      <section class="home-hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span class="live-dot" aria-hidden="true"></span
+              ><span id="updated">Updated every day from free data</span>
+            </p>
+            <h1>The PTM process, <span class="hl">live every day.</span></h1>
+            <p class="hero-lede">
+              Macro leading indicators set how long or short the book leans, sector screening finds the outliers, the
+              trade-idea template turns them into ideas and the portfolio lab keeps risk in check. A 20–60 day
+              long/short equity desk built on the ITPM Professional Trading Masterclass.
+            </p>
+            <div class="hero-cta">
+              <a class="cta cta-primary" href="routine.html"
+                >This week's routine <span class="cta-note" id="week-note"></span><span aria-hidden="true">→</span></a
+              >
+              <a class="cta" href="guide.html">How to use this site</a>
+            </div>
+            <dl class="hero-facts" id="hero-facts"></dl>
+          </div>
+
+          <section class="card bias-hero" aria-labelledby="bias-title" aria-busy="true">
+            <div class="bh-top">
+              <h2 id="bias-title">Portfolio bias</h2>
+              <span class="chip" id="bias-asof"></span>
+            </div>
+            <div id="bias-body">
+              <div class="skeleton sk-title"></div>
+              <div class="skeleton sk-line"></div>
+              <div class="skeleton sk-chart"></div>
+            </div>
+            <a class="bh-link" href="macro.html">Open the Macro Desk <span aria-hidden="true">→</span></a>
+          </section>
+        </div>
+      </section>
+
       <div class="wrap">
-        <section class="card hero">
-          <h1>A fundamental process for 20–60 day long/short ideas</h1>
-          <p>
-            This site follows the PTM course from top to bottom: macro leading indicators set the portfolio bias, sector
-            screening finds positive and negative outliers, the trade-idea template turns them into ideas, and the
-            portfolio lab keeps risk in check. It updates itself every day from free data.
-          </p>
-          <p>
-            <a class="button" href="guide.html">New here? How to use this site →</a>
-            <a class="button" href="routine.html">This week's routine →</a>
-          </p>
+        <section class="home-sec" aria-labelledby="blocks-title">
+          <div class="sec-head">
+            <div>
+              <h2 id="blocks-title">The four blocks</h2>
+              <p>Each block averages its indicators; the bias averages the blocks.</p>
+            </div>
+            <a class="more" href="macro.html">All indicators <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="block-row" id="blocks">
+            <div class="card skeleton-card"></div>
+            <div class="card skeleton-card"></div>
+            <div class="card skeleton-card"></div>
+            <div class="card skeleton-card"></div>
+          </div>
+          <div id="alerts"></div>
         </section>
 
-        <div class="grid-2">
-          <section class="card panel" aria-labelledby="roadmap-title">
-            <h2 id="roadmap-title">Roadmap</h2>
-            <ol class="phases">
-              <li>
-                <span class="p-name">Phase 0 · Skeleton &amp; automation</span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc">Daily data pipeline, manual data checks, data health page.</span>
-              </li>
-              <li>
-                <span class="p-name"><a href="macro.html">Phase 1 · Macro Desk</a></span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc"
-                  >Leading indicators (lessons 1–15), four blocks, portfolio bias with overrides, a page per indicator,
-                  a <a href="global.html">Global</a> view by country and region, coincident confirmers, a
-                  <a href="calendar.html">catalyst calendar</a> and <a href="evidence.html">evidence</a> on real-time
-                  data.</span
-                >
-              </li>
-              <li>
-                <span class="p-name"><a href="screener.html">Phase 2 · Sector Screener</a></span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc"
-                  >The 11 numbers, sector averages, outliers, volatility filter, SEC evidence metrics.</span
-                >
-              </li>
-              <li>
-                <span class="p-name"><a href="ideas.html">Phase 3 · Trade Idea Workbench</a></span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc"
-                  >A trade-idea template for every stock (open one from the Screener): price targets with your own
-                  assumptions, sector comparison, earnings and catalysts, timing chart, short interest; your
-                  <a href="ideas.html">idea pipeline</a>.</span
-                >
-              </li>
-              <li>
-                <span class="p-name"><a href="portfolio.html">Phase 4 · Portfolio Lab</a></span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc"
-                  >CEW and non-rebalanced backtests, volatility, correlation, beta-adjusted exposure.</span
-                >
-              </li>
-              <li>
-                <span class="p-name"><a href="themes.html">Phase 5 · Macro-driven ideas &amp; ADRs</a></span>
-                <span class="badge good"><span class="dot" aria-hidden="true">✓</span>Live</span>
-                <span class="p-desc">Macro signals mapped to sectors, ADR screener for international ideas.</span>
-              </li>
-            </ol>
+        <div class="home-3">
+          <section class="card home-card" aria-labelledby="changed-title">
+            <div class="hc-head">
+              <h2 id="changed-title">What changed</h2>
+              <span class="muted" id="changed-since"></span>
+            </div>
+            <ul class="hc-list" id="changed"></ul>
+            <a class="more" href="macro.html">Macro Desk <span aria-hidden="true">→</span></a>
           </section>
 
-          <div style="display: grid; gap: 12px; align-content: start">
-            <section class="card panel" aria-labelledby="bias-title">
-              <h2 id="bias-title">Portfolio bias today</h2>
-              <dl class="kv" id="bias-now">
-                <dt>Bias</dt>
-                <dd>Loading…</dd>
-              </dl>
-              <a class="button" href="macro.html">Open the Macro Desk</a>
-            </section>
-            <section class="card panel" aria-labelledby="pipeline-title">
-              <h2 id="pipeline-title">Data pipeline</h2>
-              <dl class="kv" id="pipeline">
-                <dt>Last update</dt>
-                <dd>Loading…</dd>
-              </dl>
-              <a class="button" href="health.html">Open data health</a>
-            </section>
-          </div>
+          <section class="card home-card" aria-labelledby="coming-title">
+            <div class="hc-head">
+              <h2 id="coming-title">Coming up</h2>
+              <span class="muted">next 14 days</span>
+            </div>
+            <ul class="hc-list" id="coming"></ul>
+            <a class="more" href="calendar.html">Full calendar <span aria-hidden="true">→</span></a>
+          </section>
+
+          <section class="card home-card" aria-labelledby="regime-title">
+            <div class="hc-head">
+              <h2 id="regime-title">Regime</h2>
+              <span class="muted" id="regime-month"></span>
+            </div>
+            <div id="regime"></div>
+            <a class="more" href="regime.html">Regime page <span aria-hidden="true">→</span></a>
+          </section>
         </div>
+
+        <section class="home-sec" aria-labelledby="process-title">
+          <div class="sec-head">
+            <div>
+              <h2 id="process-title">The process, step by step</h2>
+              <p>Top-down first, then bottom-up, then the book as a whole. Each step is a set of pages.</p>
+            </div>
+          </div>
+          <ol class="process">
+            <li class="card step">
+              <span class="step-n">01</span>
+              <h3>Set the bias</h3>
+              <p>Read the leading indicators and decide how long or short the whole book should lean.</p>
+              <p class="step-stat" data-stat="bias"></p>
+              <p class="step-lessons">Lessons 1–15</p>
+              <div class="step-links">
+                <a href="macro.html">Macro Desk</a><a href="regime.html">Regime</a><a href="global.html">Global</a
+                ><a href="calendar.html">Calendar</a><a href="evidence.html">Evidence</a>
+              </div>
+            </li>
+            <li class="card step">
+              <span class="step-n">02</span>
+              <h3>Find where macro helps</h3>
+              <p>See which industries and regions the macro reading favours, and which sectors the market is buying.</p>
+              <p class="step-stat" data-stat="themes"></p>
+              <p class="step-lessons">Lessons 22–29, 34–35</p>
+              <div class="step-links"><a href="themes.html">Macro ideas</a><a href="sectors.html">Sectors</a></div>
+            </li>
+            <li class="card step">
+              <span class="step-n">03</span>
+              <h3>Build trade ideas</h3>
+              <p>Screen each sector for outliers with the 11 numbers and work the best into full trade ideas.</p>
+              <p class="step-stat" data-stat="ideas"></p>
+              <p class="step-lessons">Lessons 22–33</p>
+              <div class="step-links"><a href="screener.html">Screener</a><a href="ideas.html">Ideas</a></div>
+            </li>
+            <li class="card step">
+              <span class="step-n">04</span>
+              <h3>Size the book</h3>
+              <p>Check volatility, correlation and beta-adjusted exposure before adding or changing a position.</p>
+              <p class="step-stat" data-stat="book"></p>
+              <p class="step-lessons">Lessons 16–21</p>
+              <div class="step-links"><a href="portfolio.html">Portfolio Lab</a></div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="card status-bar" aria-labelledby="status-title">
+          <h2 id="status-title" class="visually-hidden">Data status</h2>
+          <dl id="status"></dl>
+          <a class="more" href="health.html">Data health <span aria-hidden="true">→</span></a>
+        </section>
       </div>
     </main>
 

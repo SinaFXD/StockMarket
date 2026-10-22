@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/style.css" />
     <script type="module" src="assets/routine.js"></script>
     <script type="module" src="assets/theme.js"></script>
+    <script type="module" src="assets/nav.js"></script>
   </head>
   <body>
     <header class="site-header">
@@ -32,24 +33,96 @@
               />
             </svg>
           </span>
-          <span>PTM Fundamental Dashboard</span>
+          <span class="brand-name">PTM <span class="brand-long">Fundamental </span>Dashboard</span>
         </a>
-        <nav class="nav" aria-label="Main">
-          <a href="./">Overview</a>
-          <a href="routine.html" aria-current="page">This week</a>
-          <a href="macro.html">Macro Desk</a>
-          <a href="regime.html">Regime</a>
-          <a href="global.html">Global</a>
-          <a href="calendar.html">Calendar</a>
-          <a href="evidence.html">Evidence</a>
-          <a href="sectors.html">Sectors</a>
-          <a href="screener.html">Screener</a>
-          <a href="ideas.html">Ideas</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="themes.html">Macro ideas</a>
-          <a href="health.html">Data health</a>
-          <a href="guide.html">Guide</a>
+        <nav class="nav" id="site-nav" aria-label="Main">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="routine.html" aria-current="page">This week</a></li>
+            <li class="nav-group">
+              <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-macro">
+                Macro<svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                  <path
+                    d="m3 4.5 3 3 3-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="nav-menu" id="menu-macro">
+                <p class="nav-menu-head">Top-down macro · lessons 1–15</p>
+                <a href="macro.html"><b>Macro Desk</b><span>Leading indicators and the portfolio bias</span></a>
+                <a href="regime.html"><b>Regime</b><span>Growth, inflation, recession odds and the Fed</span></a>
+                <a href="global.html"><b>Global</b><span>Countries and regions side by side</span></a>
+                <a href="calendar.html"><b>Calendar</b><span>Reports and central banks in the next 60 days</span></a>
+                <a href="evidence.html"><b>Evidence</b><span>How the bias rules did in the past</span></a>
+              </div>
+            </li>
+            <li class="nav-group">
+              <button class="nav-trigger" type="button" aria-expanded="false" aria-controls="menu-stocks">
+                Stocks<svg class="chev" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                  <path
+                    d="m3 4.5 3 3 3-3"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+              <div class="nav-menu" id="menu-stocks">
+                <p class="nav-menu-head">Bottom-up stocks · lessons 22–35</p>
+                <a href="themes.html"><b>Macro ideas</b><span>Industries and regions macro favours</span></a>
+                <a href="sectors.html"><b>Sectors</b><span>Leaders, laggards and estimate revisions</span></a>
+                <a href="screener.html"><b>Screener</b><span>The 11 numbers and sector outliers</span></a>
+                <a href="ideas.html"><b>Ideas</b><span>Your trade-idea pipeline</span></a>
+              </div>
+            </li>
+            <li><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+            <li><a class="nav-link" href="guide.html">Guide</a></li>
+          </ul>
         </nav>
+        <div class="header-actions">
+          <a class="icon-btn" href="health.html" title="Data health" aria-label="Data health">
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                d="M1.5 9.5h3l2-5 4 9 2-4h4"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+          <button
+            class="icon-btn nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="site-nav"
+            aria-label="Open the menu"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+              <path
+                class="i-open"
+                d="M3 5h12M3 9h12M3 13h12"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              />
+              <path
+                class="i-close"
+                d="m4.5 4.5 9 9m0-9-9 9"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
     </header>
 

@@ -1,6 +1,6 @@
-// Light / dark switch in the header of every page. The choice is kept in this browser ("ptm.theme"); without one the
-// site follows the device setting. A small script in each page's <head> applies the saved choice before the page
-// paints, so there is no flash. Charts use CSS colours, so they follow without redrawing.
+// Light / dark switch in the header of every page (in .header-actions). The choice is kept in this browser
+// ("ptm.theme"); without one the site follows the device setting. A small script in each page's <head> applies the
+// saved choice before the page paints, so there is no flash. Charts use CSS colours, so they follow without redrawing.
 
 const KEY = "ptm.theme";
 const root = document.documentElement;
@@ -26,12 +26,12 @@ function paint(button) {
 }
 
 function mount() {
-  const brand = document.querySelector(".site-header .brand");
-  if (!brand || document.getElementById("theme-toggle")) return;
+  const actions = document.querySelector(".site-header .header-actions");
+  if (!actions || document.getElementById("theme-toggle")) return;
   const button = document.createElement("button");
   button.type = "button";
   button.id = "theme-toggle";
-  button.className = "theme-toggle";
+  button.className = "icon-btn theme-toggle";
   button.addEventListener("click", () => {
     const next = current() === "dark" ? "light" : "dark";
     root.dataset.theme = next;
@@ -44,7 +44,8 @@ function mount() {
   });
   dark.addEventListener("change", () => paint(button));
   paint(button);
-  brand.after(button);
+  // before the menu button (narrow screens), after the Data health link
+  actions.insertBefore(button, actions.querySelector(".nav-toggle"));
 }
 
 mount();
