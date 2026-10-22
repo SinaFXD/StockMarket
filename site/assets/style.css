@@ -1995,7 +1995,7 @@ table.screener-table td.text .tag {
   }
 
   .nav a {
-    padding: 6px 9px;
+    padding: 6px 7px;
   }
 }
 
@@ -2410,5 +2410,228 @@ table.data.guide-table th {
 
   .flow {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Sectors ---------- */
+.sec-block {
+  margin-top: 18px;
+}
+
+.sec-h2 {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+svg.rrg,
+svg.bubbles {
+  display: block;
+  width: 100%;
+  height: 420px;
+  margin-top: 8px;
+  font-size: 12px;
+  fill: var(--ink-2);
+  font-family: var(--font);
+}
+
+svg.bubbles {
+  height: 380px;
+}
+
+.rrg-quad {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: var(--muted);
+}
+
+.rrg-dot {
+  cursor: pointer;
+  transition: fill-opacity 0.15s;
+}
+
+.rrg-dot:hover,
+.rrg-dot:focus {
+  fill-opacity: 1;
+  outline: none;
+  stroke: var(--ink);
+}
+
+.rrg-label {
+  font-size: 10px;
+  font-weight: 700;
+  fill: #fff;
+  pointer-events: none;
+}
+
+.swatch-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: -1px;
+}
+
+.sec-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.sec-card {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-margin-top: 80px;
+}
+
+.sec-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.sec-card-head h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.sec-etf {
+  font-weight: 700;
+  font-size: 12.5px;
+  color: var(--ink-2);
+  margin-right: 8px;
+}
+
+.sec-rs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.sec-rs > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.sec-big {
+  font-size: 26px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.sec-card .sub,
+.cand-list .sub {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sec-card .facts {
+  margin: 0;
+}
+
+.sec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.breadth {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--surface-2);
+  margin-top: 4px;
+}
+
+.breadth .b-up {
+  background: var(--pos);
+}
+
+.breadth .b-flat {
+  background: var(--axis);
+}
+
+.breadth .b-down {
+  background: var(--neg);
+}
+
+.sec-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.cand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+  align-items: start;
+}
+
+.cand-card {
+  padding: 12px 16px;
+  scroll-margin-top: 80px;
+}
+
+.cand-card summary {
+  cursor: pointer;
+}
+
+.cand-card h4 {
+  margin: 12px 0 4px;
+  font-size: 13px;
+  color: var(--ink-2);
+}
+
+.cand-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cand-list li {
+  padding: 6px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.cand-list .tag {
+  margin-left: 6px;
+}
+
+.rrg-label.out {
+  fill: var(--ink);
+}
+
+.sec-card-head .tag .swatch-dot {
+  width: 8px;
+  height: 8px;
+  margin-right: 4px;
+  vertical-align: 0;
+}
+
+@media (max-width: 640px) {
+  svg.rrg {
+    height: 340px;
+  }
+
+  svg.bubbles {
+    height: 320px;
+  }
+
+  .cand-grid,
+  .sec-cards {
+    grid-template-columns: 1fr;
   }
 }

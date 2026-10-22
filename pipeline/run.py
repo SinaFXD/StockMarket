@@ -34,6 +34,7 @@ from .http import FetchError, HttpClient, redact
 from .screener.build import ScreenerBuilder, market_inputs
 from .screener.build import status_of as screener_status
 from .screener.build import write as write_screener
+from .sectors.build import build as build_sectors
 from .signals.build import build as build_macro
 from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
@@ -377,6 +378,19 @@ def main(argv: list[str] | None = None) -> int:
         log.exception("themes build failed")
         themes = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
+    sectors: dict[str, Any]
+    try:  # sectors side by side: context built from the files above
+        sector_data = build_sectors(args.out_dir)
+        write_json(args.out_dir / "sectors.json", sector_data, indent=None)
+        sectors = {
+            "status": "ok",
+            "sectors": len(sector_data["sectors"]),
+            "agreement": sector_data["agreement"],
+        }
+    except Exception as exc:
+        log.exception("sectors build failed")
+        sectors = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
     health["calendar"] = calendar
@@ -384,6 +398,7 @@ def main(argv: list[str] | None = None) -> int:
     health["ideas"] = ideas
     health["themes"] = themes
     health["forward"] = forward
+    health["sectors"] = sectors
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

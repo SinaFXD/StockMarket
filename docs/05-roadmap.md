@@ -106,3 +106,7 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
 - [x] Forward test of the Screener's types and a track record of closed ideas (2026-10-22): weekly cohorts with
       20/40/60-day returns vs SPY and sector ETFs (`pipeline/forward/`, Evidence page); entry/exit fields on ideas and
       a track record with hit rate, payoff and alpha (Ideas page). Method: `docs/12-track-record.md`.
+- [x] Sectors page (`sectors.html`, 2026-10-22): the eleven sectors side by side, an extension of the course's method
+      (context only): rotation map against the S&P 500, sector cards (relative strength, growth, P/E, revisions, outliers,
+      macro wind), growth vs valuation, cyclicals vs defensives against the bias, candidates per sector. Method:
+      `docs/13-sectors-method.md`.

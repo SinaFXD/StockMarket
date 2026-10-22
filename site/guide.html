@@ -37,6 +37,7 @@
           <a href="global.html">Global</a>
           <a href="calendar.html">Calendar</a>
           <a href="evidence.html">Evidence</a>
+          <a href="sectors.html">Sectors</a>
           <a href="screener.html">Screener</a>
           <a href="ideas.html">Ideas</a>
           <a href="portfolio.html">Portfolio</a>
@@ -116,26 +117,32 @@
                   >
                 </li>
                 <li>
+                  <a href="sectors.html"
+                    ><span class="flow-n">3</span><b>Sectors</b
+                    ><span>Which sectors is the market buying? Where are estimates rising?</span></a
+                  >
+                </li>
+                <li>
                   <a href="screener.html"
-                    ><span class="flow-n">3</span><b>Screener</b
+                    ><span class="flow-n">4</span><b>Screener</b
                     ><span>Which stocks stand out from their sector? Long and short candidates.</span></a
                   >
                 </li>
                 <li>
                   <a href="stock.html?t=NVDA"
-                    ><span class="flow-n">4</span><b>Trade idea</b
+                    ><span class="flow-n">5</span><b>Trade idea</b
                     ><span>Work one stock through the template: targets, catalysts, timing, structure.</span></a
                   >
                 </li>
                 <li>
                   <a href="ideas.html"
-                    ><span class="flow-n">5</span><b>Ideas</b
+                    ><span class="flow-n">6</span><b>Ideas</b
                     ><span>Keep a pipeline of 10–15 ideas and review them.</span></a
                   >
                 </li>
                 <li>
                   <a href="portfolio.html"
-                    ><span class="flow-n">6</span><b>Portfolio Lab</b
+                    ><span class="flow-n">7</span><b>Portfolio Lab</b
                     ><span>Check the whole book's risk before you trade.</span></a
                   >
                 </li>
@@ -235,6 +242,15 @@
                       <td><a href="themes.html">Macro ideas</a></td>
                       <td>Which industries and regions does macro favour? Is China's official data believable?</td>
                       <td>lessons 34–35</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="sectors.html">Sectors</a></td>
+                      <td>
+                        Which sectors lead or lag the S&amp;P 500, and how do their growth, valuation and revisions
+                        compare?
+                      </td>
+                      <td>extension of lessons 22–29</td>
                       <td>weekly</td>
                     </tr>
                     <tr>
@@ -358,7 +374,7 @@
                   </tbody>
                 </table>
               </div>
-              <p class="section-note">✎ = entered by hand (see section 12).</p>
+              <p class="section-note">✎ = entered by hand (see section 13).</p>
               <p>
                 Click <b>Chart, components &amp; reading guide →</b> on any card to open its <b>indicator page</b>: a
                 chart (1Y to Max), the course's way of reading it, what to watch for, the first-reading rule and the
@@ -464,8 +480,58 @@
             </section>
 
             <!-- 6 -->
+            <section id="sectors" class="card panel guide-sec">
+              <h2>6. Sectors: where to look first</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/sectors.webp"
+                  alt="Sectors page: the rotation map with the eleven sector ETFs in four quadrants, and the first sector cards"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>The rotation map, then one card per sector, strongest first.</figcaption>
+              </figure>
+              <p>
+                The Screener works one sector at a time. This page puts the eleven sectors side by side so you can
+                decide which ones to screen first. It is <b>not a lesson step</b>: it extends the course's method
+                (sector averages, cyclical vs defensive) and is context only. Nothing on it changes the bias or the
+                types.
+              </p>
+              <ul class="guide-points">
+                <li>
+                  <b>Rotation map</b>: each sector ETF (XLK, XLE…) against the S&amp;P 500. Across = how far it is ahead
+                  (right) or behind (left) over 3 months; up = whether that gap grew or shrank in the last month.
+                  <i>Leading</i> (ahead and gaining), <i>weakening</i> (ahead but fading), <i>lagging</i> (behind and
+                  still losing), <i>improving</i> (behind but catching up). Sectors tend to move clockwise.
+                </li>
+                <li>
+                  <b>Sector cards</b>: the colour shows the 3-month gap to the S&amp;P 500 (blue ahead, red behind); the
+                  line is the ETF divided by the S&amp;P 500. Below: median EPS growth, P/E and PEG of the sector's
+                  clean stocks, how many outliers it holds, the <b>macro wind</b> (the Macro ideas score of its
+                  industries) and the <b>revision bar</b>: the share of stocks whose EPS estimate analysts raised (blue)
+                  or cut (red) in 90 days.
+                </li>
+                <li>
+                  <b>Growth vs valuation</b>: the sectors on EPS growth and P/E. Bottom-right = fast growth that is
+                  cheap; top-left = expensive for little growth.
+                </li>
+                <li>
+                  <b>Risk appetite</b>: cyclical and sensitive sectors against defensive ones. Rising = the market is
+                  buying risk. The top tile says whether that agrees with the Macro Desk bias; when it does not, read
+                  both again before acting.
+                </li>
+                <li>
+                  <b>How to use it</b>: favour longs in sectors that are leading or improving, with rising estimates and
+                  a tailwind; look for shorts where the sector is lagging and estimates are being cut. Then open the
+                  sector in the Screener ("Screener: N stocks →") or the candidates at the bottom.
+                </li>
+              </ul>
+            </section>
+
+            <!-- 7 -->
             <section id="screener" class="card panel guide-sec">
-              <h2>6. Screener: finding outliers</h2>
+              <h2>7. Screener: finding outliers</h2>
               <figure class="shot">
                 <img
                   src="assets/guide/screener.webp"
@@ -545,9 +611,9 @@
               </p>
             </section>
 
-            <!-- 7 -->
+            <!-- 8 -->
             <section id="idea" class="card panel guide-sec">
-              <h2>7. The trade-idea page: one stock through the template</h2>
+              <h2>8. The trade-idea page: one stock through the template</h2>
               <figure class="shot">
                 <img
                   src="assets/guide/stock.webp"
@@ -672,9 +738,9 @@
               </ol>
             </section>
 
-            <!-- 8 -->
+            <!-- 9 -->
             <section id="ideas" class="card panel guide-sec">
-              <h2>8. Ideas: your pipeline</h2>
+              <h2>9. Ideas: your pipeline</h2>
               <figure class="shot">
                 <img
                   src="assets/guide/ideas.webp"
@@ -710,9 +776,9 @@
               </ul>
             </section>
 
-            <!-- 9 -->
+            <!-- 10 -->
             <section id="portfolio" class="card panel guide-sec">
-              <h2>9. Portfolio Lab: risk of the whole book</h2>
+              <h2>10. Portfolio Lab: risk of the whole book</h2>
               <figure class="shot">
                 <img
                   src="assets/guide/portfolio-results.webp"
@@ -773,9 +839,9 @@
               </p>
             </section>
 
-            <!-- 10 -->
+            <!-- 11 -->
             <section id="week" class="card panel guide-sec">
-              <h2>10. This week: the weekly routine</h2>
+              <h2>11. This week: the weekly routine</h2>
               <figure class="shot">
                 <img
                   src="assets/guide/routine.webp"
@@ -794,9 +860,9 @@
               </p>
             </section>
 
-            <!-- 11 -->
+            <!-- 12 -->
             <section id="data" class="card panel guide-sec">
-              <h2>11. Where the data comes from and when it updates</h2>
+              <h2>12. Where the data comes from and when it updates</h2>
               <ol class="flow flow-data">
                 <li>
                   <div>
@@ -851,9 +917,9 @@
               </ul>
             </section>
 
-            <!-- 12 -->
+            <!-- 13 -->
             <section id="manual" class="card panel guide-sec">
-              <h2>12. Entering the hand-entered reports</h2>
+              <h2>13. Entering the hand-entered reports</h2>
               <p>
                 Five files, one row per month. The <a href="calendar.html">Calendar</a> and
                 <a href="routine.html">This week</a> tell you when a new report is out.
@@ -916,9 +982,9 @@
               </ol>
             </section>
 
-            <!-- 13 -->
+            <!-- 14 -->
             <section id="storage" class="card panel guide-sec">
-              <h2>13. What is saved where</h2>
+              <h2>14. What is saved where</h2>
               <div class="scroll-x">
                 <table class="data guide-table">
                   <thead>
@@ -981,16 +1047,16 @@
               </p>
             </section>
 
-            <!-- 14 -->
+            <!-- 15 -->
             <section id="glossary" class="card panel guide-sec">
-              <h2>14. Glossary</h2>
+              <h2>15. Glossary</h2>
               <p>Every term used on the site. Type to filter.</p>
               <div class="widget-plain" data-widget="glossary"></div>
             </section>
 
-            <!-- 15 -->
+            <!-- 16 -->
             <section id="faq" class="card panel guide-sec">
-              <h2>15. Questions</h2>
+              <h2>16. Questions</h2>
               <details class="faq">
                 <summary>Does the site tell me what to buy?</summary>
                 <p>

@@ -602,6 +602,11 @@ const GLOSSARY = [
     "The extra yield of corporate bonds (AA, BBB, CCC) over Treasuries. Widening = stress; junk (CCC) usually moves first.",
   ],
   [
+    "Cyclical / sensitive / defensive",
+    "Sectors",
+    "Morningstar's three groups of sectors. Cyclicals and sensitives follow the economy; defensives (staples, healthcare, utilities) hold up when it slows.",
+  ],
+  [
     "Data checks",
     "Screener",
     "Tags that warn about unreliable numbers (other currency, feeds disagree, extreme P/E, few analysts…). Red ones keep the stock out of averages.",
@@ -734,7 +739,21 @@ const GLOSSARY = [
     "Screener",
     "The annualised standard deviation of the stock's daily returns over the last ~3 months.",
   ],
-  ["Relative strength", "Trade idea", "The stock's 3-month return minus the S&P 500's (or its sector ETF's)."],
+  [
+    "Relative strength",
+    "Trade idea, Sectors",
+    "A stock's or sector ETF's return minus the S&P 500's (or its sector ETF's) over the same period, in percentage points.",
+  ],
+  [
+    "Revision breadth",
+    "Sectors",
+    "The share of a sector's stocks whose EPS consensus analysts raised (or cut) by 1% or more in 90 days. More raised than cut = earnings momentum.",
+  ],
+  [
+    "Rotation map",
+    "Sectors",
+    "Each sector's 3-month strength against the S&P 500 (across) and its change over the last month (up): leading, weakening, lagging or improving.",
+  ],
   ["Risk share", "Portfolio", "The part of the portfolio's variance a position brings; a hedge has a negative share."],
   [
     "Sharpe ratio",

@@ -110,12 +110,13 @@ function render(steps, week) {
 async function main() {
   const today = todayISO();
   const week = R.isoWeek(today);
-  const [health, calendar, latest, themes, stocks, published] = await Promise.all([
+  const [health, calendar, latest, themes, stocks, sectors, published] = await Promise.all([
     loadJSON("data/health.json").catch(() => null),
     loadJSON("data/calendar.json").catch(() => null),
     loadJSON("data/macro/latest.json").catch(() => null),
     loadJSON("data/themes.json").catch(() => null),
     loadJSON("data/screener/stocks.json").catch(() => null),
+    loadJSON("data/sectors.json").catch(() => null),
     store.loadPublished(),
   ]);
   const p = { ...DEFAULTS, ...(published.params || {}) };
@@ -127,7 +128,7 @@ async function main() {
     R.dataStep(health, calendar, today),
     R.macroStep(latest),
     R.themesStep(themes),
-    R.screenStep(stocks, rows),
+    R.screenStep(stocks, rows, sectors),
     R.ideasStep(ideas, today, p),
     R.reviewStep(ideas, pages, byT, calendar, today, p),
     R.portfolioStep(book, positionGuide((book && book.capital) || 100000)),
