@@ -84,11 +84,14 @@ export function macroStep(latest, regime = null) {
   );
 }
 
+const LEVELS = { hot: "running hot", balanced: "near balance", cold: "running cold" };
+
 function regimeLine(regime) {
   if (!regime || !regime.now) return null;
   const r = regime.recession && regime.recession.latest;
   return (
     `Regime: ${regime.now.label}${regime.now.borderline ? " (close to a line)" : ""}` +
+    (regime.levels ? `; levels ${LEVELS[regime.levels.verdict]}` : "") +
     (r ? `; recession odds for ${r.for_month}: ${r.prob.toFixed(1)}%` : "") +
     " (Regime page)."
   );

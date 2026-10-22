@@ -4,6 +4,7 @@
 const signed = (x, d = 2) =>
   x === null || x === undefined ? "–" : `${x > 0 ? "+" : x < 0 ? "−" : ""}${Math.abs(x).toFixed(d)}`;
 const score = (x) => (x === null || x === undefined ? "awaiting" : x > 0 ? "+1" : x < 0 ? "−1" : "0");
+const LEVELS = { hot: "running hot", balanced: "near balance", cold: "running cold" };
 const ordinal = (p) => {
   const n = Math.round(p);
   const suffix = n % 100 >= 11 && n % 100 <= 13 ? "th" : { 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th";
@@ -56,6 +57,15 @@ export function briefText({ asOf, bias, signals, overrides = {}, changes = [], a
     lines.push(
       `- Regime: ${regime.now.label} (data for ${regime.now.month})${regime.now.borderline ? ", close to a line" : ""}`,
     );
+    if (regime.levels)
+      lines.push(
+        `- Levels: ${LEVELS[regime.levels.verdict]} (${regime.levels.hot} of ${regime.levels.items.length} hot)`,
+      );
+    const c = regime.cpi_check;
+    if (c && !c.agrees)
+      lines.push(
+        `- Check: core CPI for ${c.month} points to ${c.rising ? "rising" : "easing"} inflation; the regime may flip`,
+      );
     if (r) lines.push(`- Recession odds for ${r.for_month} (yield-curve model): ${r.prob.toFixed(1)}%`);
     if (t && t.fed_funds !== null && t.fed_funds !== undefined)
       lines.push(`- Fed funds ${t.fed_funds.toFixed(2)}% vs Taylor rule ${t.taylor.toFixed(2)}%`);

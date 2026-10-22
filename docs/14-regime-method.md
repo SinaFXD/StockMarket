@@ -26,6 +26,26 @@ inflation line is shown as **borderline**: the next release can flip it (both in
   day (ALFRED vintages: CFNAI from May 2011, core PCE from Aug 2000). Earlier months use revised data with a 45-day
   publication lag and are flagged; the page offers a "real-time data only" view.
 
+## Two questions: direction and level
+The map reads **directions**, as the course does (lesson 3: the direction of GDP growth and of the S&P 500). Levels
+answer a different question, "how hot is it?", and can disagree with the map (e.g. Oct 2026: Recovery on direction,
+running hot on levels). The page shows both side by side:
+
+| Level | Hot | Cold |
+|---|---|---|
+| Core PCE inflation (12 months) vs the Fed's 2% target | ≥ +0.5 pp | ≤ −0.5 pp |
+| Output gap (real GDP vs CBO potential) | ≥ +0.5% | ≤ −0.5% |
+| Unemployment (`UNRATE`) vs CBO's natural rate (`NROU`) | ≤ −0.25 pp | ≥ +0.25 pp |
+
+Two of three hot = "running hot", two of three cold = "running cold", else "near balance". The Fed's stance against
+the Taylor rule (≥ 1 pp below = loose, above = tight) is shown as its response, not counted. Thresholds in
+`config.REGIME` (`level_*`): our first reading, not course rules.
+
+**Core CPI cross-check.** Core CPI (`CPILFESL`) is published about two weeks before core PCE. The same momentum
+measure on core CPI, with today's growth reading, gives the regime the next PCE release may bring; when its direction
+disagrees with core PCE the page warns that the regime may flip. Note: FRED has no CPI for October 2025 (US government
+shutdown); every year-on-year change is aligned by date, never by row count.
+
 ## What did well in each regime
 - For every month-end since 1999-01 the next **3 months'** return (adjusted closes, dividends included) is grouped by
   the regime known that day. Sectors: SPDR ETF return minus SPY's over the same months. Asset classes (absolute):

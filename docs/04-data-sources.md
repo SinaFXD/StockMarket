@@ -60,6 +60,8 @@ CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP),
 | Core PCE price index (inflation axis, Taylor rule) | FRED PCEPILFE; ALFRED vintages from 2000-08 | ✅ verified 2026-10-22 |
 | CBO real potential GDP (output gap) | FRED GDPPOT (quarterly, projections to 2036) | ✅ verified 2026-10-22 |
 | NBER recession dates | FRED USREC (monthly) | ✅ verified 2026-10-22 |
+| CBO natural rate of unemployment (level check) | FRED NROU (quarterly, projections to 2036) | ✅ verified 2026-10-22 |
+| Core CPI (cross-check of core PCE momentum) | FRED CPILFESL (no value for 2025-10: shutdown) | ✅ |
 | Recession probability parameters | New York Fed `newyorkfed.org/medialibrary/media/research/capital_markets/Prob_Rec.pdf` (α −0.5333, β −0.6330) | ✅ verified 2026-10-22 |
 | Asset classes | Yahoo IEF (2002), GLD (2004), DBC (2006), UUP (2007); SPY and the sector SPDRs as above | ✅ verified 2026-10-22 |
 

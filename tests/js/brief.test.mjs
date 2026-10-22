@@ -63,6 +63,8 @@ test("the brief lists bias, blocks, changes, alerts, extremes and the bigger pic
     alerts: ["Blocks disagree."],
     regime: {
       now: { label: "Recovery", month: "2026-08", borderline: true },
+      levels: { verdict: "hot", hot: 2, items: [1, 2, 3] },
+      cpi_check: { month: "2026-09", rising: true, agrees: false },
       recession: { latest: { for_month: "2027-09", prob: 13.55 } },
       taylor: { latest: { fed_funds: 3.75, taylor: 6.21 } },
     },
@@ -77,6 +79,8 @@ test("the brief lists bias, blocks, changes, alerts, extremes and the bigger pic
   assert.match(text, /- VIX: 8th percentile \(Low\)/);
   assert.match(text, /- Regime: Recovery \(data for 2026-08\), close to a line/);
   assert.match(text, /- Recession odds for 2027-09 \(yield-curve model\): 13\.6%/);
+  assert.match(text, /- Levels: running hot \(2 of 3 hot\)/);
+  assert.match(text, /- Check: core CPI for 2026-09 points to rising inflation; the regime may flip/);
   assert.match(text, /Educational tool, not investment advice\. https:\/\/example\.org\/macro\.html$/);
 });
 

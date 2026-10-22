@@ -78,10 +78,11 @@ function tiles() {
     { class: "tiles" },
     now
       ? tile(
-          "Regime now",
+          "Regime now (direction)",
           now.label,
           `${S.d.regimes[now.regime].text.toLowerCase()} (data for ${fmtMonth(now.month)})` +
-            (now.borderline ? "; close to a line, it can flip with the next release" : ""),
+            (now.borderline ? "; close to a line, it can flip with the next release" : "") +
+            (S.d.levels ? `. Levels: ${LEVEL_TEXT[S.d.levels.verdict].toLowerCase()}` : ""),
           `color:${COLOR[now.regime]}`,
         )
       : tile("Regime now", "–", "awaiting data"),
@@ -113,6 +114,101 @@ function tiles() {
           cv.s3m < 0 ? "down" : "up",
         )
       : tile("Yield curve", "–", "awaiting data"),
+  );
+}
+
+// ---------- two questions: direction (the map) and level (how hot) ----------
+const LEVEL_TEXT = { hot: "Running hot", balanced: "Near balance", cold: "Running cold" };
+const STATE_TAG = { hot: ["Hot", "tag-neg"], cold: ["Cold", "tag-pos"], neutral: ["Near normal", ""] };
+
+function levelBlock() {
+  const d = S.d;
+  const lv = d.levels;
+  const now = d.now;
+  if (!lv || !now) return null;
+  const row = (i) => {
+    const vs =
+      i.id === "inflation"
+        ? `${signed(i.vs, 2)} pp vs 2%`
+        : i.id === "unemployment"
+          ? `${signed(i.vs, 2)} pp vs ${i.natural.toFixed(2)}%`
+          : "of potential GDP";
+    const [tag, cls] = STATE_TAG[i.state];
+    return el(
+      "li",
+      {},
+      el("span", { class: "lv-name" }, el("b", { text: i.name }), el("span", { class: "sub", text: i.month })),
+      el(
+        "span",
+        { class: "lv-val" },
+        el("b", { text: `${i.id === "output_gap" ? signed(i.value, 2) : i.value.toFixed(2)}%` }),
+        el("span", { class: "sub", text: vs }),
+      ),
+      el("span", { class: `tag ${cls}`, text: tag }),
+    );
+  };
+  const pol = lv.policy;
+  const c = d.cpi_check;
+  const warn =
+    c && !c.agrees
+      ? el(
+          "div",
+          { class: "card notice lv-warn" },
+          el("b", { text: "Check: core CPI disagrees. " }),
+          `Core CPI for ${fmtMonth(c.month)}${c.newer ? " (published before core PCE)" : ""} shows inflation ${c.rising ? "speeding up" : "easing"}; with today's growth reading the map would say ${d.regimes[c.regime].label}. The next core PCE release may flip the regime.`,
+        )
+      : null;
+  return el(
+    "section",
+    { class: "card panel sec-block" },
+    el("h2", { class: "panel-title", text: "Two questions: which way is it moving, and how hot is it?" }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text: "The regime map reads directions (is growth above trend, is inflation speeding up), as the course does with GDP growth and the S&P 500. Levels answer a different question: how far the economy is from the Fed's targets. Both can be true at once, e.g. hot levels while inflation is easing.",
+    }),
+    el(
+      "div",
+      { class: "lv-grid" },
+      el(
+        "div",
+        { class: "lv-col" },
+        el("div", { class: "tile-label", text: "Direction (regime map)" }),
+        el("div", {
+          class: "tile-value small",
+          style: `color:${COLOR[now.regime]}`,
+          text: now.label + (now.borderline ? " (borderline)" : ""),
+        }),
+        el("p", { class: "sub", text: now.reason_en }),
+        c
+          ? el("p", {
+              class: "sub",
+              text: `Cross-check on core CPI (${fmtMonth(c.month)}): inflation ${c.rising ? "speeding up" : "easing"} → ${d.regimes[c.regime].label} (${c.agrees ? "agrees" : "disagrees"}).`,
+            })
+          : null,
+      ),
+      el(
+        "div",
+        { class: "lv-col" },
+        el("div", { class: "tile-label", text: "Level (how hot)" }),
+        el("div", {
+          class: `tile-value small ${lv.verdict === "hot" ? "down" : lv.verdict === "cold" ? "up" : ""}`,
+          text: LEVEL_TEXT[lv.verdict],
+        }),
+        el("ul", { class: "lv-list" }, lv.items.map(row)),
+        pol
+          ? el("p", {
+              class: "sub",
+              text: `The Fed's response: fed funds ${pol.fed_funds.toFixed(2)}% vs ${pol.taylor.toFixed(2)}% from the Taylor rule, ${pol.state === "loose" ? `${Math.abs(pol.vs).toFixed(1)} pp looser` : pol.state === "tight" ? `${pol.vs.toFixed(1)} pp tighter` : "close to it"}.`,
+            })
+          : null,
+      ),
+    ),
+    warn,
+    el("p", {
+      class: "section-note",
+      text: `Reading: ${LEVEL_TEXT[lv.verdict].toLowerCase()} on levels (${lv.hot} of ${lv.items.length} hot), ${now.label} on direction. "Hot" = inflation at least ${d.params.level_inflation_pp} pp above 2%, output gap at least +${d.params.level_gap_pp}%, or unemployment at least ${d.params.level_unemployment_pp} pp below CBO's natural rate; two of three make the verdict. A first reading, not a rule from the course.`,
+    }),
   );
 }
 
@@ -734,6 +830,7 @@ async function main() {
   setChildren(
     document.getElementById("content"),
     tiles(),
+    levelBlock(),
     regimeMap(),
     timeline(),
     heatmap(),

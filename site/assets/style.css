@@ -2778,3 +2778,54 @@ table.curve-table th {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* Regime: direction vs level */
+.lv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 14px 28px;
+  margin-top: 6px;
+}
+
+.lv-col .sub {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  margin: 6px 0 0;
+}
+
+.lv-list {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+
+.lv-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.lv-list .lv-val {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.lv-list .lv-val .sub,
+.lv-list .lv-name .sub {
+  margin: 0;
+  font-size: 12px;
+}
+
+.lv-warn {
+  margin: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .lv-grid {
+    grid-template-columns: 1fr;
+  }
+}
