@@ -1,4 +1,4 @@
-{"key":"yahoo/STOXX","source":"Yahoo Finance","id":"^STOXX","label":"STOXX Europe 600","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5ESTOXX","title":"STXE 600 I","units":"EUR","units_short":"EUR","frequency":"daily","exchange":"Zurich","via":"yfinance","fetched_at":"2026-10-22T00:46:15Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/STOXX","source":"Yahoo Finance","id":"^STOXX","label":"STOXX Europe 600","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5ESTOXX","title":"STXE 600 I","units":"EUR","units_short":"EUR","frequency":"daily","exchange":"Zurich","via":"yfinance","fetched_at":"2026-10-22T04:16:18Z","columns":["date","close","adj_close"],"observations":[
 ["2004-04-26",247.07,247.07],
 ["2004-04-27",246.92,246.92],
 ["2004-04-28",243.38,243.38],
@@ -5653,5 +5653,6 @@
 ["2026-10-15",640.16,640.16],
 ["2026-10-16",644.74,644.74],
 ["2026-10-19",639.56,639.56],
-["2026-10-20",638.64,638.64]
+["2026-10-20",638.64,638.64],
+["2026-10-21",644.49,644.49]
 ]}
