@@ -1,4 +1,4 @@
-{"key":"umich/ICE","source":"University of Michigan","id":"ICE","label":"UMich consumer expectations","block":"surveys","url":"https://www.sca.isr.umich.edu/tables.html","title":"Index of Consumer Expectations","units":"Index 1966:Q1=100","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","fetched_at":"2026-10-22T11:52:30Z","columns":["date","value"],"observations":[
+{"key":"umich/ICE","source":"University of Michigan","id":"ICE","label":"UMich consumer expectations","block":"surveys","url":"https://www.sca.isr.umich.edu/tables.html","title":"Index of Consumer Expectations","units":"Index 1966:Q1=100","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","fetched_at":"2026-10-22T13:21:56Z","columns":["date","value"],"observations":[
 ["1952-11-01",92.4],
 ["1953-02-01",95.5],
 ["1953-11-01",83.9],
