@@ -1,4 +1,4 @@
-{"key":"fred/GDPC1","source":"FRED","id":"GDPC1","label":"Real GDP","block":"confirmers","url":"https://fred.stlouisfed.org/series/GDPC1","title":"Real Gross Domestic Product","units":"Billions of Chained 2017 Dollars","units_short":"Bil. of Chn. 2017 $","frequency":"quarterly","seasonal_adjustment":"SAAR","source_updated":"2026-09-30 07:53:55-05","fetched_at":"2026-10-22T08:33:35Z","columns":["date","value"],"observations":[
+{"key":"fred/GDPC1","source":"FRED","id":"GDPC1","label":"Real GDP","block":"confirmers","url":"https://fred.stlouisfed.org/series/GDPC1","title":"Real Gross Domestic Product","units":"Billions of Chained 2017 Dollars","units_short":"Bil. of Chn. 2017 $","frequency":"quarterly","seasonal_adjustment":"SAAR","source_updated":"2026-09-30 07:53:55-05","fetched_at":"2026-10-22T09:28:19Z","columns":["date","value"],"observations":[
 ["1947-01-01",2182.681],
 ["1947-04-01",2176.892],
 ["1947-07-01",2172.432],
