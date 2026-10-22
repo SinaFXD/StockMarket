@@ -1,4 +1,4 @@
-{"key":"fred/NROU","source":"FRED","id":"NROU","label":"Natural rate of unemployment (CBO)","block":"confirmers","url":"https://fred.stlouisfed.org/series/NROU","title":"Noncyclical Rate of Unemployment","units":"Percent","units_short":"%","frequency":"quarterly","seasonal_adjustment":"NSA","source_updated":"2026-02-27 15:05:27-06","fetched_at":"2026-10-22T17:04:54Z","columns":["date","value"],"observations":[
+{"key":"fred/NROU","source":"FRED","id":"NROU","label":"Natural rate of unemployment (CBO)","block":"confirmers","url":"https://fred.stlouisfed.org/series/NROU","title":"Noncyclical Rate of Unemployment","units":"Percent","units_short":"%","frequency":"quarterly","seasonal_adjustment":"NSA","source_updated":"2026-02-27 15:05:27-06","fetched_at":"2026-10-22T20:18:27Z","columns":["date","value"],"observations":[
 ["1949-01-01",5.25505256652832],
 ["1949-04-01",5.2615156173706055],
 ["1949-07-01",5.268013],

@@ -1,4 +1,4 @@
-{"key":"fred/PCOPPUSDM","source":"FRED","id":"PCOPPUSDM","label":"Copper, global price (IMF)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PCOPPUSDM","title":"Global price of Copper","units":"U.S. Dollars per Metric Ton","units_short":"U.S. $ per Metric Ton","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-08-17 13:51:19-05","fetched_at":"2026-10-22T17:04:54Z","columns":["date","value"],"observations":[
+{"key":"fred/PCOPPUSDM","source":"FRED","id":"PCOPPUSDM","label":"Copper, global price (IMF)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PCOPPUSDM","title":"Global price of Copper","units":"U.S. Dollars per Metric Ton","units_short":"U.S. $ per Metric Ton","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-22 14:26:48-05","fetched_at":"2026-10-22T20:18:27Z","columns":["date","value"],"observations":[
 ["1992-01-01",2150.57962901611],
 ["1992-02-01",2208.89225860596],
 ["1992-03-01",2231.78550956421],
@@ -413,5 +413,7 @@
 ["2026-04-01",12890.68772727273],
 ["2026-05-01",13512.15619047619],
 ["2026-06-01",13552.04090909091],
-["2026-07-01",13542.82086956522]
+["2026-07-01",13542.82086956522],
+["2026-08-01",14331.26476190476],
+["2026-09-01",14473.05590909091]
 ]}
