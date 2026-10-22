@@ -32,6 +32,7 @@
         </a>
         <nav class="nav" aria-label="Main">
           <a href="./" aria-current="page">Overview</a>
+          <a href="macro.html">Macro Desk</a>
           <a href="health.html">Data health</a>
         </nav>
       </div>
@@ -58,8 +59,8 @@
                 <span class="p-desc">Daily data pipeline, manual data checks, data health page.</span>
               </li>
               <li>
-                <span class="p-name">Phase 1 · Macro Desk</span>
-                <span class="badge"><span class="dot" aria-hidden="true">1</span>Next</span>
+                <span class="p-name"><a href="macro.html">Phase 1 · Macro Desk</a></span>
+                <span class="badge warning"><span class="dot" aria-hidden="true">1</span>In progress</span>
                 <span class="p-desc"
                   >Leading indicators (lessons 1–15), four blocks, portfolio bias with overrides, evidence on real-time
                   data.</span
@@ -92,14 +93,24 @@
             </ol>
           </section>
 
-          <section class="card panel" aria-labelledby="pipeline-title">
-            <h2 id="pipeline-title">Data pipeline</h2>
-            <dl class="kv" id="pipeline">
-              <dt>Last update</dt>
-              <dd>Loading…</dd>
-            </dl>
-            <a class="button" href="health.html">Open data health</a>
-          </section>
+          <div style="display: grid; gap: 12px; align-content: start">
+            <section class="card panel" aria-labelledby="bias-title">
+              <h2 id="bias-title">Portfolio bias today</h2>
+              <dl class="kv" id="bias-now">
+                <dt>Bias</dt>
+                <dd>Loading…</dd>
+              </dl>
+              <a class="button" href="macro.html">Open the Macro Desk</a>
+            </section>
+            <section class="card panel" aria-labelledby="pipeline-title">
+              <h2 id="pipeline-title">Data pipeline</h2>
+              <dl class="kv" id="pipeline">
+                <dt>Last update</dt>
+                <dd>Loading…</dd>
+              </dl>
+              <a class="button" href="health.html">Open data health</a>
+            </section>
+          </div>
         </div>
       </div>
     </main>

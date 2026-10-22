@@ -190,3 +190,42 @@ Anton gives no formula; he reads the indicators together. Proposal:
   strong — the 2019 pattern).
 - Evidence page: forward 1/3/6-month S&P 500 and regional index returns after each bias state, computed with
   **real-time vintages (ALFRED)** where available, with sample sizes, and a clear note where only revised data exists.
+
+---
+
+## Implementation notes (Phase 1a, 2026-10-22)
+How the rules above are coded in `pipeline/signals/`. Every number lives in `pipeline/config.py` (`SIGNALS`);
+*(tune)* = our choice where Anton gives no number.
+
+- **"Over 3 months"** = 91 calendar days for daily series, 3 monthly observations for monthly series *(tune)*.
+  **Percentiles** use the last 10 years of the series (less where the source is shorter, e.g. ICE spreads).
+- **Curve**: 10y−2y scored; a 3-month move smaller than ±0.10pp counts as stable *(tune)*. 10y−3m below zero while
+  10y−2y is positive raises a "short end inverted" flag.
+- **Real 10y** = latest 10y yield − latest published CPI YoY; percentile against the monthly real rate of the last
+  10 years; "rising" = higher than the same calculation 3 months earlier.
+- **Credit** combines the three spreads into one signal *(tune)*: two or more components at −1 → −1, two or more at
+  +1 → +1, CCC alone at −1 → −1 ("junk moves first"), else 0. Each component compares the latest 3-month change with
+  the distribution of its own 3-month changes (≥ 90th → −1, ≤ 10th → +1). With less than a year of ICE history
+  (all dates before late 2024 on FRED) Moody's Baa−10y is used on its own and flagged.
+- **M2**: an abnormal month (top 5% of MoM since 1959) is checked first, then YoY < 0. Consistency alerts compare
+  M2 with the other money-market signals.
+- **VIX**: whichever of FRED VIXCLS and Yahoo ^VIX is fresher.
+- **UMich** (sentiment, current conditions and expectations from the survey's own tables; monthly since 1978):
+  "several readings" = 3 months *(tune)*; a fall of 15+ points from the 12-month high raises a flag *(tune)*.
+- **Permits**: "rising/falling" = 12-month average of YoY compared with 3 months earlier *(tune)*.
+- **NFIB**: the ITPM index needs all five leading components in a month; "falling for 3 months" = three
+  consecutive monthly declines. Component trend lengths are reported, not scored.
+- **Commodities**: Brent (EIA daily via FRED, Yahoo futures if fresher), copper (COMEX futures, IMF monthly as
+  fallback), iron ore (IMF), lumber (PPI). Demand vs supply is left to the user's override.
+- **S&P 500 trend (new proposal, not from the lessons' numbers)**: Anton treats equity prices as a leading
+  indicator; first reading: close above its 200-day average and up over 3 months → +1, below and down → −1, else 0
+  *(tune)*.
+- **ESI** uses the largest euro-area aggregate Eurostat publishes (EA21 since 2026).
+- **China**: "rising/falling" = RatingDog manufacturing vs 3 months earlier *(tune)*; RatingDog services and NBS are
+  shown, NBS is never scored.
+- **Bias**: block = mean of its available signals, bias = mean of blocks, ±0.25 *(tune)*. Awaiting-data signals are
+  excluded. Overrides on the website recalculate the same arithmetic in the browser.
+- **Point in time**: month-end snapshots since 2000 use ALFRED vintages (CPI, M2, permits, iron ore, lumber, …),
+  report release calendars for hand-entered data, market prices up to that day, UMich/ESI from the end of their
+  month, and a 45-day lag for other monthly FRED series. Dates before a series' ALFRED history are marked
+  "revised data".

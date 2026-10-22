@@ -36,3 +36,5 @@ target-version = "py311"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP"]
+# The formatter keeps code within line-length; long English reason strings may run a little over.
+ignore = ["E501"]

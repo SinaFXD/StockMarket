@@ -4,7 +4,26 @@ function row(label, value) {
   return [el("dt", { text: label }), el("dd", {}, value)];
 }
 
+async function showBias() {
+  const list = document.getElementById("bias-now");
+  try {
+    const latest = await loadJSON("data/macro/latest.json");
+    const b = latest.bias;
+    const score =
+      b.score === null ? "–" : `${b.score > 0 ? "+" : b.score < 0 ? "−" : ""}${Math.abs(b.score).toFixed(2)}`;
+    list.replaceChildren(
+      ...row("Bias", b.label),
+      ...row("Score (−1 to +1)", score),
+      ...row("Indicators used", `${b.used} of ${b.total}`),
+      ...row("Data as of", latest.as_of),
+    );
+  } catch {
+    list.replaceChildren(...row("Bias", "not computed yet"));
+  }
+}
+
 async function main() {
+  showBias();
   const list = document.getElementById("pipeline");
   let health;
   try {

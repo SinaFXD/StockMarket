@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Macro Desk · PTM Dashboard</title>
+    <meta
+      name="description"
+      content="Portfolio bias from the PTM leading indicators: four blocks, first-reading scores with reasons, overrides and point-in-time history."
+    />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/macro.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 12 6 7l3 3 5-7"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>PTM Fundamental Dashboard</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="./">Overview</a>
+          <a href="macro.html" aria-current="page">Macro Desk</a>
+          <a href="health.html">Data health</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <h1 class="page-title">Macro Desk</h1>
+        <p class="lede" id="intro">
+          Leading indicators from lessons 1–15, read Anton's way and combined into a portfolio bias. Every score is a
+          <b>first reading</b>: the reason is shown next to it and you can override it.
+        </p>
+
+        <div class="toolbar" role="group" aria-label="View options">
+          <label
+            >As of
+            <select class="select" id="asof" aria-label="Show the desk as of a past month-end"></select
+          ></label>
+          <button type="button" class="btn" id="reset" disabled>Reset overrides</button>
+          <span class="muted" id="override-note"></span>
+        </div>
+
+        <div id="content">
+          <section class="card bias-card" aria-label="Portfolio bias" id="bias"></section>
+          <div class="blocks" id="blocks"></div>
+
+          <div class="two-col" style="margin-top: 12px">
+            <section class="card panel" aria-labelledby="changes-title">
+              <h2 class="panel-title" id="changes-title">What changed in the last month</h2>
+              <div id="changes"></div>
+            </section>
+            <section class="card panel" aria-labelledby="alerts-title">
+              <h2 class="panel-title" id="alerts-title">Read together: alerts &amp; disagreements</h2>
+              <div id="alerts"></div>
+            </section>
+          </div>
+
+          <div id="board"></div>
+
+          <section aria-labelledby="history-title">
+            <h2 id="history-title">Bias history (point in time)</h2>
+            <p class="section-note">
+              Each month-end recomputed with only the data published by that day: ALFRED real-time vintages, report
+              release dates and market prices. Click the chart to open that month.
+            </p>
+            <div class="card chart-card">
+              <svg class="chart" id="chart" role="img" aria-label="Monthly portfolio bias score since 2000"></svg>
+              <div class="legend-row" id="chart-legend"></div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="disclaimer">Educational tool, not investment advice.</span>
+        <span
+          >Built for the ITPM Professional Trading Masterclass final project. Data: FRED / ALFRED (Federal Reserve Bank
+          of St. Louis), Yahoo Finance, University of Michigan, Eurostat, and reports entered by hand (ISM, NFIB, NBS,
+          RatingDog / S&amp;P Global).</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,4 +1,4 @@
-# Series fetched automatically every day. IDs verified live on 2026-10-20 (see docs/04-data-sources.md).
+# Series fetched automatically every day. IDs verified live on 2026-10-20 (UMich and Eurostat on 2026-10-22).
 #
 # Fields: id (source's own ID), label (our short English name), block (dashboard block, see catalog.py),
 # vintages: true  -> also download ALFRED real-time vintages (for honest backtests; FRED only),
@@ -42,8 +42,8 @@ fred:
   - {id: DCOILWTICO, label: "WTI crude oil (EIA)", block: prices_fx_equities, max_age_days: 14}
   - {id: DCOILBRENTEU, label: "Brent crude oil (EIA)", block: prices_fx_equities, max_age_days: 14}
   - {id: PCOPPUSDM, label: "Copper, global price (IMF)", block: prices_fx_equities, max_age_days: 140}
-  - {id: PIORECRUSDM, label: "Iron ore, global price (IMF)", block: prices_fx_equities, max_age_days: 140}
-  - {id: WPU081, label: "PPI lumber", block: prices_fx_equities}
+  - {id: PIORECRUSDM, label: "Iron ore, global price (IMF)", block: prices_fx_equities, vintages: true, max_age_days: 140}
+  - {id: WPU081, label: "PPI lumber", block: prices_fx_equities, vintages: true}
   - {id: PPIFIS, label: "PPI final demand", block: prices_fx_equities}
   - {id: DTWEXBGS, label: "US dollar, broad index", block: prices_fx_equities}
   - {id: DTWEXAFEGS, label: "US dollar vs advanced economies", block: prices_fx_equities}
@@ -101,3 +101,13 @@ yahoo:
   - {id: XLU, label: "XLU Utilities", block: prices_fx_equities}
   - {id: XLV, label: "XLV Health care", block: prices_fx_equities}
   - {id: XLY, label: "XLY Consumer discretionary", block: prices_fx_equities}
+
+umich:
+  # Surveys of Consumers data tables (sca.isr.umich.edu): the full index and its two halves (lesson 9).
+  - {id: ICS, label: "UMich consumer sentiment", block: surveys, max_age_days: 75}
+  - {id: ICC, label: "UMich current conditions", block: surveys, max_age_days: 75}
+  - {id: ICE, label: "UMich consumer expectations", block: surveys, max_age_days: 75}
+
+eurostat:
+  # Business and consumer surveys (lesson 13): euro-area Economic Sentiment Indicator.
+  - {id: ESI_EA, label: "Euro-area economic sentiment (ESI)", block: international, max_age_days: 75}

@@ -9,7 +9,7 @@ from __future__ import annotations
 import os
 import re
 import time
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from typing import Any
 
 import requests
@@ -19,6 +19,7 @@ from .config import USER_AGENT
 RETRY_STATUS = {429, 500, 502, 503, 504}
 _SECRET_PARAM = re.compile(r"(api_key|apikey|token|key)=([^&\s\"']+)", re.IGNORECASE)
 _SECRET_ENV_VARS = ("FRED_API_KEY",)
+_TITLE = re.compile(r"<title[^>]*>(.*?)<", re.IGNORECASE | re.DOTALL)
 
 
 class FetchError(Exception):
@@ -64,7 +65,7 @@ class HttpClient:
             self._sleep(wait)
         self._last_request = time.monotonic()
 
-    def get_json(self, url: str, params: dict[str, Any] | None = None) -> Any:
+    def _get(self, url: str, params: dict[str, Any] | None, parse: Callable[[requests.Response], Any]) -> Any:
         last_problem = "no attempt made"
         for attempt in range(self.retries + 1):
             if attempt:
@@ -85,11 +86,37 @@ class HttpClient:
             if resp.status_code >= 400:
                 raise FetchError(redact(f"HTTP {resp.status_code}: {_error_text(resp)}", self.secrets))
             try:
-                return resp.json()
-            except ValueError:
-                last_problem = f"response was not JSON (HTTP {resp.status_code})"
+                return parse(resp)
+            except ValueError as exc:
+                last_problem = f"{exc} (HTTP {resp.status_code})"
                 continue
         raise FetchError(redact(f"gave up after {self.retries + 1} attempts: {last_problem}", self.secrets))
+
+    def get_json(self, url: str, params: dict[str, Any] | None = None) -> Any:
+        def parse(resp: requests.Response) -> Any:
+            try:
+                return resp.json()
+            except ValueError:
+                title = _html_title(resp.text)
+                hint = f"; the source returned the web page '{title}'" if title else ""
+                if title and "maintenance" in title.lower():
+                    hint += " (the source is down for maintenance)"
+                raise ValueError(f"response was not JSON{hint}") from None
+
+        return self._get(url, params, parse)
+
+    def get_text(self, url: str, params: dict[str, Any] | None = None) -> str:
+        def parse(resp: requests.Response) -> str:
+            if _html_title(resp.text):
+                raise ValueError(f"expected data but got the web page '{_html_title(resp.text)}'")
+            return resp.text
+
+        return self._get(url, params, parse)
+
+
+def _html_title(text: str) -> str | None:
+    m = _TITLE.search(text[:5000])
+    return " ".join(m.group(1).split())[:120] if m else None
 
 
 def _error_text(resp: requests.Response) -> str:
