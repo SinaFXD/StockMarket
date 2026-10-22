@@ -1646,3 +1646,226 @@ table.data td.text-left {
 table.screener-table td.text {
   min-width: 260px;
 }
+
+/* ---------- Trade idea page and Ideas pipeline (Phase 3) ---------- */
+.up {
+  color: var(--pos-ink);
+}
+
+.down {
+  color: var(--neg-ink);
+}
+
+.tile-value.small {
+  font-size: 22px;
+}
+
+a.tile-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+a.tile-link:hover {
+  border-color: var(--accent);
+}
+
+.idea-section,
+.idea-bar {
+  margin-top: 12px;
+}
+
+.idea-bar-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--accent-ink);
+}
+
+.btn-small {
+  min-height: 30px;
+  padding: 4px 9px;
+  font-size: 13px;
+}
+
+a.btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.num-input {
+  width: 7.5em;
+}
+
+.sub-title {
+  font-size: 14.5px;
+  margin: 18px 0 8px;
+}
+
+textarea.note {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.45;
+  padding: 9px 11px;
+  border-radius: 9px;
+  border: 1px solid var(--axis);
+  background: var(--surface);
+  color: var(--ink);
+  resize: vertical;
+}
+
+textarea.note:focus,
+.catalyst-row input:focus,
+.assume-grid input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.small-note {
+  font-size: 13px;
+  margin: 0;
+}
+
+.callout {
+  margin: 10px 0 0;
+  padding: 9px 12px;
+  border-radius: 8px;
+  background: var(--neg-wash);
+  color: var(--neg-ink);
+  font-size: 13.5px;
+}
+
+.checklist,
+.publish,
+.profile,
+.macro-events {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.checklist summary,
+.publish summary,
+.profile summary,
+.macro-events summary {
+  cursor: pointer;
+}
+
+.checklist ul,
+.macro-events ul {
+  margin: 8px 0;
+}
+
+.profile p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.steps {
+  margin: 10px 0;
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+}
+
+table.data tr.highlight td {
+  background: var(--surface-2);
+}
+
+table.quant td .sub,
+table.targets-table td .sub {
+  font-size: 12px;
+}
+
+table.targets-table td .tag {
+  margin-left: 0;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.assume-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px 12px;
+}
+
+.assume-grid label {
+  display: grid;
+  gap: 3px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+
+.assume-grid label.own span::after {
+  content: " · yours";
+  color: var(--accent-ink);
+}
+
+.assume-grid .num-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.catalysts {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.catalyst-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: 100%;
+}
+
+.catalyst-row .grow {
+  flex: 1 1 220px;
+}
+
+.chart.price-chart {
+  height: 320px;
+}
+
+.swatch-line.dashed {
+  background: repeating-linear-gradient(90deg, var(--pos) 0 5px, transparent 5px 9px) !important;
+}
+
+.hist {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  display: block;
+}
+
+.hist text,
+.price-chart text {
+  font-size: 11px;
+  fill: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .chart.price-chart {
+    height: 260px;
+  }
+
+  .tile-value.small {
+    font-size: 19px;
+  }
+}

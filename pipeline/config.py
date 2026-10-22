@@ -9,6 +9,7 @@ ROOT = PACKAGE_DIR.parent
 DATA_DIR = ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 MANUAL_DIR = DATA_DIR / "manual"
+IDEAS_DIR = DATA_DIR / "ideas"
 SITE_DIR = ROOT / "site"
 SITE_DATA_DIR = SITE_DIR / "data"
 CATALOG_FILE = PACKAGE_DIR / "catalog.yaml"
@@ -117,6 +118,26 @@ SCREENER: dict[str, float] = {
     "iv_budget": 400,  # at most this many option chains per run (candidates first)
     "iv_pause_s": 0.3,  # pause between option downloads (Yahoo throttles bursts)
     "price_chunk": 200,  # tickers per batch price download
+    "chart_days": 260,  # daily bars kept per stock for the trade-idea chart (~1 year: 200-day average)
+}
+
+# Phase 3: Trade Idea Workbench (lessons 30-33). Rules recorded in docs/08-workbench-method.md.
+WORKBENCH: dict[str, float] = {
+    "horizon_days": 40,  # default horizon of a new idea, calendar days (the course's window is 20-60)
+    "horizon_min": 20,
+    "horizon_max": 60,
+    "sigma_ok": 1.0,  # target within a 1-sigma move over the horizon: realistic (tune)
+    "sigma_stretched": 2.0,  # beyond 2 sigma: unrealistic for the horizon, adjust the target (tune)
+    "story_gap_pp": 5,  # EPS vs sales growth gap (percentage points) that makes it an earnings/revenue story
+    "gaap_gap_pct": 15,  # adjusted (consensus) vs GAAP net income gap worth a warning (tune)
+    "short_crowded_pct": 10,  # short interest above this % of float: a crowded short (tune)
+    "short_crowded_days": 5,  # or more days to cover than this (tune)
+    "short_change_pct": 10,  # change in shares short vs the prior month worth mentioning
+    "review_days": 7,  # an idea not updated for this many days is due for review (tune)
+    "stale_days": 14,  # ... and stale after this many (tune)
+    "pipeline_min": 10,  # Anton: keep a pipeline of 10-15 ideas
+    "pipeline_max": 15,
+    "ideas_per_week": 2,  # Anton: about two new ideas a week
 }
 
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.

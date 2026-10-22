@@ -65,11 +65,17 @@ Built in parts: **2a** universe, 11 numbers, data checks, sector averages, Scree
       SEC frames API, ~1,700 stocks with accounts; needs the `SEC_USER_AGENT` secret.)
 
 ## Phase 3 — Trade Idea Workbench (lessons 30–33)
-- [ ] Stock page = trade-idea template sections 1–5, auto-filled where data exists.
-- [ ] Price targets (EPS-based upper, sales-based lower) with editable assumptions; expected 1–3 month move vs targets.
-- [ ] Earnings date & analyst range; user notes for business description, KPIs, non-earnings catalysts, timing,
-      structure — saved (decide storage: commit to `data/ideas/*.md` via GitHub, or browser storage + export).
-- [ ] Idea pipeline view (10–15 ideas), status, staleness.
+Done in one part (2026-10-22). Method: `docs/08-workbench-method.md`.
+- [x] Stock page = trade-idea template sections 1–5, auto-filled where data exists. (`stock.html?t=<TICKER>` for every
+      screener stock, opened from the Screener; `site/data/stocks/<T>.json`, published but not committed.)
+- [x] Price targets (EPS-based upper, sales-based lower) with editable assumptions; expected 1–3 month move vs targets.
+      (Course's Zendesk example is a test; 1σ move from implied/realised volatility; targets > 2σ flagged.)
+- [x] Earnings date & analyst range; user notes for business description, KPIs, non-earnings catalysts, timing,
+      structure — saved. Storage decided: browser first (private, export/import), **Publish** writes
+      `data/ideas/<T>.md` through GitHub's editor (public; validated by the workflow, `site/data/ideas.json`).
+- [x] Idea pipeline view (10–15 ideas), status, staleness. (`ideas.html`: review after 7 days, stale after 14,
+      target reached, targets against the side, earnings within 7 days.)
+- [ ] Phase exit: green `update.yml` run on `main` with the new pages deployed.
 
 ## Phase 4 — Portfolio Lab (lessons 16–21)
 - [ ] Enter current/proposed portfolio; CEW and non-rebalanced backtests; drawdowns.

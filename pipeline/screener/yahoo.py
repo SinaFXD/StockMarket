@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Callable
+from datetime import UTC, datetime
 from typing import Any
 
 from ..http import FetchError
@@ -51,7 +52,7 @@ QUOTE_FIELDS = [
     "earningsTimestamp",
 ]
 SUMMARY_URL = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/{symbol}"
-SUMMARY_MODULES = "earningsTrend,assetProfile,calendarEvents,price"
+SUMMARY_MODULES = "earningsTrend,assetProfile,calendarEvents,price,defaultKeyStatistics,financialData"
 PAGE = 250
 # preferred shares, warrants, units and rights are not common stock (e.g. BAC-PL, XYZ-WT)
 NOT_COMMON = re.compile(r"-(P[A-Z]{0,2}|WT|WS|U|UN|RT)$")
@@ -107,10 +108,20 @@ def _raw(v: Any) -> Any:
     return v.get("raw") if isinstance(v, dict) else v
 
 
+def _date(ts: Any) -> str | None:
+    v = _raw(ts)
+    try:
+        return datetime.fromtimestamp(float(v), tz=UTC).date().isoformat() if v else None
+    except (TypeError, ValueError, OverflowError, OSError):
+        return None
+
+
 def trim_summary(result: dict[str, Any]) -> dict[str, Any]:
     """Keep only what the screener and the trade-idea pages use."""
     profile = result.get("assetProfile") or {}
     price = result.get("price") or {}
+    stats = result.get("defaultKeyStatistics") or {}
+    fin = result.get("financialData") or {}
     trend = {t.get("period"): t for t in (result.get("earningsTrend") or {}).get("trend", [])}
     out: dict[str, Any] = {
         "sector": profile.get("sector"),
@@ -118,8 +129,38 @@ def trim_summary(result: dict[str, Any]) -> dict[str, Any]:
         "country": profile.get("country"),
         "currency": price.get("currency"),
         "quote_type": price.get("quoteType"),
+        # trade-idea template (lessons 30-33): profile, ownership, short interest, analysts' price targets
+        "profile": {
+            "summary": (profile.get("longBusinessSummary") or "")[:2000] or None,
+            "employees": _raw(profile.get("fullTimeEmployees")),
+            "website": profile.get("website"),
+            "city": profile.get("city"),
+            "state": profile.get("state"),
+        },
+        "stats": {
+            "shares": _raw(stats.get("sharesOutstanding")) or _raw(stats.get("impliedSharesOutstanding")),
+            "float_shares": _raw(stats.get("floatShares")),
+            "shares_short": _raw(stats.get("sharesShort")),
+            "shares_short_prior": _raw(stats.get("sharesShortPriorMonth")),
+            "short_date": _date(stats.get("dateShortInterest")),
+            "short_prior_date": _date(stats.get("sharesShortPreviousMonthDate")),
+            "short_pct_float": _raw(stats.get("shortPercentOfFloat")),
+            "short_ratio": _raw(stats.get("shortRatio")),
+            "insiders": _raw(stats.get("heldPercentInsiders")),
+            "institutions": _raw(stats.get("heldPercentInstitutions")),
+            "beta": _raw(stats.get("beta")),
+        },
+        "analysts": {
+            "target_low": _raw(fin.get("targetLowPrice")),
+            "target_mean": _raw(fin.get("targetMeanPrice")),
+            "target_median": _raw(fin.get("targetMedianPrice")),
+            "target_high": _raw(fin.get("targetHighPrice")),
+            "rec_mean": _raw(fin.get("recommendationMean")),
+            "rec_key": fin.get("recommendationKey"),
+            "opinions": _raw(fin.get("numberOfAnalystOpinions")),
+        },
     }
-    for period in ("0y", "+1y"):
+    for period in ("0q", "0y", "+1y"):
         t = trend.get(period) or {}
         eps = t.get("earningsEstimate") or {}
         rev = t.get("revenueEstimate") or {}
@@ -137,6 +178,8 @@ def trim_summary(result: dict[str, Any]) -> dict[str, Any]:
             "revisions_up_30d": _raw(revisions.get("upLast30days")),
             "revisions_down_30d": _raw(revisions.get("downLast30days")),
             "rev": _raw(rev.get("avg")),
+            "rev_low": _raw(rev.get("low")),
+            "rev_high": _raw(rev.get("high")),
             "rev_year_ago": _raw(rev.get("yearAgoRevenue")),
             "rev_analysts": _raw(rev.get("numberOfAnalysts")),
         }

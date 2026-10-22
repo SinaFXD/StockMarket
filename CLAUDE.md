@@ -75,6 +75,17 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - `python -m pipeline.screener [--offline] [--budget N]` rebuilds only the screener; tests never touch the network
   (`run.main` tests pass `--only fred`).
 
+## Conventions (Phase 3)
+- `pipeline/workbench/`: `targets.py` (price targets, 1σ move, realism, story, GAAP gap), `stock.py` (one
+  `site/data/stocks/<T>.json` per screener stock), `ideas.py` (reads `data/ideas/<T>.md`), `build.py`. Thresholds in
+  `config.WORKBENCH`; record every rule in `docs/08-workbench-method.md`. `site/assets/workbench.js` repeats
+  `price_targets`/`sigma_move`/`realism` and `ideas-store.js` writes the format `ideas.py` reads (keep both in sync;
+  `tests/fixtures/idea_CRWD.md` is `toMarkdown` output).
+- `site/data/stocks/` is published with the site but **never committed** (the workflow excludes it); per-stock inputs
+  live in the raw cache (`data/raw/screener/prices.json`, `summaries.json`).
+- Ideas start in the browser (`localStorage` `ptm.ideas.v1`); "Publish" opens GitHub's editor to write
+  `data/ideas/<T>.md` (public). `python -m pipeline.workbench [--check]` validates / rebuilds `site/data/ideas.json`.
+
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS
   "potential lie" flag, UMich expectations, international money markets Japan/UK/Germany/Italy/China,

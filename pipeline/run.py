@@ -26,7 +26,7 @@ from . import gha, manual
 from .calendar import CalendarBuilder
 from .calendar import status_of as calendar_status
 from .catalog import SOURCES, CatalogEntry, load_catalog
-from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
+from .config import CATALOG_FILE, IDEAS_DIR, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
 from .fetchers import eurostat, fred, oecd, umich, yahoo
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
@@ -36,6 +36,7 @@ from .screener.build import write as write_screener
 from .signals.build import build as build_macro
 from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
+from .workbench.build import build_ideas, ideas_status, write_ideas, write_stock_pages
 
 log = logging.getLogger("pipeline")
 OTHER_SOURCES = {"umich": umich, "eurostat": eurostat, "oecd": oecd}
@@ -236,6 +237,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--raw-dir", type=Path, default=RAW_DIR)
     parser.add_argument("--out-dir", type=Path, default=SITE_DATA_DIR)
     parser.add_argument("--manual-dir", type=Path, default=MANUAL_DIR)
+    parser.add_argument("--ideas-dir", type=Path, default=IDEAS_DIR)
     parser.add_argument("--catalog", type=Path, default=CATALOG_FILE)
     args = parser.parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s", stream=sys.stdout)
@@ -300,14 +302,16 @@ def main(argv: list[str] | None = None) -> int:
             if args.screener_budget is not None
             else None
         )
-        data = ScreenerBuilder(
+        builder = ScreenerBuilder(
             runner.cache,
             offline=args.offline or "screener" not in only,
             params=budget,
             **market_inputs(args.out_dir),
-        ).build(today)
+        )
+        data = builder.build(today)
         write_screener(args.out_dir, data)
         screener = screener_status(data)
+        screener["workbench"] = write_stock_pages(args.out_dir, builder, args.out_dir, data["as_of"])
         log.info("screener: %d stocks, %d in sector averages", screener["stocks"], screener["in_averages"])
     except Exception as exc:
         log.exception("screener build failed")
@@ -337,10 +341,23 @@ def main(argv: list[str] | None = None) -> int:
         macro = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
         gha.annotate("error", f"Macro Desk not updated: {macro['error']}", title="Macro Desk")
 
+    ideas: dict[str, Any]
+    try:  # saved trade ideas (data/ideas/*.md): problems are reported, never stop the update
+        idea_data = build_ideas(args.ideas_dir)
+        write_ideas(args.out_dir, idea_data)
+        ideas = ideas_status(idea_data)
+        for p in idea_data["problems"]:
+            for e in p["errors"]:
+                gha.annotate("error", f"{p['file']}: {e}", title="Trade ideas")
+    except Exception as exc:
+        log.exception("ideas build failed")
+        ideas = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
     health["calendar"] = calendar
     health["screener"] = screener
+    health["ideas"] = ideas
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

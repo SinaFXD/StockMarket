@@ -335,7 +335,11 @@ function stockTable(rows) {
       el(
         "td",
         {},
-        el("b", { text: r.t }),
+        el(
+          "a",
+          { href: `stock.html?t=${encodeURIComponent(r.t)}`, title: "Open the trade-idea template" },
+          el("b", { text: r.t }),
+        ),
         el("span", { class: "sub", text: `${r.name || ""}${r.industry ? ` · ${r.industry}` : ""}` }),
       ),
       el("td", { class: "text-left" }, typeTag(r)),
@@ -361,7 +365,7 @@ function stockTable(rows) {
       class: "section-note",
       style: "margin-top:0",
       text:
-        "Click a column to sort. Types are a first reading against the sector (top / bottom quarter of EPS growth); " +
+        "Click a column to sort, a ticker to open its trade-idea template. Types are a first reading against the sector (top / bottom quarter of EPS growth); " +
         "grey rows are left out of the averages.",
     }),
     el(

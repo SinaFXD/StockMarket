@@ -37,14 +37,15 @@ def realised(frame: pd.DataFrame, days: int, atr_days: int) -> dict[str, float |
 def download_prices(
     symbols: list[str], chunk: int, download: Callable | None = None
 ) -> dict[str, pd.DataFrame]:
-    """Six months of daily bars per symbol, in batches (``yfinance.download``)."""
+    """One year of daily bars per symbol, in batches (``yfinance.download``): ~3 months for the realised
+    volatility, the whole year for the trade-idea chart (200-day average, 52-week range)."""
     if download is None:
         import yfinance as yf
 
         def download(batch):
             return yf.download(
                 batch,
-                period="6mo",
+                period="1y",
                 interval="1d",
                 auto_adjust=True,
                 progress=False,
@@ -66,6 +67,27 @@ def download_prices(
             if not sub.dropna(how="all").empty:
                 out[sym] = sub.dropna(how="all")
     return out
+
+
+def compact_bars(frame: pd.DataFrame, n: int) -> dict[str, list]:
+    """The last ``n`` daily bars as columns (dates, open, high, low, close, volume) for the price chart."""
+    f = frame.dropna(subset=["Close"]).iloc[-n:]
+
+    def col(name: str) -> list:
+        if name not in f:
+            return [None] * len(f)
+        vals = f[name].astype(float).tolist()
+        return [None if v != v else (round(v, 2) if abs(v) >= 10 else round(v, 4)) for v in vals]
+
+    vol = f["Volume"].tolist() if "Volume" in f else [None] * len(f)
+    return {
+        "d": [i.date().isoformat() for i in f.index],
+        "o": col("Open"),
+        "h": col("High"),
+        "l": col("Low"),
+        "c": col("Close"),
+        "v": [None if v is None or v != v else int(v) for v in vol],
+    }
 
 
 # -- implied volatility ------------------------------------------------------------------------------------

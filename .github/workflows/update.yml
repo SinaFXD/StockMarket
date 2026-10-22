@@ -3,8 +3,8 @@
 # - every day after the US close, when manual data or code changes on main, or by hand
 #   (Actions -> "Update data & deploy site" -> Run workflow)
 # - commits the regenerated site/data/ back to main, then publishes site/ to GitHub Pages
-# - a separate job checks data/manual/*.csv; if it finds errors the run turns red (GitHub emails you),
-#   but the site is still rebuilt from every valid row
+# - a separate job checks data/manual/*.csv and data/ideas/*.md; if it finds errors the run turns red (GitHub
+#   emails you), but the site is still rebuilt from every valid row
 name: Update data & deploy site
 
 on:
@@ -14,6 +14,7 @@ on:
     branches: [main]
     paths:
       - "data/manual/**"
+      - "data/ideas/**"
       - "pipeline/**"
       - "site/**"
       - "!site/data/**"
@@ -43,6 +44,9 @@ jobs:
       - run: python -m pip install -e .
       - name: Validate data/manual/*.csv
         run: python -m pipeline.manual --check
+      - name: Validate data/ideas/*.md (saved trade ideas)
+        if: always()
+        run: python -m pipeline.workbench --check
 
   build:
     name: Fetch data & build site
@@ -85,7 +89,9 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f site/data
+          # the per-stock trade-idea pages (site/data/stocks/, ~2,000 files that change daily) are published
+          # with the site but not committed; their inputs stay in the raw-data cache
+          git add -f -- site/data ':(exclude)site/data/stocks'
           if git diff --cached --quiet; then
             echo "No data changes to commit."
             exit 0
