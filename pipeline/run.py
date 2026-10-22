@@ -3,8 +3,9 @@
 1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo, UMich, Eurostat, OECD) with last-good-copy
    fallback;
 2. validate the hand-entered CSVs in ``data/manual/``;
-3. compute the Macro Desk (signals, bias, monthly point-in-time history, daily log) into ``site/data/macro/``;
-4. write ``site/data/series/**.json``, ``site/data/manual/*.json`` and ``site/data/health.json``.
+3. build the release calendar (``site/data/calendar.json``);
+4. compute the Macro Desk (signals, bias, monthly point-in-time history, daily log) into ``site/data/macro/``;
+5. write ``site/data/series/**.json``, ``site/data/manual/*.json`` and ``site/data/health.json``.
 
 A failing source never stops the run: it is reported on the Data health page. The exit code is non-zero
 only when the pipeline itself crashes.
@@ -21,6 +22,8 @@ from pathlib import Path
 from typing import Any
 
 from . import gha, manual
+from .calendar import CalendarBuilder
+from .calendar import status_of as calendar_status
 from .catalog import SOURCES, CatalogEntry, load_catalog
 from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
 from .fetchers import eurostat, fred, oecd, umich, yahoo
@@ -216,7 +219,9 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch all data and rebuild site/data/.")
     parser.add_argument("--offline", action="store_true", help="no network: rebuild from the raw cache")
     parser.add_argument(
-        "--only", default=",".join(SOURCES), help="comma list of sources to fetch (default: all)"
+        "--only",
+        default=",".join([*SOURCES, "calendar"]),
+        help="comma list of sources to fetch (default: all, plus the release calendar)",
     )
     parser.add_argument("--no-vintages", action="store_true", help="skip ALFRED vintages")
     parser.add_argument("--refresh", action="store_true", help="re-download even if the source is unchanged")
@@ -265,6 +270,22 @@ def main(argv: list[str] | None = None) -> int:
         )
         manual_entries.append(manual.health_entry(ds, today))
 
+    calendar: dict[str, Any]
+    try:  # the calendar is context: a broken page must not stop the data update
+        cal = CalendarBuilder(
+            runner.cache, runner.other_http, runner.fred, offline=args.offline or "calendar" not in only
+        ).build(today)
+        write_json(args.out_dir / "calendar.json", cal, indent=None)
+        calendar = calendar_status(cal)
+        log.info(
+            "calendar: %d events, sources %s",
+            calendar["events"],
+            {s["id"]: s["status"] for s in cal["sources"]},
+        )
+    except Exception as exc:
+        log.exception("calendar build failed")
+        calendar = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}"), "sources": []}
+
     macro: dict[str, Any] = {"status": "ok", "error": None}
     try:  # a bug in the Macro Desk must not stop the data update
         latest = build_macro(
@@ -291,6 +312,7 @@ def main(argv: list[str] | None = None) -> int:
 
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
+    health["calendar"] = calendar
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

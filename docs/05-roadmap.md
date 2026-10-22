@@ -22,7 +22,7 @@ changed). 90 offline tests. Last good copy: raw cache in `data/raw/` (kept betwe
 
 ## Phase 1 — Macro Desk (lessons 1–15)
 Built in parts: **1a** signals + bias + Macro Desk page (done 2026-10-22), **1b** indicator pages (done 2026-10-22), **1c** international
-money markets & regional dispersion (done 2026-10-22), **1d** evidence page & calendar.
+money markets & regional dispersion (done 2026-10-22), **1d** evidence page, confirmers & calendar (done 2026-10-22).
 - [x] 1a: 18 indicators from `docs/02` in four blocks (US money markets, US surveys, prices/FX/equities, international:
       ESI + China), bias with overrides, "what changed" brief, alerts, point-in-time monthly history since 2000,
       "as of" view, daily log (`site/data/macro/log.csv`). New sources: UMich components, Eurostat ESI.
@@ -36,8 +36,15 @@ money markets & regional dispersion (done 2026-10-22), **1d** evidence page & ca
       dispersion (US vs Europe vs China vs Japan, relative strength). Done in 1c (2026-10-22): new OECD source
       (rates + CPI for five countries), Eurostat country ESIs and sector confidence, signal `intl_money_markets`,
       China real rate (context), `global.html` with `site/data/macro/global.json`.
-- [ ] Confirmers (coincident/lagging), calendar of releases & central banks with the 20–60 day window highlighted.
-- [ ] Evidence page using real-time vintages where possible; sample sizes; no in-sample weight tuning.
+- [x] Confirmers (coincident/lagging), calendar of releases & central banks with the 20–60 day window highlighted.
+      Done in 1d (2026-10-22): confirmers on the Macro Desk (`site/data/macro/confirmers.json`, not scored);
+      `calendar.html` from FRED release dates, the Fed/ECB/BoJ/BoE meeting pages and the manual-report rules
+      (`pipeline/calendar/`, `site/data/calendar.json`).
+- [x] Evidence page using real-time vintages where possible; sample sizes; no in-sample weight tuning.
+      Done in 1d (2026-10-22): `evidence.html` (`site/data/macro/evidence.json`). First result, reported as is:
+      over 2000–2026 net short readings were followed by *higher* 1–6 month index returns than net long ones
+      (34 net short months, ~11 independent 3-month windows), and an index held with the bias's exposure
+      lagged buy-and-hold. Rules are not changed to fit this; the live log (`log.csv`) is the out-of-sample test.
 
 ## Phase 2 — Sector Screener (lessons 22–29)
 - [ ] Universe build + market-cap filter; sector/industry grouping.

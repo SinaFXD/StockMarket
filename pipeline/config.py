@@ -79,5 +79,20 @@ SIGNALS: dict[str, float] = {
     "intl_min_countries": 3,  # fewer countries with data -> awaiting (tune)
     "bias_threshold": 0.25,  # net long >= +0.25, net short <= -0.25 (tune)
 }
+# Coincident & lagging confirmers (shown, never scored). Tone thresholds are all our choice (tune), except the
+# 2% GDP growth line, which follows Anton's "GDP >= 2% = optimistic" band in lesson 9.
+CONFIRMERS: dict[str, float] = {
+    "payrolls_good_k": 100.0,  # 3-month average monthly change, thousands
+    "payrolls_bad_k": 0.0,
+    "unemployment_move_pp": 0.2,  # 3-month change
+    "claims_move_pct": 10.0,  # 4-week average vs 13 weeks earlier
+    "production_yoy_pct": 1.0,
+    "orders_yoy_pct": 3.0,
+    "gdp_good_pct": 2.0,  # annualised q/q
+    "gdp_bad_pct": 0.0,
+    "profits_yoy_pct": 5.0,
+    "inflation_move_pp": 0.2,  # 3-month change in YoY that counts as rising/falling
+}
+
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.
 SIGNAL_HISTORY_START = "2000-01"

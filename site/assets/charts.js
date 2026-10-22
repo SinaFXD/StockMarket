@@ -97,6 +97,14 @@ function drawChart(svg, spec, range) {
     const fill = z.tone === "pos" ? "var(--pos-wash)" : z.tone === "neg" ? "var(--neg-wash)" : "var(--neu-wash)";
     nodes.push(s("rect", { x: L, width: W - L - R, y: y(b), height: y(a) - y(b), fill }));
   }
+  // x bands: shaded periods (e.g. the month after each bias reading)
+  for (const band of spec.bands || []) {
+    const a = Math.max(t0, Date.parse(band.from));
+    const b = Math.min(t1, Date.parse(band.to));
+    if (b <= a) continue;
+    const fill = band.tone === "pos" ? "var(--pos-wash)" : band.tone === "neg" ? "var(--neg-wash)" : "var(--neu-wash)";
+    nodes.push(s("rect", { x: x(a), width: Math.max(1, x(b) - x(a)), y: T, height: H - T - B, fill }));
+  }
   // y ticks: 4-5 clean numbers
   const step = niceStep((hi - lo) / 4);
   for (let v = Math.ceil(lo / step) * step; v <= hi; v += step) {

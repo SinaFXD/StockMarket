@@ -56,3 +56,13 @@ def test_retry_after_header_is_respected():
     c, slept = client([FakeResponse(429, {}, headers={"Retry-After": "7"}), FakeResponse(200, [1])])
     assert c.get_json("https://example.org") == [1]
     assert 7 in slept
+
+
+def test_sends_the_dashboard_user_agent_not_the_requests_default():
+    import requests as rq
+
+    c = HttpClient(session=rq.Session())
+    assert c.session.headers["User-Agent"].startswith("PTM-Fundamental-Dashboard")
+    custom = rq.Session()
+    custom.headers["User-Agent"] = "my-agent"
+    assert HttpClient(session=custom).session.headers["User-Agent"] == "my-agent"

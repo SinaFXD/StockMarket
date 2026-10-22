@@ -330,6 +330,58 @@ function render() {
   drawChart();
 }
 
+// ---------- confirmers (coincident & lagging, not scored) ----------
+async function renderConfirmers() {
+  const box = document.getElementById("confirmers");
+  let c;
+  try {
+    c = await loadJSON("data/macro/confirmers.json");
+  } catch {
+    box.replaceChildren(el("p", { class: "muted", text: "No confirmer data yet." }));
+    return;
+  }
+  const toneLabel = { 1: ["Supportive", "up"], 0: ["Neutral", ""], "-1": ["Weak", "down"] };
+  const num = (v) => (v === null || v === undefined ? "–" : v.toLocaleString("en-US", { maximumFractionDigits: 1 }));
+  const row = (i) => {
+    const [label, cls] = i.tone === null ? [i.direction, ""] : toneLabel[i.tone];
+    return el(
+      "tr",
+      {},
+      el("td", {}, el("b", { text: i.name }), el("span", { class: "sub", text: `${i.kind} · ${i.as_of || "–"}` })),
+      el("td", {}, num(i.value), el("span", { class: "sub", text: i.unit })),
+      el("td", { class: cls, text: label }),
+      el("td", { class: "text", text: i.text }),
+    );
+  };
+  const table = (title, items) =>
+    el(
+      "div",
+      { class: "scroll-x" },
+      el(
+        "table",
+        { class: "data" },
+        el(
+          "thead",
+          {},
+          el(
+            "tr",
+            {},
+            [title, "Latest", "Reading", "Detail"].map((h, k) =>
+              el("th", { text: h, style: k === 3 ? "text-align:left" : null }),
+            ),
+          ),
+        ),
+        el("tbody", {}, items.map(row)),
+      ),
+    );
+  box.replaceChildren(
+    el("p", { class: "reading", text: c.summary.text }),
+    table("Growth", c.growth),
+    el("h3", { text: "Inflation (context for the central bank)" }),
+    table("Inflation", c.inflation),
+  );
+}
+
 // ---------- history chart ----------
 let tip = null;
 
@@ -512,6 +564,7 @@ async function main() {
   });
   state.current = state.latest;
   render();
+  renderConfirmers();
   document.title = `Macro Desk · ${state.latest.bias.label} · PTM Dashboard`;
 }
 

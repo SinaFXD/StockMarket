@@ -52,9 +52,16 @@ live on 2026-10-20 (FRED via the API with a key; Yahoo via `yfinance` 1.7 and th
 ## Coincident & lagging confirmers (FRED)
 CPIAUCSL, PPIFIS, PAYEMS, UNRATE, ICSA, CCSA, DGORDER, INDPRO, GDPC1 (real GDP), CP (corporate profits). ✅
 
-## Calendars (catalyst page)
-FOMC (federalreserve.gov), BLS release schedule (CPI, PPI, jobs), BEA (GDP, PCE), Census (permits), ECB,
-NBS/S&P Global PMI dates, ISM dates, NFIB dates. 🔎 scrape or maintain a small YAML.
+## Calendars (catalyst page, `pipeline/calendar/`)
+| Item | Source | |
+|---|---|---|
+| US data releases (CPI, jobs, GDP, PCE, PPI, retail sales, IP, durable goods, housing, UMich, claims) | FRED `release/dates?release_id=<id>&include_release_dates_with_no_data=true` (ids 10, 50, 53, 54, 46, 9, 13, 95, 27, 91, 180); FRED lists the scheduled dates to year end | ✅ verified 2026-10-22 |
+| BLS schedule (`bls.gov/schedule/news_release/bls.ics`) | blocks automated requests ("Access Denied"); not used, FRED has the same dates | ❌ |
+| FOMC | `federalreserve.gov/monetarypolicy/fomccalendars.htm` (HTML; current and next year) | ✅ verified 2026-10-22 |
+| ECB | `ecb.europa.eu/press/calendars/mgcgc/html/index.en.html` (HTML; ~2 years ahead) | ✅ verified 2026-10-22 |
+| Bank of Japan | `boj.or.jp/en/mopo/mpmsche_minu/index.htm` (HTML; current and next year) | ✅ verified 2026-10-22 |
+| Bank of England | `bankofengland.co.uk/monetary-policy/upcoming-mpc-dates` (HTML; blocks the default `python-requests` user agent) | ✅ verified 2026-10-22 |
+| ISM, NFIB, NBS, RatingDog | release rules in `pipeline/manual/releases.py` (approximate) | ✅ |
 
 ## Micro (Phase 2+)
 | Item | Source | |
