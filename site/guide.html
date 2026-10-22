@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How to use · PTM Dashboard</title>
+    <meta
+      name="description"
+      content="A complete guide to the site: the process, every page, every term, with live examples."
+    />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/guide.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 12 6 7l3 3 5-7"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>PTM Fundamental Dashboard</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="./">Overview</a>
+          <a href="routine.html">This week</a>
+          <a href="macro.html">Macro Desk</a>
+          <a href="global.html">Global</a>
+          <a href="calendar.html">Calendar</a>
+          <a href="evidence.html">Evidence</a>
+          <a href="screener.html">Screener</a>
+          <a href="ideas.html">Ideas</a>
+          <a href="portfolio.html">Portfolio</a>
+          <a href="themes.html">Macro ideas</a>
+          <a href="health.html">Data health</a>
+          <a href="guide.html" aria-current="page">Guide</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap guide">
+        <h1 class="page-title">How to use this site</h1>
+        <p class="lede">
+          A complete walk-through for someone who has never seen the site: what it is for, what every page shows, how to
+          read each part, what every term means, and what you do each week. The small tools on this page are live:
+          change the numbers and watch the result.
+        </p>
+
+        <details class="card guide-toc-mobile">
+          <summary><b>Contents</b></summary>
+          <div data-toc></div>
+        </details>
+
+        <div class="guide-layout">
+          <nav class="guide-toc card" aria-label="Guide contents"><div data-toc></div></nav>
+
+          <div class="guide-body">
+            <!-- 1 -->
+            <section id="what" class="card panel guide-sec">
+              <h2>1. What this site is</h2>
+              <p>
+                This is a research desk for a <b>long/short equity book</b> held for <b>20–60 days</b>, built on the
+                fundamental process taught in the ITPM Professional Trading Masterclass (PTM). It does not tell you what
+                to buy. It collects the data, applies the course's rules as a <b>first reading</b>, shows the reasoning
+                next to every number, and leaves the decision to you.
+              </p>
+              <ul class="guide-points">
+                <li>
+                  <b>Long/short:</b> you buy stocks you expect to rise (longs) and sell short stocks you expect to fall
+                  (shorts), so the book can make money in both directions.
+                </li>
+                <li>
+                  <b>20–60 days:</b> a trade, not an investment. Longer than about 60 days drifts into a "grey zone";
+                  beyond 120 days it is an investment.
+                </li>
+                <li>
+                  <b>A trade idea needs four things:</b> fundamentals, timing, a catalyst and a structure. Missing one
+                  means it is not a trade idea yet.
+                </li>
+                <li>
+                  <b>Free data, updated every day:</b> an automatic job runs after the US close (22:23 UTC) and rebuilds
+                  every page. A few surveys (ISM, NFIB, China PMIs) are entered by hand because they are not free in
+                  machine-readable form.
+                </li>
+              </ul>
+
+              <h3>The process in one picture</h3>
+              <p>
+                The course works <b>top-down</b> first (the economy sets how long or short the whole book should be),
+                then <b>bottom-up</b> (which stocks), then puts the ideas together as a portfolio. Each box below is a
+                page; click it to open it.
+              </p>
+              <ol class="flow">
+                <li>
+                  <a href="macro.html"
+                    ><span class="flow-n">1</span><b>Macro Desk</b
+                    ><span
+                      >Is the economy pointing up or down? → the portfolio bias: net long, neutral or net short.</span
+                    ></a
+                  >
+                </li>
+                <li>
+                  <a href="themes.html"
+                    ><span class="flow-n">2</span><b>Macro ideas</b
+                    ><span>Which industries does macro help or hurt? Which regions?</span></a
+                  >
+                </li>
+                <li>
+                  <a href="screener.html"
+                    ><span class="flow-n">3</span><b>Screener</b
+                    ><span>Which stocks stand out from their sector? Long and short candidates.</span></a
+                  >
+                </li>
+                <li>
+                  <a href="stock.html?t=NVDA"
+                    ><span class="flow-n">4</span><b>Trade idea</b
+                    ><span>Work one stock through the template: targets, catalysts, timing, structure.</span></a
+                  >
+                </li>
+                <li>
+                  <a href="ideas.html"
+                    ><span class="flow-n">5</span><b>Ideas</b
+                    ><span>Keep a pipeline of 10–15 ideas and review them.</span></a
+                  >
+                </li>
+                <li>
+                  <a href="portfolio.html"
+                    ><span class="flow-n">6</span><b>Portfolio Lab</b
+                    ><span>Check the whole book's risk before you trade.</span></a
+                  >
+                </li>
+              </ol>
+              <p class="section-note">
+                Around this core: <a href="routine.html">This week</a> (your weekly to-do list),
+                <a href="global.html">Global</a>, <a href="calendar.html">Calendar</a> and
+                <a href="evidence.html">Evidence</a> (context for the macro reading), and
+                <a href="health.html">Data health</a> (is the data fresh?).
+              </p>
+            </section>
+
+            <!-- 2 -->
+            <section id="start" class="card panel guide-sec">
+              <h2>2. Start here: your first 15 minutes</h2>
+              <ol class="steps guide-steps">
+                <li>
+                  Open <a href="routine.html"><b>This week</b></a
+                  >. It lists the seven weekly steps in order and marks the ones that need attention from this week's
+                  data. Use it as your to-do list.
+                </li>
+                <li>
+                  Open the <a href="macro.html"><b>Macro Desk</b></a> and read the big word at the top: <i>Net long</i>,
+                  <i>Neutral</i> or <i>Net short</i>. That is the automatic portfolio bias. Read "What changed" and the
+                  alerts next to it.
+                </li>
+                <li>
+                  Open <a href="themes.html"><b>Macro ideas</b></a> and look at the industries with a strong tailwind or
+                  headwind.
+                </li>
+                <li>
+                  Open the <a href="screener.html"><b>Screener</b></a
+                  >, pick a sector, click the type <i>Positive outlier</i>, tick "Volatility ≥ 1.5× VIX only", and sort
+                  by EG1.
+                </li>
+                <li>
+                  Click a ticker. On its trade-idea page press <b>Start a long idea</b> and fill the notes. The idea is
+                  saved in your browser and appears on the <a href="ideas.html"><b>Ideas</b></a> page.
+                </li>
+                <li>
+                  When you hold (or plan) several positions, enter them in the
+                  <a href="portfolio.html"><b>Portfolio Lab</b></a> and check volatility, correlation and exposure.
+                </li>
+              </ol>
+              <div class="guide-callout">
+                <b>Colours and arrows everywhere:</b> <span class="score pos">▲ +1</span> blue = supportive / long side,
+                <span class="score">● 0</span> grey = neutral, <span class="score neg">▼ −1</span> red = negative /
+                short side, <span class="score none">awaiting</span> = no recent data, left out of every calculation.
+              </div>
+            </section>
+
+            <!-- 3 -->
+            <section id="pages" class="card panel guide-sec">
+              <h2>3. Map of the pages</h2>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <thead>
+                    <tr>
+                      <th>Page</th>
+                      <th>The question it answers</th>
+                      <th>Course</th>
+                      <th>How often</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><a href="routine.html">This week</a></td>
+                      <td>What do I need to do this week?</td>
+                      <td>whole process</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="macro.html">Macro Desk</a></td>
+                      <td>Should the book lean long, short or stay balanced?</td>
+                      <td>lessons 1–15</td>
+                      <td>weekly, and after big reports</td>
+                    </tr>
+                    <tr>
+                      <td><a href="global.html">Global</a></td>
+                      <td>Is the world up or down? Is the US beating Europe, Japan, China?</td>
+                      <td>lessons 4, 13–15</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="calendar.html">Calendar</a></td>
+                      <td>Which reports and central-bank meetings fall in the next 20–60 days?</td>
+                      <td>lessons 1, 32</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="evidence.html">Evidence</a></td>
+                      <td>How did the bias rules behave in the past (honestly, with sample sizes)?</td>
+                      <td>method check</td>
+                      <td>now and then</td>
+                    </tr>
+                    <tr>
+                      <td><a href="themes.html">Macro ideas</a></td>
+                      <td>Which industries and regions does macro favour? Is China's official data believable?</td>
+                      <td>lessons 34–35</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="screener.html">Screener</a></td>
+                      <td>Which stocks are positive or negative outliers in their sector?</td>
+                      <td>lessons 22–29</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td>Trade idea (<a href="stock.html?t=NVDA">stock.html</a>)</td>
+                      <td>Is this stock a real trade? Targets, catalysts, timing, structure.</td>
+                      <td>lessons 30–33</td>
+                      <td>per idea (2–4 h)</td>
+                    </tr>
+                    <tr>
+                      <td><a href="ideas.html">Ideas</a></td>
+                      <td>Is my pipeline full and up to date?</td>
+                      <td>lesson 33</td>
+                      <td>weekly</td>
+                    </tr>
+                    <tr>
+                      <td><a href="portfolio.html">Portfolio</a></td>
+                      <td>Is the whole book's risk right: volatility, correlation, beta, size?</td>
+                      <td>lessons 16–21</td>
+                      <td>before every change</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <a href="health.html">Data health</a>
+                      </td>
+                      <td>Is every number fresh? What do I need to enter by hand?</td>
+                      <td>–</td>
+                      <td>when something looks odd</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <!-- 4 -->
+            <section id="macro" class="card panel guide-sec">
+              <h2>4. Macro Desk: the portfolio bias</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/macro.webp"
+                  alt="The Macro Desk: portfolio bias Net long with its meter, four block scores, what changed and alerts"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>
+                  The top of the Macro Desk (screenshot of 22 Oct 2026; your page shows today's data).
+                </figcaption>
+              </figure>
+              <h3>What you see, top to bottom</h3>
+              <ol class="guide-points">
+                <li>
+                  <b>As of</b>: pick a past month-end to see what the desk said then, using only data that was known at
+                  the time. <b>Reset overrides</b> removes your own scores.
+                </li>
+                <li>
+                  <b>Portfolio bias</b>: the big word and the meter from −1 (short) to +1 (long). A score of +0.25 or
+                  more is <b>Net long</b>, −0.25 or less <b>Net short</b>, in between <b>Neutral (balanced)</b>.
+                </li>
+                <li>
+                  <b>Four blocks</b>: US money markets, US surveys, cyclical prices/FX/equities, international. Each
+                  block is the average of its indicators; the bias is the average of the blocks, so a block with many
+                  indicators cannot dominate.
+                </li>
+                <li><b>What changed in the last month</b>: every indicator whose score moved, and the bias itself.</li>
+                <li>
+                  <b>Read together: alerts</b>: blocks that disagree, credit spreads widening in junk first, and the
+                  <i>data vs prices</i> alert (the data says long but the S&amp;P 500 is falling, or the opposite).
+                </li>
+                <li>
+                  <b>Indicator cards</b> (further down): each of the 19 indicators with its score, its state in words
+                  ("Expanding", "Junk widening first"…), the reason, the 10-year percentile, the date of the data and a
+                  strip of its monthly scores. Under <b>Your reading</b> you can override the score with −1 / 0 / +1;
+                  the bias recalculates at once and the override is saved in your browser.
+                </li>
+                <li>
+                  <b>Confirmers</b>: coincident and lagging data (CPI, payrolls, jobless claims, industrial production,
+                  GDP). They confirm or contradict the leading indicators but are never scored.
+                </li>
+              </ol>
+              <h3>The 19 leading indicators</h3>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <thead>
+                    <tr>
+                      <th>Block</th>
+                      <th>Indicators</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>US money markets</td>
+                      <td>
+                        Yield curve (10y − 2y), real 10-year rate, corporate credit spreads (AA / BBB / CCC), M2 money
+                        supply, VIX
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>US surveys</td>
+                      <td>
+                        ISM Manufacturing ✎, ISM Services ✎, University of Michigan sentiment, building permits, NFIB
+                        small-business optimism ✎
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cyclical prices, FX &amp; equities</td>
+                      <td>Brent oil, copper, iron ore, lumber, the US dollar, S&amp;P 500 trend</td>
+                    </tr>
+                    <tr>
+                      <td>International</td>
+                      <td>
+                        Euro-area economic sentiment (ESI), China PMI (RatingDog vs official NBS) ✎, international money
+                        markets (Japan, UK, Germany, Italy)
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="section-note">✎ = entered by hand (see section 12).</p>
+              <p>
+                Click <b>Chart, components &amp; reading guide →</b> on any card to open its <b>indicator page</b>: a
+                chart (1Y to Max), the course's way of reading it, what to watch for, the first-reading rule and the
+                history of its score.
+              </p>
+              <figure class="shot">
+                <img
+                  src="assets/guide/indicator.webp"
+                  alt="Indicator page for ISM Manufacturing: the reading guide and a chart"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>
+                  An indicator page (ISM Manufacturing): what it is, how to read it, the first-reading rule and charts.
+                </figcaption>
+              </figure>
+
+              <h3>Try it: how the bias is calculated</h3>
+              <p>
+                These are today's 19 automatic scores. Change any of them, as you would with an override on the Macro
+                Desk, and watch the blocks and the bias move. Nothing here is saved.
+              </p>
+              <div class="widget card" data-widget="bias"><p class="muted">Loading…</p></div>
+
+              <h3>Global, Calendar and Evidence</h3>
+              <ul class="guide-points">
+                <li>
+                  <a href="global.html"><b>Global</b></a
+                  >: money markets by country (real rates, yield curves) and the regional equity markets side by side
+                  (US vs Europe vs Japan vs China), to answer "is the world up or down, and who is leading?". Context
+                  only; not scored again.
+                </li>
+                <li>
+                  <a href="calendar.html"><b>Calendar</b></a
+                  >: US data releases, Fed / ECB / BoJ / BoE meetings and the dates the hand-entered reports come out.
+                  The <b>20–60 day window</b> is highlighted: these are the events that can move a trade you open today.
+                </li>
+                <li>
+                  <a href="evidence.html"><b>Evidence</b></a
+                  >: what happened to the S&amp;P 500 after each past bias reading, with the number of months behind
+                  every figure. It uses real-time data vintages so the past is not judged with revised numbers. It
+                  reports results; the rules are never tuned to make it look good.
+                </li>
+              </ul>
+              <figure class="shot">
+                <img
+                  src="assets/guide/calendar.webp"
+                  alt="Calendar of releases and central-bank meetings with the 20-60 day window"
+                  loading="lazy"
+                  width="1100"
+                  height="800"
+                />
+                <figcaption>
+                  The Calendar: the shaded 20–60 day window holds the events that can move a trade opened today.
+                </figcaption>
+              </figure>
+            </section>
+
+            <!-- 5 -->
+            <section id="themes" class="card panel guide-sec">
+              <h2>5. Macro ideas: from the economy to industries and countries</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/themes-industries.webp"
+                  alt="Industries table: Copper +3 strong tailwind with its drivers"
+                  loading="lazy"
+                  width="1052"
+                  height="539"
+                />
+                <figcaption>Each industry adds up the macro drivers that reach it.</figcaption>
+              </figure>
+              <ul class="guide-points">
+                <li>
+                  <b>Net</b>: every macro signal that reaches an industry adds +1 or −1 (for example rising copper
+                  prices +1 for copper miners; rising oil −1 for airlines), and so does the industry's place in the
+                  latest ISM growth or contraction list. +1 or more = <b>tailwind</b>, −1 or less = <b>headwind</b>, ±2
+                  or more = <b>strong</b> (two or more drivers agree). Hover a driver to read why it matters.
+                </li>
+                <li>
+                  <b>Macro-driven ideas</b>: the Screener's long candidates inside tailwind industries and its short
+                  candidates inside headwind industries. A good place to look for ideas that agree top-down and
+                  bottom-up.
+                </li>
+                <li>
+                  <b>International ideas (ADRs)</b>: companies based abroad with a US listing. EPS growth is compared
+                  across countries; P/E is hidden where the estimates are in another currency than the share price.
+                  <i>Leader</i> = top-quarter growth in both years; <i>laggard</i> = falling in both years.
+                </li>
+                <li>
+                  <b>China check</b>: China's official PMI is often too smooth to trust. The check compares it with what
+                  analysts are doing to Chinese companies' earnings estimates. "Disagree" means: trust the companies,
+                  not the official number.
+                </li>
+              </ul>
+            </section>
+
+            <!-- 6 -->
+            <section id="screener" class="card panel guide-sec">
+              <h2>6. Screener: finding outliers</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/screener.webp"
+                  alt="The Screener with sector, industry and size filters, sector averages and the type buttons"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>The Screener: filters, sector averages, type buttons, then the table.</figcaption>
+              </figure>
+              <p>
+                About 2,000 US-listed stocks above $2 billion, compared <b>inside their sector</b>. The course looks
+                forward: what analysts expect for this year and next, not last year's accounts.
+              </p>
+              <h3>The 11 numbers</h3>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <tbody>
+                    <tr>
+                      <td><b>Price, Mkt cap</b></td>
+                      <td>Last price and market capitalisation (in $ billions).</td>
+                    </tr>
+                    <tr>
+                      <td><b>EPS0</b></td>
+                      <td>Earnings per share of the last reported fiscal year.</td>
+                    </tr>
+                    <tr>
+                      <td><b>EPS1, EPS2</b></td>
+                      <td>Analysts' average (consensus) EPS for the current and the next fiscal year.</td>
+                    </tr>
+                    <tr>
+                      <td><b>EG1, EG2</b></td>
+                      <td>
+                        EPS growth: EPS1 vs EPS0 and EPS2 vs EPS1, in %. Only from a positive base: growth out of a loss
+                        is a turnaround, not a rate.
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><b>PE1, PE2</b></td>
+                      <td>Price ÷ EPS1 and price ÷ EPS2, only when EPS is positive.</td>
+                    </tr>
+                    <tr>
+                      <td><b>PEG1, PEG2</b></td>
+                      <td>P/E ÷ EPS growth in %, only with positive growth. Below 1 = cheap for its growth.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3>Try it: the 11 numbers from four inputs</h3>
+              <div class="widget card" data-widget="eleven"></div>
+
+              <h3>Types: where a stock sits against its sector</h3>
+              <p>
+                Each stock gets one type, from its EPS growth ranked against the clean stocks of its sector (the
+                percentile: 90 means it grows faster than 90% of them). The course gives the types; the cut-offs (top
+                and bottom quarter) are our choice.
+              </p>
+              <div class="widget card" data-widget="types"></div>
+              <h3>Data checks (lesson 28)</h3>
+              <p>
+                Tags such as <span class="tag tag-warn">Other currency</span>,
+                <span class="tag tag-warn">Feeds disagree</span>, <span class="tag tag-warn">Extreme P/E</span> or
+                <span class="tag">Few analysts</span> warn about unreliable numbers. Red tags (and grey rows) keep the
+                stock out of the sector averages and the types. Never trade on a number you have not checked.
+              </p>
+              <h3>Volatility filter</h3>
+              <p>
+                A stock must be able to move enough within 20–60 days: its realised (past 3 months) and implied (from
+                options) volatility should be at least <b>1.5× the VIX</b>. Tick "Volatility ≥ 1.5× VIX only" to keep
+                only those; the column <b>Vol ÷ VIX</b> shows the ratio.
+              </p>
+              <h3>Evidence: accounts</h3>
+              <p>
+                The button <b>Evidence: accounts</b> switches the table to backward-looking numbers from the companies'
+                SEC filings: margins, EV/EBIT, EV/EBITDA, debt ratios, free cash flow. They explain <i>why</i> money
+                likes or dislikes a stock; they do not forecast.
+              </p>
+            </section>
+
+            <!-- 7 -->
+            <section id="idea" class="card panel guide-sec">
+              <h2>7. The trade-idea page: one stock through the template</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/stock.webp"
+                  alt="Trade idea page for FCX with tiles, the trade idea bar and the quant table"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>
+                  The top of a trade-idea page (FCX, with a sample idea started). Open any stock from the Screener or
+                  type <code>stock.html?t=TICKER</code>.
+                </figcaption>
+              </figure>
+              <p>
+                Every stock in the Screener has this page. The data fills what it can; you fill the rest. It follows the
+                course's trade-idea template in five sections:
+              </p>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <thead>
+                    <tr>
+                      <th>Section</th>
+                      <th>Filled by the data</th>
+                      <th>You write</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1 · Quant table</td>
+                      <td>
+                        EPS, sales, P/E, PEG, P/S, net income for 3 years with the analysts' range; the "story"
+                        (earnings or revenue growth); GAAP vs adjusted check; price targets
+                      </td>
+                      <td>your own target assumptions</td>
+                    </tr>
+                    <tr>
+                      <td>2 · Against the sector</td>
+                      <td>sector and industry averages, largest peers, volatility and the expected move</td>
+                      <td>industry drivers for the next 20–60 days</td>
+                    </tr>
+                    <tr>
+                      <td>3 · Business &amp; management</td>
+                      <td>company profile, ownership, analysts' rating and targets</td>
+                      <td>what the company does (1–2 sentences); its KPIs and management's plan</td>
+                    </tr>
+                    <tr>
+                      <td>4 · Earnings &amp; catalysts</td>
+                      <td>next earnings date and session, quarter and annual expectations, macro events</td>
+                      <td>non-earnings catalysts with dates</td>
+                    </tr>
+                    <tr>
+                      <td>5 · Timing &amp; structure</td>
+                      <td>price chart with 50/200-day averages, trend, relative strength, short interest</td>
+                      <td>timing notes, structure (stock, margin, CFD) and why, review notes</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <h3>Price targets</h3>
+              <p>
+                The course builds two targets for each year. <b>EPS-based</b> (upper, bullish): the P/E stays as it is
+                today and earnings grow, so the price grows with EPS. <b>Sales-based</b> (lower, realistic): the
+                price-to-sales stays as it is and sales grow. Always a range, never one number. Try the course's own
+                example (Zendesk, May 2020):
+              </p>
+              <div class="widget card" data-widget="targets"></div>
+              <figure class="shot">
+                <img
+                  src="assets/guide/stock-targets.webp"
+                  alt="Price targets on a stock page: assumption inputs and the targets table with sigma tags"
+                  loading="lazy"
+                  width="1010"
+                  height="658"
+                />
+                <figcaption>
+                  On a stock page: blank inputs = consensus; type your own number to replace it. Each target shows the
+                  move needed and its σ tag.
+                </figcaption>
+              </figure>
+              <h3>Is the target realistic for 20–60 days?</h3>
+              <p>
+                A stock with 40% annual volatility moves about ±13% in 40 days in a normal ("1σ", one standard
+                deviation) case; about two moves in three stay inside that. A target that needs a move of more than 2σ
+                is unrealistic for the horizon: take a nearer target or a longer view. On the page each target carries
+                its σ tag: <span class="tag tag-pos">0.8σ</span> realistic, <span class="tag">1.5σ</span> stretched,
+                <span class="tag tag-warn">2.6σ</span> unrealistic.
+              </p>
+              <div class="widget card" data-widget="move"></div>
+              <figure class="shot">
+                <img
+                  src="assets/guide/stock-chart.webp"
+                  alt="Section 5: daily candle chart with averages, targets, the horizon ahead and the earnings date"
+                  loading="lazy"
+                  width="1052"
+                  height="1054"
+                />
+                <figcaption>
+                  Section 5: candles (blue up, red down), 50-day (orange) and 200-day (purple) averages, dashed target
+                  and entry lines, and the shaded horizon ahead with the earnings date.
+                </figcaption>
+              </figure>
+              <h3>Saving an idea</h3>
+              <ol class="steps guide-steps">
+                <li>Press <b>Start a long idea</b> (or short). The page now shows note boxes in every section.</li>
+                <li>
+                  Write as you go; everything is saved in <b>this browser</b> at once ("Only in this browser"). The
+                  <b>Template x of 6 filled</b> checklist shows what is still missing.
+                </li>
+                <li>
+                  Set the <b>status</b> (researching → ready → active → closed / dropped), the <b>horizon</b> in days
+                  and your <b>entry</b> price.
+                </li>
+                <li>
+                  Optional: <b>Publish to the repository</b> opens GitHub with the idea as a file; press
+                  <b>Commit changes</b>. Every device then sees it. The repository is public, so publish only what you
+                  are happy to share.
+                </li>
+              </ol>
+            </section>
+
+            <!-- 8 -->
+            <section id="ideas" class="card panel guide-sec">
+              <h2>8. Ideas: your pipeline</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/ideas.webp"
+                  alt="Ideas page with counts and a table of sample ideas"
+                  loading="lazy"
+                  width="1100"
+                  height="650"
+                />
+                <figcaption>The Ideas page with three sample ideas.</figcaption>
+              </figure>
+              <ul class="guide-points">
+                <li>
+                  <b>Aim</b>: 10–15 open ideas, about 2 new ones a week (each takes 2–4 hours). The tiles show where you
+                  stand.
+                </li>
+                <li>
+                  <b>Targets</b>: conservative / optimistic for the current fiscal year, with your own assumptions; "to
+                  the conservative" is how far the price still has to go.
+                </li>
+                <li>
+                  <b>Flags</b>: <span class="tag">Review</span> after 7 days without an update,
+                  <span class="tag tag-warn">Stale</span> after 14, <span class="tag tag-pos">Target reached</span> (be
+                  active around targets), <span class="tag tag-warn">Targets against you</span>, earnings within 7 days.
+                </li>
+                <li><b>Export / Import</b> moves the ideas kept in this browser to another device as a file.</li>
+              </ul>
+            </section>
+
+            <!-- 9 -->
+            <section id="portfolio" class="card panel guide-sec">
+              <h2>9. Portfolio Lab: risk of the whole book</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/portfolio-results.webp"
+                  alt="Portfolio Lab results: tiles, current vs proposed table and the backtest chart"
+                  loading="lazy"
+                  width="1052"
+                  height="1250"
+                />
+                <figcaption>Results for a sample six-position book.</figcaption>
+              </figure>
+              <ol class="guide-points">
+                <li>
+                  Enter the <b>Current</b> book (ticker, long or short, size in $) and the <b>account size</b>.
+                  <b>Add my active ideas</b> fills it from the Ideas page.
+                </li>
+                <li>
+                  Build a <b>Proposed</b> book (start from the current one) with the change you are thinking about, and
+                  compare the two in the table before you trade.
+                </li>
+                <li>
+                  Check the targets: <b>volatility 15–30%</b> a year (aim 17.5–22.5%),
+                  <b>average correlation between −0.3 and +0.3</b>, a <b>beta-adjusted net exposure</b> in line with the
+                  macro bias, and the right <b>number of positions</b> for your account.
+                </li>
+              </ol>
+              <h3>Two ways to backtest</h3>
+              <ul class="guide-points">
+                <li>
+                  <b>Non-rebalanced</b>: your dollar sizes invested on day one and left alone. What your account would
+                  really have done.
+                </li>
+                <li>
+                  <b>CEW</b> (constant equal weight): every position weighted equally again each day. The quickest way
+                  to see which basket does better.
+                </li>
+                <li>
+                  <b>Drawdown</b>: how far the book fell below its previous high. The deepest one is the "max drawdown".
+                </li>
+              </ul>
+              <h3>Try it: why correlation matters</h3>
+              <p>
+                Two positions of the same size. Move the correlation and the sides: a long and a short in stocks that
+                move together cancel each other's risk; two longs that move together add it up.
+              </p>
+              <div class="widget card" data-widget="corr"></div>
+              <h3>Beta and exposure</h3>
+              <p>
+                <b>Beta</b> measures how much a stock moves with the S&amp;P 500 (beta 2 = twice as much). $10,000 long
+                of a beta-2 stock against $10,000 short of a beta-0.5 stock is 0% net exposure but +150% beta-adjusted:
+                the book still leans long the market. The <b>beta-adjusted net</b> is the honest measure of how long or
+                short you are.
+              </p>
+              <h3>Sharpe framing</h3>
+              <p>
+                The return a strategy needs = minimum Sharpe ratio × portfolio volatility. At 15–30% volatility: CFDs
+                (Sharpe 1.5) need 22.5–45% a year, US stocks long/short (Sharpe 2) 30–60%, options (Sharpe ≈3.3)
+                50–100%.
+              </p>
+            </section>
+
+            <!-- 10 -->
+            <section id="week" class="card panel guide-sec">
+              <h2>10. This week: the weekly routine</h2>
+              <figure class="shot">
+                <img
+                  src="assets/guide/routine.webp"
+                  alt="This week page with progress bar and the first steps"
+                  loading="lazy"
+                  width="1100"
+                  height="900"
+                />
+                <figcaption>Seven steps, each with its status and what to look at.</figcaption>
+              </figure>
+              <p>
+                The course's retail routine takes about 8–12 hours a week. The page lays it out in order with our
+                suggested split (about 10 hours): enter the reports (0.5 h) → Macro Desk (1.5 h) → Macro ideas (0.5 h) →
+                Screener (1.5 h) → two new ideas (4 h) → review open ideas and catalysts (1 h) → portfolio (1 h). Tick a
+                step when it is done; the ticks start fresh every Monday.
+              </p>
+            </section>
+
+            <!-- 11 -->
+            <section id="data" class="card panel guide-sec">
+              <h2>11. Where the data comes from and when it updates</h2>
+              <ol class="flow flow-data">
+                <li>
+                  <div>
+                    <b>Free sources</b
+                    ><span
+                      >FRED / ALFRED, Yahoo Finance, Eurostat, OECD, University of Michigan, SEC EDGAR, central-bank
+                      calendars</span
+                    >
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <b>Your hand-entered reports</b><span>ISM, NFIB, China PMIs in <code>data/manual/*.csv</code></span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <b>Daily update</b
+                    ><span>every day at 22:23 UTC (after the US close), and whenever you change a manual file</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <b>This website</b><span>every page rebuilt; the last good copy is kept if a source fails</span>
+                  </div>
+                </li>
+              </ol>
+              <h3>Data health</h3>
+              <figure class="shot">
+                <img
+                  src="assets/guide/health.webp"
+                  alt="Data health page with tiles and the list of hand-entered files"
+                  loading="lazy"
+                  width="1100"
+                  height="800"
+                />
+                <figcaption>Data health: one place to see if anything is old or broken.</figcaption>
+              </figure>
+              <ul class="guide-points">
+                <li>
+                  <span class="badge good"><span class="dot">✓</span>OK</span> fresh;
+                  <span class="badge warning"><span class="dot">!</span>Stale</span> older than expected;
+                  <span class="badge serious"><span class="dot">!</span>Fetch failed</span> today's download failed and
+                  the last good copy is used (usually fixes itself the next day);
+                  <span class="badge critical"><span class="dot">×</span>No data</span> nothing yet.
+                </li>
+                <li>
+                  For the hand-entered files: <b>Up to date</b>, <b>New report out</b> (a report is published and
+                  waiting for you), <b>Awaiting data</b> (missing for too long: the indicator is left out of the bias,
+                  never guessed).
+                </li>
+              </ul>
+            </section>
+
+            <!-- 12 -->
+            <section id="manual" class="card panel guide-sec">
+              <h2>12. Entering the hand-entered reports</h2>
+              <p>
+                Five files, one row per month. The <a href="calendar.html">Calendar</a> and
+                <a href="routine.html">This week</a> tell you when a new report is out.
+              </p>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <thead>
+                    <tr>
+                      <th>File</th>
+                      <th>Report</th>
+                      <th>Published</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>ism_manufacturing.csv</code></td>
+                      <td>ISM Manufacturing PMI and its sub-indices (ismworld.org)</td>
+                      <td>1st business day of the month</td>
+                    </tr>
+                    <tr>
+                      <td><code>ism_services.csv</code></td>
+                      <td>ISM Services PMI and its sub-indices</td>
+                      <td>3rd business day</td>
+                    </tr>
+                    <tr>
+                      <td><code>ism_industries.csv</code></td>
+                      <td>the industries ISM lists as growing / contracting, with comments</td>
+                      <td>with each ISM report</td>
+                    </tr>
+                    <tr>
+                      <td><code>nfib_sbet.csv</code></td>
+                      <td>NFIB Small Business Optimism and its components</td>
+                      <td>2nd Tuesday</td>
+                    </tr>
+                    <tr>
+                      <td><code>china_pmi.csv</code></td>
+                      <td>China PMIs: official NBS and private RatingDog</td>
+                      <td>end of month / 1st–3rd business day</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <ol class="steps guide-steps">
+                <li>
+                  On GitHub, open the repository → folder <code>data/manual</code> → the file (for example
+                  <code>ism_manufacturing.csv</code>).
+                </li>
+                <li>Click the pencil icon (<b>Edit this file</b>).</li>
+                <li>
+                  Add one line at the end for the new month, in the same order as the header line, e.g.
+                  <code>2026-10,52.1,53.4,…</code>. The month is written <code>YYYY-MM</code>; leave a value empty if
+                  you do not have it.
+                </li>
+                <li>Click <b>Commit changes…</b> and then <b>Commit changes</b>.</li>
+                <li>
+                  The site rebuilds in a few minutes. If a value is wrong (wrong month format, out of range, duplicate
+                  month), the update run turns red, GitHub e-mails you, and <a href="health.html">Data health</a> shows
+                  the line and what is wrong.
+                </li>
+              </ol>
+            </section>
+
+            <!-- 13 -->
+            <section id="storage" class="card panel guide-sec">
+              <h2>13. What is saved where</h2>
+              <div class="scroll-x">
+                <table class="data guide-table">
+                  <thead>
+                    <tr>
+                      <th>What</th>
+                      <th>Where</th>
+                      <th>Who sees it</th>
+                      <th>How to move it</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Macro Desk overrides</td>
+                      <td>this browser</td>
+                      <td>only you, on this device</td>
+                      <td>–</td>
+                    </tr>
+                    <tr>
+                      <td>Trade ideas (drafts)</td>
+                      <td>this browser</td>
+                      <td>only you, on this device</td>
+                      <td>Ideas → Export / Import</td>
+                    </tr>
+                    <tr>
+                      <td>Published ideas</td>
+                      <td>the repository (<code>data/ideas/</code>)</td>
+                      <td>everyone (the repository is public)</td>
+                      <td>automatic</td>
+                    </tr>
+                    <tr>
+                      <td>Portfolio books</td>
+                      <td>this browser</td>
+                      <td>only you, on this device</td>
+                      <td>Portfolio → Export / Import</td>
+                    </tr>
+                    <tr>
+                      <td>This week's ticks</td>
+                      <td>this browser</td>
+                      <td>only you</td>
+                      <td>–</td>
+                    </tr>
+                    <tr>
+                      <td>Hand-entered reports</td>
+                      <td>the repository (<code>data/manual/</code>)</td>
+                      <td>everyone</td>
+                      <td>automatic</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p class="section-note">
+                Clearing your browser's site data, or using a private window, removes what is kept "in this browser":
+                export your ideas and books now and then.
+              </p>
+            </section>
+
+            <!-- 14 -->
+            <section id="glossary" class="card panel guide-sec">
+              <h2>14. Glossary</h2>
+              <p>Every term used on the site. Type to filter.</p>
+              <div class="widget-plain" data-widget="glossary"></div>
+            </section>
+
+            <!-- 15 -->
+            <section id="faq" class="card panel guide-sec">
+              <h2>15. Questions</h2>
+              <details class="faq">
+                <summary>Does the site tell me what to buy?</summary>
+                <p>
+                  No. Every automatic reading is a first reading of the course's rules, with the reason shown. You
+                  decide, and you can override the macro scores and every target assumption.
+                </p>
+              </details>
+              <details class="faq">
+                <summary>A number looks wrong. What do I do?</summary>
+                <p>
+                  Check its date and the data-check tags. Open <a href="health.html">Data health</a> to see whether the
+                  source failed today. Then check the company's own filings (the trade-idea page links to SEC filings
+                  and Yahoo Finance). Free data has errors; the checks catch many, not all.
+                </p>
+              </details>
+              <details class="faq">
+                <summary>Why is an indicator "awaiting data"?</summary>
+                <p>
+                  Its latest report is missing (for hand-entered ones: not entered yet). It is left out of the bias
+                  until the data arrives; the site never fills the gap with a guess or a substitute series.
+                </p>
+              </details>
+              <details class="faq">
+                <summary>My ideas disappeared.</summary>
+                <p>
+                  Ideas that were never published live only in the browser where you wrote them. Open the site in that
+                  browser, or import the file you exported. Publishing an idea keeps a copy in the repository.
+                </p>
+              </details>
+              <details class="faq">
+                <summary>Why does my stock not have a page?</summary>
+                <p>
+                  Pages exist for US-listed stocks above $2 billion with analyst estimates (the Screener's universe).
+                  Smaller or very new stocks are not covered.
+                </p>
+              </details>
+              <details class="faq">
+                <summary>Why are some numbers marked "(tune)" in the method notes?</summary>
+                <p>
+                  The course gives many rules but not every cut-off. Where we had to choose a number (for example "top
+                  quarter of the sector"), it is marked as our choice and can be changed.
+                </p>
+              </details>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="disclaimer">Educational tool, not investment advice.</span>
+        <span
+          >Built for the ITPM Professional Trading Masterclass final project. Data: FRED / ALFRED (Federal Reserve Bank
+          of St. Louis), Yahoo Finance, University of Michigan, Eurostat, OECD, and reports entered by hand (ISM, NFIB,
+          NBS, RatingDog / S&amp;P Global).</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>
