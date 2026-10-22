@@ -105,6 +105,18 @@ SCREENER: dict[str, float] = {
     "extreme_growth_pct": 300,  # |EPS growth| above this -> flagged "check"
     "extreme_pe": 200,  # P/E above this -> flagged "check"
     "feed_mismatch_pct": 25,  # Yahoo's two estimate feeds disagree by more than this -> excluded
+    # 2b outliers: positions within the stock's sector (percentiles of clean stocks)
+    "top_pct": 75,  # EG1 and EG2 both at or above -> positive outlier (tune)
+    "bottom_pct": 25,  # both at or below, and negative -> negative outlier (tune)
+    "min_peers": 10,  # fewer clean stocks in a sector -> compare with the whole universe
+    # 2b volatility filter (Anton: realised and implied roughly >= 1.5x VIX)
+    "vol_vs_vix": 1.5,
+    "rv_days": 63,  # realised volatility over ~3 months of trading days (the 1-3 month horizon)
+    "atr_days": 14,
+    "iv_target_days": 45,  # option expiry closest to the middle of the 20-60 day horizon
+    "iv_budget": 400,  # at most this many option chains per run (candidates first)
+    "iv_pause_s": 0.3,  # pause between option downloads (Yahoo throttles bursts)
+    "price_chunk": 200,  # tickers per batch price download
 }
 
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.

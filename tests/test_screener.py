@@ -10,6 +10,8 @@ from pipeline.screener import numbers, yahoo
 from pipeline.screener.build import ScreenerBuilder, status_of
 from pipeline.store import RawCache
 
+OFFLINE_VOL = {"download": lambda batch: None, "option_ticker": lambda sym: None}  # no network in tests
+
 TODAY = date(2026, 10, 22)
 NOW = datetime(2026, 10, 22, 6, 0, tzinfo=UTC)
 P = dict(SCREENER)
@@ -176,7 +178,12 @@ def test_builder_budget_cache_and_fallback(tmp_path):
     cache = RawCache(tmp_path)
     syms = ["A", "B", "C", "D"]
     b = ScreenerBuilder(
-        cache, params={"summary_budget": 3}, screen=fake_screen(syms), get_json=fake_summary_json(), now=NOW
+        cache,
+        params={"summary_budget": 3, "iv_budget": 0},
+        screen=fake_screen(syms),
+        get_json=fake_summary_json(),
+        now=NOW,
+        **OFFLINE_VOL,
     )
     data = b.build(TODAY)
     assert len(data["rows"]) == 4 and data["status"]["estimates"]["downloaded"] == 3
@@ -189,7 +196,12 @@ def test_builder_budget_cache_and_fallback(tmp_path):
 
     later = datetime(2026, 10, 22, 8, 0, tzinfo=UTC)
     b2 = ScreenerBuilder(
-        cache, params={"summary_budget": 1}, screen=broken, get_json=fake_summary_json(), now=later
+        cache,
+        params={"summary_budget": 1, "iv_budget": 0},
+        screen=broken,
+        get_json=fake_summary_json(),
+        now=later,
+        **OFFLINE_VOL,
     )
     data2 = b2.build(TODAY)
     assert data2["status"]["universe"]["status"] == "failed" and len(data2["rows"]) == 4
@@ -204,13 +216,55 @@ def test_builder_stops_after_repeated_failures(tmp_path):
     syms = [f"S{i}" for i in range(10)]
     b = ScreenerBuilder(
         RawCache(tmp_path),
-        params={"summary_fail_stop": 3},
         screen=fake_screen(syms),
         get_json=fake_summary_json(fail=set(syms)),
         now=NOW,
+        params={"summary_fail_stop": 3, "iv_budget": 0},
+        **OFFLINE_VOL,
     )
     data = b.build(TODAY)
     est = data["status"]["estimates"]
     assert est["failed"] == 3 and est["downloaded"] == 0 and "429" in est["error"]
     offline = ScreenerBuilder(RawCache(tmp_path / "empty"), offline=True).build(TODAY)
     assert offline["rows"] == [] and status_of(offline)["status"] == "failed"
+
+
+def test_builder_attaches_volatility_and_the_vix_filter(tmp_path):
+    import numpy as np
+    import pandas as pd
+
+    idx = pd.bdate_range("2026-04-01", "2026-10-21")
+    rng = np.random.default_rng(1)
+
+    def download(batch):
+        frames = {}
+        for sym in batch:
+            daily = 0.005 if sym == "CALM" else 0.03
+            close = 100 * np.exp(np.cumsum(rng.normal(0, daily, len(idx))))
+            frames[sym] = pd.DataFrame({"Close": close, "High": close * 1.01, "Low": close * 0.99}, index=idx)
+        return pd.concat(frames, axis=1)
+
+    class Ticker:
+        options = ["2026-12-04"]
+
+        def option_chain(self, expiry):
+            df = pd.DataFrame({"strike": [95.0, 100.0, 105.0], "bid": 0.0, "ask": 0.0, "lastPrice": 6.0})
+            return type("Chain", (), {"calls": df, "puts": df})
+
+    syms = ["CALM", "WILD"]
+    b = ScreenerBuilder(
+        RawCache(tmp_path),
+        params={"iv_pause_s": 0},
+        screen=fake_screen(syms),
+        get_json=fake_summary_json(),
+        download=download,
+        option_ticker=lambda s: Ticker(),
+        vix=16.0,
+        now=NOW,
+    )
+    data = b.build(TODAY)
+    rows = {r[0]: dict(zip(data["columns"], r, strict=True)) for r in data["rows"]}
+    assert rows["CALM"]["rv"] < 16 * 1.5 < rows["WILD"]["rv"]
+    assert rows["CALM"]["vol_ok"] is False and rows["WILD"]["atr"] > 0
+    assert data["vix"] == 16.0 and data["status"]["prices"]["with_volatility"] == 2
+    assert "categories" in data and sum(c["count"] for c in data["categories"].values()) == 2

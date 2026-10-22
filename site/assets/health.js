@@ -313,6 +313,8 @@ async function main() {
       s.status === "failed"
         ? ` ${s.error}. The Screener shows the previous run.`
         : ` ${s.stocks} stocks, ${s.in_averages} in the sector averages; ${est.downloaded ?? 0} estimate sets downloaded` +
+            (s.prices ? `; volatility for ${s.prices.with_volatility} stocks` : "") +
+            (s.options ? `, ${s.options.downloaded} option chains` : "") +
             (est.failed ? `, ${est.failed} failed (${est.error})` : "") +
             (s.universe && s.universe.status !== "ok"
               ? `; universe: last good copy (${s.universe.error || s.universe.status})`

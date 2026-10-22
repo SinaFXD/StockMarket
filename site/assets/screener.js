@@ -10,6 +10,8 @@ const state = {
   query: "",
   minCap: 2e9,
   hideExcluded: false,
+  cls: "all",
+  volOnly: false,
   sort: { key: "mcap", dir: -1 },
   limit: 150,
 };
@@ -44,13 +46,20 @@ const COLS = [
   ["peg2", "PEG2", fmt.peg, false, "PE2 / EG2 (only with positive growth)"],
   ["rg1", "Sales g1", fmt.pct, true, "Revenue growth, current fiscal year (consensus)"],
   ["eps1_rev90", "EPS1 rev. 90d", fmt.pct, true, "Change in the EPS1 consensus over the last 90 days"],
+  ["pe_prem", "P/E vs sector", fmt.pct, false, "PE1 against the sector median PE1 (premium = money likes it)"],
+  ["rv", "Realised vol", (v) => `${v.toFixed(0)}%`, false, "Annualised volatility of daily returns, last ~3 months"],
+  ["iv", "Implied vol", (v) => `${v.toFixed(0)}%`, false, "At-the-money options, expiry closest to 45 days"],
+  ["volx", "Vol ÷ VIX", (v) => `${v.toFixed(1)}×`, false, "Lower of realised and implied volatility divided by VIX"],
 ];
+// Category tag tone: long candidates blue, short candidates red
+const SIDE_TONE = { long: "tag-pos", short: "tag-neg" };
 
 function excluded(r) {
   return r.flags.some((f) => state.data.checks[f] && state.data.checks[f].excluded);
 }
 
-function view() {
+// Stocks in the chosen sector / industry / size / search, before the category filter.
+function base() {
   const q = state.query.trim().toLowerCase();
   return state.rows.filter(
     (r) =>
@@ -59,6 +68,58 @@ function view() {
       (r.mcap || 0) >= state.minCap &&
       (!state.hideExcluded || !excluded(r)) &&
       (!q || r.t.toLowerCase().includes(q) || (r.name || "").toLowerCase().includes(q)),
+  );
+}
+
+function view(rows) {
+  return rows.filter((r) => (state.cls === "all" || r.cls === state.cls) && (!state.volOnly || r.vol_ok === true));
+}
+
+function typeTag(r) {
+  const c = state.data.categories && state.data.categories[r.cls];
+  if (!c) return null;
+  return el("span", { class: `tag ${SIDE_TONE[c.side] || ""}`, title: c.text, text: c.label });
+}
+
+function categoryBar(rows) {
+  const cats = state.data.categories || {};
+  const order = ["all", "positive", "negative", "post_growth", "turnaround", "value_trap", "boring", "mixed", "loss"];
+  return el(
+    "div",
+    { class: "toolbar" },
+    el(
+      "div",
+      { class: "seg wrap-seg", role: "group", "aria-label": "Stock type" },
+      order
+        .filter((k) => k === "all" || cats[k])
+        .map((k) => {
+          const n = k === "all" ? rows.length : rows.filter((r) => r.cls === k).length;
+          return el("button", {
+            type: "button",
+            "aria-pressed": String(state.cls === k),
+            title: k === "all" ? "" : cats[k].text,
+            text: `${k === "all" ? "All types" : cats[k].label} ${n}`,
+            onclick: () => {
+              state.cls = k;
+              state.limit = 150;
+              renderTable();
+            },
+          });
+        }),
+    ),
+    el(
+      "label",
+      { class: "check" },
+      el("input", {
+        type: "checkbox",
+        checked: state.volOnly,
+        onchange: (ev) => {
+          state.volOnly = ev.target.checked;
+          renderTable();
+        },
+      }),
+      ` Volatility ≥ ${state.data.params.vol_vs_vix}× VIX only${state.data.vix ? ` (VIX ${state.data.vix.toFixed(1)})` : ""}`,
+    ),
   );
 }
 
@@ -159,29 +220,32 @@ function stockTable(rows) {
   const head = el(
     "tr",
     {},
-    [["t", "Stock", null, false, "Ticker, name and industry"], ...COLS, ["flags", "Checks", null, false, ""]].map(
-      ([k, label, , , title]) => {
-        const sortable = k !== "flags";
-        const active = state.sort.key === k;
-        return el(
-          "th",
-          {
-            title,
-            class: sortable ? "sortable" : "",
-            "aria-sort": active ? (dir > 0 ? "ascending" : "descending") : null,
-            style: k === "flags" ? "text-align:left" : null,
-            onclick: sortable
-              ? () => {
-                  state.sort = { key: k, dir: active ? -dir : k === "t" ? 1 : -1 };
-                  render();
-                }
-              : null,
-          },
-          label,
-          active ? (dir > 0 ? " ▲" : " ▼") : "",
-        );
-      },
-    ),
+    [
+      ["t", "Stock", null, false, "Ticker, name and industry"],
+      ["cls", "Type", null, false, "Outlier type against the sector (first reading)"],
+      ...COLS,
+      ["flags", "Why · checks", null, false, ""],
+    ].map(([k, label, , , title]) => {
+      const sortable = k !== "flags" && k !== "cls";
+      const active = state.sort.key === k;
+      return el(
+        "th",
+        {
+          title,
+          class: sortable ? "sortable" : "",
+          "aria-sort": active ? (dir > 0 ? "ascending" : "descending") : null,
+          style: k === "flags" ? "text-align:left" : null,
+          onclick: sortable
+            ? () => {
+                state.sort = { key: k, dir: active ? -dir : k === "t" ? 1 : -1 };
+                render();
+              }
+            : null,
+        },
+        label,
+        active ? (dir > 0 ? " ▲" : " ▼") : "",
+      );
+    }),
   );
   const body = shown.map((r) =>
     el(
@@ -193,12 +257,19 @@ function stockTable(rows) {
         el("b", { text: r.t }),
         el("span", { class: "sub", text: `${r.name || ""}${r.industry ? ` · ${r.industry}` : ""}` }),
       ),
+      el("td", { class: "text-left" }, typeTag(r)),
       ...COLS.map(([k, , f, signed]) => {
         const v = r[k];
         if (v === null || v === undefined) return el("td", { class: "muted", text: "–" });
         return el("td", { class: signed ? (v > 0 ? "up" : v < 0 ? "down" : "") : "", text: f(v) });
       }),
-      el("td", { class: "text" }, ...flagTags(r)),
+      el(
+        "td",
+        { class: "text" },
+        r.why ? el("div", { text: r.why }) : null,
+        r.notes && r.notes.length ? el("div", { class: "sub", text: r.notes.join(" · ") }) : null,
+        ...flagTags(r),
+      ),
     ),
   );
   return el(
@@ -208,7 +279,9 @@ function stockTable(rows) {
     el("p", {
       class: "section-note",
       style: "margin-top:0",
-      text: "Click a column to sort. Grey rows are left out of the averages; hover a check for the reason.",
+      text:
+        "Click a column to sort. Types are a first reading against the sector (top / bottom quarter of EPS growth); " +
+        "grey rows are left out of the averages.",
     }),
     el(
       "div",
@@ -327,9 +400,10 @@ function checksCard() {
 }
 
 function renderTable() {
-  const rows = view();
+  const rows = base();
   document.getElementById("averages").replaceChildren(averagesCard(rows));
-  document.getElementById("table").replaceChildren(stockTable(rows));
+  document.getElementById("types").replaceChildren(categoryBar(rows));
+  document.getElementById("table").replaceChildren(stockTable(view(rows)));
 }
 
 function render() {
@@ -349,11 +423,18 @@ async function main() {
   }
   const cols = state.data.columns;
   state.rows = state.data.rows.map((r) => Object.fromEntries(cols.map((c, i) => [c, r[i]])));
+  const vix = state.data.vix;
+  for (const r of state.rows) {
+    const vols = [r.rv, r.iv].filter((x) => x !== null && x !== undefined);
+    r.volx = vix && vols.length ? Math.min(...vols) / vix : null;
+  }
   const params = new URLSearchParams(location.search);
   if (params.get("sector")) state.sector = params.get("sector");
+  if (params.get("type")) state.cls = params.get("type");
   content.replaceChildren(
     el("div", { id: "controls" }),
     el("div", { id: "averages" }),
+    el("div", { id: "types", style: "margin-top:12px" }),
     el("div", { id: "table" }),
     checksCard(),
   );
