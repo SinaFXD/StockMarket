@@ -37,15 +37,15 @@ def realised(frame: pd.DataFrame, days: int, atr_days: int) -> dict[str, float |
 def download_prices(
     symbols: list[str], chunk: int, download: Callable | None = None
 ) -> dict[str, pd.DataFrame]:
-    """One year of daily bars per symbol, in batches (``yfinance.download``): ~3 months for the realised
-    volatility, the whole year for the trade-idea chart (200-day average, 52-week range)."""
+    """Two years of daily bars per symbol, in batches (``yfinance.download``): ~3 months for the realised
+    volatility, the rest for the trade-idea chart (200-day average, 52-week range) and the Portfolio Lab."""
     if download is None:
         import yfinance as yf
 
         def download(batch):
             return yf.download(
                 batch,
-                period="1y",
+                period="2y",
                 interval="1d",
                 auto_adjust=True,
                 progress=False,

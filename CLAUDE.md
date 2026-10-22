@@ -45,7 +45,7 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   listing each series, last observation, staleness, and fetch status — shown on a "Data health" page.
 
 ## Conventions (established in Phase 0)
-- Commands: `pip install -e ".[dev]"`, `pytest`, `ruff check . && ruff format --check .`,
+- Commands: `pip install -e ".[dev]"`, `pytest`, `node --test tests/js/*.test.mjs`, `ruff check . && ruff format --check .`,
   `python -m pipeline.manual --check`, `python -m pipeline.run [--offline] [--only fred,yahoo]`.
 - New automatic series go in `pipeline/catalog.yaml` (verify the ID live first); tunable thresholds in
   `pipeline/config.py`; manual-file schemas and release calendars in `pipeline/manual/`.
@@ -85,6 +85,13 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   live in the raw cache (`data/raw/screener/prices.json`, `summaries.json`).
 - Ideas start in the browser (`localStorage` `ptm.ideas.v1`); "Publish" opens GitHub's editor to write
   `data/ideas/<T>.md` (public). `python -m pipeline.workbench [--check]` validates / rebuilds `site/data/ideas.json`.
+
+## Conventions (Phase 4)
+- Portfolio Lab is client-side: `site/assets/portfolio-math.js` (pure functions, no DOM) is tested with
+  `node --test tests/js/*.test.mjs` (run in CI and in `update.yml`); `portfolio.js` is the page. Books live in the
+  browser (`localStorage` `ptm.portfolio.v1`, export/import). Method: `docs/09-portfolio-method.md`.
+- Price history comes from `site/data/stocks/<T>.json` (2 years of bars, `SCREENER.chart_days`) and, for ETFs, the
+  published Yahoo series; the benchmark is SPY's adjusted close.
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS

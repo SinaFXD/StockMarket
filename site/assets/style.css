@@ -1869,3 +1869,44 @@ table.targets-table td .tag {
     font-size: 19px;
   }
 }
+
+/* ---------- Portfolio Lab (Phase 4) ---------- */
+.tick-input {
+  width: 7em;
+  text-transform: uppercase;
+}
+
+table.editor td .seg button {
+  min-height: 28px;
+  padding: 3px 10px;
+}
+
+table.corr td {
+  text-align: center;
+  min-width: 3.4em;
+}
+
+table.corr td.corr-out {
+  font-weight: 700;
+}
+
+table.editor td .sub {
+  max-width: 11em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 640px) {
+  table.editor td,
+  table.editor th {
+    padding: 6px;
+  }
+
+  .tick-input {
+    width: 5.5em;
+  }
+
+  table.editor td .sub {
+    max-width: 6.5em;
+  }
+}

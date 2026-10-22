@@ -75,12 +75,16 @@ Done in one part (2026-10-22). Method: `docs/08-workbench-method.md`.
       `data/ideas/<T>.md` through GitHub's editor (public; validated by the workflow, `site/data/ideas.json`).
 - [x] Idea pipeline view (10–15 ideas), status, staleness. (`ideas.html`: review after 7 days, stale after 14,
       target reached, targets against the side, earnings within 7 days.)
-- [ ] Phase exit: green `update.yml` run on `main` with the new pages deployed.
+- [x] Phase exit: green `update.yml` run on `main` with the new pages deployed (2026-10-22, run 17).
 
 ## Phase 4 — Portfolio Lab (lessons 16–21)
-- [ ] Enter current/proposed portfolio; CEW and non-rebalanced backtests; drawdowns.
-- [ ] Portfolio vol (target 15–30%), correlation matrix & rolling correlation (target −0.3..+0.3), beta & beta-adjusted
-      net exposure; position-count guidance by account size; Sharpe/return framing.
+Done in one part (2026-10-22). Method: `docs/09-portfolio-method.md`.
+- [x] Enter current/proposed portfolio; CEW and non-rebalanced backtests; drawdowns. (`portfolio.html`: books in the
+      browser, "add my ideas", 3M–2Y of daily history; price history per stock extended to 2 years.)
+- [x] Portfolio vol (target 15–30%), correlation matrix & rolling correlation (target −0.3..+0.3), beta & beta-adjusted
+      net exposure; position-count guidance by account size; Sharpe/return framing. (Also: risk share per position,
+      beta-adjusted net vs the macro bias, long vs short market-cap tilt.)
+- [ ] Phase exit: green `update.yml` run on `main` with the page deployed.
 
 ## Phase 5 — Macro-driven ideas & ADRs (lessons 34–35)
 - [ ] Map macro signals to sectors/industries (ISM industry lists, commodities → sectors, housing → XHB, consumer).

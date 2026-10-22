@@ -121,17 +121,27 @@ function drawChart(svg, spec, range) {
     t.textContent = r.label;
     nodes.push(t);
   }
-  // x ticks: years
+  // x ticks: years, or months when the chart spans less than ~2.5 years
   const y0 = new Date(t0).getUTCFullYear();
   const y1 = new Date(t1).getUTCFullYear();
-  const every = Math.max(1, Math.ceil((y1 - y0 + 1) / Math.max(2, Math.floor((W - L - R) / 70))));
-  for (let yr = y0 + 1; yr <= y1; yr++) {
-    if ((yr - y0) % every) continue;
-    const tx = x(Date.UTC(yr, 0, 1));
-    if (tx < L + 10 || tx > W - R - 10) continue;
+  const tick = (tx, label) => {
+    if (tx < L + 10 || tx > W - R - 10) return;
     const t = s("text", { x: tx, y: H - 6, "text-anchor": "middle" });
-    t.textContent = String(yr);
+    t.textContent = label;
     nodes.push(t);
+  };
+  if (t1 - t0 < 2.5 * 365 * 86400000) {
+    const months = Math.round((t1 - t0) / (30.4 * 86400000));
+    const every = [1, 2, 3, 6].find((k) => months / k <= Math.max(2, Math.floor((W - L - R) / 55))) || 12;
+    for (let i = 1; ; i++) {
+      const d = new Date(Date.UTC(new Date(t0).getUTCFullYear(), new Date(t0).getUTCMonth() + i, 1));
+      if (d.getTime() > t1) break;
+      if (d.getUTCMonth() % every) continue;
+      tick(x(d.getTime()), d.getUTCMonth() === 0 ? String(d.getUTCFullYear()) : MONTHS[d.getUTCMonth()]);
+    }
+  } else {
+    const every = Math.max(1, Math.ceil((y1 - y0 + 1) / Math.max(2, Math.floor((W - L - R) / 70))));
+    for (let yr = y0 + 1; yr <= y1; yr++) if (!((yr - y0) % every)) tick(x(Date.UTC(yr, 0, 1)), String(yr));
   }
   series.forEach((ser, k) => {
     let d = "";
