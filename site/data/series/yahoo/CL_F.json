@@ -1,4 +1,4 @@
-{"key":"yahoo/CL_F","source":"Yahoo Finance","id":"CL=F","label":"WTI crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/CL%3DF","title":"Crude Oil Dec 26","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-10-22T04:30:26Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/CL_F","source":"Yahoo Finance","id":"CL=F","label":"WTI crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/CL%3DF","title":"Crude Oil Dec 26","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-10-22T04:59:16Z","columns":["date","close","adj_close"],"observations":[
 ["2000-08-23",32.05,32.05],
 ["2000-08-24",31.63,31.63],
 ["2000-08-25",32.05,32.05],

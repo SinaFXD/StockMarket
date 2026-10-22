@@ -1,4 +1,4 @@
-{"key":"fred/IRLTLT01JPM156N","source":"FRED","id":"IRLTLT01JPM156N","label":"Japan 10y government yield","block":"international","url":"https://fred.stlouisfed.org/series/IRLTLT01JPM156N","title":"Interest Rates: Long-Term Government Bond Yields: 10-Year: Main (Including Benchmark) for Japan","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:49:32-05","fetched_at":"2026-10-22T04:30:26Z","columns":["date","value"],"observations":[
+{"key":"fred/IRLTLT01JPM156N","source":"FRED","id":"IRLTLT01JPM156N","label":"Japan 10y government yield","block":"international","url":"https://fred.stlouisfed.org/series/IRLTLT01JPM156N","title":"Interest Rates: Long-Term Government Bond Yields: 10-Year: Main (Including Benchmark) for Japan","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:49:32-05","fetched_at":"2026-10-22T04:59:16Z","columns":["date","value"],"observations":[
 ["1989-01-01",4.8],
 ["1989-02-01",4.894],
 ["1989-03-01",5.147],

@@ -1,4 +1,4 @@
-{"key":"fred/WALCL","source":"FRED","id":"WALCL","label":"Fed balance sheet (total assets)","block":"money_markets","url":"https://fred.stlouisfed.org/series/WALCL","title":"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level","units":"Millions of U.S. Dollars","units_short":"Mil. of U.S. $","frequency":"weekly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:32:32-05","fetched_at":"2026-10-21T00:42:53Z","columns":["date","value"],"observations":[
+{"key":"fred/WALCL","source":"FRED","id":"WALCL","label":"Fed balance sheet (total assets)","block":"money_markets","url":"https://fred.stlouisfed.org/series/WALCL","title":"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level","units":"Millions of U.S. Dollars","units_short":"Mil. of U.S. $","frequency":"weekly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 15:32:32-05","fetched_at":"2026-10-22T04:59:16Z","columns":["date","value"],"observations":[
 ["2002-12-18",719542],
 ["2002-12-25",732059],
 ["2003-01-01",730994],

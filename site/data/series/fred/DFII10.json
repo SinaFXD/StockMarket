@@ -1,4 +1,4 @@
-{"key":"fred/DFII10","source":"FRED","id":"DFII10","label":"US 10y TIPS real yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DFII10","title":"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis, Inflation-Indexed","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-20 15:16:32-05","fetched_at":"2026-10-21T00:42:49Z","columns":["date","value"],"observations":[
+{"key":"fred/DFII10","source":"FRED","id":"DFII10","label":"US 10y TIPS real yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DFII10","title":"Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity, Quoted on an Investment Basis, Inflation-Indexed","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-21 15:29:30-05","fetched_at":"2026-10-22T04:59:16Z","columns":["date","value"],"observations":[
 ["2003-01-02",2.43],
 ["2003-01-03",2.43],
 ["2003-01-06",2.46],
@@ -5951,5 +5951,6 @@
 ["2026-10-14",2.84],
 ["2026-10-15",2.78],
 ["2026-10-16",2.74],
-["2026-10-19",2.8]
+["2026-10-19",2.8],
+["2026-10-20",2.77]
 ]}
