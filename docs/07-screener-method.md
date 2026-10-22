@@ -81,7 +81,7 @@ premium or discount to the sector median ≥ 20% ("money likes it") *(tune)*.
 ## Volatility filter (2b)
 Anton: realised and implied volatility roughly **≥ 1.5× VIX**, so a stock can move enough within 20–60 days.
 - Realised: annualised standard deviation of daily log returns over the last **63** trading days (~3 months) and
-  the **14**-day ATR in % of the price, from one batch download of six months of daily bars for the universe.
+  the **14**-day ATR in % of the price, from one batch download of one year of daily bars (since Phase 3; the last 63 days are used here) for the universe.
 - Implied: at-the-money options (the 2 strikes nearest the price, calls and puts, median) of the expiry closest to
   **45** days. Yahoo's `impliedVolatility` field is unusable when bid/ask are zero (outside market hours), so the
   volatility is backed out with Black-Scholes from the mid price, else the last trade, with the 3-month T-bill rate.
@@ -120,4 +120,5 @@ Lesson 29's backward-looking step, from the companies' own XBRL filings (`pipeli
   (clean stocks only).
 
 ## Next
-Phase 3: the trade-idea template pages (lessons 30–33).
+Phase 3, the trade-idea template pages (lessons 30–33), is described in `docs/08-workbench-method.md`. Since Phase 3
+the price download covers one year (for the chart) and the rows carry `r3m`, the 3-month return.

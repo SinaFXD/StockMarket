@@ -109,6 +109,9 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
         (manual_dir / "ism_manufacturing.csv").read_text()
         + "2026-09,49.1,48.9,50.2,45.3,52,47.9,45.1,62.1,46,47,49.5\n"
     )
+    ideas_dir = tmp_path / "ideas"
+    ideas_dir.mkdir()
+    (ideas_dir / "ABC.md").write_text("---\nside: short\nstatus: active\n---\n## Business\nWidgets.\n")
     catalog = tmp_path / "catalog.yaml"
     catalog.write_text("fred:\n  - {id: DGS10, label: US 10y, block: money_markets}\n")
     monkeypatch.setattr(run.fred, "FredClient", lambda key: FakeFredClient(fail=True))
@@ -126,6 +129,8 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
             str(manual_dir),
             "--catalog",
             str(catalog),
+            "--ideas-dir",
+            str(ideas_dir),
             "--only",
             "fred",  # calendar and screener use their (empty) caches: no network in tests
         ]
@@ -141,6 +146,9 @@ def test_main_writes_health_and_manual_json_without_leaking_the_key(tmp_path, mo
     site_ism = json.loads((tmp_path / "site" / "manual" / "ism_manufacturing.json").read_text())
     assert site_ism["rows"][0][:2] == ["2026-09", 49.1]
     assert health["screener"]["stocks"] == 0 and health["calendar"]["events"] > 0
+    assert health["ideas"] == {"status": "ok", "ideas": 1, "errors": 0, "warnings": 0}
+    ideas = json.loads((tmp_path / "site" / "ideas.json").read_text())
+    assert ideas["ideas"][0]["side"] == "short" and ideas["ideas"][0]["business"] == "Widgets."
 
 
 def test_repeated_problems_become_one_annotation(monkeypatch, capsys, tmp_path):

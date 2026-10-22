@@ -1,0 +1,30 @@
+{
+ "ticker": "CRWD",
+ "side": "long",
+ "status": "active",
+ "opened": "2026-10-20",
+ "updated": "2026-10-22",
+ "structure": "margin",
+ "entry_price": 239.34,
+ "horizon_days": 45,
+ "assumptions": {
+  "pe": 120.0,
+  "sales2": 7500000000.0
+ },
+ "business": "Cloud cybersecurity platform (Falcon), sold as subscriptions.",
+ "kpis": "ARR growth above 20%.\nNet new ARR re-accelerating; free cash flow margin ~30%.",
+ "drivers": "Security budgets; peers' results (PANW, ZS) in November.",
+ "timing": "Above the 50- and 200-day averages; buy pullbacks to the 50-day.",
+ "structure_why": "Margin: liquid large cap, 45-day horizon.",
+ "notes": "",
+ "catalysts": [
+  {
+   "date": "2026-11-10",
+   "text": "Investor briefing"
+  },
+  {
+   "date": null,
+   "text": "Possible S&P 500 weight increase"
+  }
+ ]
+}

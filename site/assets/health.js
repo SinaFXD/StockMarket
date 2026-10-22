@@ -323,7 +323,27 @@ async function main() {
             (est.failed ? `, ${est.failed} failed (${est.error})` : "") +
             (s.universe && s.universe.status !== "ok"
               ? `; universe: last good copy (${s.universe.error || s.universe.status})`
+              : "") +
+            (s.workbench
+              ? `; ${s.workbench.pages} trade-idea pages (${s.workbench.with_prices} with a price chart)`
               : ""),
+    );
+  }
+  if (health.ideas) {
+    const d = health.ideas;
+    info.append(
+      el("br"),
+      "Saved ideas (data/ideas): ",
+      badge(
+        d.status === "ok"
+          ? { label: "OK", tone: "good", icon: "\u2713" }
+          : { label: d.error ? "Not read" : "Errors", tone: "critical", icon: "\u00d7" },
+      ),
+      d.error
+        ? ` ${d.error}`
+        : ` ${d.ideas} idea file(s)` +
+            (d.errors ? `, ${d.errors} error(s): see the Ideas page` : "") +
+            (d.warnings ? `, ${d.warnings} warning(s)` : ""),
     );
   }
   renderTiles(health);

@@ -19,6 +19,7 @@ from typing import Any
 from ..config import SCREENER
 from ..http import HttpClient, redact
 from ..store import RawCache, iso, read_series, utc_now, write_json
+from ..workbench import targets as workbench_targets
 from . import edgar, evidence, numbers, outliers, volatility, yahoo
 
 log = logging.getLogger("pipeline.screener")
@@ -55,6 +56,7 @@ COLUMNS = [
     "atr",
     "iv",
     "vol_ok",
+    "r3m",
     "acc_fy",
     *evidence.METRICS,
 ]
@@ -95,6 +97,11 @@ class ScreenerBuilder:
         self._sec_http = sec_http
         self.now = now or utc_now()
         self.status: dict[str, Any] = {}
+        self._bars: dict[str, dict[str, list]] | None = None
+        self.quotes: list[dict[str, Any]] = []
+        self.rows: list[dict[str, Any]] = []
+        self.summary_store: dict[str, dict[str, Any]] = {}
+        self.accounts: dict[str, dict[str, Any]] = {}
 
     # -- universe ----------------------------------------------------------------------------------------
     def universe(self) -> list[dict[str, Any]]:
@@ -172,12 +179,16 @@ class ScreenerBuilder:
         if not self.offline and symbols:
             try:
                 frames = volatility.download_prices(symbols, int(self.p["price_chunk"]), self._download)
+                bars = self.bars()
                 for sym, frame in frames.items():
                     store[sym] = {
                         **volatility.realised(frame, int(self.p["rv_days"]), int(self.p["atr_days"])),
                         "date": frame.index[-1].date().isoformat(),
                     }
+                    bars[sym] = volatility.compact_bars(frame, int(self.p["chart_days"]))
                 self.cache.save("screener", "realised", store, self.now)
+                if frames:
+                    self.cache.save("screener", "prices", bars, self.now)
             except Exception as exc:  # keep yesterday's numbers
                 error = redact(f"{type(exc).__name__}: {exc}")[:300]
                 log.warning("screener prices: %s", error)
@@ -187,6 +198,13 @@ class ScreenerBuilder:
             "error": error,
         }
         return store
+
+    def bars(self) -> dict[str, dict[str, list]]:
+        """Daily bars per stock for the trade-idea chart (last good copy)."""
+        if self._bars is None:
+            hit = self.cache.load("screener", "prices")
+            self._bars = dict(hit[0]) if hit else {}
+        return self._bars
 
     def implied(self, rows: list[dict[str, Any]], today: date) -> dict[str, dict[str, Any]]:
         hit = self.cache.load("screener", "implied")
@@ -238,6 +256,7 @@ class ScreenerBuilder:
             atr = (real.get(r["t"]) or {}).get("atr")
             iv = (imp.get(r["t"]) or {}).get("iv")
             r["rv"], r["atr"], r["iv"] = rv, atr, iv
+            r["r3m"] = workbench_targets.period_return((self.bars().get(r["t"]) or {}).get("c"), 63)
             ratios = [x / self.vix for x in (rv, iv) if x is not None and self.vix]
             r["vol_ok"] = None if not ratios else all(x >= need for x in ratios)
 
@@ -286,6 +305,8 @@ class ScreenerBuilder:
             acc = edgar.accounts(index, cik) if cik else {}
             m = evidence.compute(acc, r["mcap"], r["sector"])
             r["acc_fy"] = m.get("fy_end")
+            if acc:
+                self.accounts[r["t"]] = acc
             for k in evidence.METRICS:
                 r[k] = m.get(k)
             found += bool(m.get("fy_end"))
@@ -293,12 +314,14 @@ class ScreenerBuilder:
 
     # -- build -------------------------------------------------------------------------------------------
     def build(self, today: date) -> dict[str, Any]:
-        quotes = self.universe()
+        quotes = self.quotes = self.universe()
         store = self.summaries([q["symbol"] for q in quotes if q.get("symbol")])
+        self.summary_store = store
         rows = []
         for q in quotes:
             item = store.get(q.get("symbol")) or {}
             rows.append(numbers.compute(q, item.get("data"), item.get("fetched_at"), today, self.p))
+        self.rows = rows
         numbers.mark_duplicates(rows)
         medians = outliers.classify(rows, self.p)
         self.attach_volatility(rows, today)

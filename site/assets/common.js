@@ -20,6 +20,11 @@ export function el(tag, attrs = {}, ...children) {
   return node;
 }
 
+// replaceChildren that skips null / false / undefined (optional parts of a page)
+export function setChildren(node, ...children) {
+  node.replaceChildren(...children.flat().filter((c) => c !== null && c !== undefined && c !== false));
+}
+
 export async function loadJSON(path) {
   const resp = await fetch(path, { cache: "no-cache" });
   if (!resp.ok) throw new Error(`${path}: HTTP ${resp.status}`);
