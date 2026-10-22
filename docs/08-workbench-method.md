@@ -93,7 +93,7 @@ of the price; earnings within 7 days.
 - Yahoo `quoteSummary` (one call per stock, already made for the screener) now also reads `defaultKeyStatistics`
   (shares, short interest, holdings, beta) and `financialData` (analysts' targets and rating), the quarter estimate
   (`0q`), the sales range and the company profile.
-- The screener's price download now takes one year of daily bars; the last **260** are kept in the raw cache
+- The screener's price download takes two years of daily bars (one year in Phase 3); the last **520** are kept in the raw cache
   (`data/raw/screener/prices.json`) for the chart.
 - `site/data/stocks/*.json` (~2,000 files) are rebuilt every run and published with the site but **not committed**
   (the workflow excludes them); their inputs stay in the raw cache, so a failed download keeps the last good copy.

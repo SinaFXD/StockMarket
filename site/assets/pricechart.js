@@ -8,6 +8,7 @@ export const RANGES = [
   ["3M", 63],
   ["6M", 126],
   ["1Y", 260],
+  ["2Y", 520],
 ];
 const DAY = 86400000;
 

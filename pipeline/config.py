@@ -118,7 +118,7 @@ SCREENER: dict[str, float] = {
     "iv_budget": 400,  # at most this many option chains per run (candidates first)
     "iv_pause_s": 0.3,  # pause between option downloads (Yahoo throttles bursts)
     "price_chunk": 200,  # tickers per batch price download
-    "chart_days": 260,  # daily bars kept per stock for the trade-idea chart (~1 year: 200-day average)
+    "chart_days": 520,  # daily bars kept per stock: ~2 years (trade-idea chart, Portfolio Lab backtests)
 }
 
 # Phase 3: Trade Idea Workbench (lessons 30-33). Rules recorded in docs/08-workbench-method.md.

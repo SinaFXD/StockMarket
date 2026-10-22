@@ -33,6 +33,8 @@ jobs:
           ruff format --check .
       - name: Unit tests
         run: python -m pytest
+      - name: JavaScript unit tests (site arithmetic)
+        run: node --test tests/js/*.test.mjs
       - name: Validate data/manual/*.csv
         run: python -m pipeline.manual --check
       - name: Pipeline dry run (real sources, nothing committed)
