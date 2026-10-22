@@ -103,6 +103,10 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 - "This week" (`routine.html`): `site/assets/routine-logic.js` (pure, `tests/js/routine.test.mjs`) derives each step's
   status from the published files and the browser's ideas / portfolio; `docs/11-weekly-routine.md` lists the rules.
   A new page or check that belongs to the weekly process should get a line there.
+- The "How to use" guide (`guide.html` + `site/assets/guide.js`) explains every page, term and rule for a newcomer;
+  its tools reuse the site's arithmetic (`workbench.js`) and repeat the type rules of `screener/outliers.py` (keep in
+  sync). When a page or rule changes, update the guide's section, glossary and, if the layout changed, its screenshot
+  in `site/assets/guide/` (WebP, ~1100 px wide).
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS

@@ -100,3 +100,6 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
 ## After the roadmap
 - [x] "This week" page (`routine.html`, 2026-10-22): the weekly routine in the course's order with what needs
       attention from the live data, and a weekly checklist. Method: `docs/11-weekly-routine.md`.
+- [x] "How to use" guide (`guide.html`, "Guide" in the menu, 2026-10-22): the whole site from zero, page by page, with
+      screenshots (`site/assets/guide/`), six live teaching tools (bias, 11 numbers, types, price targets, expected
+      move, correlation) and a searchable glossary.
