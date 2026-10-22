@@ -183,6 +183,11 @@ REGIME: dict[str, float] = {
     "taylor_w_gap": 0.5,
     "taylor_start": "1990-01",
     "curve_years": 10,  # weekly Treasury curves kept for the comparison slider
+    # Level check: how hot the economy is (levels), next to the regime (direction). Our first reading, tune.
+    "level_inflation_pp": 0.5,  # core PCE inflation >= target + 0.5 pp = hot, <= target - 0.5 = cold
+    "level_gap_pp": 0.5,  # output gap >= +0.5% = hot (above potential), <= -0.5% = cold
+    "level_unemployment_pp": 0.25,  # unemployment <= natural rate - 0.25 = hot (tight), >= + 0.25 = cold
+    "level_policy_pp": 1.0,  # fed funds below the Taylor rule by >= 1 pp = loose, above by >= 1 pp = tight
 }
 
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.

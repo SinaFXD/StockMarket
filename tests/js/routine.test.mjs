@@ -123,9 +123,13 @@ test("macro step: one line from the Regime page when it is published", () => {
   const latest = { bias: { label: "Net long", score: 0.28, used: 19, total: 19 }, what_changed: [], alerts: [] };
   const regime = {
     now: { label: "Recovery", borderline: true },
+    levels: { verdict: "hot" },
     recession: { latest: { for_month: "2027-09", prob: 13.55 } },
   };
   const s = R.macroStep(latest, regime);
-  assert.equal(s.items[1], "Regime: Recovery (close to a line); recession odds for 2027-09: 13.6% (Regime page).");
+  assert.equal(
+    s.items[1],
+    "Regime: Recovery (close to a line); levels running hot; recession odds for 2027-09: 13.6% (Regime page).",
+  );
   assert.equal(R.macroStep(latest).items.length, 1);
 });

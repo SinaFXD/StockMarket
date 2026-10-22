@@ -70,6 +70,7 @@ fred:
   - {id: PCEPILFE, label: "Core PCE price index", block: confirmers, vintages: true}
   - {id: GDPPOT, label: "Real potential GDP (CBO)", block: confirmers, max_age_days: 800}
   - {id: USREC, label: "NBER recession indicator", block: confirmers}
+  - {id: NROU, label: "Natural rate of unemployment (CBO)", block: confirmers, max_age_days: 800}
 
 yahoo:
   # --- Volatility & commodity futures ---

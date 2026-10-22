@@ -29,6 +29,7 @@ from ..workbench.stock import SECTOR_ETF
 
 CFNAI, CORE, SPREAD, USREC = "fred/CFNAI", "fred/PCEPILFE", "fred/T10Y3M", "fred/USREC"
 FEDFUNDS, GDP, POTENTIAL = "fred/FEDFUNDS", "fred/GDPC1", "fred/GDPPOT"
+CORE_CPI, UNRATE, NROU = "fred/CPILFESL", "fred/UNRATE", "fred/NROU"
 CURVE = [
     ("1M", "DGS1MO", 1 / 12),
     ("3M", "DGS3MO", 0.25),
@@ -89,6 +90,8 @@ def inflation_momentum(core: pd.Series, p: dict) -> pd.Series:
 
 
 def yoy(s: pd.Series) -> pd.Series:
+    if s.empty:
+        return s
     m = _monthly(s).asfreq("MS")
     return ((m / m.shift(12) - 1) * 100).dropna()
 
@@ -355,11 +358,12 @@ def build(
             continue
         assets.append({"id": sym, "label": label, **by_regime(hist, px, p)})
     counts = {g: sum(1 for r in hist if r["regime"] == g) for g in REGIMES}
+    now, tay = reading(view, p), taylor(view, p)
     return {
         "generated_at": iso(utc_now()),
         "params": p,
         "regimes": {k: {"label": v[0], "text": v[1]} for k, v in REGIMES.items()},
-        "now": reading(view, p),
+        "now": now,
         "trail": trail(view, p),
         "history": [[r["month"], r["regime"], r["revised"]] for r in hist],
         "counts": counts,
@@ -367,8 +371,109 @@ def build(
         "sectors": sectors,
         "assets": assets,
         "recession": recession(view, today, p),
-        "taylor": taylor(view, p),
+        "taylor": tay,
+        "levels": levels(view, p, tay),
+        "cpi_check": cpi_check(view, p, now),
         "curve": curve(view, today, p),
+    }
+
+
+def _band(value: float, band: float, hot_when_high: bool = True) -> str:
+    if value >= band:
+        return "hot" if hot_when_high else "cold"
+    if value <= -band:
+        return "cold" if hot_when_high else "hot"
+    return "neutral"
+
+
+def levels(view: View, p: dict, tay: dict[str, Any] | None) -> dict[str, Any] | None:
+    """How hot the economy is (levels), next to the regime map (directions): inflation against the Fed's 2% target,
+    the output gap, unemployment against CBO's natural rate. The Fed's stance against the Taylor rule is shown as
+    its response, not counted."""
+    items = []
+    infl = yoy(view.series(CORE))
+    if not infl.empty:
+        gap = float(infl.iloc[-1]) - p["taylor_target"]
+        items.append(
+            {
+                "id": "inflation",
+                "name": "Core PCE inflation vs the 2% target",
+                "value": round(float(infl.iloc[-1]), 2),
+                "vs": round(gap, 2),
+                "unit": "%",
+                "month": infl.index[-1].strftime("%Y-%m"),
+                "state": _band(gap, p["level_inflation_pp"]),
+            }
+        )
+    if tay:
+        g = tay["latest"]["gap"]
+        items.append(
+            {
+                "id": "output_gap",
+                "name": "Output gap (real GDP vs CBO potential)",
+                "value": g,
+                "vs": g,
+                "unit": "%",
+                "month": tay["latest"]["gap_quarter"],
+                "state": _band(g, p["level_gap_pp"]),
+            }
+        )
+    un, nat = view.series(UNRATE), view.series(NROU)
+    if not un.empty and not nat.empty:
+        natural = (
+            float(nat[nat.index <= un.index[-1]].iloc[-1]) if (nat.index <= un.index[-1]).any() else None
+        )
+        if natural is not None:
+            d = float(un.iloc[-1]) - natural
+            items.append(
+                {
+                    "id": "unemployment",
+                    "name": "Unemployment vs CBO's natural rate",
+                    "value": round(float(un.iloc[-1]), 2),
+                    "vs": round(d, 2),
+                    "natural": round(natural, 2),
+                    "unit": "%",
+                    "month": un.index[-1].strftime("%Y-%m"),
+                    "state": _band(d, p["level_unemployment_pp"], hot_when_high=False),
+                }
+            )
+    if not items:
+        return None
+    hot = sum(i["state"] == "hot" for i in items)
+    cold = sum(i["state"] == "cold" for i in items)
+    verdict = "hot" if hot >= 2 and hot > cold else "cold" if cold >= 2 and cold > hot else "balanced"
+    policy = None
+    if tay and tay["latest"].get("gap_vs_rule") is not None:
+        d = tay["latest"]["gap_vs_rule"]
+        policy = {
+            "fed_funds": tay["latest"]["fed_funds"],
+            "taylor": tay["latest"]["taylor"],
+            "vs": d,
+            "state": "loose"
+            if d <= -p["level_policy_pp"]
+            else "tight"
+            if d >= p["level_policy_pp"]
+            else "neutral",
+        }
+    return {"items": items, "hot": hot, "cold": cold, "verdict": verdict, "policy": policy}
+
+
+def cpi_check(view: View, p: dict, now: dict[str, Any] | None) -> dict[str, Any] | None:
+    """Core CPI comes out about two weeks before core PCE: the same inflation momentum on core CPI, and the regime it
+    would give with today's growth reading. A disagreement warns that the next PCE release may flip the regime."""
+    mom = inflation_momentum(view.series(CORE_CPI), p)
+    if mom.empty or not now:
+        return None
+    month, value = mom.index[-1].strftime("%Y-%m"), float(mom.iloc[-1])
+    regime = classify(now["growth"], value, p)
+    rising = value >= 0
+    return {
+        "month": month,
+        "momentum": round(value, 3),
+        "rising": rising,
+        "regime": regime,
+        "agrees": rising == (now["inflation"] >= 0),
+        "newer": month > now["month"],
     }
 
 
@@ -380,5 +485,6 @@ def status_of(data: dict[str, Any]) -> dict[str, Any]:
         "regime": now.get("label"),
         "month": now.get("month"),
         "recession_prob": rec.get("prob"),
+        "levels": (data.get("levels") or {}).get("verdict"),
         "history_months": len(data.get("history") or []),
     }

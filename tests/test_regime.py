@@ -189,3 +189,43 @@ def test_build_writes_every_part(tmp_path):
     ] == 0
     assert out["recession"]["latest"]["prob"] > 0 and out["taylor"] is None and out["curve"] is None
     assert regime.status_of(out)["regime"] == "Recovery"
+
+
+def test_level_check_counts_hot_and_cold_levels():
+    core = index([3.0] * 30)  # 3% inflation: 1 pp above target -> hot
+    un = monthly([4.0] * 6)  # 0.4 below the natural rate -> hot (tight)
+    nat = pd.Series([4.4, 4.4], index=pd.to_datetime(["2026-04-01", "2026-07-01"]))
+    lib = library(
+        {"fred/PCEPILFE": (core, "monthly"), "fred/UNRATE": (un, "monthly"), "fred/NROU": (nat, "quarterly")}
+    )
+    tay = {
+        "latest": {
+            "gap": 0.2,
+            "gap_quarter": "2026-04",
+            "fed_funds": 3.75,
+            "taylor": 6.21,
+            "gap_vs_rule": -2.46,
+        }
+    }
+    out = regime.levels(lib.view(TODAY), P, tay)
+    states = {i["id"]: i["state"] for i in out["items"]}
+    assert states == {"inflation": "hot", "output_gap": "neutral", "unemployment": "hot"}
+    assert out["verdict"] == "hot" and out["policy"]["state"] == "loose"
+    un_item = next(i for i in out["items"] if i["id"] == "unemployment")
+    assert un_item["natural"] == 4.4 and un_item["vs"] == pytest.approx(-0.4)
+    cold = regime.levels(library({"fred/PCEPILFE": (index([1.0] * 30), "monthly")}).view(TODAY), P, None)
+    assert (
+        cold["verdict"] == "balanced" and cold["cold"] == 1 and cold["policy"] is None
+    )  # one cold item is not enough
+    assert regime.levels(library({}).view(TODAY), P, None) is None
+
+
+def test_cpi_check_warns_when_the_newer_cpi_disagrees():
+    now = {"month": "2026-08", "growth": 0.01, "inflation": -0.26, "regime": "recovery"}
+    hotter = index([2.0] * 24 + [4.0] * 6)  # core CPI speeding up, through 2026-09
+    out = regime.cpi_check(library({"fred/CPILFESL": (hotter, "monthly")}).view(TODAY), P, now)
+    assert out["month"] == "2026-09" and out["newer"] and out["rising"] and not out["agrees"]
+    assert out["regime"] == "overheat"
+    calmer = regime.cpi_check(library({"fred/CPILFESL": (index(EASING), "monthly")}).view(TODAY), P, now)
+    assert calmer["agrees"] and calmer["regime"] == "recovery"
+    assert regime.cpi_check(library({}).view(TODAY), P, now) is None
