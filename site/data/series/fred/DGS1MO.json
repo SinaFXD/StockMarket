@@ -1,4 +1,4 @@
-{"key":"fred/DGS1MO","source":"FRED","id":"DGS1MO","label":"US 1m Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS1MO","title":"Market Yield on U.S. Treasury Securities at 1-Month Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-21 15:29:32-05","fetched_at":"2026-10-22T13:21:56Z","columns":["date","value"],"observations":[
+{"key":"fred/DGS1MO","source":"FRED","id":"DGS1MO","label":"US 1m Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS1MO","title":"Market Yield on U.S. Treasury Securities at 1-Month Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-21 15:29:32-05","fetched_at":"2026-10-22T15:10:36Z","columns":["date","value"],"observations":[
 ["2001-07-31",3.67],
 ["2001-08-01",3.65],
 ["2001-08-02",3.65],
