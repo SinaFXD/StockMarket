@@ -286,6 +286,11 @@ function signalCard(s) {
       el("summary", { class: "muted", style: "font-size:12.5px;cursor:pointer", text: "Rule" }),
       el("p", { class: "muted", style: "font-size:12.5px;margin:6px 0 0", text: s.rule }),
     ),
+    el("a", {
+      class: "detail-link",
+      href: `indicator.html?id=${encodeURIComponent(s.id)}`,
+      text: "Chart, components & reading guide →",
+    }),
     state.isLatest ? overrideControl(s) : null,
   );
 }

@@ -4,6 +4,7 @@ Writes ``site/data/macro/``:
 - ``latest.json``     today's snapshot, what changed in the last month, each signal's monthly score history;
 - ``history.json``    compact monthly scores since ``SIGNAL_HISTORY_START`` (charts, evidence);
 - ``snapshots/<year>.json``  full month-end snapshots (the "as of" view on the website);
+- ``indicators/<id>.json``  chart panels and the reading guide for each indicator page;
 - ``log.csv``         one row per day the pipeline ran: the live record of what the system said.
 """
 
@@ -21,6 +22,7 @@ from ..store import write_json
 from . import international, money_markets, prices, surveys
 from .base import Signal
 from .bias import alerts, combine, what_changed
+from .charts import build_charts
 from .data import Library, View, month_ends
 
 log = logging.getLogger("pipeline.signals")
@@ -116,6 +118,7 @@ def build(
 
     macro = out_dir / "macro"
     write_json(macro / "latest.json", latest, indent=None)
+    build_charts(lib.view(today), params, macro / "indicators", [s["id"] for s in latest["signals"]])
     write_json(macro / "history.json", compact, indent=None)
     by_year: dict[str, list] = {}
     for s in snaps:

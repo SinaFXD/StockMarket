@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indicator · PTM Dashboard</title>
+    <meta name="description" content="Chart, components, rule and reading guide for one leading indicator." />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script type="module" src="assets/indicator.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 12 6 7l3 3 5-7"
+                fill="none"
+                stroke="#fff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>PTM Fundamental Dashboard</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="./">Overview</a>
+          <a href="macro.html" aria-current="page">Macro Desk</a>
+          <a href="health.html">Data health</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrap">
+        <div class="toolbar">
+          <a href="macro.html">← Macro Desk</a>
+          <label
+            >Indicator
+            <select class="select" id="picker" aria-label="Choose an indicator"></select
+          ></label>
+        </div>
+        <div id="content">
+          <p class="muted">Loading…</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span class="disclaimer">Educational tool, not investment advice.</span>
+        <span
+          >Built for the ITPM Professional Trading Masterclass final project. Data: FRED / ALFRED (Federal Reserve Bank
+          of St. Louis), Yahoo Finance, University of Michigan, Eurostat, and reports entered by hand (ISM, NFIB, NBS,
+          RatingDog / S&amp;P Global).</span
+        >
+      </div>
+    </footer>
+  </body>
+</html>

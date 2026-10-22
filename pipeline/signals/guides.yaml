@@ -1,0 +1,160 @@
+# Reading guides shown on each indicator page. Our own short paraphrase of docs/02-indicator-rules.md
+# (never course text). Keys = signal ids. "read" = how the course reads it, "watch" = what to look out for.
+
+curve:
+  what: "The gap between 10-year and 2-year Treasury yields (also shown: 10-year minus 3-month)."
+  read:
+    - "Upward-sloping (normal) means the market expects expansion; flat means a transition; inverted means it expects a contraction."
+    - "The direction of the move matters more than the level: flattening toward inversion is bearish, steepening out of inversion or flatness is bullish."
+    - "Check the short end too: in February 2020 only the 3-month part of the curve was inverted."
+  watch:
+    - "A transitioning curve has often announced the Fed's next move rather than a crash: read it with real rates, credit and the VIX."
+    - "In 2006-07 the 10y-2y spread was negative most of the time before the financial crisis."
+
+real_rate:
+  what: "The 10-year Treasury yield minus CPI inflation (year on year): the price of money after inflation."
+  read:
+    - "Think P/E: growth sets the E, liquidity sets the P. Real rates measure liquidity."
+    - "Low or negative real rates relative to history mean abundant liquidity: higher valuations and a lower VIX."
+    - "High real rates relative to history mean scarce liquidity and more volatility."
+  watch:
+    - "Compare with the VIX panel: between 2011 and 2020, real rates below 1% went with a VIX mostly between 10 and 19."
+    - "The same template applies to Japan, the UK, Germany, Italy and China (coming in phase 1c)."
+
+credit:
+  what: "Option-adjusted spreads of AA, BBB (lowest investment grade) and CCC (junk) corporate bonds over Treasuries."
+  read:
+    - "Widening spreads mean the market prices more default risk and sells credit; equities tend to follow down. Tightening is the opposite."
+    - "Junk moves first: CCC is the most sensitive and its moves are large (about 300 to 700bp in 2014-15, 300 to 1,000bp in 2020)."
+    - "A reinforcing loop: wider spreads raise the cost of debt, which hurts cash flow and borrowing."
+  watch:
+    - "Good but not always reliable, because the Fed reacts to stress. Read with real rates, the curve and the VIX."
+    - "FRED shows only about three years of ICE spreads; the Moody's Baa minus 10-year panel gives the long history."
+
+m2:
+  what: "M2 money supply, monthly and seasonally adjusted, since 1959."
+  read:
+    - "Use the distribution of monthly growth: the average month is about +0.57%, and only about 5% of months exceed roughly +1.15%. Those abnormal months mean the Fed is injecting liquidity."
+    - "M2 does not track GDP or stock returns closely; use it to confirm or contradict the bond-market signals."
+  watch:
+    - "Healthy bond markets but shrinking M2: the Fed is withdrawing stimulus."
+    - "An expansion plus an abnormal M2 surge: ask what the Fed sees that we don't."
+    - "Also follow the Fed directly: rate decisions, minutes three weeks later, press conferences, balance sheet."
+
+vix:
+  what: "Implied volatility of the S&P 500 (the market's 30-day fear gauge)."
+  read:
+    - "High and rising volatility comes with scarce liquidity and falling markets; low and stable volatility with abundant liquidity."
+    - "Read it next to the real rate: low real rates have gone with a low VIX."
+  watch:
+    - "Spikes are fast and mean-reverting; what matters for a 20-60 day book is whether volatility is trending up."
+
+ism_manufacturing:
+  what: "ISM Manufacturing PMI: a diffusion index (50 = no change) from New Orders, Production, Employment, Supplier Deliveries and Inventories."
+  read:
+    - "New Orders is the most sensitive part, the leading indicator of the leading indicator: it moves before the headline. Production follows orders."
+    - "Inventories turn early: rising stocks mean managers are optimistic, falling stocks pessimistic. Employment and Supplier Deliveries lag."
+    - "Troughs have usually been 40-45 (32.5-35 in the financial crisis); peaks near 60, close to peaks in annual S&P returns."
+    - "Above 50: expect positive GDP growth and S&P returns. A fall below 50 can start a short tilt, often with a 6-12 month lag."
+  watch:
+    - "New Orders minus Inventories: orders running ahead of stock is a classic early-cycle sign."
+    - "Use the industry lists and respondent comments for single-stock ideas (phase 5)."
+
+ism_services:
+  what: "ISM Services PMI: Business Activity, New Orders, Employment and Supplier Deliveries, 25% each."
+  read:
+    - "Services are about 80% of the US economy: give them the same weight as manufacturing."
+    - "Business Activity and New Orders matter by far the most; Employment and Deliveries lag. Backlog of Orders confirms."
+    - "Peaks have been around 60 (S&P about +20% a year), 55-60 about +15-20%, 50-55 often still fine, troughs 40-45."
+  watch:
+    - "Business Activity can turn first (March 2020)."
+
+umich:
+  what: "University of Michigan consumer sentiment: half current conditions, half expectations."
+  read:
+    - "Consumer spending is about two thirds of US GDP."
+    - "Expectations and their monthly change matter most (August 2019: expectations fell 10.6 points while current conditions held)."
+    - "Zones: 95-110 peak, 70-95 balanced, 55-70 trough. Several readings above 80 go with GDP of 2%+ and strong stocks; 55-70 with GDP between -5% and +1%."
+  watch:
+    - "Worry when sentiment falls sharply from a peak toward or below 70."
+    - "Peaks mean the consumer is stretched; troughs mean savings that can be spent later."
+    - "Read together with building permits."
+
+permits:
+  what: "New private housing units authorised by building permits (thousands, seasonally adjusted annual rate)."
+  read:
+    - "Permits lead starts (coincident) and completions (lagging, 12-16 months later)."
+    - "Long-run trend 1.3-1.4 million; earlier troughs 700-800k, 521k in the financial crisis; peaks above 2 million (2004-06)."
+    - "Year-on-year growth turning negative has often preceded negative GDP growth. Use the 12-month average of YoY to smooth monthly noise."
+  watch:
+    - "Big monthly moves (plus or minus 20%) are rarely followed by equally big ones."
+    - "Falling below 2 million in May 2006 was an early warning of the financial crisis."
+
+nfib:
+  what: "NFIB Small Business Optimism Index (10 components, 1986 = 100) and the ITPM custom leading index."
+  read:
+    - "The ITPM leading index is the simple average of five forward-looking components: plans to hire, good time to expand, plans to add inventory, expect the economy to improve, expect higher real sales."
+    - "Plot it with a 4-month moving average and track how many months each component has been rising or falling."
+    - "The headline above 100 for a while goes with strong GDP and S&P returns of 15-20%+; 95-100 with 0-15%; at or below 95 with no growth or contraction."
+  watch:
+    - "Dropping below 100 is the first warning."
+
+brent:
+  what: "Brent crude oil price (international benchmark)."
+  read:
+    - "Cyclical commodities lead CPI and PPI. Decide whether a move is demand-driven (a strong growth signal) or supply-driven (a weak one)."
+    - "A falling dollar is inflationary for dollar-priced commodities."
+  watch:
+    - "Use the override when a move is clearly supply-driven (OPEC, war, sanctions)."
+
+copper:
+  what: "COMEX copper futures (IMF global price as fallback)."
+  read:
+    - "Copper is the industrial metal most sensitive to global manufacturing demand."
+    - "Compare with LME and Shanghai copper for the international picture."
+  watch:
+    - "Judge demand vs supply (mine disruptions, China stockpiling) before trusting the signal."
+
+iron_ore:
+  what: "Global price of iron ore (IMF, monthly)."
+  read:
+    - "Iron ore tracks steel demand, mostly Chinese construction and infrastructure."
+  watch:
+    - "Monthly and published with a lag: confirm with copper and China's PMIs."
+
+lumber:
+  what: "Producer price index for lumber."
+  read:
+    - "Lumber prices follow construction demand: read with building permits."
+  watch:
+    - "Supply shocks (mills, tariffs, fires) can drive lumber without any change in demand."
+
+dollar:
+  what: "Fed broad trade-weighted US dollar index."
+  read:
+    - "A strong dollar is deflationary for dollar-priced commodities and a headwind for multinationals; a weak dollar the opposite."
+    - "Use the distribution of daily and weekly returns: 2-3 sigma moves signal a change in macro conditions."
+
+sp500:
+  what: "S&P 500 index and its 200-day average."
+  read:
+    - "Prices move ahead of the reports: equity markets are themselves leading indicators."
+    - "Proposed first reading (not from the course numbers): above the 200-day average and up over 3 months is positive."
+  watch:
+    - "Compare regions (US vs Europe vs China vs Japan) in phase 1c."
+
+esi:
+  what: "European Commission Economic Sentiment Indicator for the euro area (long-term average 100, standard deviation 10)."
+  read:
+    - "Above 100 is above average. Peaks have usually been 115+; sharp falls of 2-3 standard deviations have tended to mark troughs."
+    - "Look at the sector pieces (industry, services, consumers, retail, construction) and the big countries."
+    - "The STOXX 600 and euro-area GDP have risen together in about 63% of quarters."
+
+china:
+  what: "China's private RatingDog PMI (formerly Caixin, compiled by S&P Global) against the official NBS PMI."
+  read:
+    - "Official data is unreliable; prefer the private PMI. The official PMI has lived in a tight band, capped near 52 since about 2013."
+    - "The gap private minus official is the 'potential lie' metric: flag months when the official PMI is above 50 and the private one below."
+    - "China's bonds are mostly domestic and weak as a leading indicator."
+  watch:
+    - "When official data looks fake, use Chinese ADRs (US reporting standards) for ideas."
