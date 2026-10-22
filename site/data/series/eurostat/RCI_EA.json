@@ -1,4 +1,4 @@
-{"key":"eurostat/RCI_EA","source":"Eurostat","id":"RCI_EA","label":"Euro-area retail confidence","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Retail trade confidence indicator, euro area, seasonally adjusted [EA21]","units":"Balance","units_short":"Balance","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T10:54:44Z","columns":["date","value"],"observations":[
+{"key":"eurostat/RCI_EA","source":"Eurostat","id":"RCI_EA","label":"Euro-area retail confidence","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Retail trade confidence indicator, euro area, seasonally adjusted [EA21]","units":"Balance","units_short":"Balance","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-22T11:52:30Z","columns":["date","value"],"observations":[
 ["1985-01-01",-21.0],
 ["1985-02-01",-18.3],
 ["1985-03-01",-21.2],
