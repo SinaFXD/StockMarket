@@ -3,10 +3,11 @@
 
 import { el, loadJSON, setChildren } from "./common.js";
 import * as store from "./ideas-store.js";
+import * as J from "./journal-math.js";
 import { daysBetween, fmt, priceTargets, rowsOf, todayISO } from "./workbench.js";
 
 const DEFAULTS = { review_days: 7, stale_days: 14, pipeline_min: 10, pipeline_max: 15, ideas_per_week: 2 };
-const state = { filter: "open", stocks: null, rows: {}, pages: {}, published: null, p: DEFAULTS };
+const state = { filter: "open", stocks: null, rows: {}, pages: {}, published: null, p: DEFAULTS, spy: null };
 const has = (v) => v !== null && v !== undefined;
 
 function targetsFor(idea, row, page) {
@@ -184,6 +185,114 @@ function table(entries) {
   );
 }
 
+// Track record: closed ideas with entry and exit prices and dates (journal-math.js).
+function trackRecord(merged) {
+  const closed = merged.map((e) => e.idea).filter((i) => i.status === "closed");
+  const trades = closed
+    .map((i) => {
+      const page = state.pages[i.ticker];
+      const bars = page && page.prices ? { dates: page.prices.d, values: page.prices.c } : null;
+      return J.tradeResult(i, state.spy, bars);
+    })
+    .filter(Boolean);
+  const s = J.stats(trades);
+  const left = closed.length - trades.length;
+  const tile = (label, value, foot, cls = "") =>
+    el(
+      "div",
+      { class: "card tile" },
+      el("div", { class: "tile-label", text: label }),
+      el("div", { class: `tile-value small ${cls}`, text: value }),
+      el("div", { class: "tile-foot", text: foot }),
+    );
+  const tone = (v) => (v > 0 ? "up" : v < 0 ? "down" : "");
+  const body = s.n
+    ? [
+        el(
+          "div",
+          { class: "tiles" },
+          tile(
+            "Closed trades",
+            String(s.n),
+            `${s.longs} long · ${s.shorts} short · held ${Math.round(s.avg_days)} days on average`,
+          ),
+          tile("Hit rate", `${s.hit_rate.toFixed(0)}%`, "trades with a gain for their side"),
+          tile(
+            "Average win / loss",
+            `${fmt.pct(s.avg_win)} / ${fmt.pct(s.avg_loss)}`,
+            s.payoff ? `payoff ratio ${s.payoff.toFixed(2)}` : "payoff ratio needs a win and a loss",
+          ),
+          tile(
+            "Average alpha",
+            s.mean_alpha === null ? "–" : fmt.pct(s.mean_alpha),
+            s.alpha_hit_rate === null
+              ? "needs SPY prices"
+              : `after the market move at each stock's beta; ${s.alpha_hit_rate.toFixed(0)}% positive`,
+            tone(s.mean_alpha),
+          ),
+        ),
+        el(
+          "div",
+          { class: "scroll-x", style: "margin-top:12px" },
+          el(
+            "table",
+            { class: "data" },
+            el(
+              "thead",
+              {},
+              el(
+                "tr",
+                {},
+                ["Stock", "Side", "Entry → exit", "Days", "Return", "S&P 500", "Beta", "Alpha"].map((h) =>
+                  el("th", { text: h }),
+                ),
+              ),
+            ),
+            el(
+              "tbody",
+              {},
+              trades
+                .sort((a, b) => (a.exit_date < b.exit_date ? 1 : -1))
+                .map((t) =>
+                  el(
+                    "tr",
+                    {},
+                    el("td", {}, el("a", { href: `stock.html?t=${encodeURIComponent(t.ticker)}`, text: t.ticker })),
+                    el("td", { class: "text-left", text: t.side }),
+                    el("td", { text: `${t.entry_date} → ${t.exit_date}` }),
+                    el("td", { text: t.days }),
+                    el("td", { class: tone(t.ret), text: fmt.pct(t.ret) }),
+                    el("td", { text: fmt.pct(t.market) }),
+                    el("td", { text: `${t.beta.toFixed(2)}${t.beta_estimated ? "" : " (assumed)"}` }),
+                    el("td", { class: tone(t.alpha), text: fmt.pct(t.alpha) }),
+                  ),
+                ),
+            ),
+          ),
+        ),
+      ]
+    : [
+        el("p", {
+          class: "muted",
+          text: "No closed trades yet. When you close an idea, set its status to Closed on its page and fill the exit price and date: it then appears here.",
+        }),
+      ];
+  return el(
+    "section",
+    { class: "card panel", style: "margin-top:12px" },
+    el("h2", { class: "panel-title", text: "Track record" }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text: "The honest test of the process: what your closed ideas actually returned. Return is for the side (a short gains when the price falls); alpha removes what the S&P 500's move would have given the same side at the stock's beta (measured over the year before entry). A few trades prove nothing: judge it after dozens, and remember costs (commissions, borrow fees for shorts) are not included.",
+    }),
+    ...body,
+    left
+      ? el("p", { class: "section-note", text: `${left} closed idea(s) left out: entry or exit price/date missing.` })
+      : null,
+  );
+}
+
 function problems() {
   const list = (state.published && state.published.problems) || [];
   if (!list.length) return null;
@@ -288,6 +397,7 @@ function render() {
         "Ideas live in this browser until you publish them to the repository (data/ideas/, public). Export moves this browser's ideas to another device. Targets use each idea's own assumptions and today's consensus.",
       ),
     ),
+    trackRecord(merged),
     problems(),
   );
 }
@@ -300,6 +410,11 @@ async function main() {
   }
   state.rows = state.stocks ? Object.fromEntries(rowsOf(state.stocks).map((r) => [r.t, r])) : {};
   state.published = await store.loadPublished();
+  const spy = await loadJSON("data/series/yahoo/SPY.json").catch(() => null);
+  if (spy) {
+    const k = spy.columns.indexOf("adj_close") > 0 ? spy.columns.indexOf("adj_close") : 1;
+    state.spy = { dates: spy.observations.map((r) => r[0]), values: spy.observations.map((r) => r[k]) };
+  }
   if (state.published.params) state.p = { ...DEFAULTS, ...state.published.params };
   render();
   const tickers = Object.keys(store.mergeIdeas(state.published)).filter((t) => state.rows[t]);

@@ -602,6 +602,11 @@ const GLOSSARY = [
     "The extra yield of corporate bonds (AA, BBB, CCC) over Treasuries. Widening = stress; junk (CCC) usually moves first.",
   ],
   [
+    "Cyclical / sensitive / defensive",
+    "Sectors",
+    "Morningstar's three groups of sectors. Cyclicals and sensitives follow the economy; defensives (staples, healthcare, utilities) hold up when it slows.",
+  ],
+  [
     "Data checks",
     "Screener",
     "Tags that warn about unreliable numbers (other currency, feeds disagree, extreme P/E, few analysts…). Red ones keep the stock out of averages.",
@@ -673,6 +678,11 @@ const GLOSSARY = [
     "Macro Desk",
     "Leading indicators move before the economy (money markets, surveys, prices); coincident with it (CPI, payrolls); lagging after it (earnings, GDP).",
   ],
+  [
+    "Long-short spread",
+    "Evidence (forward test)",
+    "Average return of the positive outliers minus that of the negative outliers in the same weekly cohort. Positive = the types separate winners from losers.",
+  ],
   ["M2", "Macro Desk", "US money supply; its growth confirms what the Fed is doing with liquidity."],
   ["Net exposure", "Portfolio", "Longs minus shorts, as % of the account."],
   [
@@ -694,6 +704,11 @@ const GLOSSARY = [
     "Override",
     "Macro Desk",
     "Your own score for an indicator (−1 / 0 / +1). The bias recalculates; saved only in your browser.",
+  ],
+  [
+    "Payoff ratio",
+    "Ideas (track record)",
+    "Average winning trade ÷ average losing trade. With a hit rate below 50% you need a payoff well above 1.",
   ],
   ["P/E (PE1, PE2)", "Screener", "Price ÷ EPS. Only meaningful when EPS is positive."],
   ["P/S", "Trade idea", "Price-to-sales: market cap ÷ sales. Used for the sales-based target."],
@@ -724,7 +739,21 @@ const GLOSSARY = [
     "Screener",
     "The annualised standard deviation of the stock's daily returns over the last ~3 months.",
   ],
-  ["Relative strength", "Trade idea", "The stock's 3-month return minus the S&P 500's (or its sector ETF's)."],
+  [
+    "Relative strength",
+    "Trade idea, Sectors",
+    "A stock's or sector ETF's return minus the S&P 500's (or its sector ETF's) over the same period, in percentage points.",
+  ],
+  [
+    "Revision breadth",
+    "Sectors",
+    "The share of a sector's stocks whose EPS consensus analysts raised (or cut) by 1% or more in 90 days. More raised than cut = earnings momentum.",
+  ],
+  [
+    "Rotation map",
+    "Sectors",
+    "Each sector's 3-month strength against the S&P 500 (across) and its change over the last month (up): leading, weakening, lagging or improving.",
+  ],
   ["Risk share", "Portfolio", "The part of the portfolio's variance a position brings; a hedge has a negative share."],
   [
     "Sharpe ratio",
@@ -741,6 +770,11 @@ const GLOSSARY = [
     "Tailwind / headwind",
     "Macro ideas",
     "Macro drivers that help (tailwind) or hurt (headwind) an industry's earnings in the next 20–60 days.",
+  ],
+  [
+    "t-statistic",
+    "Evidence",
+    "How many standard errors an average is away from zero. Above about 2 (in absolute value), the result is unlikely to be luck; it needs enough independent observations.",
   ],
   ["Turnaround", "Screener", "A company coming back to profit, or falling this year and recovering next year."],
   [

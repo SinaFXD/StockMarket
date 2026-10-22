@@ -28,11 +28,13 @@ from .calendar import status_of as calendar_status
 from .catalog import SOURCES, CatalogEntry, load_catalog
 from .config import CATALOG_FILE, IDEAS_DIR, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
 from .fetchers import eurostat, fred, oecd, umich, yahoo
+from .forward.build import run as run_forward
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
 from .screener.build import ScreenerBuilder, market_inputs
 from .screener.build import status_of as screener_status
 from .screener.build import write as write_screener
+from .sectors.build import build as build_sectors
 from .signals.build import build as build_macro
 from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
@@ -298,6 +300,7 @@ def main(argv: list[str] | None = None) -> int:
         calendar = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}"), "sources": []}
 
     screener: dict[str, Any]
+    builder = None
     try:  # the screener is a separate module: a failure must not stop the data update
         budget = (
             {"summary_budget": args.screener_budget, "iv_budget": args.screener_budget}
@@ -318,6 +321,17 @@ def main(argv: list[str] | None = None) -> int:
     except Exception as exc:
         log.exception("screener build failed")
         screener = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
+    forward: dict[str, Any] = {"status": "skipped", "error": None}
+    if builder is not None and builder.rows:
+        try:  # the live record of the screener's types; a failure keeps yesterday's record
+            forward = run_forward(
+                args.out_dir, builder, args.out_dir, offline=args.offline or "screener" not in only
+            )
+            forward["error"] = redact(forward["error"]) if forward.get("error") else None
+        except Exception as exc:
+            log.exception("forward test failed")
+            forward = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
     macro: dict[str, Any] = {"status": "ok", "error": None}
     try:  # a bug in the Macro Desk must not stop the data update
@@ -364,12 +378,27 @@ def main(argv: list[str] | None = None) -> int:
         log.exception("themes build failed")
         themes = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
 
+    sectors: dict[str, Any]
+    try:  # sectors side by side: context built from the files above
+        sector_data = build_sectors(args.out_dir)
+        write_json(args.out_dir / "sectors.json", sector_data, indent=None)
+        sectors = {
+            "status": "ok",
+            "sectors": len(sector_data["sectors"]),
+            "agreement": sector_data["agreement"],
+        }
+    except Exception as exc:
+        log.exception("sectors build failed")
+        sectors = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
     health["macro"] = macro
     health["calendar"] = calendar
     health["screener"] = screener
     health["ideas"] = ideas
     health["themes"] = themes
+    health["forward"] = forward
+    health["sectors"] = sectors
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

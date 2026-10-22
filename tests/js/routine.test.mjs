@@ -95,3 +95,26 @@ test("portfolio step", () => {
   assert.equal(s.status, "attention");
   assert.match(s.items[0], /Current book: 1 positions/);
 });
+
+test("screen step: outlier counts and the sectors to screen first", () => {
+  const rows = [
+    { cls: "positive", vol_ok: true },
+    { cls: "positive", vol_ok: false },
+    { cls: "negative", vol_ok: true },
+  ];
+  const rot = (sector, rs, quadrant) => ({ sector, rotation: { rs, change: 0, quadrant } });
+  const sectors = {
+    sectors: [
+      rot("Energy", 10, "leading"),
+      rot("Utilities", -13, "lagging"),
+      rot("Materials", -2, "improving"),
+      rot("Industrials", -12, "lagging"),
+      rot("Healthcare", 6, "weakening"),
+      { sector: "New", rotation: null },
+    ],
+  };
+  const s = R.screenStep({ as_of: "2026-10-22" }, rows, sectors);
+  assert.equal(s.items[0], "Positive outliers: 2 (1 pass the volatility filter).");
+  assert.match(s.items[2], /leading or improving .*: Energy, Materials; lagging: Utilities, Industrials/); // weakest first
+  assert.equal(R.screenStep({ as_of: "2026-10-22" }, rows).items.length, 3); // no sector file: no line
+});

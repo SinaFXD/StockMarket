@@ -99,7 +99,8 @@ export function themesStep(themes) {
   );
 }
 
-export function screenStep(stocks, rows) {
+// sectors: data/sectors.json (optional); its rotation says which sectors to screen first
+export function screenStep(stocks, rows, sectors = null) {
   if (!stocks)
     return step("screen", "Screen for outliers", "lessons 22–29", "screener.html", "todo", ["No screener data yet."]);
   const count = (cls) => rows.filter((r) => r.cls === cls).length;
@@ -107,8 +108,24 @@ export function screenStep(stocks, rows) {
   return step("screen", "Screen for outliers", "lessons 22–29", "screener.html", "todo", [
     `Positive outliers: ${count("positive")} (${vol("positive")} pass the volatility filter).`,
     `Negative outliers: ${count("negative")} (${vol("negative")}); post-growth: ${count("post_growth")} (${vol("post_growth")}).`,
+    ...sectorItems(sectors),
     `Estimates as of ${stocks.as_of}.`,
   ]);
+}
+
+function sectorItems(sectors) {
+  const list = ((sectors && sectors.sectors) || []).filter((s) => s.rotation);
+  const pick = (qs) =>
+    list
+      .filter((s) => qs.includes(s.rotation.quadrant))
+      .sort((a, b) => b.rotation.rs - a.rotation.rs)
+      .map((s) => s.sector);
+  if (!list.length) return [];
+  const up = pick(["leading", "improving"]);
+  const down = pick(["lagging"]).reverse();
+  return [
+    `Sectors leading or improving against the S&P 500: ${up.join(", ") || "none"}; lagging: ${down.join(", ") || "none"} (Sectors page).`,
+  ];
 }
 
 export function ideasStep(ideas, today, p) {

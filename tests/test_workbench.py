@@ -293,3 +293,22 @@ def test_stock_pages_are_written_and_old_ones_removed(tmp_path):
     page = json.loads((tmp_path / "stocks" / "ZEN.json").read_text())
     assert page["t"] == "ZEN" and len(page["prices"]["c"]) == 260
     assert build.safe_name("brk-b") == "BRK-B" and build.safe_name("../x") == "..X"
+
+
+def test_exit_fields_and_track_record_warnings():
+    head = "---\nside: short\nstatus: {status}\nopened: 2026-10-10\nentry_price: 50\n{extra}---\n"
+    idea, errors, warnings = ideas.parse(
+        head.format(status="closed", extra="exit_price: 45\nexit_date: 2026-11-01\n"), "AB"
+    )
+    assert (
+        errors == [] and warnings == [] and idea["exit_price"] == 45.0 and idea["exit_date"] == "2026-11-01"
+    )
+    _, errors, _ = ideas.parse(
+        head.format(status="closed", extra="exit_price: 45\nexit_date: 2026-10-01\n"), "AB"
+    )
+    assert errors == ["exit_date is before the entry"]
+    _, _, warnings = ideas.parse(head.format(status="active", extra="exit_price: 45\n"), "AB")
+    assert any("both exit_price and exit_date" in w for w in warnings)
+    assert any("status is not 'closed'" in w for w in warnings)
+    _, _, warnings = ideas.parse(head.format(status="closed", extra=""), "AB")
+    assert any("left out of the track record" in w for w in warnings)

@@ -107,6 +107,14 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
   its tools reuse the site's arithmetic (`workbench.js`) and repeat the type rules of `screener/outliers.py` (keep in
   sync). When a page or rule changes, update the guide's section, glossary and, if the layout changed, its screenshot
   in `site/assets/guide/` (WebP, ~1100 px wide).
+- "Sectors" (`sectors.html`): `pipeline/sectors/build.py` -> `site/data/sectors.json` (after the Macro ideas, from the
+  published files; context only). Thresholds in `config.SECTORS`; rules in `docs/13-sectors-method.md`.
+  `python -m pipeline.sectors` rebuilds it from local data.
+
+- Forward tests (`pipeline/forward/`): `site/data/forward/outliers.csv` is a live record committed by the workflow
+  (one cohort per ISO week, returns filled when due); never rewrite or backfill it, never tune rules to it. The
+  track record of closed ideas is client-side (`site/assets/journal-math.js`, `tests/js/journal.test.mjs`); idea
+  files carry `entry_date`, `exit_price`, `exit_date`. Method: `docs/12-track-record.md`.
 
 ## Quality bar (why ours beats the benchmark)
 - Course-faithful indicator set (ISM incl. sub-indices, custom ITPM NFIB SBO index, RatingDog vs NBS

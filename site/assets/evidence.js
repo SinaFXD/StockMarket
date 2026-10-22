@@ -328,6 +328,136 @@ function renderTables() {
   );
 }
 
+// Forward test of the Screener's types (pipeline/forward/outliers.py): a live record that only grows.
+const TYPE_LABEL = {
+  positive: ["Positive outlier", "long side: higher is better"],
+  negative: ["Negative outlier", "short side: lower is better"],
+  post_growth: ["Post-growth", "short side: lower is better"],
+  turnaround: ["Turnaround", "either side"],
+  value_trap: ["Value trap", "either side"],
+};
+
+function forwardCard(fw) {
+  const box = el("section", { class: "card panel", style: "margin-top:12px", id: "forward" });
+  const pct = (v) =>
+    v === null || v === undefined ? "–" : `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toFixed(1)}%`;
+  const head = [
+    el("h2", { class: "panel-title", text: "Forward test: the Screener's types (live record)" }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text: "Analysts' past estimates are not available for free, so the outlier types cannot be backtested honestly. Instead, once a week every stock of a candidate type is written down with its price, and its return over the next 20, 40 and 60 trading days is filled in as the days pass: against SPY and against its sector ETF. The long-short spread is positive outliers minus negative outliers within each weekly cohort. Weekly cohorts overlap, so the t-statistic uses the number of independent windows; |t| above about 2 starts to mean something. Rules are never tuned to this record.",
+    }),
+  ];
+  if (!fw) {
+    box.append(...head, el("p", { class: "muted", text: "The record starts with the next daily update." }));
+    return box;
+  }
+  const state = { h: "20", vol: false };
+  const body = el("div");
+  const draw = () => {
+    const s = (state.vol ? fw.vol_only : fw.all).horizons[state.h];
+    const sp = s.spread;
+    const rows = Object.entries(TYPE_LABEL).map(([k, [label, note]]) => {
+      const t = s.types[k];
+      return el(
+        "tr",
+        {},
+        el("td", {}, el("b", { text: label }), el("span", { class: "sub", text: note })),
+        el("td", { text: t.return.n }),
+        el("td", { text: t.cohorts }),
+        el("td", { text: pct(t.return.mean) }),
+        el("td", { text: pct(t.vs_spy.mean) }),
+        el("td", { text: t.vs_spy.pct_pos === null ? "–" : `${t.vs_spy.pct_pos.toFixed(0)}%` }),
+        el("td", { text: pct(t.vs_sector.mean) }),
+      );
+    });
+    body.replaceChildren(
+      el(
+        "p",
+        { class: "reading" },
+        el("b", { text: `Long-short spread over ${state.h} days: ` }),
+        sp.n_cohorts
+          ? `${pct(sp.mean)} on average across ${sp.n_cohorts} cohort${sp.n_cohorts > 1 ? "s" : ""} (${sp.n_independent} independent window${sp.n_independent === 1 ? "" : "s"}), positive in ${sp.pct_pos}% of cohorts${sp.t === null ? "; too few for a t-statistic" : `, t = ${sp.t}`}.`
+          : "no cohort has reached this horizon yet.",
+      ),
+      el(
+        "div",
+        { class: "scroll-x" },
+        el(
+          "table",
+          { class: "data" },
+          el(
+            "thead",
+            {},
+            el(
+              "tr",
+              {},
+              ["Type", "Stocks", "Cohorts", "Return", "vs S&P 500", "Beat S&P 500", "vs sector ETF"].map((h) =>
+                el("th", { text: h }),
+              ),
+            ),
+          ),
+          el("tbody", {}, rows),
+        ),
+      ),
+    );
+  };
+  const segBtns = (opts, key) =>
+    el(
+      "div",
+      { class: "seg", role: "group" },
+      opts.map(([v, label]) =>
+        el("button", {
+          type: "button",
+          "aria-pressed": String(state[key] === v),
+          text: label,
+          onclick: (ev) => {
+            state[key] = v;
+            for (const b of ev.target.parentNode.children) b.setAttribute("aria-pressed", String(b === ev.target));
+            draw();
+          },
+        }),
+      ),
+    );
+  box.append(
+    ...head,
+    el(
+      "p",
+      { class: "facts" },
+      el("span", {}, "Started ", el("b", { text: fw.first_cohort || "–" })),
+      el("span", {}, "Latest cohort ", el("b", { text: fw.last_cohort || "–" })),
+      el("span", {}, "Cohorts ", el("b", { text: String(fw.all.cohorts) })),
+      el("span", {}, "Stocks recorded ", el("b", { text: String(fw.all.rows) })),
+    ),
+    el(
+      "div",
+      { class: "toolbar" },
+      segBtns(
+        fw.horizons.map((h) => [String(h), `${h} days`]),
+        "h",
+      ),
+      segBtns(
+        [
+          [false, "All stocks"],
+          [true, "Volatility filter passed"],
+        ],
+        "vol",
+      ),
+    ),
+    body,
+    el(
+      "p",
+      { class: "section-note" },
+      "The full record: ",
+      el("a", { href: "data/forward/outliers.csv", text: "outliers.csv" }),
+      ". Costs and borrow fees are not included.",
+    ),
+  );
+  draw();
+  return box;
+}
+
 async function main() {
   try {
     state.ev = await loadJSON("data/macro/evidence.json");
@@ -355,6 +485,7 @@ async function main() {
       rangeButtons(charts),
       ...renderPanels(charts, state.ev.panels),
       signalTable(),
+      forwardCard(await loadJSON("data/forward/summary.json").catch(() => null)),
     );
   renderTables();
   redraw(charts);

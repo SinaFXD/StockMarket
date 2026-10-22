@@ -9,7 +9,7 @@ course's order and says, from the published data, what each step needs this week
 | 1. Enter this week's reports | Data health | a hand-entered report is out and not entered, awaiting data, or a file has errors; manual reports due in the next 7 days are listed |
 | 2. Read the Macro Desk | Macro Desk | the bias changed since the previous month, or the Macro Desk raises an alert (blocks disagree, data vs prices, ...) |
 | 3. Macro → industries and regions | Macro ideas | the China check finds official data and companies disagreeing; strong tailwinds / headwinds are listed |
-| 4. Screen for outliers | Screener | (weekly step) counts of positive / negative / post-growth outliers and how many pass the volatility filter |
+| 4. Screen for outliers | Screener | (weekly step) counts of positive / negative / post-growth outliers and how many pass the volatility filter; the sectors leading or improving and those lagging against the S&P 500 (Sectors page) |
 | 5. Work up new trade ideas | Ideas | fewer than 10 open ideas, or fewer than 2 new ones in the last 7 days (lesson 33) |
 | 6. Review open ideas and catalysts | Ideas | an open idea not updated for 7+ days, or reporting earnings within 7 days; moves of 10%+ since entry and high-importance macro events in the next 7 days are listed |
 | 7. Check the portfolio | Portfolio | the current book's position count is outside the guide for the account size |

@@ -150,5 +150,16 @@ THEMES: dict[str, float] = {
     "china_min_stocks": 5,  # fewer Chinese listings with estimates -> no China check
 }
 
+# Sectors side by side (docs/13-sectors-method.md). Context only.
+SECTORS: dict[str, float] = {
+    "revision_pct": 1,  # EPS1 consensus moved by >= 1% in 90 days: counted as raised / cut (tune)
+    "rs_days": 63,  # relative strength vs SPY over ~3 months (the 20-60 day horizon's scale)
+    "rs_momentum_days": 21,  # its change over the last month: the rotation reading
+    "spark_days": 126,  # relative line shown on each sector card (~6 months)
+    "group_days": 252,  # cyclical vs defensive chart (~1 year)
+    "rotation_pp": 2,  # cyclicals ahead of defensives by >= 2 pp over 3 months = the market prefers them (tune)
+    "candidates": 5,  # long and short candidates listed per sector
+}
+
 # Monthly "as of" snapshots for the Macro Desk history and backtests start here.
 SIGNAL_HISTORY_START = "2000-01"
