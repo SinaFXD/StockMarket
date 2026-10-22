@@ -71,6 +71,7 @@ jobs:
       - name: Run pipeline
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT }}
         run: python -m pipeline.run
       - name: Save raw-data cache
         if: always()

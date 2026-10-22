@@ -12,6 +12,7 @@ const state = {
   hideExcluded: false,
   cls: "all",
   volOnly: false,
+  columns: "forward",
   sort: { key: "mcap", dir: -1 },
   limit: 150,
 };
@@ -142,6 +143,86 @@ function stats(rows) {
   return out;
 }
 
+// Evidence columns (lesson 29) from the SEC accounts: formats from each metric's unit.
+function evidenceCols() {
+  const metrics = (state.data.evidence && state.data.evidence.metrics) || {};
+  return [
+    ["acc_fy", "FY end", (v) => v.slice(0, 7), false, "End of the latest fiscal year in the SEC filings"],
+    ...Object.entries(metrics).map(([k, m]) => [
+      k,
+      m.label,
+      m.unit === "%" ? fmt.pct : (v) => `${v < 0 ? "−" : ""}${Math.abs(v).toFixed(1)}×`,
+      ["rev_growth", "fcf_margin", "fcf_yield", "roe", "roa", "net_margin", "op_margin", "pretax_margin"].includes(k),
+      m.text,
+    ]),
+  ];
+}
+
+function cols() {
+  return state.columns === "evidence" ? evidenceCols() : COLS;
+}
+
+function evidenceMedians(rows) {
+  const use = rows.filter((r) => !excluded(r));
+  const out = {};
+  for (const [k] of evidenceCols().slice(1)) {
+    const v = use
+      .map((r) => r[k])
+      .filter((x) => x !== null && x !== undefined)
+      .sort((a, b) => a - b);
+    const mid = Math.floor(v.length / 2);
+    out[k] = v.length ? (v.length % 2 ? v[mid] : (v[mid - 1] + v[mid]) / 2) : null;
+  }
+  return out;
+}
+
+function evidenceCard(rows) {
+  const med = evidenceMedians(rows);
+  const label = state.industry || (state.sector === "All" ? "All sectors" : state.sector);
+  const c = evidenceCols().slice(1);
+  const withAcc = rows.filter((r) => r.acc_fy).length;
+  return el(
+    "section",
+    { class: "card panel" },
+    el("h2", { class: "panel-title", text: `${label}: Evidence medians (latest annual accounts)` }),
+    el("p", {
+      class: "section-note",
+      style: "margin-top:0",
+      text:
+        `${withAcc} of ${rows.length} stocks have SEC accounts (foreign filers reporting under IFRS have none). ` +
+        "Evidence is backward-looking: it explains why money likes or dislikes a stock, it does not forecast (lesson 29).",
+    }),
+    el(
+      "div",
+      { class: "scroll-x" },
+      el(
+        "table",
+        { class: "data" },
+        el(
+          "thead",
+          {},
+          el(
+            "tr",
+            {},
+            el("th", { text: "" }),
+            c.map(([, label, , , title]) => el("th", { title, text: label })),
+          ),
+        ),
+        el(
+          "tbody",
+          {},
+          el(
+            "tr",
+            {},
+            el("td", {}, el("b", { text: "Median" })),
+            c.map(([k, , f]) => el("td", { text: med[k] === null ? "–" : f(med[k]) })),
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 function averagesCard(rows) {
   const s = stats(rows);
   const label = state.industry || (state.sector === "All" ? "All sectors" : state.sector);
@@ -223,7 +304,7 @@ function stockTable(rows) {
     [
       ["t", "Stock", null, false, "Ticker, name and industry"],
       ["cls", "Type", null, false, "Outlier type against the sector (first reading)"],
-      ...COLS,
+      ...cols(),
       ["flags", "Why · checks", null, false, ""],
     ].map(([k, label, , , title]) => {
       const sortable = k !== "flags" && k !== "cls";
@@ -258,7 +339,7 @@ function stockTable(rows) {
         el("span", { class: "sub", text: `${r.name || ""}${r.industry ? ` · ${r.industry}` : ""}` }),
       ),
       el("td", { class: "text-left" }, typeTag(r)),
-      ...COLS.map(([k, , f, signed]) => {
+      ...cols().map(([k, , f, signed]) => {
         const v = r[k];
         if (v === null || v === undefined) return el("td", { class: "muted", text: "–" });
         return el("td", { class: signed ? (v > 0 ? "up" : v < 0 ? "down" : "") : "", text: f(v) });
@@ -355,6 +436,26 @@ function controls() {
       },
     }),
     el(
+      "div",
+      { class: "seg", role: "group", "aria-label": "Columns" },
+      [
+        ["forward", "Forward: 11 numbers"],
+        ["evidence", "Evidence: accounts"],
+      ].map(([k, label]) =>
+        el("button", {
+          type: "button",
+          "aria-pressed": String(state.columns === k),
+          text: label,
+          onclick: () => {
+            state.columns = k;
+            if (!cols().some(([c]) => c === state.sort.key) && !["t", "mcap"].includes(state.sort.key))
+              state.sort = { key: "mcap", dir: -1 };
+            render();
+          },
+        }),
+      ),
+    ),
+    el(
       "label",
       { class: "check" },
       el("input", {
@@ -401,7 +502,9 @@ function checksCard() {
 
 function renderTable() {
   const rows = base();
-  document.getElementById("averages").replaceChildren(averagesCard(rows));
+  document
+    .getElementById("averages")
+    .replaceChildren(state.columns === "evidence" ? evidenceCard(rows) : averagesCard(rows));
   document.getElementById("types").replaceChildren(categoryBar(rows));
   document.getElementById("table").replaceChildren(stockTable(view(rows)));
 }
@@ -431,6 +534,7 @@ async function main() {
   const params = new URLSearchParams(location.search);
   if (params.get("sector")) state.sector = params.get("sector");
   if (params.get("type")) state.cls = params.get("type");
+  if (params.get("columns") === "evidence") state.columns = "evidence";
   content.replaceChildren(
     el("div", { id: "controls" }),
     el("div", { id: "averages" }),

@@ -8,8 +8,8 @@ macro leading indicators → portfolio bias → sector screening → trade-idea 
 indicators scored by the course's rules, a portfolio bias with overrides, a point-in-time history since 2000, a page
 per indicator (charts, components, reading guide), a **Global** page (money markets by country, regional equity
 dispersion), coincident confirmers, a **Calendar** of catalysts and an **Evidence** page (forward returns after each
-bias reading). Phase 2, the **Sector Screener**, has started: the 11 numbers for ~2,000 US stocks with data checks
-and sector averages. See `docs/05-roadmap.md`.
+bias reading). Phase 2, the **Sector Screener**, has started: the 11 numbers for ~2,000 US stocks with data checks,
+sector averages, outlier types, a volatility filter and SEC "Evidence" ratios. See `docs/05-roadmap.md`.
 
 - One-time setup (GitHub Pages, FRED key): `docs/06-setup.md`
 - Method: `docs/02-indicator-rules.md` · Data sources: `docs/04-data-sources.md`

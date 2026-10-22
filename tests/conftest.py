@@ -26,6 +26,7 @@ def not_in_github_actions(monkeypatch: pytest.MonkeyPatch) -> None:
         "GITHUB_SHA",
         "GITHUB_EVENT_NAME",
         "GITHUB_SERVER_URL",
+        "SEC_USER_AGENT",  # without it the screener never calls SEC EDGAR from a test
     ):
         monkeypatch.delenv(name, raising=False)
 

@@ -315,6 +315,11 @@ async function main() {
         : ` ${s.stocks} stocks, ${s.in_averages} in the sector averages; ${est.downloaded ?? 0} estimate sets downloaded` +
             (s.prices ? `; volatility for ${s.prices.with_volatility} stocks` : "") +
             (s.options ? `, ${s.options.downloaded} option chains` : "") +
+            (s.edgar
+              ? s.edgar.error
+                ? `; SEC EDGAR: ${s.edgar.error}`
+                : `; SEC accounts for ${s.edgar.with_accounts ?? 0} stocks`
+              : "") +
             (est.failed ? `, ${est.failed} failed (${est.error})` : "") +
             (s.universe && s.universe.status !== "ok"
               ? `; universe: last good copy (${s.universe.error || s.universe.status})`

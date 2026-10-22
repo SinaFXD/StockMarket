@@ -69,7 +69,8 @@ portfolio risk. It must be clearly better than the benchmark site (see `docs/03-
 
 ## Conventions (Phase 2)
 - `pipeline/screener/`: `yahoo.py` (downloads), `numbers.py` (11 numbers, checks, averages), `outliers.py` (types vs
-  the sector), `volatility.py` (realised, implied, VIX filter), `build.py` (cache, budgets, output). Thresholds in `config.SCREENER`; record every rule in `docs/07-screener-method.md`.
+  the sector), `volatility.py` (realised, implied, VIX filter), `edgar.py` + `evidence.py` (SEC accounts, lesson-29 metrics),
+  `build.py` (cache, budgets, output). Thresholds in `config.SCREENER`; record every rule in `docs/07-screener-method.md`.
   `site/assets/screener.js` repeats the averaging rule of `numbers.group_stats` (keep in sync).
 - `python -m pipeline.screener [--offline] [--budget N]` rebuilds only the screener; tests never touch the network
   (`run.main` tests pass `--only fred`).
