@@ -1,8 +1,10 @@
 """Run the whole pipeline: ``python -m pipeline.run``.
 
-1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo) with last-good-copy fallback;
+1. fetch every series in ``catalog.yaml`` (FRED + ALFRED vintages, Yahoo, UMich, Eurostat) with last-good-copy
+   fallback;
 2. validate the hand-entered CSVs in ``data/manual/``;
-3. write ``site/data/series/**.json``, ``site/data/manual/*.json`` and ``site/data/health.json``.
+3. compute the Macro Desk (signals, bias, monthly point-in-time history, daily log) into ``site/data/macro/``;
+4. write ``site/data/series/**.json``, ``site/data/manual/*.json`` and ``site/data/health.json``.
 
 A failing source never stops the run: it is reported on the Data health page. The exit code is non-zero
 only when the pipeline itself crashes.
@@ -21,12 +23,15 @@ from typing import Any
 from . import gha, manual
 from .catalog import SOURCES, CatalogEntry, load_catalog
 from .config import CATALOG_FILE, MANUAL_DIR, RAW_DIR, SITE_DATA_DIR, YAHOO_MIN_INTERVAL_S
-from .fetchers import fred, yahoo
+from .fetchers import eurostat, fred, umich, yahoo
 from .health import SeriesResult, build_health
 from .http import FetchError, HttpClient, redact
+from .signals.build import build as build_macro
+from .signals.data import Library
 from .store import RawCache, SeriesData, iso, read_series, utc_now, write_json, write_series
 
 log = logging.getLogger("pipeline")
+OTHER_SOURCES = {"umich": umich, "eurostat": eurostat}
 
 
 class Runner:
@@ -49,6 +54,7 @@ class Runner:
         self.with_vintages = vintages
         self.fred = fred_client or fred.FredClient(os.environ.get("FRED_API_KEY"))
         self.yahoo_http = yahoo_http or HttpClient(min_interval=YAHOO_MIN_INTERVAL_S)
+        self.other_http = HttpClient(min_interval=0.5)
         self.now_iso = now_iso or iso(utc_now())
 
     def series_path(self, entry: CatalogEntry) -> Path:
@@ -58,11 +64,18 @@ class Runner:
         if entry.source == "fred":
             payload, reused = fred.fetch(self.fred, entry.id, None if self.refresh else cached)
             return payload, fred.normalize(payload), reused
-        payload = yahoo.fetch(entry.id, self.yahoo_http)
-        return payload, yahoo.normalize(payload), False
+        if entry.source == "yahoo":
+            payload = yahoo.fetch(entry.id, self.yahoo_http)
+        else:
+            payload = OTHER_SOURCES[entry.source].fetch(entry.id, self.other_http)
+        return payload, self._normalize(entry, payload), False
 
     def _normalize(self, entry: CatalogEntry, payload: Any) -> SeriesData:
-        return fred.normalize(payload) if entry.source == "fred" else yahoo.normalize(payload)
+        if entry.source == "fred":
+            return fred.normalize(payload)
+        if entry.source == "yahoo":
+            return yahoo.normalize(payload)
+        return OTHER_SOURCES[entry.source].normalize(payload)
 
     def update(self, entry: CatalogEntry, *, skip: bool = False) -> SeriesResult:
         hit = self.cache.load(entry.source, entry.name)
@@ -202,7 +215,9 @@ def _report(health: dict[str, Any]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Fetch all data and rebuild site/data/.")
     parser.add_argument("--offline", action="store_true", help="no network: rebuild from the raw cache")
-    parser.add_argument("--only", default="fred,yahoo", help="comma list of sources to fetch (default: all)")
+    parser.add_argument(
+        "--only", default="fred,yahoo,umich,eurostat", help="comma list of sources to fetch (default: all)"
+    )
     parser.add_argument("--no-vintages", action="store_true", help="skip ALFRED vintages")
     parser.add_argument("--refresh", action="store_true", help="re-download even if the source is unchanged")
     parser.add_argument("--today", type=date.fromisoformat, default=None, help="pretend today is YYYY-MM-DD")
@@ -250,7 +265,32 @@ def main(argv: list[str] | None = None) -> int:
         )
         manual_entries.append(manual.health_entry(ds, today))
 
+    macro: dict[str, Any] = {"status": "ok", "error": None}
+    try:  # a bug in the Macro Desk must not stop the data update
+        latest = build_macro(
+            args.out_dir,
+            today,
+            Library.load(
+                today,
+                site_data_dir=args.out_dir,
+                raw_dir=args.raw_dir,
+                manual_dir=args.manual_dir,
+                catalog=entries,
+            ),
+        )
+        macro.update(
+            bias=latest["bias"]["score"],
+            state=latest["bias"]["state"],
+            used=latest["bias"]["used"],
+            total=latest["bias"]["total"],
+        )
+    except Exception as exc:
+        log.exception("Macro Desk build failed")
+        macro = {"status": "failed", "error": redact(f"{type(exc).__name__}: {exc}")}
+        gha.annotate("error", f"Macro Desk not updated: {macro['error']}", title="Macro Desk")
+
     health = build_health(results, manual_entries, generated_at=runner.now_iso, today=today)
+    health["macro"] = macro
     write_json(args.out_dir / "health.json", health, indent=None)
     _report(health)
     log.info(

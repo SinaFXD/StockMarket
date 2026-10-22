@@ -18,7 +18,12 @@ BLOCKS = {
     "international": "International",
     "confirmers": "Coincident & lagging confirmers",
 }
-SOURCES = {"fred": "FRED", "yahoo": "Yahoo Finance"}
+SOURCES = {
+    "fred": "FRED",
+    "yahoo": "Yahoo Finance",
+    "umich": "University of Michigan",
+    "eurostat": "Eurostat",
+}
 
 
 @dataclass(frozen=True)
@@ -43,6 +48,10 @@ class CatalogEntry:
     def source_url(self) -> str:
         if self.source == "fred":
             return f"https://fred.stlouisfed.org/series/{self.id}"
+        if self.source == "umich":
+            return "https://www.sca.isr.umich.edu/tables.html"
+        if self.source == "eurostat":
+            return "https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table"
         return f"https://finance.yahoo.com/quote/{quote(self.id)}"
 
 
