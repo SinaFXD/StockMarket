@@ -1,4 +1,4 @@
-{"key":"yahoo/BZ_F","source":"Yahoo Finance","id":"BZ=F","label":"Brent crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/BZ%3DF","title":"Brent Crude Oil Last Day Financial Futures","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-10-22T05:25:02Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/BZ_F","source":"Yahoo Finance","id":"BZ=F","label":"Brent crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/BZ%3DF","title":"Brent Crude Oil Last Day Financial Futures","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-10-22T05:42:10Z","columns":["date","close","adj_close"],"observations":[
 ["2007-07-30",75.74,75.74],
 ["2007-07-31",77.05,77.05],
 ["2007-08-01",75.35,75.35],
