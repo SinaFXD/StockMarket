@@ -1,6 +1,6 @@
 # Regime, recession odds, Fed policy and the Treasury curve
 
-`regime.html` ("Regime" in the menu, after the Macro Desk) adds the bigger picture behind the bias: the growth and
+`regime.html` ("Macro → Regime" in the menu, after the Macro Desk) adds the bigger picture behind the bias: the growth and
 inflation regime (lesson 3: GDP growth and inflation set the backdrop for equities), what did well in each regime,
 recession odds from the yield curve and the Fed against a policy rule (lessons 4-6). **Context only**: nothing here
 feeds the bias or any score. Built after the benchmark review of 22 Oct 2026 (`docs/03-reza-benchmark.md`), with

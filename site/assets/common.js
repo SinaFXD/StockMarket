@@ -114,7 +114,7 @@ export function relTime(iso, now = Date.now()) {
 
 let tooltipNode = null;
 
-function tooltip() {
+export function tooltip() {
   if (!tooltipNode) {
     tooltipNode = el("div", { class: "tooltip", role: "status", hidden: true });
     document.body.append(tooltipNode);

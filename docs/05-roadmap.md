@@ -116,3 +116,7 @@ Done in one part (2026-10-22). Method: `docs/10-macro-ideas-method.md`.
       Copy brief, Download CSV; a light/dark switch on every page.
 - [x] Hedge-fund review follow-ups (2026-10-22): a pre-registered test of estimate revisions vs forecast growth in the
       forward test (`docs/12-track-record.md`) and style-factor exposure in the Portfolio Lab (`docs/09-portfolio-method.md`).
+- [x] Home page and menu redesign (2026-10-22): the home page is a summary of today (bias with its 24-month trail, the
+      four blocks, what changed, the next 14 days of reports, regime and recession odds, the four process steps with
+      live counts, data status; `site/assets/home.js`); the menu is grouped (This week, Macro ▾, Stocks ▾, Portfolio,
+      Guide; Data health and the theme switch as icons; one panel on phones; `site/assets/nav.js`).
