@@ -1,4 +1,4 @@
-{"key":"fred/M2SL","source":"FRED","id":"M2SL","label":"M2 money supply","block":"money_markets","url":"https://fred.stlouisfed.org/series/M2SL","title":"M2","units":"Billions of Dollars","units_short":"Bil. of $","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-22 12:01:30-05","fetched_at":"2026-10-22T15:55:45Z","columns":["date","value"],"observations":[
+{"key":"fred/M2SL","source":"FRED","id":"M2SL","label":"M2 money supply","block":"money_markets","url":"https://fred.stlouisfed.org/series/M2SL","title":"M2","units":"Billions of Dollars","units_short":"Bil. of $","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-22 12:01:30-05","fetched_at":"2026-10-22T16:25:07Z","columns":["date","value"],"observations":[
 ["1959-01-01",286.6],
 ["1959-02-01",287.7],
 ["1959-03-01",289.2],
