@@ -1,4 +1,4 @@
-{"key":"oecd/CPI_JP","source":"OECD","id":"CPI_JP","label":"Japan CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-10-22T20:18:27Z","columns":["date","value"],"observations":[
+{"key":"oecd/CPI_JP","source":"OECD","id":"CPI_JP","label":"Japan CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-10-23T00:46:06Z","columns":["date","value"],"observations":[
 ["1971-01-01",6.5],
 ["1971-02-01",6.0],
 ["1971-03-01",5.3],
