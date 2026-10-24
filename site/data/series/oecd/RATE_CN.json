@@ -1,4 +1,4 @@
-{"key":"oecd/RATE_CN","source":"OECD","id":"RATE_CN","label":"China 3m interbank rate (SHIBOR)","block":"international","url":"https://data-explorer.oecd.org/","title":"China 3-month interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-23T00:46:06Z","columns":["date","value"],"observations":[
+{"key":"oecd/RATE_CN","source":"OECD","id":"RATE_CN","label":"China 3m interbank rate (SHIBOR)","block":"international","url":"https://data-explorer.oecd.org/","title":"China 3-month interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
 ["1997-06-01",10.75],
 ["1997-07-01",9.7355],
 ["1997-08-01",9.6809],

@@ -1,4 +1,4 @@
-{"key":"fred/ICSA","source":"FRED","id":"ICSA","label":"Initial jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/ICSA","title":"Initial Claims","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-10-22 07:34:23-05","fetched_at":"2026-10-23T00:46:06Z","columns":["date","value"],"observations":[
+{"key":"fred/ICSA","source":"FRED","id":"ICSA","label":"Initial jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/ICSA","title":"Initial Claims","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-10-22 07:34:23-05","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
 ["1967-01-07",208000],
 ["1967-01-14",207000],
 ["1967-01-21",217000],

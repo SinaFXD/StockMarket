@@ -1,4 +1,4 @@
-{"key":"umich/ICS","source":"University of Michigan","id":"ICS","label":"UMich consumer sentiment","block":"surveys","url":"https://www.sca.isr.umich.edu/tables.html","title":"Index of Consumer Sentiment","units":"Index 1966:Q1=100","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","fetched_at":"2026-10-23T00:46:06Z","columns":["date","value"],"observations":[
+{"key":"umich/ICS","source":"University of Michigan","id":"ICS","label":"UMich consumer sentiment","block":"surveys","url":"https://www.sca.isr.umich.edu/tables.html","title":"Index of Consumer Sentiment","units":"Index 1966:Q1=100","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
 ["1952-11-01",86.2],
 ["1953-02-01",90.7],
 ["1953-08-01",80.8],
@@ -675,5 +675,6 @@
 ["2026-06-01",49.5],
 ["2026-07-01",55.2],
 ["2026-08-01",51.7],
-["2026-09-01",48.1]
+["2026-09-01",48.1],
+["2026-10-01",48.0]
 ]}
