@@ -1,4 +1,4 @@
-{"key":"fred/UMCSENT","source":"FRED","id":"UMCSENT","label":"UMich consumer sentiment","block":"surveys","url":"https://fred.stlouisfed.org/series/UMCSENT","title":"University of Michigan: Consumer Sentiment","units":"Index 1966:Q1=100","units_short":"Index 1966:Q1=100","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-23 10:02:25-05","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
+{"key":"fred/UMCSENT","source":"FRED","id":"UMCSENT","label":"UMich consumer sentiment","block":"surveys","url":"https://fred.stlouisfed.org/series/UMCSENT","title":"University of Michigan: Consumer Sentiment","units":"Index 1966:Q1=100","units_short":"Index 1966:Q1=100","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-23 10:02:25-05","fetched_at":"2026-10-25T00:24:20Z","columns":["date","value"],"observations":[
 ["1952-11-01",86.2],
 ["1953-02-01",90.7],
 ["1953-08-01",80.8],

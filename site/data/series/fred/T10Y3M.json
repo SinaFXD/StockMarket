@@ -1,4 +1,4 @@
-{"key":"fred/T10Y3M","source":"FRED","id":"T10Y3M","label":"Yield curve 10y-3m","block":"money_markets","url":"https://fred.stlouisfed.org/series/T10Y3M","title":"10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-23 16:03:34-05","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
+{"key":"fred/T10Y3M","source":"FRED","id":"T10Y3M","label":"Yield curve 10y-3m","block":"money_markets","url":"https://fred.stlouisfed.org/series/T10Y3M","title":"10-Year Treasury Constant Maturity Minus 3-Month Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-10-23 16:03:34-05","fetched_at":"2026-10-25T00:24:20Z","columns":["date","value"],"observations":[
 ["1982-01-04",2.32],
 ["1982-01-05",2.24],
 ["1982-01-06",2.43],

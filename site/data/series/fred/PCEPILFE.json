@@ -1,4 +1,4 @@
-{"key":"fred/PCEPILFE","source":"FRED","id":"PCEPILFE","label":"Core PCE price index","block":"confirmers","url":"https://fred.stlouisfed.org/series/PCEPILFE","title":"Personal Consumption Expenditures Excluding Food and Energy (Chain-Type Price Index)","units":"Index 2017=100","units_short":"Index 2017=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-30 07:43:28-05","fetched_at":"2026-10-24T00:52:16Z","columns":["date","value"],"observations":[
+{"key":"fred/PCEPILFE","source":"FRED","id":"PCEPILFE","label":"Core PCE price index","block":"confirmers","url":"https://fred.stlouisfed.org/series/PCEPILFE","title":"Personal Consumption Expenditures Excluding Food and Energy (Chain-Type Price Index)","units":"Index 2017=100","units_short":"Index 2017=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-30 07:43:28-05","fetched_at":"2026-10-25T00:24:20Z","columns":["date","value"],"observations":[
 ["1959-01-01",15.501],
 ["1959-02-01",15.513],
 ["1959-03-01",15.531],
