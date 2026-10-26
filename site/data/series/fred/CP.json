@@ -1,4 +1,4 @@
-{"key":"fred/CP","source":"FRED","id":"CP","label":"Corporate profits after tax","block":"confirmers","url":"https://fred.stlouisfed.org/series/CP","title":"Corporate Profits After Tax (without IVA and CCAdj)","units":"Billions of Dollars","units_short":"Bil. of $","frequency":"quarterly","seasonal_adjustment":"SAAR","source_updated":"2026-09-30 07:55:12-05","fetched_at":"2026-10-25T00:24:20Z","columns":["date","value"],"observations":[
+{"key":"fred/CP","source":"FRED","id":"CP","label":"Corporate profits after tax","block":"confirmers","url":"https://fred.stlouisfed.org/series/CP","title":"Corporate Profits After Tax (without IVA and CCAdj)","units":"Billions of Dollars","units_short":"Bil. of $","frequency":"quarterly","seasonal_adjustment":"SAAR","source_updated":"2026-09-30 07:55:12-05","fetched_at":"2026-10-26T00:30:50Z","columns":["date","value"],"observations":[
 ["1947-01-01",21.97],
 ["1947-04-01",20.788],
 ["1947-07-01",20.564],

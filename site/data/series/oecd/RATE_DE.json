@@ -1,4 +1,4 @@
-{"key":"oecd/RATE_DE","source":"OECD","id":"RATE_DE","label":"Germany (euro) overnight rate","block":"international","url":"https://data-explorer.oecd.org/","title":"Germany overnight interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-25T00:24:20Z","columns":["date","value"],"observations":[
+{"key":"oecd/RATE_DE","source":"OECD","id":"RATE_DE","label":"Germany (euro) overnight rate","block":"international","url":"https://data-explorer.oecd.org/","title":"Germany overnight interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-26T00:30:50Z","columns":["date","value"],"observations":[
 ["1960-01-01",3.84],
 ["1960-02-01",3.87],
 ["1960-03-01",4.25],
@@ -799,5 +799,6 @@
 ["2026-06-01",2.010901],
 ["2026-07-01",2.183887],
 ["2026-08-01",2.186981],
-["2026-09-01",2.273009]
+["2026-09-01",2.280606],
+["2026-10-01",2.439853]
 ]}
