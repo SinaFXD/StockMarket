@@ -1,4 +1,4 @@
-{"key":"fred/GDPPOT","source":"FRED","id":"GDPPOT","label":"Real potential GDP (CBO)","block":"confirmers","url":"https://fred.stlouisfed.org/series/GDPPOT","title":"Real Potential Gross Domestic Product","units":"Billions of Chained 2017 Dollars","units_short":"Bil. of Chn. 2017 $","frequency":"quarterly","seasonal_adjustment":"NSA","source_updated":"2026-02-27 15:05:28-06","fetched_at":"2026-10-28T01:30:15Z","columns":["date","value"],"observations":[
+{"key":"fred/GDPPOT","source":"FRED","id":"GDPPOT","label":"Real potential GDP (CBO)","block":"confirmers","url":"https://fred.stlouisfed.org/series/GDPPOT","title":"Real Potential Gross Domestic Product","units":"Billions of Chained 2017 Dollars","units_short":"Bil. of Chn. 2017 $","frequency":"quarterly","seasonal_adjustment":"NSA","source_updated":"2026-02-27 15:05:28-06","fetched_at":"2026-10-29T01:53:46Z","columns":["date","value"],"observations":[
 ["1949-01-01",2244.6967470923687],
 ["1949-04-01",2275.9923955934587],
 ["1949-07-01",2308.797507930488],

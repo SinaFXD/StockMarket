@@ -1,4 +1,4 @@
-{"key":"eurostat/CCI_EA","source":"Eurostat","id":"CCI_EA","label":"Euro-area construction confidence","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Construction confidence indicator, euro area, seasonally adjusted [EA21]","units":"Balance","units_short":"Balance","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-28T01:30:15Z","columns":["date","value"],"observations":[
+{"key":"eurostat/CCI_EA","source":"Eurostat","id":"CCI_EA","label":"Euro-area construction confidence","block":"international","url":"https://ec.europa.eu/eurostat/databrowser/view/ei_bssi_m_r2/default/table","title":"Construction confidence indicator, euro area, seasonally adjusted [EA21]","units":"Balance","units_short":"Balance","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-09-29T11:00:00+0200","fetched_at":"2026-10-29T01:53:46Z","columns":["date","value"],"observations":[
 ["1980-01-01",-12.5],
 ["1980-02-01",-14.1],
 ["1980-03-01",-16.2],

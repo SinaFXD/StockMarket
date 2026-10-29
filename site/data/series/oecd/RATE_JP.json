@@ -1,4 +1,4 @@
-{"key":"oecd/RATE_JP","source":"OECD","id":"RATE_JP","label":"Japan overnight rate","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan overnight interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-28T01:30:15Z","columns":["date","value"],"observations":[
+{"key":"oecd/RATE_JP","source":"OECD","id":"RATE_JP","label":"Japan overnight rate","block":"international","url":"https://data-explorer.oecd.org/","title":"Japan overnight interbank rate (monthly average)","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.STES,DSD_STES@DF_FINMARK,","fetched_at":"2026-10-29T01:53:46Z","columns":["date","value"],"observations":[
 ["1985-07-01",6.4167],
 ["1985-08-01",6.2476],
 ["1985-09-01",6.4972],
