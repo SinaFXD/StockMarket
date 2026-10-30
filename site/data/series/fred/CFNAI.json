@@ -1,4 +1,4 @@
-{"key":"fred/CFNAI","source":"FRED","id":"CFNAI","label":"Chicago Fed National Activity Index","block":"confirmers","url":"https://fred.stlouisfed.org/series/CFNAI","title":"Chicago Fed National Activity Index","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-26 07:35:29-05","fetched_at":"2026-10-29T01:53:46Z","columns":["date","value"],"observations":[
+{"key":"fred/CFNAI","source":"FRED","id":"CFNAI","label":"Chicago Fed National Activity Index","block":"confirmers","url":"https://fred.stlouisfed.org/series/CFNAI","title":"Chicago Fed National Activity Index","units":"Index","units_short":"Index","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-26 07:35:29-05","fetched_at":"2026-10-30T02:03:49Z","columns":["date","value"],"observations":[
 ["1967-03-01",-0.35],
 ["1967-04-01",0.0],
 ["1967-05-01",-0.56],

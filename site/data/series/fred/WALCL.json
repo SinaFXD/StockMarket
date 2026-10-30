@@ -1,4 +1,4 @@
-{"key":"fred/WALCL","source":"FRED","id":"WALCL","label":"Fed balance sheet (total assets)","block":"money_markets","url":"https://fred.stlouisfed.org/series/WALCL","title":"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level","units":"Millions of U.S. Dollars","units_short":"Mil. of U.S. $","frequency":"weekly","seasonal_adjustment":"NSA","source_updated":"2026-10-22 15:32:30-05","fetched_at":"2026-10-29T01:53:46Z","columns":["date","value"],"observations":[
+{"key":"fred/WALCL","source":"FRED","id":"WALCL","label":"Fed balance sheet (total assets)","block":"money_markets","url":"https://fred.stlouisfed.org/series/WALCL","title":"Assets: Total Assets: Total Assets (Less Eliminations from Consolidation): Wednesday Level","units":"Millions of U.S. Dollars","units_short":"Mil. of U.S. $","frequency":"weekly","seasonal_adjustment":"NSA","source_updated":"2026-10-29 15:32:13-05","fetched_at":"2026-10-30T02:03:49Z","columns":["date","value"],"observations":[
 ["2002-12-18",719542],
 ["2002-12-25",732059],
 ["2003-01-01",730994],
@@ -1243,5 +1243,6 @@
 ["2026-09-30",6743031],
 ["2026-10-07",6747560],
 ["2026-10-14",6755639],
-["2026-10-21",6753604]
+["2026-10-21",6753604],
+["2026-10-28",6745635]
 ]}
