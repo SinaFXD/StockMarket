@@ -1,4 +1,4 @@
-{"key":"fred/HOUST","source":"FRED","id":"HOUST","label":"Housing starts","block":"surveys","url":"https://fred.stlouisfed.org/series/HOUST","title":"New Privately-Owned Housing Units Started: Total Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-10-20 07:33:37-05","fetched_at":"2026-10-30T02:03:49Z","columns":["date","value"],"observations":[
+{"key":"fred/HOUST","source":"FRED","id":"HOUST","label":"Housing starts","block":"surveys","url":"https://fred.stlouisfed.org/series/HOUST","title":"New Privately-Owned Housing Units Started: Total Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-10-20 07:33:37-05","fetched_at":"2026-10-31T01:42:19Z","columns":["date","value"],"observations":[
 ["1959-01-01",1657],
 ["1959-02-01",1667],
 ["1959-03-01",1620],
