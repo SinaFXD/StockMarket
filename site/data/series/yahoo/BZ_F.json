@@ -1,4 +1,4 @@
-{"key":"yahoo/BZ_F","source":"Yahoo Finance","id":"BZ=F","label":"Brent crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/BZ%3DF","title":"Brent Crude Oil Last Day Financial Futures","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-11-04T02:29:49Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/BZ_F","source":"Yahoo Finance","id":"BZ=F","label":"Brent crude futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/BZ%3DF","title":"Brent Crude Oil Last Day Financial Futures","units":"USD","units_short":"USD","frequency":"daily","exchange":"NY Mercantile","via":"yfinance","fetched_at":"2026-11-05T02:37:49Z","columns":["date","close","adj_close"],"observations":[
 ["2007-07-30",75.74,75.74],
 ["2007-07-31",77.05,77.05],
 ["2007-08-01",75.35,75.35],
@@ -4793,5 +4793,6 @@
 ["2026-10-28",115.32,115.32],
 ["2026-10-29",114.88,114.88],
 ["2026-10-30",117.64,117.64],
-["2026-11-02",104.77,104.77]
+["2026-11-02",104.77,104.77],
+["2026-11-03",103.6,103.6]
 ]}
