@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXBGS","source":"FRED","id":"DTWEXBGS","label":"US dollar, broad index","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXBGS","title":"Nominal Broad U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-02 15:51:35-06","fetched_at":"2026-11-05T02:37:49Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXBGS","source":"FRED","id":"DTWEXBGS","label":"US dollar, broad index","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXBGS","title":"Nominal Broad U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-02 15:51:35-06","fetched_at":"2026-11-06T02:38:31Z","columns":["date","value"],"observations":[
 ["2006-01-02",101.4155],
 ["2006-01-03",100.7558],
 ["2006-01-04",100.2288],
