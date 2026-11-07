@@ -1,4 +1,4 @@
-{"key":"fred/CCSA","source":"FRED","id":"CCSA","label":"Continuing jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/CCSA","title":"Continued Claims (Insured Unemployment)","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-11-05 07:34:30-06","fetched_at":"2026-11-06T02:38:31Z","columns":["date","value"],"observations":[
+{"key":"fred/CCSA","source":"FRED","id":"CCSA","label":"Continuing jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/CCSA","title":"Continued Claims (Insured Unemployment)","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-11-05 07:34:30-06","fetched_at":"2026-11-07T02:06:25Z","columns":["date","value"],"observations":[
 ["1967-01-07",1134000],
 ["1967-01-14",1119000],
 ["1967-01-21",1119000],
