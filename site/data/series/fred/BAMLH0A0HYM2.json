@@ -1,4 +1,4 @@
-{"key":"fred/BAMLH0A0HYM2","source":"FRED","id":"BAMLH0A0HYM2","label":"High-yield OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLH0A0HYM2","title":"ICE BofA US High Yield Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-06 09:08:33-06","fetched_at":"2026-11-07T02:06:25Z","columns":["date","value"],"observations":[
+{"key":"fred/BAMLH0A0HYM2","source":"FRED","id":"BAMLH0A0HYM2","label":"High-yield OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLH0A0HYM2","title":"ICE BofA US High Yield Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-06 09:08:33-06","fetched_at":"2026-11-08T01:36:49Z","columns":["date","value"],"observations":[
 ["2023-11-07",4.08],
 ["2023-11-08",4.08],
 ["2023-11-09",4.04],
