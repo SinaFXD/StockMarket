@@ -1,4 +1,4 @@
-{"key":"fred/BAMLC0A4CBBB","source":"FRED","id":"BAMLC0A4CBBB","label":"BBB corporate OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLC0A4CBBB","title":"ICE BofA BBB US Corporate Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-06 09:06:45-06","fetched_at":"2026-11-08T01:36:49Z","columns":["date","value"],"observations":[
+{"key":"fred/BAMLC0A4CBBB","source":"FRED","id":"BAMLC0A4CBBB","label":"BBB corporate OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLC0A4CBBB","title":"ICE BofA BBB US Corporate Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-06 09:06:45-06","fetched_at":"2026-11-09T01:48:29Z","columns":["date","value"],"observations":[
 ["2023-11-07",1.58],
 ["2023-11-08",1.58],
 ["2023-11-09",1.56],
