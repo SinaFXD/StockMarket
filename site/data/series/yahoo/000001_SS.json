@@ -1,4 +1,4 @@
-{"key":"yahoo/000001_SS","source":"Yahoo Finance","id":"000001.SS","label":"Shanghai Composite","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/000001.SS","title":"SSE Composite Index","units":"CNY","units_short":"CNY","frequency":"daily","exchange":"Shanghai","via":"yfinance","fetched_at":"2026-11-09T01:48:29Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/000001_SS","source":"Yahoo Finance","id":"000001.SS","label":"Shanghai Composite","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/000001.SS","title":"SSE Composite Index","units":"CNY","units_short":"CNY","frequency":"daily","exchange":"Shanghai","via":"yfinance","fetched_at":"2026-11-10T04:13:03Z","columns":["date","close","adj_close"],"observations":[
 ["1997-07-02",1199.061,1199.061],
 ["1997-07-03",1150.623,1150.623],
 ["1997-07-04",1159.342,1159.342],
@@ -7107,5 +7107,6 @@
 ["2026-11-03",3608.0979,3608.0979],
 ["2026-11-04",3686.1731,3686.1731],
 ["2026-11-05",3689.9109,3689.9109],
-["2026-11-06",3649.177,3649.177]
+["2026-11-06",3649.177,3649.177],
+["2026-11-09",3660.792,3660.792]
 ]}

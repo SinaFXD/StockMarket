@@ -3171,3 +3171,1046 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-11-02,MGEE,mixed,Utilities,0,75.3300,,,,,,,,,,1.488,up
 2026-11-02,RNW,na,Utilities,0,6.8500,,,,,,,,,,-3.418,down
 2026-11-02,CTRI,positive,Utilities,1,21.2800,,,,,,,,,,-5.705,down
+2026-11-09,SCCO,post_growth,Basic Materials,1,176.0200,,,,,,,,,,4.684,up
+2026-11-09,FCX,positive,Basic Materials,1,62.3300,,,,,,,,,,3.645,up
+2026-11-09,CRH,turnaround,Basic Materials,1,97.7300,,,,,,,,,,-9.254,
+2026-11-09,NUE,mixed,Basic Materials,1,249.2400,,,,,,,,,,6.462,up
+2026-11-09,VALE,na,Basic Materials,1,11.9700,,,,,,,,,,-13.621,down
+2026-11-09,AU,boring,Basic Materials,1,99.3700,,,,,,,,,,-11.077,down
+2026-11-09,MT,turnaround,Basic Materials,1,64.2200,,,,,,,,,,-27.457,down
+2026-11-09,MLM,turnaround,Basic Materials,0,530.9700,,,,,,,,,,-19.123,down
+2026-11-09,GFI,boring,Basic Materials,1,41.0400,,,,,,,,,,-15.017,down
+2026-11-09,STLD,positive,Basic Materials,1,227.5600,,,,,,,,,,5.327,up
+2026-11-09,TECK,na,Basic Materials,1,64.6700,,,,,,,,,,14.698,up
+2026-11-09,KGC,boring,Basic Materials,1,22.8500,,,,,,,,,,-9.686,down
+2026-11-09,RGLD,boring,Basic Materials,1,282.6600,,,,,,,,,,2.984,up
+2026-11-09,AMRZ,mixed,Basic Materials,1,42.8200,,,,,,,,,,-11.043,down
+2026-11-09,DOW,turnaround,Basic Materials,1,30.9600,,,,,,,,,,1.520,
+2026-11-09,RS,post_growth,Basic Materials,0,421.0700,,,,,,,,,,17.557,up
+2026-11-09,IFF,turnaround,Basic Materials,0,84.4300,,,,,,,,,,-2.538,
+2026-11-09,DD,boring,Basic Materials,0,155.1400,,,,,,,,,,3.781,up
+2026-11-09,PAAS,mixed,Basic Materials,1,42.3600,,,,,,,,,,-18.111,down
+2026-11-09,CF,post_growth,Basic Materials,1,119.2800,,,,,,,,,,-0.757,
+2026-11-09,CDE,mixed,Basic Materials,1,16.4500,,,,,,,,,,-36.265,down
+2026-11-09,SQM,post_growth,Basic Materials,1,56.7000,,,,,,,,,,12.899,up
+2026-11-09,PKX,na,Basic Materials,1,49.4700,,,,,,,,,,8.473,up
+2026-11-09,EQX,mixed,Basic Materials,1,12.0900,,,,,,,,,,-11.069,down
+2026-11-09,SUZ,na,Basic Materials,0,9.7800,,,,,,,,,,21.832,up
+2026-11-09,ALB,turnaround,Basic Materials,1,99.1200,,,,,,,,,,-8.344,
+2026-11-09,AA,post_growth,Basic Materials,1,41.8200,,,,,,,,,,4.546,up
+2026-11-09,HMY,na,Basic Materials,1,17.6000,,,,,,,,,,-11.941,down
+2026-11-09,HL,positive,Basic Materials,1,15.4100,,,,,,,,,,-10.242,down
+2026-11-09,HBM,positive,Basic Materials,1,22.7900,,,,,,,,,,-1.731,
+2026-11-09,EGO,mixed,Basic Materials,1,37.4200,,,,,,,,,,-22.481,down
+2026-11-09,GGB,na,Basic Materials,1,4.5800,,,,,,,,,,11.059,up
+2026-11-09,SSL,na,Basic Materials,1,13.7900,,,,,,,,,,114.368,up
+2026-11-09,WLK,turnaround,Basic Materials,1,64.1300,,,,,,,,,,-49.496,down
+2026-11-09,ESI,boring,Basic Materials,1,32.9600,,,,,,,,,,2.354,up
+2026-11-09,BTG,mixed,Basic Materials,1,5.6800,,,,,,,,,,6.056,up
+2026-11-09,BVN,value_trap,Basic Materials,1,28.9000,,,,,,,,,,-5.960,
+2026-11-09,AUGO,positive,Basic Materials,1,86.9900,,,,,,,,,,10.787,up
+2026-11-09,MOS,mixed,Basic Materials,1,22.7700,,,,,,,,,,-111.849,down
+2026-11-09,SBSW,na,Basic Materials,1,9.8900,,,,,,,,,,-18.610,down
+2026-11-09,TFPM,boring,Basic Materials,1,32.9700,,,,,,,,,,-10.435,down
+2026-11-09,SSRM,post_growth,Basic Materials,1,29.6700,,,,,,,,,,-9.188,
+2026-11-09,EXP,mixed,Basic Materials,1,190.4400,,,,,,,,,,-11.225,down
+2026-11-09,CE,post_growth,Basic Materials,1,48.7500,,,,,,,,,,3.020,up
+2026-11-09,MEOH,na,Basic Materials,1,66.4900,,,,,,,,,,30.586,up
+2026-11-09,AVNT,boring,Basic Materials,1,46.3500,,,,,,,,,,2.951,up
+2026-11-09,MTRN,boring,Basic Materials,1,202.1400,,,,,,,,,,2.355,up
+2026-11-09,CBT,turnaround,Basic Materials,0,71.8500,,,,,,,,,,-7.063,
+2026-11-09,ARIS,positive,Basic Materials,1,16.6400,,,,,,,,,,-8.625,
+2026-11-09,KNF,turnaround,Basic Materials,1,58.9400,,,,,,,,,,-24.518,down
+2026-11-09,HWKN,mixed,Basic Materials,1,154.7600,,,,,,,,,,-10.428,down
+2026-11-09,FSM,positive,Basic Materials,1,10.0700,,,,,,,,,,-27.958,down
+2026-11-09,TGB,na,Basic Materials,1,7.4900,,,,,,,,,,-14.315,down
+2026-11-09,KWR,boring,Basic Materials,0,157.7700,,,,,,,,,,6.104,up
+2026-11-09,ALM,na,Basic Materials,1,8.7750,,,,,,,,,,83.942,up
+2026-11-09,BCC,turnaround,Basic Materials,1,72.5700,,,,,,,,,,-18.611,down
+2026-11-09,EXK,turnaround,Basic Materials,1,8.3400,,,,,,,,,,-31.094,down
+2026-11-09,SVM,mixed,Basic Materials,1,9.7300,,,,,,,,,,-21.311,down
+2026-11-09,TTAM,turnaround,Basic Materials,1,11.6400,,,,,,,,,,3.154,up
+2026-11-09,NGVT,boring,Basic Materials,1,62.4000,,,,,,,,,,2.797,up
+2026-11-09,TGLS,turnaround,Basic Materials,1,47.0900,,,,,,,,,,-2.519,
+2026-11-09,GOOGL,na,Communication Services,1,288.1500,,,,,,,,,,-5.141,down
+2026-11-09,GOOG,boring,Communication Services,1,286.0100,,,,,,,,,,15.058,up
+2026-11-09,META,boring,Communication Services,1,641.3700,,,,,,,,,,-8.401,down
+2026-11-09,APP,positive,Communication Services,1,410.0000,,,,,,,,,,2.998,
+2026-11-09,CMCSA,value_trap,Communication Services,1,24.5100,,,,,,,,,,-0.106,
+2026-11-09,NTES,na,Communication Services,1,129.6500,,,,,,,,,,-5.056,down
+2026-11-09,SKYD,mixed,Communication Services,1,8.7000,,,,,,,,,,-219.078,down
+2026-11-09,TTWO,na,Communication Services,1,207.4000,,,,,,,,,,-16.301,down
+2026-11-09,FOXA,mixed,Communication Services,1,67.6900,,,,,,,,,,6.565,up
+2026-11-09,CHT,na,Communication Services,0,48.8500,,,,,,,,,,-6.550,down
+2026-11-09,VOD,na,Communication Services,0,15.6900,,,,,,,,,,-9.194,down
+2026-11-09,ECHO,turnaround,Communication Services,1,101.1900,,,,,,,,,,-8.585,down
+2026-11-09,BIDU,na,Communication Services,1,81.0300,,,,,,,,,,-27.583,down
+2026-11-09,FWONK,turnaround,Communication Services,0,108.0100,,,,,,,,,,0.505,
+2026-11-09,FWONA,na,Communication Services,1,102.8300,,,,,,,,,,43.825,up
+2026-11-09,ROKU,na,Communication Services,,160.5200,,,,,,,,,,22.910,up
+2026-11-09,NWS,na,Communication Services,1,29.3300,,,,,,,,,,5.217,up
+2026-11-09,TIGO,positive,Communication Services,1,86.7600,,,,,,,,,,17.508,up
+2026-11-09,TKO,positive,Communication Services,1,199.6500,,,,,,,,,,5.155,
+2026-11-09,NWSA,boring,Communication Services,1,26.5700,,,,,,,,,,5.217,up
+2026-11-09,CHTR,value_trap,Communication Services,1,121.2000,,,,,,,,,,-7.511,down
+2026-11-09,TLK,na,Communication Services,1,11.4000,,,,,,,,,,-6.595,down
+2026-11-09,GSAT,turnaround,Communication Services,0,85.7800,,,,,,,,,,0.000,
+2026-11-09,PSO,na,Communication Services,0,17.1900,,,,,,,,,,-8.688,down
+2026-11-09,TTD,negative,Communication Services,1,14.9300,,,,,,,,,,-37.358,down
+2026-11-09,ZG,na,Communication Services,1,31.2800,,,,,,,,,,-19.587,down
+2026-11-09,Z,mixed,Communication Services,1,30.6700,,,,,,,,,,-22.025,down
+2026-11-09,NXST,post_growth,Communication Services,1,201.2300,,,,,,,,,,5.576,up
+2026-11-09,WPP,na,Communication Services,1,27.7800,,,,,,,,,,12.360,up
+2026-11-09,IRDM,post_growth,Communication Services,0,45.0800,,,,,,,,,,37.963,up
+2026-11-09,CNK,mixed,Communication Services,1,40.8900,,,,,,,,,,17.334,up
+2026-11-09,LION,turnaround,Communication Services,1,14.2400,,,,,,,,,,18.565,up
+2026-11-09,TKC,na,Communication Services,0,4.7600,,,,,,,,,,-5.634,down
+2026-11-09,MANU,na,Communication Services,0,23.2800,,,,,,,,,,9.091,up
+2026-11-09,JOYY,turnaround,Communication Services,0,81.4900,,,,,,,,,,-1.790,
+2026-11-09,MSGE,post_growth,Communication Services,1,80.2900,,,,,,,,,,25.545,up
+2026-11-09,TDS,turnaround,Communication Services,1,33.8600,,,,,,,,,,171.134,up
+2026-11-09,PPLI,mixed,Communication Services,1,43.3800,,,,,,,,,,-138.817,down
+2026-11-09,LFTO,mixed,Communication Services,1,18.7100,,,,,,,,,,225.513,up
+2026-11-09,IMAX,post_growth,Communication Services,1,48.8400,,,,,,,,,,52.056,up
+2026-11-09,AD,na,Communication Services,0,30.3800,,,,,,,,,,13.014,up
+2026-11-09,STUB,turnaround,Communication Services,1,5.8500,,,,,,,,,,-18.956,down
+2026-11-09,DV,boring,Communication Services,0,13.5600,,,,,,,,,,-5.832,down
+2026-11-09,IDT,mixed,Communication Services,0,82.6300,,,,,,,,,,6.835,up
+2026-11-09,AMZN,post_growth,Consumer Cyclical,1,266.9300,,,,,,,,,,1.030,
+2026-11-09,TM,na,Consumer Cyclical,0,218.5100,,,,,,,,,,4.682,up
+2026-11-09,ABNB,mixed,Consumer Cyclical,1,190.2900,,,,,,,,,,5.301,up
+2026-11-09,CVNA,turnaround,Consumer Cyclical,1,76.2600,,,,,,,,,,5.240,up
+2026-11-09,DASH,na,Consumer Cyclical,1,180.9600,,,,,,,,,,7.840,up
+2026-11-09,MELI,turnaround,Consumer Cyclical,1,1532.6800,,,,,,,,,,-4.729,down
+2026-11-09,ROST,post_growth,Consumer Cyclical,0,237.0000,,,,,,,,,,12.362,up
+2026-11-09,NKE,turnaround,Consumer Cyclical,1,39.8800,,,,,,,,,,-27.433,down
+2026-11-09,F,post_growth,Consumer Cyclical,0,12.5200,,,,,,,,,,1.997,
+2026-11-09,HMC,na,Consumer Cyclical,0,35.8400,,,,,,,,,,11.036,up
+2026-11-09,CMG,turnaround,Consumer Cyclical,1,35.7400,,,,,,,,,,-5.443,down
+2026-11-09,DHI,turnaround,Consumer Cyclical,1,155.6100,,,,,,,,,,-24.691,down
+2026-11-09,VIK,positive,Consumer Cyclical,1,87.1700,,,,,,,,,,-2.951,
+2026-11-09,SN,positive,Consumer Cyclical,1,229.5100,,,,,,,,,,3.804,up
+2026-11-09,WSM,mixed,Consumer Cyclical,1,261.6800,,,,,,,,,,9.729,up
+2026-11-09,EXPE,positive,Consumer Cyclical,1,259.1600,,,,,,,,,,4.156,up
+2026-11-09,TCOM,na,Consumer Cyclical,0,44.0400,,,,,,,,,,3.839,up
+2026-11-09,TPR,boring,Consumer Cyclical,1,136.0700,,,,,,,,,,6.143,up
+2026-11-09,LVS,mixed,Consumer Cyclical,0,40.1800,,,,,,,,,,-8.998,down
+2026-11-09,PHM,mixed,Consumer Cyclical,1,135.8800,,,,,,,,,,-8.485,down
+2026-11-09,SW,na,Consumer Cyclical,1,44.1900,,,,,,,,,,-27.399,down
+2026-11-09,BBY,mixed,Consumer Cyclical,1,106.2800,,,,,,,,,,4.138,up
+2026-11-09,LEN,mixed,Consumer Cyclical,1,91.5800,,,,,,,,,,-10.970,down
+2026-11-09,AS,positive,Consumer Cyclical,1,32.4600,,,,,,,,,,5.447,up
+2026-11-09,IP,turnaround,Consumer Cyclical,1,35.5300,,,,,,,,,,-22.706,down
+2026-11-09,H,positive,Consumer Cyclical,1,185.7000,,,,,,,,,,9.051,up
+2026-11-09,HAS,post_growth,Consumer Cyclical,1,120.9200,,,,,,,,,,15.247,up
+2026-11-09,NVR,mixed,Consumer Cyclical,1,6338.3800,,,,,,,,,,-6.810,down
+2026-11-09,W,mixed,Consumer Cyclical,1,116.8700,,,,,,,,,,7.410,up
+2026-11-09,FLUT,negative,Consumer Cyclical,1,81.9900,,,,,,,,,,-17.053,down
+2026-11-09,FIVE,mixed,Consumer Cyclical,1,253.7600,,,,,,,,,,12.707,up
+2026-11-09,CART,na,Consumer Cyclical,1,58.4600,,,,,,,,,,-6.753,down
+2026-11-09,DKS,turnaround,Consumer Cyclical,1,147.6900,,,,,,,,,,-19.996,down
+2026-11-09,LULU,negative,Consumer Cyclical,1,112.5300,,,,,,,,,,-13.257,down
+2026-11-09,GME,mixed,Consumer Cyclical,1,25.5900,,,,,,,,,,13.462,up
+2026-11-09,STLA,na,Consumer Cyclical,1,4.4200,,,,,,,,,,-39.318,down
+2026-11-09,DECK,mixed,Consumer Cyclical,1,90.4300,,,,,,,,,,4.401,up
+2026-11-09,LI,na,Consumer Cyclical,1,12.3400,,,,,,,,,,-2030.077,down
+2026-11-09,SCI,boring,Consumer Cyclical,0,73.1700,,,,,,,,,,-4.588,down
+2026-11-09,DKNG,mixed,Consumer Cyclical,1,18.7000,,,,,,,,,,-21.495,down
+2026-11-09,MUSA,post_growth,Consumer Cyclical,1,509.7900,,,,,,,,,,5.691,up
+2026-11-09,VSXY,positive,Consumer Cyclical,1,113.5200,,,,,,,,,,2.780,
+2026-11-09,WYNN,mixed,Consumer Cyclical,1,86.7000,,,,,,,,,,-19.332,down
+2026-11-09,NIO,na,Consumer Cyclical,1,3.4100,,,,,,,,,,-156.457,down
+2026-11-09,NCLH,negative,Consumer Cyclical,1,18.4300,,,,,,,,,,12.506,up
+2026-11-09,EAT,mixed,Consumer Cyclical,1,203.5300,,,,,,,,,,9.531,up
+2026-11-09,MGM,negative,Consumer Cyclical,1,32.9100,,,,,,,,,,-20.922,down
+2026-11-09,VFC,positive,Consumer Cyclical,1,20.8800,,,,,,,,,,8.646,up
+2026-11-09,APTV,value_trap,Consumer Cyclical,1,39.9100,,,,,,,,,,-1.989,
+2026-11-09,KMX,mixed,Consumer Cyclical,1,54.1100,,,,,,,,,,18.148,up
+2026-11-09,ETSY,na,Consumer Cyclical,1,88.4400,,,,,,,,,,18.000,up
+2026-11-09,URBN,post_growth,Consumer Cyclical,1,88.2700,,,,,,,,,,15.196,up
+2026-11-09,CROX,boring,Consumer Cyclical,1,160.2300,,,,,,,,,,5.004,up
+2026-11-09,CAVA,turnaround,Consumer Cyclical,1,62.3500,,,,,,,,,,-4.096,down
+2026-11-09,GLBE,positive,Consumer Cyclical,1,42.4900,,,,,,,,,,4.778,up
+2026-11-09,GIL,boring,Consumer Cyclical,1,36.4900,,,,,,,,,,-16.288,down
+2026-11-09,M,value_trap,Consumer Cyclical,1,24.9500,,,,,,,,,,4.440,up
+2026-11-09,VIPS,na,Consumer Cyclical,0,13.6900,,,,,,,,,,-22.696,down
+2026-11-09,ANF,post_growth,Consumer Cyclical,1,152.8100,,,,,,,,,,25.609,up
+2026-11-09,HRB,boring,Consumer Cyclical,1,50.9800,,,,,,,,,,4.848,up
+2026-11-09,AN,boring,Consumer Cyclical,1,186.0600,,,,,,,,,,-5.337,down
+2026-11-09,IBP,negative,Consumer Cyclical,1,223.4500,,,,,,,,,,-5.436,down
+2026-11-09,MTN,mixed,Consumer Cyclical,1,159.8900,,,,,,,,,,-13.071,down
+2026-11-09,CAKE,mixed,Consumer Cyclical,1,110.9600,,,,,,,,,,4.582,up
+2026-11-09,BYD,value_trap,Consumer Cyclical,0,77.8600,,,,,,,,,,-0.438,
+2026-11-09,SKY,turnaround,Consumer Cyclical,1,96.3900,,,,,,,,,,-2.464,
+2026-11-09,LKQ,value_trap,Consumer Cyclical,1,20.4100,,,,,,,,,,-17.758,down
+2026-11-09,CVCO,mixed,Consumer Cyclical,1,671.9700,,,,,,,,,,9.850,up
+2026-11-09,MBLY,post_growth,Consumer Cyclical,1,5.8600,,,,,,,,,,0.099,
+2026-11-09,BROS,mixed,Consumer Cyclical,1,36.0100,,,,,,,,,,-5.481,down
+2026-11-09,SON,value_trap,Consumer Cyclical,0,50.2400,,,,,,,,,,-7.247,down
+2026-11-09,MMYT,positive,Consumer Cyclical,1,51.8600,,,,,,,,,,6.118,up
+2026-11-09,GOLF,post_growth,Consumer Cyclical,0,84.6100,,,,,,,,,,-10.713,down
+2026-11-09,WING,mixed,Consumer Cyclical,1,176.9800,,,,,,,,,,-6.696,down
+2026-11-09,ALH,mixed,Consumer Cyclical,0,24.0400,,,,,,,,,,4.680,up
+2026-11-09,DOO,na,Consumer Cyclical,1,66.5100,,,,,,,,,,29.813,up
+2026-11-09,SIG,mixed,Consumer Cyclical,1,118.5800,,,,,,,,,,8.281,up
+2026-11-09,MTH,negative,Consumer Cyclical,1,70.3400,,,,,,,,,,-4.038,down
+2026-11-09,KTB,turnaround,Consumer Cyclical,1,81.9800,,,,,,,,,,3.606,up
+2026-11-09,MAT,turnaround,Consumer Cyclical,1,15.5900,,,,,,,,,,0.933,
+2026-11-09,BBWI,value_trap,Consumer Cyclical,1,21.7600,,,,,,,,,,2.010,
+2026-11-09,THO,mixed,Consumer Cyclical,1,82.0000,,,,,,,,,,-21.951,down
+2026-11-09,GEF,boring,Consumer Cyclical,0,73.2900,,,,,,,,,,-4.830,down
+2026-11-09,DORM,mixed,Consumer Cyclical,0,136.3200,,,,,,,,,,4.244,up
+2026-11-09,GNTX,boring,Consumer Cyclical,0,19.5000,,,,,,,,,,-4.529,down
+2026-11-09,GEF-B,na,Consumer Cyclical,0,105.4600,,,,,,,,,,-5.121,down
+2026-11-09,VAC,mixed,Consumer Cyclical,1,115.1300,,,,,,,,,,6.359,up
+2026-11-09,ZGN,na,Consumer Cyclical,1,14.3400,,,,,,,,,,-6.552,down
+2026-11-09,PII,turnaround,Consumer Cyclical,1,67.1400,,,,,,,,,,17.480,up
+2026-11-09,ABG,turnaround,Consumer Cyclical,1,210.2200,,,,,,,,,,-6.528,down
+2026-11-09,COLM,post_growth,Consumer Cyclical,1,72.4500,,,,,,,,,,5.431,up
+2026-11-09,AEO,post_growth,Consumer Cyclical,1,21.7500,,,,,,,,,,33.139,up
+2026-11-09,HOG,turnaround,Consumer Cyclical,1,34.2000,,,,,,,,,,16.243,up
+2026-11-09,PTRN,turnaround,Consumer Cyclical,1,19.4300,,,,,,,,,,1.722,
+2026-11-09,MHO,mixed,Consumer Cyclical,1,135.5700,,,,,,,,,,-14.613,down
+2026-11-09,HGV,post_growth,Consumer Cyclical,1,44.6000,,,,,,,,,,18.686,up
+2026-11-09,OSW,boring,Consumer Cyclical,1,32.4700,,,,,,,,,,4.340,up
+2026-11-09,GPK,turnaround,Consumer Cyclical,1,10.8400,,,,,,,,,,-10.275,down
+2026-11-09,GPI,value_trap,Consumer Cyclical,1,268.4600,,,,,,,,,,-7.737,down
+2026-11-09,MNSO,na,Consumer Cyclical,1,10.9200,,,,,,,,,,-17.402,down
+2026-11-09,KBH,turnaround,Consumer Cyclical,1,52.0100,,,,,,,,,,-3.826,
+2026-11-09,SHOO,positive,Consumer Cyclical,1,42.8400,,,,,,,,,,-0.198,
+2026-11-09,SHAK,turnaround,Consumer Cyclical,1,77.1500,,,,,,,,,,7.844,up
+2026-11-09,CALY,na,Consumer Cyclical,1,17.4300,,,,,,,,,,18.223,up
+2026-11-09,RRR,na,Consumer Cyclical,1,49.8500,,,,,,,,,,-24.118,down
+2026-11-09,KSS,post_growth,Consumer Cyclical,1,24.9200,,,,,,,,,,50.406,up
+2026-11-09,GRBK,negative,Consumer Cyclical,1,66.5100,,,,,,,,,,-6.538,down
+2026-11-09,AAP,positive,Consumer Cyclical,1,45.9400,,,,,,,,,,-0.094,
+2026-11-09,BOBS,turnaround,Consumer Cyclical,1,20.9700,,,,,,,,,,0.225,
+2026-11-09,PTON,post_growth,Consumer Cyclical,1,5.9500,,,,,,,,,,13.698,up
+2026-11-09,PATK,turnaround,Consumer Cyclical,1,82.1200,,,,,,,,,,-1.075,
+2026-11-09,RH,turnaround,Consumer Cyclical,1,136.6100,,,,,,,,,,11.200,up
+2026-11-09,BGSI,mixed,Consumer Cyclical,1,90.2300,,,,,,,,,,-13.469,down
+2026-11-09,PENN,turnaround,Consumer Cyclical,1,18.5400,,,,,,,,,,7.284,up
+2026-11-09,UAA,turnaround,Consumer Cyclical,1,5.4600,,,,,,,,,,-6.910,down
+2026-11-09,LIND,na,Consumer Cyclical,1,35.7000,,,,,,,,,,-68.706,down
+2026-11-09,DAN,na,Consumer Cyclical,1,23.1100,,,,,,,,,,-24.880,down
+2026-11-09,BKE,value_trap,Consumer Cyclical,1,43.8700,,,,,,,,,,1.031,
+2026-11-09,HSAI,na,Consumer Cyclical,1,14.3100,,,,,,,,,,-11.304,down
+2026-11-09,WHR,mixed,Consumer Cyclical,1,31.8900,,,,,,,,,,-156.966,down
+2026-11-09,DRVN,turnaround,Consumer Cyclical,1,12.2600,,,,,,,,,,-4.464,down
+2026-11-09,PEP,boring,Consumer Defensive,0,141.8800,,,,,,,,,,-1.585,down
+2026-11-09,MNST,positive,Consumer Defensive,0,45.6400,,,,,,,,,,-0.390,
+2026-11-09,TGT,post_growth,Consumer Defensive,1,165.9000,,,,,,,,,,24.889,up
+2026-11-09,KMB,mixed,Consumer Defensive,0,111.9300,,,,,,,,,,-8.243,down
+2026-11-09,ABEV,na,Consumer Defensive,1,2.7600,,,,,,,,,,-2.493,down
+2026-11-09,EL,positive,Consumer Defensive,1,113.1600,,,,,,,,,,7.500,up
+2026-11-09,ADM,post_growth,Consumer Defensive,0,69.8400,,,,,,,,,,3.456,up
+2026-11-09,DG,boring,Consumer Defensive,1,136.6800,,,,,,,,,,7.147,up
+2026-11-09,KHC,negative,Consumer Defensive,0,24.4200,,,,,,,,,,2.118,
+2026-11-09,DLTR,post_growth,Consumer Defensive,1,137.2300,,,,,,,,,,13.764,up
+2026-11-09,USFD,positive,Consumer Defensive,0,109.9400,,,,,,,,,,-0.381,
+2026-11-09,TSN,turnaround,Consumer Defensive,0,59.8700,,,,,,,,,,-11.536,down
+2026-11-09,BG,positive,Consumer Defensive,1,101.1800,,,,,,,,,,-0.643,
+2026-11-09,GIS,value_trap,Consumer Defensive,1,34.8800,,,,,,,,,,-0.044,
+2026-11-09,PFGC,positive,Consumer Defensive,1,111.7700,,,,,,,,,,-1.123,
+2026-11-09,SJM,mixed,Consumer Defensive,0,133.2600,,,,,,,,,,7.729,up
+2026-11-09,JBS,na,Consumer Defensive,1,13.1200,,,,,,,,,,-40.534,down
+2026-11-09,BJ,boring,Consumer Defensive,1,109.8000,,,,,,,,,,4.305,up
+2026-11-09,CLX,boring,Consumer Defensive,1,105.5300,,,,,,,,,,-1.658,down
+2026-11-09,MICC,na,Consumer Defensive,1,19.7000,,,,,,,,,,3.126,up
+2026-11-09,EDU,positive,Consumer Defensive,1,53.6100,,,,,,,,,,-3.397,down
+2026-11-09,DAR,na,Consumer Defensive,1,52.5300,,,,,,,,,,2.394,up
+2026-11-09,LW,boring,Consumer Defensive,1,57.1600,,,,,,,,,,5.637,up
+2026-11-09,SFD,value_trap,Consumer Defensive,0,19.5200,,,,,,,,,,-32.142,down
+2026-11-09,TAP,negative,Consumer Defensive,1,39.8500,,,,,,,,,,-5.009,down
+2026-11-09,CAG,value_trap,Consumer Defensive,1,15.2900,,,,,,,,,,0.895,
+2026-11-09,ELF,mixed,Consumer Defensive,1,119.3500,,,,,,,,,,7.704,up
+2026-11-09,PPC,turnaround,Consumer Defensive,1,29.5800,,,,,,,,,,-15.815,down
+2026-11-09,CPB,turnaround,Consumer Defensive,1,22.8600,,,,,,,,,,-12.773,down
+2026-11-09,ACI,negative,Consumer Defensive,1,12.9100,,,,,,,,,,-2.919,down
+2026-11-09,INGR,turnaround,Consumer Defensive,0,92.7800,,,,,,,,,,-9.507,down
+2026-11-09,TAL,mixed,Consumer Defensive,1,10.1900,,,,,,,,,,-18.870,down
+2026-11-09,OLLI,mixed,Consumer Defensive,1,94.8100,,,,,,,,,,3.449,up
+2026-11-09,PSMT,na,Consumer Defensive,0,165.9100,,,,,,,,,,-6.937,down
+2026-11-09,CHEF,positive,Consumer Defensive,1,107.2700,,,,,,,,,,1.193,
+2026-11-09,SFM,negative,Consumer Defensive,1,49.5800,,,,,,,,,,-11.086,down
+2026-11-09,AKO-B,na,Consumer Defensive,1,27.9800,,,,,,,,,,6.499,up
+2026-11-09,CVSA,mixed,Consumer Defensive,1,113.9800,,,,,,,,,,2.672,up
+2026-11-09,COTY,post_growth,Consumer Defensive,1,4.2200,,,,,,,,,,0.489,
+2026-11-09,COCO,mixed,Consumer Defensive,1,64.4900,,,,,,,,,,5.419,up
+2026-11-09,POST,value_trap,Consumer Defensive,0,82.2500,,,,,,,,,,-0.102,
+2026-11-09,FIZZ,turnaround,Consumer Defensive,1,37.4700,,,,,,,,,,-6.324,down
+2026-11-09,FRPT,turnaround,Consumer Defensive,1,67.3500,,,,,,,,,,20.649,up
+2026-11-09,CALM,mixed,Consumer Defensive,1,68.8300,,,,,,,,,,-303.061,down
+2026-11-09,LRN,boring,Consumer Defensive,1,75.7200,,,,,,,,,,2.741,up
+2026-11-09,MZTI,turnaround,Consumer Defensive,1,108.9300,,,,,,,,,,-11.667,down
+2026-11-09,UNFI,positive,Consumer Defensive,1,47.5200,,,,,,,,,,4.115,up
+2026-11-09,NWL,post_growth,Consumer Defensive,1,5.8900,,,,,,,,,,-0.672,
+2026-11-09,SAM,turnaround,Consumer Defensive,1,216.8200,,,,,,,,,,3.720,up
+2026-11-09,SPB,mixed,Consumer Defensive,1,89.3300,,,,,,,,,,15.542,up
+2026-11-09,UTZ,turnaround,Consumer Defensive,0,14.2400,,,,,,,,,,-5.700,down
+2026-11-09,MH,value_trap,Consumer Defensive,1,10.6900,,,,,,,,,,1.284,
+2026-11-09,CVX,post_growth,Energy,0,210.7800,,,,,,,,,,16.296,
+2026-11-09,SHEL,post_growth,Energy,0,98.8800,,,,,,,,,,22.970,
+2026-11-09,TTE,value_trap,Energy,0,88.0000,,,,,,,,,,21.134,
+2026-11-09,BP,post_growth,Energy,0,44.5900,,,,,,,,,,46.150,up
+2026-11-09,MPC,na,Energy,1,389.8800,,,,,,,,,,36.706,up
+2026-11-09,VLO,na,Energy,1,356.7500,,,,,,,,,,43.566,up
+2026-11-09,PSX,na,Energy,1,253.0200,,,,,,,,,,36.183,up
+2026-11-09,EQNR,post_growth,Energy,1,41.1200,,,,,,,,,,16.143,
+2026-11-09,WMB,boring,Energy,1,66.4500,,,,,,,,,,-1.986,down
+2026-11-09,E,na,Energy,0,55.9200,,,,,,,,,,30.112,up
+2026-11-09,SU,na,Energy,1,67.4400,,,,,,,,,,29.896,up
+2026-11-09,SLB,turnaround,Energy,1,50.3800,,,,,,,,,,-2.331,down
+2026-11-09,MPLX,turnaround,Energy,0,56.8000,,,,,,,,,,-1.611,down
+2026-11-09,OXY,post_growth,Energy,1,55.7600,,,,,,,,,,26.257,
+2026-11-09,CVE,na,Energy,1,27.5900,,,,,,,,,,34.042,up
+2026-11-09,BKR,turnaround,Energy,1,48.4500,,,,,,,,,,0.056,
+2026-11-09,CCJ,na,Energy,1,75.3700,,,,,,,,,,-26.235,down
+2026-11-09,EC,na,Energy,1,15.6100,,,,,,,,,,26.718,up
+2026-11-09,EQT,boring,Energy,0,49.9100,,,,,,,,,,-8.193,down
+2026-11-09,VG,post_growth,Energy,1,11.8000,,,,,,,,,,16.863,
+2026-11-09,HAL,turnaround,Energy,1,31.8800,,,,,,,,,,-0.673,down
+2026-11-09,EXE,boring,Energy,0,85.9600,,,,,,,,,,-2.563,down
+2026-11-09,PR,boring,Energy,1,21.5200,,,,,,,,,,27.649,up
+2026-11-09,DINO,na,Energy,1,99.7600,,,,,,,,,,84.917,up
+2026-11-09,APA,value_trap,Energy,1,44.5500,,,,,,,,,,27.662,up
+2026-11-09,YPF,na,Energy,1,38.0900,,,,,,,,,,38.986,up
+2026-11-09,DTM,boring,Energy,0,116.4800,,,,,,,,,,-0.700,down
+2026-11-09,AR,mixed,Energy,1,36.3600,,,,,,,,,,-2.012,down
+2026-11-09,FRO,na,Energy,1,44.2900,,,,,,,,,,32.968,up
+2026-11-09,AM,turnaround,Energy,0,19.5500,,,,,,,,,,-35.710,down
+2026-11-09,PBF,turnaround,Energy,1,69.5500,,,,,,,,,,60.430,up
+2026-11-09,CHRD,post_growth,Energy,1,137.4900,,,,,,,,,,19.943,
+2026-11-09,NFG,mixed,Energy,0,74.1400,,,,,,,,,,-4.399,down
+2026-11-09,NE,mixed,Energy,1,41.1200,,,,,,,,,,-157.061,down
+2026-11-09,NOV,positive,Energy,1,17.6900,,,,,,,,,,3.990,
+2026-11-09,RIG,na,Energy,1,5.1700,,,,,,,,,,-64.751,down
+2026-11-09,VAL,turnaround,Energy,1,78.5500,,,,,,,,,,-0.415,down
+2026-11-09,AROC,turnaround,Energy,1,28.9900,,,,,,,,,,-3.033,down
+2026-11-09,MUR,post_growth,Energy,1,34.5500,,,,,,,,,,29.468,up
+2026-11-09,INSW,na,Energy,1,96.4500,,,,,,,,,,96.218,up
+2026-11-09,CMBT,turnaround,Energy,1,16.5700,,,,,,,,,,-2.900,down
+2026-11-09,KGS,positive,Energy,1,44.6700,,,,,,,,,,-0.235,down
+2026-11-09,SEI,mixed,Energy,1,62.6100,,,,,,,,,,60.658,up
+2026-11-09,CVI,turnaround,Energy,1,39.1000,,,,,,,,,,894.595,up
+2026-11-09,STNG,post_growth,Energy,1,79.6200,,,,,,,,,,35.097,up
+2026-11-09,KNTK,turnaround,Energy,1,50.3300,,,,,,,,,,19.798,
+2026-11-09,CRK,turnaround,Energy,1,13.7700,,,,,,,,,,-40.068,down
+2026-11-09,CNR,turnaround,Energy,1,82.2800,,,,,,,,,,-2.290,down
+2026-11-09,DK,post_growth,Energy,1,65.0000,,,,,,,,,,87.577,up
+2026-11-09,HESM,mixed,Energy,1,30.4600,,,,,,,,,,-0.986,down
+2026-11-09,TDW,turnaround,Energy,1,71.0600,,,,,,,,,,-7.282,down
+2026-11-09,PARR,post_growth,Energy,1,68.6100,,,,,,,,,,38.748,up
+2026-11-09,DHT,na,Energy,1,20.5600,,,,,,,,,,73.580,up
+2026-11-09,TGS,na,Energy,1,21.8700,,,,,,,,,,-10.332,down
+2026-11-09,ARLP,turnaround,Energy,0,24.7600,,,,,,,,,,2.439,
+2026-11-09,TNK,post_growth,Energy,1,85.1200,,,,,,,,,,57.535,up
+2026-11-09,BSM,turnaround,Energy,0,13.7400,,,,,,,,,,5.208,
+2026-11-09,BTE,na,Energy,1,4.0900,,,,,,,,,,106.667,up
+2026-11-09,GPOR,boring,Energy,1,155.5000,,,,,,,,,,-1.202,down
+2026-11-09,SDRL,turnaround,Energy,1,42.5500,,,,,,,,,,34.938,up
+2026-11-09,EFXT,positive,Energy,1,20.2800,,,,,,,,,,-2.807,down
+2026-11-09,NOG,turnaround,Energy,1,22.8900,,,,,,,,,,17.550,
+2026-11-09,TALO,turnaround,Energy,1,14.6200,,,,,,,,,,161.168,up
+2026-11-09,LEU,turnaround,Energy,1,117.3400,,,,,,,,,,-9.002,down
+2026-11-09,LBRT,mixed,Energy,1,12.9300,,,,,,,,,,-23.986,down
+2026-11-09,BRK-B,mixed,Financial Services,0,575.2500,,,,,,,,,,8.009,up
+2026-11-09,BRK-A,na,Financial Services,0,853500.0000,,,,,,,,,,6.068,up
+2026-11-09,BAC,mixed,Financial Services,0,50.5500,,,,,,,,,,-6.671,down
+2026-11-09,HSBC,boring,Financial Services,0,90.2200,,,,,,,,,,-4.098,down
+2026-11-09,MUFG,na,Financial Services,0,21.7000,,,,,,,,,,5.184,up
+2026-11-09,AXP,boring,Financial Services,0,324.3100,,,,,,,,,,4.045,up
+2026-11-09,TD,na,Financial Services,0,124.2400,,,,,,,,,,4.507,up
+2026-11-09,SAN,na,Financial Services,1,12.4600,,,,,,,,,,-7.167,down
+2026-11-09,SCHW,positive,Financial Services,0,92.7300,,,,,,,,,,-0.687,
+2026-11-09,SMFG,na,Financial Services,0,24.2800,,,,,,,,,,-46.965,down
+2026-11-09,UBS,mixed,Financial Services,0,48.9600,,,,,,,,,,28.968,up
+2026-11-09,BBVA,na,Financial Services,0,26.4400,,,,,,,,,,10.607,up
+2026-11-09,CB,mixed,Financial Services,0,363.4500,,,,,,,,,,5.123,up
+2026-11-09,HDB,na,Financial Services,1,25.8100,,,,,,,,,,-22.481,down
+2026-11-09,PGR,mixed,Financial Services,0,227.5200,,,,,,,,,,4.694,up
+2026-11-09,IBN,na,Financial Services,0,34.4500,,,,,,,,,,8.334,up
+2026-11-09,COF,boring,Financial Services,0,198.5800,,,,,,,,,,6.407,up
+2026-11-09,MFG,na,Financial Services,1,9.8200,,,,,,,,,,16.642,up
+2026-11-09,BX,mixed,Financial Services,1,124.0500,,,,,,,,,,-1.654,down
+2026-11-09,MCO,boring,Financial Services,0,511.0800,,,,,,,,,,-1.180,down
+2026-11-09,KKR,post_growth,Financial Services,1,98.0900,,,,,,,,,,31.215,up
+2026-11-09,ITUB,na,Financial Services,1,7.5600,,,,,,,,,,-6.700,down
+2026-11-09,TRV,post_growth,Financial Services,0,395.2000,,,,,,,,,,7.817,up
+2026-11-09,BCS,na,Financial Services,0,23.1900,,,,,,,,,,-3.548,down
+2026-11-09,LYG,na,Financial Services,0,5.2600,,,,,,,,,,3.903,up
+2026-11-09,APO,mixed,Financial Services,1,122.2000,,,,,,,,,,-2.547,down
+2026-11-09,AON,boring,Financial Services,1,335.7700,,,,,,,,,,-2.436,down
+2026-11-09,DB,na,Financial Services,1,36.5700,,,,,,,,,,-5.493,down
+2026-11-09,ALL,value_trap,Financial Services,0,253.7900,,,,,,,,,,12.398,up
+2026-11-09,AFL,mixed,Financial Services,0,125.2200,,,,,,,,,,4.782,up
+2026-11-09,TFC,mixed,Financial Services,0,50.3300,,,,,,,,,,-10.464,down
+2026-11-09,NU,positive,Financial Services,1,12.3600,,,,,,,,,,5.673,up
+2026-11-09,FITB,na,Financial Services,0,54.3600,,,,,,,,,,-1.389,down
+2026-11-09,VYLR,turnaround,Financial Services,1,72.5300,,,,,,,,,,-38.060,down
+2026-11-09,RKT,positive,Financial Services,1,15.1900,,,,,,,,,,-17.750,down
+2026-11-09,PRU,value_trap,Financial Services,0,122.0500,,,,,,,,,,-2.055,down
+2026-11-09,KB,na,Financial Services,0,114.0000,,,,,,,,,,-1.928,down
+2026-11-09,IX,na,Financial Services,0,34.1300,,,,,,,,,,64.274,up
+2026-11-09,HIG,value_trap,Financial Services,0,134.8600,,,,,,,,,,4.174,up
+2026-11-09,ACGL,mixed,Financial Services,0,108.1200,,,,,,,,,,9.006,up
+2026-11-09,IBKR,positive,Financial Services,1,77.5700,,,,,,,,,,-0.432,
+2026-11-09,NTRS,post_growth,Financial Services,0,177.6500,,,,,,,,,,5.524,up
+2026-11-09,HBAN,boring,Financial Services,0,15.9200,,,,,,,,,,-3.963,down
+2026-11-09,PUK,mixed,Financial Services,0,26.0200,,,,,,,,,,-12.055,down
+2026-11-09,ARES,mixed,Financial Services,1,139.5800,,,,,,,,,,-3.561,down
+2026-11-09,SHG,na,Financial Services,1,64.8900,,,,,,,,,,10.121,up
+2026-11-09,BBD,na,Financial Services,1,2.6300,,,,,,,,,,-6.581,down
+2026-11-09,CINF,mixed,Financial Services,0,186.1800,,,,,,,,,,10.156,up
+2026-11-09,NMR,na,Financial Services,0,9.6200,,,,,,,,,,6.816,up
+2026-11-09,CFG,positive,Financial Services,0,65.1000,,,,,,,,,,-0.100,
+2026-11-09,FCNCA,boring,Financial Services,0,2290.0700,,,,,,,,,,6.613,up
+2026-11-09,PFG,boring,Financial Services,0,115.3900,,,,,,,,,,-3.876,down
+2026-11-09,MKL,mixed,Financial Services,0,1951.2600,,,,,,,,,,8.754,up
+2026-11-09,LPLA,mixed,Financial Services,1,305.4900,,,,,,,,,,-2.408,down
+2026-11-09,BRO,mixed,Financial Services,1,71.0000,,,,,,,,,,-1.125,down
+2026-11-09,AFRM,turnaround,Financial Services,1,68.0300,,,,,,,,,,6.244,up
+2026-11-09,KEY,positive,Financial Services,0,21.4100,,,,,,,,,,3.209,
+2026-11-09,CIB,na,Financial Services,0,94.9100,,,,,,,,,,11.930,up
+2026-11-09,SOFI,positive,Financial Services,1,16.7500,,,,,,,,,,2.736,
+2026-11-09,PS,mixed,Financial Services,1,51.9500,,,,,,,,,,-2.964,down
+2026-11-09,BCH,na,Financial Services,0,39.2400,,,,,,,,,,-5.880,down
+2026-11-09,BEN,boring,Financial Services,0,35.8700,,,,,,,,,,4.278,up
+2026-11-09,BSBR,na,Financial Services,1,4.9100,,,,,,,,,,-3.691,down
+2026-11-09,RGA,post_growth,Financial Services,0,266.7500,,,,,,,,,,12.694,up
+2026-11-09,CRCL,turnaround,Financial Services,1,67.5600,,,,,,,,,,19.242,up
+2026-11-09,WF,na,Financial Services,1,70.1000,,,,,,,,,,-1.126,down
+2026-11-09,AIZ,post_growth,Financial Services,0,317.2100,,,,,,,,,,10.085,up
+2026-11-09,BSAC,na,Financial Services,0,32.6100,,,,,,,,,,-5.351,down
+2026-11-09,CG,turnaround,Financial Services,1,42.3100,,,,,,,,,,-0.328,
+2026-11-09,EQH,positive,Financial Services,1,55.4100,,,,,,,,,,1.133,
+2026-11-09,FUTU,na,Financial Services,1,100.9700,,,,,,,,,,9.128,up
+2026-11-09,RNR,post_growth,Financial Services,0,348.6000,,,,,,,,,,14.852,up
+2026-11-09,ARCC,mixed,Financial Services,0,19.3500,,,,,,,,,,-1.448,down
+2026-11-09,AFG,post_growth,Financial Services,0,157.8900,,,,,,,,,,7.237,up
+2026-11-09,CNA,turnaround,Financial Services,0,47.3900,,,,,,,,,,3.704,
+2026-11-09,IVZ,positive,Financial Services,1,28.9100,,,,,,,,,,-0.210,
+2026-11-09,UNM,mixed,Financial Services,1,80.2300,,,,,,,,,,-2.689,down
+2026-11-09,GL,boring,Financial Services,0,161.8300,,,,,,,,,,-1.458,down
+2026-11-09,FNF,turnaround,Financial Services,0,45.0400,,,,,,,,,,-5.427,down
+2026-11-09,ALLY,positive,Financial Services,0,38.5300,,,,,,,,,,-4.638,down
+2026-11-09,JEF,mixed,Financial Services,1,49.3900,,,,,,,,,,4.712,up
+2026-11-09,SF,mixed,Financial Services,0,73.2100,,,,,,,,,,-5.131,down
+2026-11-09,HLI,turnaround,Financial Services,1,148.4100,,,,,,,,,,4.177,up
+2026-11-09,SSB,turnaround,Financial Services,0,106.0300,,,,,,,,,,-1.381,down
+2026-11-09,AMG,post_growth,Financial Services,0,383.1500,,,,,,,,,,2.868,
+2026-11-09,ONB,boring,Financial Services,0,25.3600,,,,,,,,,,-1.310,down
+2026-11-09,ORI,turnaround,Financial Services,0,39.6300,,,,,,,,,,-3.058,down
+2026-11-09,VOYA,mixed,Financial Services,0,104.5900,,,,,,,,,,-1.617,down
+2026-11-09,MORN,mixed,Financial Services,1,246.1500,,,,,,,,,,4.340,up
+2026-11-09,JXN,mixed,Financial Services,0,135.5100,,,,,,,,,,5.319,up
+2026-11-09,COLB,value_trap,Financial Services,0,31.0000,,,,,,,,,,1.949,
+2026-11-09,KNSL,mixed,Financial Services,1,386.0700,,,,,,,,,,4.254,up
+2026-11-09,THG,mixed,Financial Services,0,245.2300,,,,,,,,,,4.678,up
+2026-11-09,WAL,mixed,Financial Services,0,77.2000,,,,,,,,,,-2.315,down
+2026-11-09,LNC,turnaround,Financial Services,1,42.9800,,,,,,,,,,3.241,
+2026-11-09,FCFS,positive,Financial Services,1,187.8300,,,,,,,,,,-2.689,down
+2026-11-09,VLY,positive,Financial Services,0,14.3000,,,,,,,,,,1.590,
+2026-11-09,VCTR,mixed,Financial Services,1,126.8000,,,,,,,,,,7.228,up
+2026-11-09,AXS,value_trap,Financial Services,0,106.5000,,,,,,,,,,0.444,
+2026-11-09,FAF,value_trap,Financial Services,0,68.6800,,,,,,,,,,-4.133,down
+2026-11-09,SNEX,post_growth,Financial Services,1,56.7700,,,,,,,,,,8.346,up
+2026-11-09,HUT,na,Financial Services,1,57.0200,,,,,,,,,,-13.636,down
+2026-11-09,GBCI,positive,Financial Services,0,49.0800,,,,,,,,,,-0.342,
+2026-11-09,OMF,turnaround,Financial Services,0,55.5000,,,,,,,,,,-8.119,down
+2026-11-09,RLI,negative,Financial Services,0,67.9500,,,,,,,,,,15.640,up
+2026-11-09,SIGI,mixed,Financial Services,0,100.4900,,,,,,,,,,8.432,up
+2026-11-09,MKTX,boring,Financial Services,0,165.6700,,,,,,,,,,-1.108,down
+2026-11-09,ASB,boring,Financial Services,0,30.8900,,,,,,,,,,3.768,up
+2026-11-09,BXSL,negative,Financial Services,0,23.9400,,,,,,,,,,0.652,
+2026-11-09,OZK,value_trap,Financial Services,0,51.1800,,,,,,,,,,1.974,
+2026-11-09,FIGR,turnaround,Financial Services,1,24.5200,,,,,,,,,,12.403,up
+2026-11-09,OBDC,negative,Financial Services,0,11.1700,,,,,,,,,,1.395,
+2026-11-09,HLNE,post_growth,Financial Services,1,95.8700,,,,,,,,,,4.760,up
+2026-11-09,CNO,post_growth,Financial Services,0,57.1600,,,,,,,,,,24.386,up
+2026-11-09,AVAL,na,Financial Services,0,4.3400,,,,,,,,,,26.215,up
+2026-11-09,KLAR,na,Financial Services,1,13.4600,,,,,,,,,,-86.469,down
+2026-11-09,SEZL,positive,Financial Services,1,150.8400,,,,,,,,,,4.144,up
+2026-11-09,VIRT,post_growth,Financial Services,1,56.6000,,,,,,,,,,1.812,
+2026-11-09,MRX,mixed,Financial Services,1,67.9100,,,,,,,,,,21.786,up
+2026-11-09,PIPR,turnaround,Financial Services,1,67.6400,,,,,,,,,,-10.190,down
+2026-11-09,NNI,turnaround,Financial Services,0,132.5000,,,,,,,,,,,
+2026-11-09,TFSL,boring,Financial Services,0,16.5900,,,,,,,,,,-2.564,down
+2026-11-09,FULT,boring,Financial Services,0,24.1300,,,,,,,,,,4.446,up
+2026-11-09,SFBS,boring,Financial Services,0,41.6800,,,,,,,,,,-1.192,down
+2026-11-09,BWIN,mixed,Financial Services,0,32.1500,,,,,,,,,,-1.865,down
+2026-11-09,FLG,na,Financial Services,0,10.5800,,,,,,,,,,-68.523,down
+2026-11-09,CATY,boring,Financial Services,0,65.3700,,,,,,,,,,-1.321,down
+2026-11-09,ARX,mixed,Financial Services,1,19.8800,,,,,,,,,,20.115,up
+2026-11-09,MC,turnaround,Financial Services,1,57.6200,,,,,,,,,,-4.193,down
+2026-11-09,LAZ,turnaround,Financial Services,1,39.5400,,,,,,,,,,-43.632,down
+2026-11-09,ENVA,positive,Financial Services,1,168.3400,,,,,,,,,,0.436,
+2026-11-09,WSFS,post_growth,Financial Services,0,79.8900,,,,,,,,,,2.978,
+2026-11-09,INDB,positive,Financial Services,0,85.2800,,,,,,,,,,1.356,
+2026-11-09,PJT,mixed,Financial Services,1,152.2800,,,,,,,,,,-7.816,down
+2026-11-09,NP,positive,Financial Services,0,28.1700,,,,,,,,,,1.951,
+2026-11-09,BFH,boring,Financial Services,1,98.6100,,,,,,,,,,6.782,up
+2026-11-09,BMA,na,Financial Services,1,58.4400,,,,,,,,,,27.981,up
+2026-11-09,HG,post_growth,Financial Services,0,37.3600,,,,,,,,,,19.699,up
+2026-11-09,RNST,boring,Financial Services,0,40.1400,,,,,,,,,,-3.020,down
+2026-11-09,MIAX,mixed,Financial Services,1,35.1300,,,,,,,,,,7.105,up
+2026-11-09,PFSI,turnaround,Financial Services,1,66.4400,,,,,,,,,,-24.768,down
+2026-11-09,AAMI,mixed,Financial Services,0,96.0500,,,,,,,,,,5.020,up
+2026-11-09,FG,turnaround,Financial Services,1,25.5500,,,,,,,,,,-17.901,down
+2026-11-09,GBDC,negative,Financial Services,0,12.7000,,,,,,,,,,0.978,
+2026-11-09,MCHB,mixed,Financial Services,0,14.8200,,,,,,,,,,-1.624,down
+2026-11-09,AGO,mixed,Financial Services,0,73.7800,,,,,,,,,,-3.385,down
+2026-11-09,FSK,negative,Financial Services,0,11.8400,,,,,,,,,,3.225,
+2026-11-09,GNW,mixed,Financial Services,0,8.7200,,,,,,,,,,168.293,up
+2026-11-09,SLM,turnaround,Financial Services,1,16.9100,,,,,,,,,,-35.676,down
+2026-11-09,BKU,mixed,Financial Services,0,44.2500,,,,,,,,,,-2.780,down
+2026-11-09,AB,mixed,Financial Services,0,33.8200,,,,,,,,,,-1.277,down
+2026-11-09,SLDE,value_trap,Financial Services,1,26.1800,,,,,,,,,,4.558,up
+2026-11-09,FHB,mixed,Financial Services,0,25.2100,,,,,,,,,,-4.293,down
+2026-11-09,CLBK,positive,Financial Services,0,11.3500,,,,,,,,,,57.569,up
+2026-11-09,SII,mixed,Financial Services,1,116.4900,,,,,,,,,,-7.048,down
+2026-11-09,NMIH,boring,Financial Services,1,38.8700,,,,,,,,,,-2.131,down
+2026-11-09,BANC,positive,Financial Services,0,18.1200,,,,,,,,,,21.320,up
+2026-11-09,APAM,negative,Financial Services,1,39.8300,,,,,,,,,,1.233,
+2026-11-09,FRME,turnaround,Financial Services,0,41.4300,,,,,,,,,,0.345,
+2026-11-09,BANR,boring,Financial Services,0,70.3600,,,,,,,,,,-1.021,down
+2026-11-09,BHF,value_trap,Financial Services,0,43.9900,,,,,,,,,,1.270,
+2026-11-09,PURR,turnaround,Financial Services,1,8.9100,,,,,,,,,,,
+2026-11-09,MBIN,post_growth,Financial Services,0,53.4100,,,,,,,,,,9.369,up
+2026-11-09,PRCH,turnaround,Financial Services,1,20.6400,,,,,,,,,,81.250,up
+2026-11-09,PLGO,positive,Financial Services,0,28.3000,,,,,,,,,,-13.915,down
+2026-11-09,BUSE,mixed,Financial Services,0,29.1500,,,,,,,,,,-1.383,down
+2026-11-09,ECPG,post_growth,Financial Services,1,111.9800,,,,,,,,,,19.768,up
+2026-11-09,LIFE,positive,Financial Services,1,35.7700,,,,,,,,,,9.014,up
+2026-11-09,HCI,negative,Financial Services,0,186.2500,,,,,,,,,,16.137,up
+2026-11-09,EFSC,turnaround,Financial Services,0,62.7500,,,,,,,,,,-4.197,down
+2026-11-09,BBAR,na,Financial Services,1,10.8300,,,,,,,,,,12.264,up
+2026-11-09,UPST,mixed,Financial Services,1,22.2500,,,,,,,,,,-14.542,down
+2026-11-09,HMN,mixed,Financial Services,0,53.0600,,,,,,,,,,13.275,up
+2026-11-09,OFG,value_trap,Financial Services,0,51.1700,,,,,,,,,,4.157,up
+2026-11-09,WU,turnaround,Financial Services,1,6.8600,,,,,,,,,,1.800,
+2026-11-09,SRCE,mixed,Financial Services,0,88.2900,,,,,,,,,,4.926,up
+2026-11-09,HTH,boring,Financial Services,0,36.9200,,,,,,,,,,-7.939,down
+2026-11-09,LLY,positive,Healthcare,1,1411.9500,,,,,,,,,,-2.955,down
+2026-11-09,ABBV,mixed,Healthcare,0,293.3000,,,,,,,,,,-0.168,down
+2026-11-09,MRK,turnaround,Healthcare,1,148.7600,,,,,,,,,,1.241,
+2026-11-09,PFE,negative,Healthcare,0,29.2300,,,,,,,,,,2.389,
+2026-11-09,VRTX,mixed,Healthcare,0,550.8700,,,,,,,,,,-4.844,down
+2026-11-09,BMY,mixed,Healthcare,0,62.1400,,,,,,,,,,-7.311,down
+2026-11-09,SYK,boring,Healthcare,1,325.7300,,,,,,,,,,-1.214,down
+2026-11-09,REGN,post_growth,Healthcare,1,919.9600,,,,,,,,,,29.705,up
+2026-11-09,ELV,value_trap,Healthcare,0,418.2500,,,,,,,,,,7.289,up
+2026-11-09,COR,boring,Healthcare,0,345.7600,,,,,,,,,,-0.818,down
+2026-11-09,BSX,value_trap,Healthcare,1,44.0200,,,,,,,,,,-3.987,down
+2026-11-09,CAH,boring,Healthcare,0,274.2900,,,,,,,,,,7.660,up
+2026-11-09,BDX,boring,Healthcare,0,215.2500,,,,,,,,,,-0.714,down
+2026-11-09,HUM,turnaround,Healthcare,1,423.2200,,,,,,,,,,0.920,
+2026-11-09,ONC,mixed,Healthcare,1,417.3300,,,,,,,,,,28.825,up
+2026-11-09,IQV,boring,Healthcare,0,278.8400,,,,,,,,,,-0.031,down
+2026-11-09,HLN,na,Healthcare,1,8.9700,,,,,,,,,,-0.809,down
+2026-11-09,BIIB,turnaround,Healthcare,0,254.8700,,,,,,,,,,0.743,
+2026-11-09,GMAB,turnaround,Healthcare,1,55.8000,,,,,,,,,,7.392,up
+2026-11-09,CNC,post_growth,Healthcare,1,68.5400,,,,,,,,,,8.141,up
+2026-11-09,ZTS,value_trap,Healthcare,1,82.3200,,,,,,,,,,-1.758,down
+2026-11-09,PHG,na,Healthcare,0,30.7900,,,,,,,,,,7.165,up
+2026-11-09,WST,mixed,Healthcare,0,413.0900,,,,,,,,,,5.616,up
+2026-11-09,INCY,turnaround,Healthcare,0,121.8900,,,,,,,,,,-3.152,down
+2026-11-09,UTHR,turnaround,Healthcare,1,582.4600,,,,,,,,,,-5.228,down
+2026-11-09,THC,post_growth,Healthcare,1,289.0000,,,,,,,,,,7.014,up
+2026-11-09,ALNY,na,Healthcare,1,156.6100,,,,,,,,,,153.190,up
+2026-11-09,EXEL,boring,Healthcare,0,71.7400,,,,,,,,,,6.100,up
+2026-11-09,ASND,na,Healthcare,1,259.8500,,,,,,,,,,-14.092,down
+2026-11-09,JAZZ,positive,Healthcare,1,243.5500,,,,,,,,,,-40.304,down
+2026-11-09,BTSG,positive,Healthcare,1,69.1500,,,,,,,,,,5.663,up
+2026-11-09,BAX,negative,Healthcare,1,26.4100,,,,,,,,,,2.828,
+2026-11-09,SNN,boring,Healthcare,0,31.0500,,,,,,,,,,-1.455,down
+2026-11-09,PEN,positive,Healthcare,0,321.8500,,,,,,,,,,5.329,up
+2026-11-09,RDY,na,Healthcare,0,15.0500,,,,,,,,,,5.393,up
+2026-11-09,ALGN,boring,Healthcare,1,174.2600,,,,,,,,,,-1.686,down
+2026-11-09,COO,mixed,Healthcare,1,63.9300,,,,,,,,,,-2.099,down
+2026-11-09,FMS,na,Healthcare,1,22.9500,,,,,,,,,,17.614,up
+2026-11-09,HALO,positive,Healthcare,1,102.9200,,,,,,,,,,3.483,
+2026-11-09,DVA,mixed,Healthcare,1,185.5400,,,,,,,,,,-0.997,down
+2026-11-09,UHS,mixed,Healthcare,1,197.1600,,,,,,,,,,-0.359,down
+2026-11-09,TECH,boring,Healthcare,0,72.8300,,,,,,,,,,-2.620,down
+2026-11-09,BMRN,turnaround,Healthcare,0,57.1800,,,,,,,,,,-38.612,down
+2026-11-09,MOH,turnaround,Healthcare,1,203.3500,,,,,,,,,,0.623,
+2026-11-09,OSCR,turnaround,Healthcare,1,32.1400,,,,,,,,,,31.244,up
+2026-11-09,HNGE,turnaround,Healthcare,1,122.1900,,,,,,,,,,4.020,
+2026-11-09,TGTX,turnaround,Healthcare,1,63.3800,,,,,,,,,,-41.097,down
+2026-11-09,ATR,turnaround,Healthcare,0,144.1300,,,,,,,,,,0.932,
+2026-11-09,PTGX,na,Healthcare,1,135.9000,,,,,,,,,,7.134,up
+2026-11-09,TXG,na,Healthcare,1,65.0500,,,,,,,,,,-36.670,down
+2026-11-09,CORT,positive,Healthcare,1,75.0300,,,,,,,,,,7.657,up
+2026-11-09,KNSA,positive,Healthcare,1,98.7600,,,,,,,,,,29.158,up
+2026-11-09,ALKS,negative,Healthcare,1,46.1700,,,,,,,,,,21.574,up
+2026-11-09,BLCO,positive,Healthcare,1,20.9600,,,,,,,,,,17.517,up
+2026-11-09,AMRX,mixed,Healthcare,1,21.2800,,,,,,,,,,7.477,up
+2026-11-09,CAI,na,Healthcare,1,25.5700,,,,,,,,,,-19.906,down
+2026-11-09,LNTH,turnaround,Healthcare,0,101.0100,,,,,,,,,,-0.143,down
+2026-11-09,RDNT,positive,Healthcare,1,78.3800,,,,,,,,,,-0.275,down
+2026-11-09,TFX,mixed,Healthcare,0,154.7300,,,,,,,,,,8.749,up
+2026-11-09,GRFS,na,Healthcare,0,8.6900,,,,,,,,,,-15.598,down
+2026-11-09,DOCS,turnaround,Healthcare,1,32.8700,,,,,,,,,,-0.643,down
+2026-11-09,LFST,positive,Healthcare,1,14.6000,,,,,,,,,,15.431,up
+2026-11-09,BLLN,post_growth,Healthcare,1,114.9500,,,,,,,,,,16.547,up
+2026-11-09,PTCT,turnaround,Healthcare,1,65.0300,,,,,,,,,,-41.441,down
+2026-11-09,EWTX,negative,Healthcare,1,48.7400,,,,,,,,,,,
+2026-11-09,MMED,turnaround,Healthcare,1,17.8800,,,,,,,,,,11.264,up
+2026-11-09,TVTX,na,Healthcare,1,51.6300,,,,,,,,,,-69.675,down
+2026-11-09,LEGN,mixed,Healthcare,1,24.2900,,,,,,,,,,-103.311,down
+2026-11-09,SHC,boring,Healthcare,1,16.4400,,,,,,,,,,-0.174,down
+2026-11-09,CDNA,post_growth,Healthcare,1,84.4200,,,,,,,,,,53.153,up
+2026-11-09,ITGR,turnaround,Healthcare,0,126.5600,,,,,,,,,,-8.604,down
+2026-11-09,LQDA,turnaround,Healthcare,1,47.8700,,,,,,,,,,-41.749,down
+2026-11-09,WRBY,positive,Healthcare,1,30.2100,,,,,,,,,,5.055,up
+2026-11-09,STVN,na,Healthcare,1,13.7300,,,,,,,,,,-2.530,down
+2026-11-09,OGN,value_trap,Healthcare,0,13.8500,,,,,,,,,,-5.105,down
+2026-11-09,ACHC,turnaround,Healthcare,1,38.6100,,,,,,,,,,8.135,up
+2026-11-09,SGRY,negative,Healthcare,1,26.4500,,,,,,,,,,-23.374,down
+2026-11-09,TLX,na,Healthcare,1,9.8900,,,,,,,,,,75.054,up
+2026-11-09,ARQT,turnaround,Healthcare,1,26.2000,,,,,,,,,,2.429,
+2026-11-09,TMDX,turnaround,Healthcare,1,93.7900,,,,,,,,,,7.050,up
+2026-11-09,BHC,post_growth,Healthcare,1,8.4000,,,,,,,,,,7.315,up
+2026-11-09,PRVA,turnaround,Healthcare,0,24.5400,,,,,,,,,,-8.223,down
+2026-11-09,AXGN,positive,Healthcare,1,50.6400,,,,,,,,,,20.946,up
+2026-11-09,VCEL,positive,Healthcare,1,58.3900,,,,,,,,,,46.318,up
+2026-11-09,IRTC,turnaround,Healthcare,1,88.7300,,,,,,,,,,111.798,up
+2026-11-09,ATRC,turnaround,Healthcare,1,57.7800,,,,,,,,,,50.049,up
+2026-11-09,AVAH,mixed,Healthcare,1,13.2000,,,,,,,,,,16.631,up
+2026-11-09,ACAD,turnaround,Healthcare,1,16.5000,,,,,,,,,,27.458,up
+2026-11-09,HCM,turnaround,Healthcare,1,15.3200,,,,,,,,,,-37.532,down
+2026-11-09,NEOG,mixed,Healthcare,1,12.0800,,,,,,,,,,11.110,up
+2026-11-09,CLOV,positive,Healthcare,1,4.8300,,,,,,,,,,0.000,down
+2026-11-09,ARDT,turnaround,Healthcare,1,17.9700,,,,,,,,,,11.034,up
+2026-11-09,PRGO,negative,Healthcare,1,16.9500,,,,,,,,,,7.100,up
+2026-11-09,NEO,positive,Healthcare,1,17.6000,,,,,,,,,,11.640,up
+2026-11-09,AUPH,turnaround,Healthcare,1,16.6200,,,,,,,,,,2.105,
+2026-11-09,ZYME,turnaround,Healthcare,1,30.8100,,,,,,,,,,-11.846,down
+2026-11-09,FTRE,positive,Healthcare,1,22.2400,,,,,,,,,,2.079,
+2026-11-09,VCYT,value_trap,Healthcare,1,25.9200,,,,,,,,,,2.038,
+2026-11-09,PBH,boring,Healthcare,1,43.6700,,,,,,,,,,-0.924,down
+2026-11-09,RTX,mixed,Industrials,0,196.3100,,,,,,,,,,6.363,up
+2026-11-09,DE,turnaround,Industrials,1,691.2800,,,,,,,,,,-0.105,
+2026-11-09,LMT,post_growth,Industrials,1,588.1900,,,,,,,,,,0.514,
+2026-11-09,PH,boring,Industrials,0,956.5900,,,,,,,,,,5.777,up
+2026-11-09,PWR,mixed,Industrials,1,591.4800,,,,,,,,,,8.746,up
+2026-11-09,HWM,mixed,Industrials,1,216.2400,,,,,,,,,,8.762,up
+2026-11-09,JCI,boring,Industrials,1,141.4900,,,,,,,,,,6.019,up
+2026-11-09,CP,na,Industrials,0,94.0300,,,,,,,,,,-1.652,down
+2026-11-09,VRT,positive,Industrials,1,200.4700,,,,,,,,,,6.915,up
+2026-11-09,HON,turnaround,Industrials,0,229.0000,,,,,,,,,,1.751,
+2026-11-09,URI,boring,Industrials,1,1128.1700,,,,,,,,,,5.393,up
+2026-11-09,RELX,na,Industrials,1,40.0200,,,,,,,,,,-1.563,down
+2026-11-09,CMI,mixed,Industrials,0,466.4700,,,,,,,,,,-3.042,down
+2026-11-09,DAL,turnaround,Industrials,1,91.8000,,,,,,,,,,-18.403,down
+2026-11-09,BE,na,Industrials,1,193.8800,,,,,,,,,,20.718,up
+2026-11-09,PCAR,mixed,Industrials,0,105.7300,,,,,,,,,,-1.388,down
+2026-11-09,HONA,mixed,Industrials,1,164.7700,,,,,,,,,,6.740,up
+2026-11-09,TRI,mixed,Industrials,1,108.3000,,,,,,,,,,-10.143,down
+2026-11-09,FER,na,Industrials,1,61.3900,,,,,,,,,,-6.567,down
+2026-11-09,CARR,boring,Industrials,0,53.3300,,,,,,,,,,-0.946,down
+2026-11-09,FIX,positive,Industrials,1,1113.2300,,,,,,,,,,3.689,
+2026-11-09,UAL,turnaround,Industrials,1,120.3800,,,,,,,,,,-31.125,down
+2026-11-09,RYAAY,na,Industrials,1,61.7500,,,,,,,,,,-7.312,down
+2026-11-09,CPRT,mixed,Industrials,1,32.4500,,,,,,,,,,-3.442,down
+2026-11-09,EME,mixed,Industrials,1,652.8900,,,,,,,,,,6.079,up
+2026-11-09,AER,post_growth,Industrials,0,175.4300,,,,,,,,,,18.014,up
+2026-11-09,ATI,positive,Industrials,1,184.8500,,,,,,,,,,2.376,
+2026-11-09,AXON,mixed,Industrials,1,303.1800,,,,,,,,,,-7.865,down
+2026-11-09,EXPD,post_growth,Industrials,0,189.5900,,,,,,,,,,12.099,up
+2026-11-09,XYL,mixed,Industrials,1,99.2600,,,,,,,,,,-4.055,down
+2026-11-09,LUV,positive,Industrials,1,46.3000,,,,,,,,,,-19.308,down
+2026-11-09,XPO,mixed,Industrials,1,188.0300,,,,,,,,,,6.446,up
+2026-11-09,ARXS,mixed,Industrials,1,50.2600,,,,,,,,,,6.572,up
+2026-11-09,JBHT,mixed,Industrials,1,224.3200,,,,,,,,,,-7.355,down
+2026-11-09,CNH,turnaround,Industrials,1,12.8200,,,,,,,,,,9.102,up
+2026-11-09,FTAI,mixed,Industrials,1,198.8300,,,,,,,,,,-2.636,down
+2026-11-09,FDXF,mixed,Industrials,1,129.0500,,,,,,,,,,16.580,up
+2026-11-09,SNA,mixed,Industrials,0,373.8200,,,,,,,,,,-3.459,down
+2026-11-09,NVT,positive,Industrials,1,114.4400,,,,,,,,,,5.289,up
+2026-11-09,APG,na,Industrials,1,42.4900,,,,,,,,,,10.163,up
+2026-11-09,SWK,boring,Industrials,1,118.1000,,,,,,,,,,6.212,up
+2026-11-09,GFL,na,Industrials,0,45.8800,,,,,,,,,,-2.188,down
+2026-11-09,ZTO,na,Industrials,0,20.6600,,,,,,,,,,-1.988,down
+2026-11-09,WCC,mixed,Industrials,1,316.4700,,,,,,,,,,9.014,up
+2026-11-09,MTZ,positive,Industrials,1,189.0500,,,,,,,,,,-2.103,down
+2026-11-09,CLH,post_growth,Industrials,0,287.6000,,,,,,,,,,7.583,up
+2026-11-09,LTM,turnaround,Industrials,1,50.5800,,,,,,,,,,-0.429,
+2026-11-09,QXO,turnaround,Industrials,1,13.7800,,,,,,,,,,-25.627,down
+2026-11-09,PAC,na,Industrials,1,236.1100,,,,,,,,,,-18.014,down
+2026-11-09,EMBJ,na,Industrials,1,77.0700,,,,,,,,,,13.947,up
+2026-11-09,WSO,mixed,Industrials,1,316.4200,,,,,,,,,,-5.542,down
+2026-11-09,RTO,mixed,Industrials,0,23.8700,,,,,,,,,,-3.034,down
+2026-11-09,HII,mixed,Industrials,1,304.3600,,,,,,,,,,5.941,up
+2026-11-09,LII,value_trap,Industrials,1,349.4700,,,,,,,,,,-9.314,down
+2026-11-09,MLI,mixed,Industrials,1,54.7900,,,,,,,,,,-1.190,down
+2026-11-09,PNR,value_trap,Industrials,1,70.2000,,,,,,,,,,0.983,
+2026-11-09,GGG,mixed,Industrials,1,69.8200,,,,,,,,,,-2.045,down
+2026-11-09,INIO,mixed,Industrials,1,14.9100,,,,,,,,,,14.906,up
+2026-11-09,GNRC,positive,Industrials,1,188.7500,,,,,,,,,,1.603,
+2026-11-09,MOG-A,post_growth,Industrials,1,340.8000,,,,,,,,,,10.074,up
+2026-11-09,DCI,boring,Industrials,0,88.2100,,,,,,,,,,-0.961,down
+2026-11-09,AYI,mixed,Industrials,1,334.5000,,,,,,,,,,-1.406,down
+2026-11-09,KNX,positive,Industrials,1,61.4500,,,,,,,,,,3.278,
+2026-11-09,OC,turnaround,Industrials,1,127.0200,,,,,,,,,,-23.103,down
+2026-11-09,DRS,post_growth,Industrials,1,36.4100,,,,,,,,,,8.960,up
+2026-11-09,WMS,turnaround,Industrials,1,131.0100,,,,,,,,,,-2.866,down
+2026-11-09,AAL,na,Industrials,1,14.1600,,,,,,,,,,-1418.591,down
+2026-11-09,ACM,turnaround,Industrials,1,70.2100,,,,,,,,,,-32.881,down
+2026-11-09,AEIS,positive,Industrials,1,219.3000,,,,,,,,,,10.389,up
+2026-11-09,STRL,positive,Industrials,1,290.6700,,,,,,,,,,14.332,up
+2026-11-09,CNM,mixed,Industrials,1,47.9000,,,,,,,,,,5.880,up
+2026-11-09,AOS,mixed,Industrials,0,65.2000,,,,,,,,,,-7.123,down
+2026-11-09,OSK,turnaround,Industrials,1,139.8500,,,,,,,,,,-17.769,down
+2026-11-09,AGCO,mixed,Industrials,1,116.5200,,,,,,,,,,-1.909,down
+2026-11-09,TFII,mixed,Industrials,1,94.7300,,,,,,,,,,-6.948,down
+2026-11-09,SPXC,boring,Industrials,1,150.9200,,,,,,,,,,-0.957,down
+2026-11-09,AWI,boring,Industrials,0,179.1200,,,,,,,,,,-1.326,down
+2026-11-09,IESC,mixed,Industrials,1,173.9200,,,,,,,,,,17.522,up
+2026-11-09,CMC,value_trap,Industrials,1,64.3700,,,,,,,,,,-4.411,down
+2026-11-09,BLDR,negative,Industrials,1,65.9700,,,,,,,,,,15.417,up
+2026-11-09,KTOS,positive,Industrials,1,37.6900,,,,,,,,,,1.269,
+2026-11-09,XMTR,positive,Industrials,1,120.5900,,,,,,,,,,18.748,up
+2026-11-09,MSA,boring,Industrials,0,173.0700,,,,,,,,,,-1.002,down
+2026-11-09,DY,positive,Industrials,1,219.9300,,,,,,,,,,2.642,
+2026-11-09,TEX,turnaround,Industrials,1,58.0500,,,,,,,,,,-2.089,down
+2026-11-09,AVAV,turnaround,Industrials,1,126.9600,,,,,,,,,,0.658,
+2026-11-09,CWST,turnaround,Industrials,1,99.0200,,,,,,,,,,7.511,up
+2026-11-09,MIDD,mixed,Industrials,0,138.0000,,,,,,,,,,-10.694,down
+2026-11-09,FPS,positive,Industrials,1,22.6000,,,,,,,,,,16.501,up
+2026-11-09,BBUC,positive,Industrials,0,30.1300,,,,,,,,,,-49.375,down
+2026-11-09,MATX,post_growth,Industrials,0,207.7700,,,,,,,,,,18.337,up
+2026-11-09,HXL,positive,Industrials,1,81.3000,,,,,,,,,,-0.634,
+2026-11-09,FBIN,negative,Industrials,1,51.6400,,,,,,,,,,-0.819,down
+2026-11-09,KRMN,positive,Industrials,1,45.9000,,,,,,,,,,13.052,up
+2026-11-09,CPA,turnaround,Industrials,1,148.0800,,,,,,,,,,-11.843,down
+2026-11-09,TREX,mixed,Industrials,1,58.7400,,,,,,,,,,5.873,up
+2026-11-09,MOD,turnaround,Industrials,1,106.1500,,,,,,,,,,-34.713,down
+2026-11-09,HRI,mixed,Industrials,1,167.1800,,,,,,,,,,15.873,up
+2026-11-09,ESAB,mixed,Industrials,1,89.9300,,,,,,,,,,-3.391,down
+2026-11-09,GVA,boring,Industrials,1,124.9200,,,,,,,,,,9.198,up
+2026-11-09,LPX,turnaround,Industrials,1,78.3200,,,,,,,,,,-2.220,down
+2026-11-09,ENS,mixed,Industrials,1,151.6300,,,,,,,,,,10.155,up
+2026-11-09,VSEC,mixed,Industrials,1,189.6100,,,,,,,,,,-1.528,down
+2026-11-09,OMAB,na,Industrials,0,109.7400,,,,,,,,,,-18.947,down
+2026-11-09,FCN,boring,Industrials,1,194.0700,,,,,,,,,,5.783,up
+2026-11-09,AAON,positive,Industrials,1,62.8700,,,,,,,,,,5.812,up
+2026-11-09,POWL,mixed,Industrials,1,141.6500,,,,,,,,,,-1.515,down
+2026-11-09,SNDR,positive,Industrials,0,28.9200,,,,,,,,,,-1.678,down
+2026-11-09,GHC,post_growth,Industrials,0,1215.7600,,,,,,,,,,7.246,up
+2026-11-09,TPC,mixed,Industrials,1,94.7000,,,,,,,,,,5.391,up
+2026-11-09,LSTR,positive,Industrials,1,146.4700,,,,,,,,,,-2.076,down
+2026-11-09,HAFN,post_growth,Industrials,1,9.1900,,,,,,,,,,75.641,up
+2026-11-09,SYM,turnaround,Industrials,1,37.7900,,,,,,,,,,11.046,up
+2026-11-09,DPC,mixed,Industrials,1,32.7300,,,,,,,,,,11.679,up
+2026-11-09,KBR,value_trap,Industrials,0,38.6500,,,,,,,,,,1.413,
+2026-11-09,MRCY,positive,Industrials,1,79.6200,,,,,,,,,,8.070,up
+2026-11-09,ROAD,mixed,Industrials,1,85.3000,,,,,,,,,,-7.201,down
+2026-11-09,BCO,mixed,Industrials,1,114.5700,,,,,,,,,,-1.740,down
+2026-11-09,CSW,mixed,Industrials,1,288.1000,,,,,,,,,,-0.842,down
+2026-11-09,RXO,na,Industrials,1,27.9200,,,,,,,,,,125.989,up
+2026-11-09,CAR,turnaround,Industrials,1,127.6500,,,,,,,,,,222.939,up
+2026-11-09,MYRG,mixed,Industrials,1,279.2600,,,,,,,,,,9.266,up
+2026-11-09,RHI,turnaround,Industrials,1,42.3300,,,,,,,,,,3.262,
+2026-11-09,ECG,mixed,Industrials,1,84.4300,,,,,,,,,,15.528,up
+2026-11-09,UNF,mixed,Industrials,1,238.1200,,,,,,,,,,5.552,up
+2026-11-09,AGX,mixed,Industrials,1,306.2800,,,,,,,,,,8.433,up
+2026-11-09,EQPT,na,Industrials,1,16.2100,,,,,,,,,,16.161,up
+2026-11-09,KFY,boring,Industrials,0,75.1000,,,,,,,,,,-2.634,down
+2026-11-09,CAAP,boring,Industrials,1,25.0500,,,,,,,,,,-4.539,down
+2026-11-09,GEO,positive,Industrials,1,30.1400,,,,,,,,,,8.052,up
+2026-11-09,MWA,mixed,Industrials,0,24.4600,,,,,,,,,,-1.632,down
+2026-11-09,BRC,boring,Industrials,0,79.9200,,,,,,,,,,7.553,up
+2026-11-09,WSC,turnaround,Industrials,1,20.6300,,,,,,,,,,-1.118,down
+2026-11-09,PRIM,turnaround,Industrials,1,71.2400,,,,,,,,,,2.447,
+2026-11-09,KAI,mixed,Industrials,1,303.2600,,,,,,,,,,6.244,up
+2026-11-09,PAM,post_growth,Industrials,0,64.9500,,,,,,,,,,7.223,up
+2026-11-09,ZIM,post_growth,Industrials,1,28.5100,,,,,,,,,,3.929,
+2026-11-09,MMS,mixed,Industrials,1,65.6400,,,,,,,,,,-5.431,down
+2026-11-09,OTTR,negative,Industrials,0,79.8600,,,,,,,,,,-4.200,down
+2026-11-09,ECO,na,Industrials,1,82.2100,,,,,,,,,,60.860,up
+2026-11-09,SKYW,mixed,Industrials,1,83.5200,,,,,,,,,,-3.533,down
+2026-11-09,SBLK,na,Industrials,1,27.0700,,,,,,,,,,15.598,up
+2026-11-09,REZI,value_trap,Industrials,1,20.0500,,,,,,,,,,-29.825,down
+2026-11-09,ARCB,positive,Industrials,1,132.5400,,,,,,,,,,8.165,up
+2026-11-09,AERO,turnaround,Industrials,1,17.9200,,,,,,,,,,30.554,up
+2026-11-09,ALGT,positive,Industrials,1,97.2100,,,,,,,,,,-10.226,down
+2026-11-09,CXW,positive,Industrials,1,29.8300,,,,,,,,,,3.206,
+2026-11-09,ATRO,mixed,Industrials,1,58.9900,,,,,,,,,,11.199,up
+2026-11-09,DNOW,turnaround,Industrials,1,13.9400,,,,,,,,,,8.805,up
+2026-11-09,TIC,turnaround,Industrials,1,11.2900,,,,,,,,,,12.803,up
+2026-11-09,NMM,post_growth,Industrials,1,84.8000,,,,,,,,,,25.126,up
+2026-11-09,TRN,negative,Industrials,1,29.8500,,,,,,,,,,1.124,
+2026-11-09,BLBD,value_trap,Industrials,1,60.3200,,,,,,,,,,-2.590,down
+2026-11-09,PLD,mixed,Real Estate,0,130.5500,,,,,,,,,,21.750,up
+2026-11-09,DLR,post_growth,Real Estate,1,180.1000,,,,,,,,,,-1.571,
+2026-11-09,PSA,turnaround,Real Estate,0,338.1500,,,,,,,,,,-10.383,down
+2026-11-09,VTR,mixed,Real Estate,0,89.4900,,,,,,,,,,-24.590,down
+2026-11-09,CCI,turnaround,Real Estate,1,87.8300,,,,,,,,,,9.307,up
+2026-11-09,VICI,turnaround,Real Estate,0,25.1600,,,,,,,,,,-20.408,down
+2026-11-09,BEKE,na,Real Estate,1,18.4000,,,,,,,,,,13.076,up
+2026-11-09,ESS,turnaround,Real Estate,0,275.5400,,,,,,,,,,-5.658,down
+2026-11-09,JLL,positive,Real Estate,1,380.0700,,,,,,,,,,3.219,
+2026-11-09,HST,value_trap,Real Estate,0,25.2800,,,,,,,,,,1.333,
+2026-11-09,INVH,boring,Real Estate,0,27.2000,,,,,,,,,,20.596,up
+2026-11-09,WY,mixed,Real Estate,1,21.1300,,,,,,,,,,-25.013,down
+2026-11-09,WPC,boring,Real Estate,0,65.9000,,,,,,,,,,8.994,up
+2026-11-09,NLY,value_trap,Real Estate,0,18.9500,,,,,,,,,,1.486,
+2026-11-09,OHI,post_growth,Real Estate,0,48.8300,,,,,,,,,,34.872,up
+2026-11-09,SUI,turnaround,Real Estate,0,120.3300,,,,,,,,,,5.672,
+2026-11-09,AHR,positive,Real Estate,0,58.9600,,,,,,,,,,4.171,
+2026-11-09,CSGP,positive,Real Estate,1,31.2400,,,,,,,,,,3.519,
+2026-11-09,AMH,turnaround,Real Estate,0,32.9000,,,,,,,,,,-25.354,down
+2026-11-09,UDR,mixed,Real Estate,0,36.7100,,,,,,,,,,20.582,up
+2026-11-09,AGNC,value_trap,Real Estate,0,8.9300,,,,,,,,,,-1.626,
+2026-11-09,EGP,boring,Real Estate,0,199.2600,,,,,,,,,,8.095,up
+2026-11-09,CPT,post_growth,Real Estate,0,100.2800,,,,,,,,,,0.812,
+2026-11-09,CTRE,boring,Real Estate,0,38.8600,,,,,,,,,,-4.894,down
+2026-11-09,FRT,negative,Real Estate,0,113.8100,,,,,,,,,,2.559,
+2026-11-09,RHP,boring,Real Estate,0,135.4200,,,,,,,,,,9.500,up
+2026-11-09,BRX,boring,Real Estate,0,30.3000,,,,,,,,,,-9.126,down
+2026-11-09,COMP,post_growth,Real Estate,1,10.7900,,,,,,,,,,-3.550,
+2026-11-09,REXR,mixed,Real Estate,0,38.7000,,,,,,,,,,-2681.422,down
+2026-11-09,ARE,loss,Real Estate,1,45.8800,,,,,,,,,,-116.730,down
+2026-11-09,JAN,na,Real Estate,0,32.0200,,,,,,,,,,-54.747,down
+2026-11-09,TRNO,boring,Real Estate,0,67.3600,,,,,,,,,,-6.980,down
+2026-11-09,FR,post_growth,Real Estate,0,54.9300,,,,,,,,,,-0.246,
+2026-11-09,RYN,turnaround,Real Estate,0,21.8200,,,,,,,,,,5.223,
+2026-11-09,SBRA,turnaround,Real Estate,0,21.4700,,,,,,,,,,-49.989,down
+2026-11-09,OUT,mixed,Real Estate,0,31.2600,,,,,,,,,,8.280,up
+2026-11-09,RITM,value_trap,Real Estate,0,9.4400,,,,,,,,,,1.681,
+2026-11-09,PECO,post_growth,Real Estate,0,40.8300,,,,,,,,,,19.077,up
+2026-11-09,HHH,post_growth,Real Estate,1,85.6000,,,,,,,,,,69.458,up
+2026-11-09,KRG,negative,Real Estate,0,25.6300,,,,,,,,,,31.138,up
+2026-11-09,CUZ,turnaround,Real Estate,0,30.1200,,,,,,,,,,131.571,up
+2026-11-09,APLE,mixed,Real Estate,0,19.6800,,,,,,,,,,12.016,up
+2026-11-09,STWD,turnaround,Real Estate,0,12.0500,,,,,,,,,,-6.729,down
+2026-11-09,KRC,turnaround,Real Estate,0,36.9300,,,,,,,,,,-62.857,down
+2026-11-09,CURB,turnaround,Real Estate,0,29.7300,,,,,,,,,,33.333,up
+2026-11-09,VTMX,value_trap,Real Estate,0,38.3300,,,,,,,,,,0.433,
+2026-11-09,IRT,negative,Real Estate,0,15.0700,,,,,,,,,,19.153,up
+2026-11-09,NHI,post_growth,Real Estate,0,71.2300,,,,,,,,,,7.703,up
+2026-11-09,BNL,post_growth,Real Estate,0,17.8400,,,,,,,,,,-5.149,down
+2026-11-09,PK,turnaround,Real Estate,1,16.4600,,,,,,,,,,-5.000,down
+2026-11-09,DRH,post_growth,Real Estate,0,14.3600,,,,,,,,,,23.799,up
+2026-11-09,IHS,value_trap,Real Estate,0,8.4400,,,,,,,,,,,
+2026-11-09,DX,positive,Real Estate,0,10.8100,,,,,,,,,,0.887,
+2026-11-09,AKR,post_growth,Real Estate,0,19.9700,,,,,,,,,,3.448,
+2026-11-09,UE,turnaround,Real Estate,0,20.6500,,,,,,,,,,-8.280,down
+2026-11-09,LTC,post_growth,Real Estate,0,44.9800,,,,,,,,,,287.148,up
+2026-11-09,NTST,positive,Real Estate,0,19.0900,,,,,,,,,,0.684,
+2026-11-09,SMA,mixed,Real Estate,0,39.6900,,,,,,,,,,26.485,up
+2026-11-09,SHO,post_growth,Real Estate,0,12.6600,,,,,,,,,,-87.209,down
+2026-11-09,NMRK,boring,Real Estate,1,12.0700,,,,,,,,,,-5.546,down
+2026-11-09,XHR,na,Real Estate,0,21.9400,,,,,,,,,,-92.000,down
+2026-11-09,NVDA,positive,Technology,1,178.6700,,,,,,,,,,3.946,
+2026-11-09,AVGO,positive,Technology,1,319.4800,,,,,,,,,,0.332,down
+2026-11-09,AMD,positive,Technology,1,508.5800,,,,,,,,,,7.007,
+2026-11-09,MU,mixed,Technology,1,733.1500,,,,,,,,,,13.291,up
+2026-11-09,PLTR,positive,Technology,1,169.2000,,,,,,,,,,6.173,
+2026-11-09,INTC,mixed,Technology,1,59.3700,,,,,,,,,,-2.060,down
+2026-11-09,LRCX,mixed,Technology,1,221.3100,,,,,,,,,,17.450,up
+2026-11-09,SAP,na,Technology,0,237.4200,,,,,,,,,,-1.364,down
+2026-11-09,CRWD,boring,Technology,1,228.5800,,,,,,,,,,-1.862,down
+2026-11-09,DELL,post_growth,Technology,1,346.3100,,,,,,,,,,40.736,up
+2026-11-09,SHOP,mixed,Technology,1,152.0600,,,,,,,,,,0.291,down
+2026-11-09,QCOM,turnaround,Technology,1,171.4700,,,,,,,,,,-6.073,down
+2026-11-09,CRM,value_trap,Technology,1,214.9400,,,,,,,,,,18.549,up
+2026-11-09,SONY,na,Technology,0,27.0600,,,,,,,,,,12.540,up
+2026-11-09,ACN,mixed,Technology,1,254.3700,,,,,,,,,,-0.016,down
+2026-11-09,UBER,na,Technology,1,71.1700,,,,,,,,,,-17.198,down
+2026-11-09,STX,positive,Technology,1,506.1400,,,,,,,,,,11.441,up
+2026-11-09,WDC,positive,Technology,1,289.7800,,,,,,,,,,34.009,up
+2026-11-09,NOW,boring,Technology,1,102.7600,,,,,,,,,,-2.780,down
+2026-11-09,SNOW,positive,Technology,1,291.1400,,,,,,,,,,15.065,up
+2026-11-09,INTU,value_trap,Technology,1,338.2300,,,,,,,,,,-12.768,down
+2026-11-09,ASX,na,Technology,1,34.3600,,,,,,,,,,11.410,up
+2026-11-09,MPWR,positive,Technology,1,1388.0500,,,,,,,,,,6.776,
+2026-11-09,HPE,mixed,Technology,1,47.5400,,,,,,,,,,11.820,up
+2026-11-09,ADSK,boring,Technology,1,263.3500,,,,,,,,,,0.002,down
+2026-11-09,LITE,positive,Technology,1,596.1600,,,,,,,,,,33.162,up
+2026-11-09,XYZ,positive,Technology,1,88.5600,,,,,,,,,,3.022,
+2026-11-09,INFY,mixed,Technology,1,12.3900,,,,,,,,,,-0.590,down
+2026-11-09,KEYS,mixed,Technology,1,288.9700,,,,,,,,,,12.313,up
+2026-11-09,COHR,positive,Technology,1,225.1900,,,,,,,,,,23.930,up
+2026-11-09,UI,mixed,Technology,1,685.6800,,,,,,,,,,18.388,up
+2026-11-09,PAYX,mixed,Technology,1,114.7600,,,,,,,,,,-0.376,down
+2026-11-09,STM,positive,Technology,1,44.5400,,,,,,,,,,0.719,
+2026-11-09,TEAM,negative,Technology,1,154.9000,,,,,,,,,,1.171,
+2026-11-09,CIEN,positive,Technology,1,269.3300,,,,,,,,,,9.570,up
+2026-11-09,ALAB,positive,Technology,1,216.8700,,,,,,,,,,8.753,
+2026-11-09,UMC,na,Technology,1,14.8900,,,,,,,,,,23.567,up
+2026-11-09,NTAP,boring,Technology,1,176.0700,,,,,,,,,,12.506,up
+2026-11-09,ERIC,na,Technology,1,10.6000,,,,,,,,,,11.242,up
+2026-11-09,P,mixed,Technology,1,102.8400,,,,,,,,,,14.194,up
+2026-11-09,FISV,value_trap,Technology,1,63.5200,,,,,,,,,,-1.096,down
+2026-11-09,MCHP,mixed,Technology,1,61.5000,,,,,,,,,,-0.485,down
+2026-11-09,CLS,positive,Technology,1,222.9200,,,,,,,,,,2.827,
+2026-11-09,VRSN,mixed,Technology,0,305.8400,,,,,,,,,,-0.427,down
+2026-11-09,Q,boring,Technology,1,125.0900,,,,,,,,,,10.722,up
+2026-11-09,HPQ,value_trap,Technology,1,28.2500,,,,,,,,,,7.369,
+2026-11-09,CRDO,positive,Technology,1,132.8900,,,,,,,,,,2.989,
+2026-11-09,RBRK,na,Technology,1,111.2200,,,,,,,,,,59.952,up
+2026-11-09,U,positive,Technology,1,51.4300,,,,,,,,,,19.436,up
+2026-11-09,BR,mixed,Technology,0,192.3400,,,,,,,,,,0.440,down
+2026-11-09,ENTG,mixed,Technology,1,140.0600,,,,,,,,,,12.221,up
+2026-11-09,WIT,na,Technology,1,2.1400,,,,,,,,,,0.496,down
+2026-11-09,SWKS,mixed,Technology,1,82.8300,,,,,,,,,,14.791,up
+2026-11-09,SMCI,post_growth,Technology,1,28.6000,,,,,,,,,,89.239,up
+2026-11-09,SNX,mixed,Technology,1,228.3300,,,,,,,,,,11.941,up
+2026-11-09,MTSI,mixed,Technology,1,230.0000,,,,,,,,,,15.523,up
+2026-11-09,TSEM,positive,Technology,1,152.2900,,,,,,,,,,6.078,
+2026-11-09,GIB,na,Technology,0,82.5700,,,,,,,,,,-0.007,down
+2026-11-09,KSPI,na,Technology,1,89.4600,,,,,,,,,,0.298,down
+2026-11-09,TYL,boring,Technology,1,418.1800,,,,,,,,,,-0.026,down
+2026-11-09,LDOS,value_trap,Technology,1,135.7600,,,,,,,,,,2.346,
+2026-11-09,LSCC,positive,Technology,1,113.8900,,,,,,,,,,18.022,up
+2026-11-09,FICO,mixed,Technology,1,723.7600,,,,,,,,,,-15.626,down
+2026-11-09,CHKP,value_trap,Technology,1,143.9600,,,,,,,,,,-1.282,down
+2026-11-09,FIS,value_trap,Technology,1,28.3400,,,,,,,,,,-4.620,down
+2026-11-09,MKSI,positive,Technology,1,211.5900,,,,,,,,,,12.918,up
+2026-11-09,CACI,boring,Technology,1,639.9700,,,,,,,,,,10.013,up
+2026-11-09,GRAB,mixed,Technology,1,3.4400,,,,,,,,,,-8.554,down
+2026-11-09,SITM,positive,Technology,1,457.0500,,,,,,,,,,14.515,up
+2026-11-09,FROG,boring,Technology,1,108.1800,,,,,,,,,,17.847,up
+2026-11-09,FN,boring,Technology,1,365.9400,,,,,,,,,,14.334,up
+2026-11-09,DT,boring,Technology,1,43.9700,,,,,,,,,,-4.492,down
+2026-11-09,CHYM,turnaround,Technology,1,32.5300,,,,,,,,,,16.190,up
+2026-11-09,AKAM,value_trap,Technology,1,80.2900,,,,,,,,,,-2.235,down
+2026-11-09,WSE,boring,Technology,1,11.3100,,,,,,,,,,-0.461,down
+2026-11-09,SMTC,positive,Technology,1,116.4500,,,,,,,,,,37.306,up
+2026-11-09,PAYP,na,Technology,1,15.4000,,,,,,,,,,-2.136,down
+2026-11-09,FIG,boring,Technology,1,19.4000,,,,,,,,,,17.709,up
+2026-11-09,VSAT,loss,Technology,1,74.3700,,,,,,,,,,-396.277,down
+2026-11-09,ARW,mixed,Technology,1,191.8400,,,,,,,,,,9.842,up
+2026-11-09,ONTO,positive,Technology,1,194.0400,,,,,,,,,,12.660,up
+2026-11-09,DOCN,turnaround,Technology,1,78.3000,,,,,,,,,,12.317,up
+2026-11-09,AMKR,mixed,Technology,1,35.0000,,,,,,,,,,-2.025,down
+2026-11-09,S,positive,Technology,1,23.5200,,,,,,,,,,-8.269,down
+2026-11-09,APPF,boring,Technology,1,229.4900,,,,,,,,,,-0.735,down
+2026-11-09,DSGX,turnaround,Technology,1,94.7000,,,,,,,,,,-2.734,down
+2026-11-09,ZETA,mixed,Technology,1,32.4200,,,,,,,,,,-0.984,down
+2026-11-09,TTMI,positive,Technology,1,75.3300,,,,,,,,,,22.749,up
+2026-11-09,VIAV,mixed,Technology,1,31.9800,,,,,,,,,,13.464,up
+2026-11-09,GTLB,turnaround,Technology,1,47.1200,,,,,,,,,,6.609,
+2026-11-09,RAL,boring,Technology,1,69.9800,,,,,,,,,,10.146,up
+2026-11-09,IDCC,negative,Technology,1,294.1100,,,,,,,,,,3.808,
+2026-11-09,VICR,mixed,Technology,1,163.5100,,,,,,,,,,20.611,up
+2026-11-09,SLAB,positive,Technology,0,221.8000,,,,,,,,,,4.174,
+2026-11-09,G,mixed,Technology,1,42.5500,,,,,,,,,,0.414,down
+2026-11-09,DBX,mixed,Technology,1,32.5800,,,,,,,,,,-0.127,down
+2026-11-09,AVT,post_growth,Technology,1,84.7900,,,,,,,,,,57.972,up
+2026-11-09,NAVN,turnaround,Technology,1,26.0800,,,,,,,,,,3.833,
+2026-11-09,FORM,mixed,Technology,1,85.2000,,,,,,,,,,10.916,up
+2026-11-09,MBGL,mixed,Technology,1,19.8600,,,,,,,,,,-1.927,down
+2026-11-09,LYFT,na,Technology,1,16.7600,,,,,,,,,,-38.489,down
+2026-11-09,NIQ,na,Technology,1,21.4200,,,,,,,,,,11.246,up
+2026-11-09,ACIW,boring,Technology,0,61.4500,,,,,,,,,,-4.448,down
+2026-11-09,OTEX,value_trap,Technology,1,24.9200,,,,,,,,,,0.627,
+2026-11-09,CRUS,mixed,Technology,1,118.2800,,,,,,,,,,-6.862,down
+2026-11-09,SIMO,positive,Technology,1,172.0100,,,,,,,,,,22.393,up
+2026-11-09,ALGM,positive,Technology,1,30.9200,,,,,,,,,,1.425,
+2026-11-09,BOX,mixed,Technology,1,41.6500,,,,,,,,,,-2.282,down
+2026-11-09,VRNS,na,Technology,1,48.9600,,,,,,,,,,57.630,up
+2026-11-09,NICE,value_trap,Technology,1,96.6800,,,,,,,,,,0.424,down
+2026-11-09,PSN,turnaround,Technology,1,51.4900,,,,,,,,,,0.961,
+2026-11-09,BRZE,positive,Technology,0,46.0800,,,,,,,,,,1.522,
+2026-11-09,RELY,post_growth,Technology,1,23.9700,,,,,,,,,,-0.052,down
+2026-11-09,PEGA,mixed,Technology,1,31.1300,,,,,,,,,,-14.179,down
+2026-11-09,MXL,na,Technology,1,55.9100,,,,,,,,,,13.829,up
+2026-11-09,AAOI,na,Technology,1,52.1000,,,,,,,,,,-1.316,down
+2026-11-09,NSIT,mixed,Technology,1,163.7300,,,,,,,,,,12.197,up
+2026-11-09,SYNA,boring,Technology,1,117.2500,,,,,,,,,,-1.804,down
+2026-11-09,BILL,boring,Technology,1,53.8100,,,,,,,,,,21.637,up
+2026-11-09,BMI,mixed,Technology,1,159.1800,,,,,,,,,,0.269,down
+2026-11-09,QTWO,boring,Technology,1,74.2400,,,,,,,,,,0.318,down
+2026-11-09,TENB,boring,Technology,1,43.6700,,,,,,,,,,9.781,up
+2026-11-09,GDS,na,Technology,1,22.2600,,,,,,,,,,-23.774,down
+2026-11-09,DOX,turnaround,Technology,1,41.7400,,,,,,,,,,-33.261,down
+2026-11-09,BDC,boring,Technology,1,106.9100,,,,,,,,,,-0.158,down
+2026-11-09,DLO,mixed,Technology,1,14.3900,,,,,,,,,,-1.298,down
+2026-11-09,VSH,turnaround,Technology,1,26.4100,,,,,,,,,,13.212,up
+2026-11-09,SRAD,na,Technology,1,13.6100,,,,,,,,,,-23.077,down
+2026-11-09,DIOD,positive,Technology,1,85.8900,,,,,,,,,,13.333,up
+2026-11-09,ENPH,negative,Technology,1,29.0800,,,,,,,,,,-17.170,down
+2026-11-09,WK,mixed,Technology,1,69.7800,,,,,,,,,,-13.726,down
+2026-11-09,LIF,mixed,Technology,1,45.0200,,,,,,,,,,10.101,up
+2026-11-09,KD,mixed,Technology,1,16.8000,,,,,,,,,,-3.496,down
+2026-11-09,KLIC,na,Technology,1,68.9700,,,,,,,,,,14.131,up
+2026-11-09,FOUR,value_trap,Technology,1,45.0100,,,,,,,,,,-1.736,down
+2026-11-09,AVPT,post_growth,Technology,1,16.8100,,,,,,,,,,12.964,up
+2026-11-09,ACMR,mixed,Technology,1,49.7500,,,,,,,,,,27.574,up
+2026-11-09,BLSH,na,Technology,1,22.8000,,,,,,,,,,-17.708,down
+2026-11-09,MNDY,boring,Technology,1,79.9300,,,,,,,,,,20.075,up
+2026-11-09,ACLS,turnaround,Technology,1,107.6400,,,,,,,,,,7.094,
+2026-11-09,BELFB,mixed,Technology,1,224.3500,,,,,,,,,,11.399,up
+2026-11-09,CLBT,mixed,Technology,1,12.7000,,,,,,,,,,-1.073,down
+2026-11-09,OSIS,boring,Technology,0,201.3600,,,,,,,,,,0.345,down
+2026-11-09,WIX,turnaround,Technology,1,69.7500,,,,,,,,,,-6.732,down
+2026-11-09,AXTI,turnaround,Technology,1,42.9100,,,,,,,,,,35.714,up
+2026-11-09,FLYW,post_growth,Technology,1,22.1300,,,,,,,,,,23.825,up
+2026-11-09,BULL,turnaround,Technology,1,4.9200,,,,,,,,,,74.074,up
+2026-11-09,EEFT,mixed,Technology,1,70.9200,,,,,,,,,,-3.387,down
+2026-11-09,BELFA,mixed,Technology,1,179.5700,,,,,,,,,,25.061,up
+2026-11-09,FSLY,na,Technology,1,15.9800,,,,,,,,,,19.455,up
+2026-11-09,LASR,mixed,Technology,1,43.2100,,,,,,,,,,45.962,up
+2026-11-09,PLUS,mixed,Technology,1,94.4600,,,,,,,,,,10.046,up
+2026-11-09,BLKB,boring,Technology,1,54.5800,,,,,,,,,,0.000,down
+2026-11-09,PAYO,turnaround,Technology,0,7.1500,,,,,,,,,,15.564,up
+2026-11-09,VECO,mixed,Technology,1,39.6000,,,,,,,,,,-6.567,down
+2026-11-09,GRND,turnaround,Technology,1,13.3800,,,,,,,,,,-37.259,down
+2026-11-09,NTCT,mixed,Technology,1,32.4700,,,,,,,,,,0.000,down
+2026-11-09,DXC,value_trap,Technology,1,15.1800,,,,,,,,,,-8.216,down
+2026-11-09,RUN,value_trap,Technology,1,9.7400,,,,,,,,,,6.193,
+2026-11-09,PENG,mixed,Technology,1,45.7000,,,,,,,,,,35.946,up
+2026-11-09,ASAN,boring,Technology,1,10.0200,,,,,,,,,,0.024,down
+2026-11-09,AMPL,na,Technology,1,17.3200,,,,,,,,,,10.169,up
+2026-11-09,UCTT,positive,Technology,1,45.8900,,,,,,,,,,31.198,up
+2026-11-09,PAGS,na,Technology,1,7.9100,,,,,,,,,,-2.461,down
+2026-11-09,FIVN,mixed,Technology,1,28.8700,,,,,,,,,,-1.759,down
+2026-11-09,COHU,turnaround,Technology,1,43.4000,,,,,,,,,,11.974,up
+2026-11-09,GLOB,value_trap,Technology,1,47.4100,,,,,,,,,,-4.786,down
+2026-11-09,DBD,turnaround,Technology,1,60.0900,,,,,,,,,,-14.347,down
+2026-11-09,SONO,post_growth,Technology,1,17.0100,,,,,,,,,,23.858,up
+2026-11-09,NEE,boring,Utilities,0,86.8600,,,,,,,,,,-0.555,down
+2026-11-09,SO,boring,Utilities,0,93.5700,,,,,,,,,,1.034,up
+2026-11-09,CEG,mixed,Utilities,1,276.0900,,,,,,,,,,3.379,up
+2026-11-09,AEP,boring,Utilities,0,128.3300,,,,,,,,,,1.382,up
+2026-11-09,ETR,positive,Utilities,0,111.7900,,,,,,,,,,0.193,
+2026-11-09,SRE,mixed,Utilities,0,78.7700,,,,,,,,,,1.031,up
+2026-11-09,VST,na,Utilities,1,133.9200,,,,,,,,,,-3.121,down
+2026-11-09,ES,value_trap,Utilities,0,69.4900,,,,,,,,,,0.228,
+2026-11-09,EIX,value_trap,Utilities,1,60.1400,,,,,,,,,,-0.170,
+2026-11-09,EVRG,post_growth,Utilities,0,87.9900,,,,,,,,,,3.196,up
+2026-11-09,BIP,turnaround,Utilities,0,39.6700,,,,,,,,,,-42.354,down
+2026-11-09,SBS,na,Utilities,1,4.9500,,,,,,,,,,-10.981,down
+2026-11-09,TLN,positive,Utilities,1,363.1300,,,,,,,,,,-18.059,down
+2026-11-09,EMA,na,Utilities,0,50.6000,,,,,,,,,,-5.240,down
+2026-11-09,KEP,na,Utilities,1,11.3300,,,,,,,,,,-15.015,down
+2026-11-09,PNW,turnaround,Utilities,0,105.2600,,,,,,,,,,6.953,up
+2026-11-09,AES,value_trap,Utilities,0,14.9000,,,,,,,,,,0.093,
+2026-11-09,OGE,mixed,Utilities,0,50.6600,,,,,,,,,,3.722,up
+2026-11-09,ENLT,positive,Utilities,1,69.9300,,,,,,,,,,70.690,up
+2026-11-09,ELPC,na,Utilities,1,10.9100,,,,,,,,,,-36.184,down
+2026-11-09,UGI,turnaround,Utilities,0,37.4900,,,,,,,,,,-0.888,down
+2026-11-09,SWX,positive,Utilities,0,92.4600,,,,,,,,,,-0.286,
+2026-11-09,TXNM,positive,Utilities,0,58.2800,,,,,,,,,,-2.705,down
+2026-11-09,ORA,post_growth,Utilities,1,94.5700,,,,,,,,,,8.192,up
+2026-11-09,MWH,mixed,Utilities,1,27.4000,,,,,,,,,,-8.269,down
+2026-11-09,NJR,value_trap,Utilities,0,54.3900,,,,,,,,,,-0.937,down
+2026-11-09,POR,boring,Utilities,0,45.9800,,,,,,,,,,-3.623,down
+2026-11-09,CIG,na,Utilities,1,1.9000,,,,,,,,,,3.333,up
+2026-11-09,SR,turnaround,Utilities,0,88.8600,,,,,,,,,,-0.236,
+2026-11-09,NWE,mixed,Utilities,0,84.1000,,,,,,,,,,-0.395,down
+2026-11-09,OGS,post_growth,Utilities,0,81.2500,,,,,,,,,,1.254,up
+2026-11-09,BIPC,mixed,Utilities,0,39.8700,,,,,,,,,,-446.154,down
+2026-11-09,AQN,mixed,Utilities,0,5.6600,,,,,,,,,,1.639,up
+2026-11-09,TAC,na,Utilities,1,13.6500,,,,,,,,,,46.296,up
+2026-11-09,CWEN,turnaround,Utilities,1,34.7000,,,,,,,,,,,
+2026-11-09,AWR,mixed,Utilities,0,90.1200,,,,,,,,,,-0.809,down
+2026-11-09,CWT,post_growth,Utilities,0,50.1600,,,,,,,,,,-4.380,down
+2026-11-09,MGEE,post_growth,Utilities,0,80.1900,,,,,,,,,,4.905,up
+2026-11-09,HTO,negative,Utilities,0,62.1300,,,,,,,,,,6.998,up
+2026-11-09,RNW,na,Utilities,0,6.9400,,,,,,,,,,4.369,up
+2026-11-09,CTRI,positive,Utilities,1,22.5600,,,,,,,,,,13.852,up

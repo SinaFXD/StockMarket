@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXBGS","source":"FRED","id":"DTWEXBGS","label":"US dollar, broad index","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXBGS","title":"Nominal Broad U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-02 15:51:35-06","fetched_at":"2026-11-09T01:48:29Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXBGS","source":"FRED","id":"DTWEXBGS","label":"US dollar, broad index","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXBGS","title":"Nominal Broad U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-09 15:16:53-06","fetched_at":"2026-11-10T04:13:03Z","columns":["date","value"],"observations":[
 ["2006-01-02",101.4155],
 ["2006-01-03",100.7558],
 ["2006-01-04",100.2288],
@@ -5220,5 +5220,10 @@
 ["2026-10-27",121.6622],
 ["2026-10-28",121.8491],
 ["2026-10-29",121.7361],
-["2026-10-30",121.6656]
+["2026-10-30",121.6656],
+["2026-11-02",121.3702],
+["2026-11-03",121.8084],
+["2026-11-04",121.3983],
+["2026-11-05",121.5061],
+["2026-11-06",121.8803]
 ]}

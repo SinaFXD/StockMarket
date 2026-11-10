@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXAFEGS","source":"FRED","id":"DTWEXAFEGS","label":"US dollar vs advanced economies","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXAFEGS","title":"Nominal Advanced Foreign Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-02 15:51:26-06","fetched_at":"2026-11-09T01:48:29Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXAFEGS","source":"FRED","id":"DTWEXAFEGS","label":"US dollar vs advanced economies","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXAFEGS","title":"Nominal Advanced Foreign Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-09 15:16:38-06","fetched_at":"2026-11-10T04:13:03Z","columns":["date","value"],"observations":[
 ["2006-01-02",101.7857],
 ["2006-01-03",100.6967],
 ["2006-01-04",100.0512],
@@ -5220,5 +5220,10 @@
 ["2026-10-27",114.7937],
 ["2026-10-28",114.8598],
 ["2026-10-29",114.4851],
-["2026-10-30",114.3735]
+["2026-10-30",114.3735],
+["2026-11-02",114.2007],
+["2026-11-03",114.4027],
+["2026-11-04",114.1457],
+["2026-11-05",114.011],
+["2026-11-06",114.8642]
 ]}
