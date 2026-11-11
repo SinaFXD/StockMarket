@@ -1,4 +1,4 @@
-{"key":"fred/BAA10Y","source":"FRED","id":"BAA10Y","label":"Moody's Baa minus 10y (long history)","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAA10Y","title":"Moody's Seasoned Baa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-09 16:03:36-06","fetched_at":"2026-11-10T04:13:03Z","columns":["date","value"],"observations":[
+{"key":"fred/BAA10Y","source":"FRED","id":"BAA10Y","label":"Moody's Baa minus 10y (long history)","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAA10Y","title":"Moody's Seasoned Baa Corporate Bond Yield Relative to Yield on 10-Year Treasury Constant Maturity","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-10 16:04:31-06","fetched_at":"2026-11-11T02:00:59Z","columns":["date","value"],"observations":[
 ["1986-01-02",2.34],
 ["1986-01-03",2.3],
 ["1986-01-06",2.29],
@@ -10211,5 +10211,6 @@
 ["2026-11-03",1.54],
 ["2026-11-04",1.52],
 ["2026-11-05",1.57],
-["2026-11-06",1.56]
+["2026-11-06",1.56],
+["2026-11-09",1.51]
 ]}
