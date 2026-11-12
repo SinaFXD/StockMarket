@@ -1,4 +1,4 @@
-{"key":"yahoo/GSPC","source":"Yahoo Finance","id":"^GSPC","label":"S&P 500","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EGSPC","title":"S&P 500","units":"USD","units_short":"USD","frequency":"daily","exchange":"SNP","via":"yfinance","fetched_at":"2026-11-11T02:00:59Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/GSPC","source":"Yahoo Finance","id":"^GSPC","label":"S&P 500","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/%5EGSPC","title":"S&P 500","units":"USD","units_short":"USD","frequency":"daily","exchange":"SNP","via":"yfinance","fetched_at":"2026-11-12T03:10:46Z","columns":["date","close","adj_close"],"observations":[
 ["1927-12-30",17.66,17.66],
 ["1928-01-03",17.76,17.76],
 ["1928-01-04",17.72,17.72],
@@ -24831,5 +24831,6 @@
 ["2026-11-05",7353.73,7353.73],
 ["2026-11-06",7376.8599,7376.8599],
 ["2026-11-09",7549.9399,7549.9399],
-["2026-11-10",7520.9302,7520.9302]
+["2026-11-10",7520.9302,7520.9302],
+["2026-11-11",7619.3799,7619.3799]
 ]}
