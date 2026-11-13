@@ -1,4 +1,4 @@
-{"key":"fred/ICSA","source":"FRED","id":"ICSA","label":"Initial jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/ICSA","title":"Initial Claims","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-11-05 07:34:30-06","fetched_at":"2026-11-12T03:10:46Z","columns":["date","value"],"observations":[
+{"key":"fred/ICSA","source":"FRED","id":"ICSA","label":"Initial jobless claims","block":"confirmers","url":"https://fred.stlouisfed.org/series/ICSA","title":"Initial Claims","units":"Number","units_short":"Number","frequency":"weekly","seasonal_adjustment":"SA","source_updated":"2026-11-12 07:37:26-06","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
 ["1967-01-07",208000],
 ["1967-01-14",207000],
 ["1967-01-21",217000],
@@ -3120,5 +3120,6 @@
 ["2026-10-10",200000],
 ["2026-10-17",195000],
 ["2026-10-24",195000],
-["2026-10-31",189000]
+["2026-10-31",191000],
+["2026-11-07",200000]
 ]}

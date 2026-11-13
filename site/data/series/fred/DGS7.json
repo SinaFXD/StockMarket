@@ -1,4 +1,4 @@
-{"key":"fred/DGS7","source":"FRED","id":"DGS7","label":"US 7y Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS7","title":"Market Yield on U.S. Treasury Securities at 7-Year Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-10 15:16:40-06","fetched_at":"2026-11-12T03:10:46Z","columns":["date","value"],"observations":[
+{"key":"fred/DGS7","source":"FRED","id":"DGS7","label":"US 7y Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS7","title":"Market Yield on U.S. Treasury Securities at 7-Year Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-12 15:16:35-06","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
 ["1969-07-01",6.88],
 ["1969-07-02",6.89],
 ["1969-07-03",6.85],
@@ -14327,5 +14327,6 @@
 ["2026-11-04",4.77],
 ["2026-11-05",4.7],
 ["2026-11-06",4.74],
-["2026-11-09",4.76]
+["2026-11-09",4.76],
+["2026-11-10",4.89]
 ]}
