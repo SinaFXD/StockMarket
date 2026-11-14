@@ -1,4 +1,4 @@
-{"key":"fred/WPU081","source":"FRED","id":"WPU081","label":"PPI lumber","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/WPU081","title":"Producer Price Index by Commodity: Lumber and Wood Products: Lumber","units":"Index 1982=100","units_short":"Index 1982=100","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-10-15 09:21:34-05","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
+{"key":"fred/WPU081","source":"FRED","id":"WPU081","label":"PPI lumber","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/WPU081","title":"Producer Price Index by Commodity: Lumber and Wood Products: Lumber","units":"Index 1982=100","units_short":"Index 1982=100","frequency":"monthly","seasonal_adjustment":"NSA","source_updated":"2026-11-13 09:21:46-06","fetched_at":"2026-11-14T02:32:21Z","columns":["date","value"],"observations":[
 ["1926-01-01",8.3],
 ["1926-02-01",8.3],
 ["1926-03-01",8.3],
@@ -1206,6 +1206,7 @@
 ["2026-05-01",281.228],
 ["2026-06-01",280.234],
 ["2026-07-01",291.003],
-["2026-08-01",286.355],
-["2026-09-01",282.34]
+["2026-08-01",286.481],
+["2026-09-01",282.695],
+["2026-10-01",275.584]
 ]}

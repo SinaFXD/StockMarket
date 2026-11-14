@@ -1,4 +1,4 @@
-{"key":"fred/PPIFIS","source":"FRED","id":"PPIFIS","label":"PPI final demand","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PPIFIS","title":"Producer Price Index by Commodity: Final Demand","units":"Index Nov 2009=100","units_short":"Index Nov 2009=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-10-15 09:20:42-05","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
+{"key":"fred/PPIFIS","source":"FRED","id":"PPIFIS","label":"PPI final demand","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/PPIFIS","title":"Producer Price Index by Commodity: Final Demand","units":"Index Nov 2009=100","units_short":"Index Nov 2009=100","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-11-13 09:20:45-06","fetched_at":"2026-11-14T02:32:21Z","columns":["date","value"],"observations":[
 ["2009-11-01",100.2],
 ["2009-12-01",100.3],
 ["2010-01-01",101.2],
@@ -198,8 +198,9 @@
 ["2026-03-01",154.393],
 ["2026-04-01",156.061],
 ["2026-05-01",156.874],
-["2026-06-01",156.683],
-["2026-07-01",156.924],
-["2026-08-01",157.662],
-["2026-09-01",159.78]
+["2026-06-01",156.675],
+["2026-07-01",156.834],
+["2026-08-01",157.482],
+["2026-09-01",159.699],
+["2026-10-01",160.254]
 ]}

@@ -1,4 +1,4 @@
-{"key":"fred/DFF","source":"FRED","id":"DFF","label":"Fed funds effective rate (daily)","block":"money_markets","url":"https://fred.stlouisfed.org/series/DFF","title":"Federal Funds Effective Rate","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-12 15:16:33-06","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
+{"key":"fred/DFF","source":"FRED","id":"DFF","label":"Fed funds effective rate (daily)","block":"money_markets","url":"https://fred.stlouisfed.org/series/DFF","title":"Federal Funds Effective Rate","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-13 15:16:36-06","fetched_at":"2026-11-14T02:32:21Z","columns":["date","value"],"observations":[
 ["1954-07-01",1.13],
 ["1954-07-02",1.25],
 ["1954-07-03",1.25],
@@ -26430,5 +26430,6 @@
 ["2026-11-08",3.88],
 ["2026-11-09",3.88],
 ["2026-11-10",3.88],
-["2026-11-11",3.88]
+["2026-11-11",3.88],
+["2026-11-12",3.88]
 ]}

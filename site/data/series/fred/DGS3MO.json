@@ -1,4 +1,4 @@
-{"key":"fred/DGS3MO","source":"FRED","id":"DGS3MO","label":"US 3m Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS3MO","title":"Market Yield on U.S. Treasury Securities at 3-Month Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-12 15:16:35-06","fetched_at":"2026-11-13T02:43:53Z","columns":["date","value"],"observations":[
+{"key":"fred/DGS3MO","source":"FRED","id":"DGS3MO","label":"US 3m Treasury yield","block":"money_markets","url":"https://fred.stlouisfed.org/series/DGS3MO","title":"Market Yield on U.S. Treasury Securities at 3-Month Constant Maturity, Quoted on an Investment Basis","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-13 15:16:41-06","fetched_at":"2026-11-14T02:32:21Z","columns":["date","value"],"observations":[
 ["1981-09-01",17.01],
 ["1981-09-02",16.65],
 ["1981-09-03",16.96],
@@ -11296,5 +11296,6 @@
 ["2026-11-05",4.17],
 ["2026-11-06",4.19],
 ["2026-11-09",4.24],
-["2026-11-10",4.3]
+["2026-11-10",4.3],
+["2026-11-12",4.32]
 ]}
