@@ -1,4 +1,4 @@
-{"key":"fred/DTWEXEMEGS","source":"FRED","id":"DTWEXEMEGS","label":"US dollar vs emerging markets","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXEMEGS","title":"Nominal Emerging Market Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-09 15:16:30-06","fetched_at":"2026-11-16T02:17:05Z","columns":["date","value"],"observations":[
+{"key":"fred/DTWEXEMEGS","source":"FRED","id":"DTWEXEMEGS","label":"US dollar vs emerging markets","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DTWEXEMEGS","title":"Nominal Emerging Market Economies U.S. Dollar Index","units":"Index Jan 2006=100","units_short":"Index Jan 2006=100","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-16 15:17:04-06","fetched_at":"2026-11-17T04:39:34Z","columns":["date","value"],"observations":[
 ["2006-01-02",100.9386],
 ["2006-01-03",100.8318],
 ["2006-01-04",100.4582],
@@ -5225,5 +5225,9 @@
 ["2026-11-03",131.1305],
 ["2026-11-04",130.5467],
 ["2026-11-05",130.9249],
-["2026-11-06",130.7713]
+["2026-11-06",130.7713],
+["2026-11-09",130.5771],
+["2026-11-10",130.8714],
+["2026-11-12",130.8987],
+["2026-11-13",130.8877]
 ]}
