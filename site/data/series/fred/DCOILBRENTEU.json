@@ -1,4 +1,4 @@
-{"key":"fred/DCOILBRENTEU","source":"FRED","id":"DCOILBRENTEU","label":"Brent crude oil (EIA)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DCOILBRENTEU","title":"Crude Oil Prices: Brent - Europe","units":"Dollars per Barrel","units_short":"$ per Barrel","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-12 19:31:23-06","fetched_at":"2026-11-18T03:46:05Z","columns":["date","value"],"observations":[
+{"key":"fred/DCOILBRENTEU","source":"FRED","id":"DCOILBRENTEU","label":"Brent crude oil (EIA)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DCOILBRENTEU","title":"Crude Oil Prices: Brent - Europe","units":"Dollars per Barrel","units_short":"$ per Barrel","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-18 12:18:23-06","fetched_at":"2026-11-19T03:43:40Z","columns":["date","value"],"observations":[
 ["1987-05-20",18.63],
 ["1987-05-21",18.45],
 ["1987-05-22",18.55],
@@ -9126,5 +9126,9 @@
 ["2026-11-06",97.83],
 ["2026-11-09",91.03],
 ["2026-11-10",90.16],
-["2026-11-11",92.14]
+["2026-11-11",92.14],
+["2026-11-12",95.42],
+["2026-11-13",95.17],
+["2026-11-16",92.9],
+["2026-11-17",92.94]
 ]}

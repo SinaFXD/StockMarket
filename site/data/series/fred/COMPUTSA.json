@@ -1,4 +1,4 @@
-{"key":"fred/COMPUTSA","source":"FRED","id":"COMPUTSA","label":"Housing completions","block":"surveys","url":"https://fred.stlouisfed.org/series/COMPUTSA","title":"New Privately-Owned Housing Units Completed: Total Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-10-20 07:33:35-05","fetched_at":"2026-11-18T03:46:05Z","columns":["date","value"],"observations":[
+{"key":"fred/COMPUTSA","source":"FRED","id":"COMPUTSA","label":"Housing completions","block":"surveys","url":"https://fred.stlouisfed.org/series/COMPUTSA","title":"New Privately-Owned Housing Units Completed: Total Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-11-18 07:33:38-06","fetched_at":"2026-11-19T03:43:40Z","columns":["date","value"],"observations":[
 ["1968-01-01",1257],
 ["1968-02-01",1174],
 ["1968-03-01",1323],
@@ -702,6 +702,7 @@
 ["2026-05-01",1328.0],
 ["2026-06-01",1345],
 ["2026-07-01",1283],
-["2026-08-01",1166],
-["2026-09-01",1192]
+["2026-08-01",1177],
+["2026-09-01",1194],
+["2026-10-01",1272]
 ]}

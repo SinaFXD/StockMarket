@@ -1,4 +1,4 @@
-{"key":"fred/DCOILWTICO","source":"FRED","id":"DCOILWTICO","label":"WTI crude oil (EIA)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DCOILWTICO","title":"Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma","units":"Dollars per Barrel","units_short":"$ per Barrel","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-12 19:31:25-06","fetched_at":"2026-11-18T03:46:05Z","columns":["date","value"],"observations":[
+{"key":"fred/DCOILWTICO","source":"FRED","id":"DCOILWTICO","label":"WTI crude oil (EIA)","block":"prices_fx_equities","url":"https://fred.stlouisfed.org/series/DCOILWTICO","title":"Crude Oil Prices: West Texas Intermediate (WTI) - Cushing, Oklahoma","units":"Dollars per Barrel","units_short":"$ per Barrel","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-18 12:18:20-06","fetched_at":"2026-11-19T03:43:40Z","columns":["date","value"],"observations":[
 ["1986-01-02",25.56],
 ["1986-01-03",26.0],
 ["1986-01-06",26.53],
@@ -9541,5 +9541,9 @@
 ["2026-11-06",94.37],
 ["2026-11-09",90.4],
 ["2026-11-10",89.62],
-["2026-11-11",89.62]
+["2026-11-11",89.62],
+["2026-11-12",92.3],
+["2026-11-13",91.96],
+["2026-11-16",89.24],
+["2026-11-17",89.53]
 ]}

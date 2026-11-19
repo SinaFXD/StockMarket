@@ -1,4 +1,4 @@
-{"key":"oecd/CPI_IT","source":"OECD","id":"CPI_IT","label":"Italy CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Italy consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-11-18T03:46:05Z","columns":["date","value"],"observations":[
+{"key":"oecd/CPI_IT","source":"OECD","id":"CPI_IT","label":"Italy CPI YoY","block":"international","url":"https://data-explorer.oecd.org/","title":"Italy consumer prices, all items, % change over 1 year","units":"Percent","units_short":"%","frequency":"monthly","seasonal_adjustment":"NSA","source_dataflow":"OECD.SDD.TPS,DSD_PRICES_COICOP2018@DF_PRICES_C2018_ALL,","fetched_at":"2026-11-19T03:43:40Z","columns":["date","value"],"observations":[
 ["1956-01-01",1.811249],
 ["1956-02-01",3.154876],
 ["1956-03-01",3.824092],
@@ -847,5 +847,6 @@
 ["2026-06-01",3.015974],
 ["2026-07-01",2.896429],
 ["2026-08-01",3.310138],
-["2026-09-01",4.175142]
+["2026-09-01",4.175142],
+["2026-10-01",5.513937]
 ]}
