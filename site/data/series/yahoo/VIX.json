@@ -1,4 +1,4 @@
-{"key":"yahoo/VIX","source":"Yahoo Finance","id":"^VIX","label":"VIX (Yahoo, daily)","block":"money_markets","url":"https://finance.yahoo.com/quote/%5EVIX","title":"CBOE Volatility Index","units":"USD","units_short":"USD","frequency":"daily","exchange":"Cboe Indices","via":"yfinance","fetched_at":"2026-11-19T03:43:40Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/VIX","source":"Yahoo Finance","id":"^VIX","label":"VIX (Yahoo, daily)","block":"money_markets","url":"https://finance.yahoo.com/quote/%5EVIX","title":"CBOE Volatility Index","units":"USD","units_short":"USD","frequency":"daily","exchange":"Cboe Indices","via":"yfinance","fetched_at":"2026-11-20T03:36:14Z","columns":["date","close","adj_close"],"observations":[
 ["1990-01-02",17.24,17.24],
 ["1990-01-03",18.19,18.19],
 ["1990-01-04",19.22,19.22],
@@ -9289,5 +9289,6 @@
 ["2026-11-13",19.3,19.3],
 ["2026-11-16",22.91,22.91],
 ["2026-11-17",25.46,25.46],
-["2026-11-18",24.56,24.56]
+["2026-11-18",24.56,24.56],
+["2026-11-19",28.44,28.44]
 ]}
