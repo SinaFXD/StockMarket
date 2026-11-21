@@ -1,5 +1,4 @@
-{"key":"fred/BAMLC0A0CM","source":"FRED","id":"BAMLC0A0CM","label":"Investment-grade corporate OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLC0A0CM","title":"ICE BofA US Corporate Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-19 09:28:34-06","fetched_at":"2026-11-20T03:36:14Z","columns":["date","value"],"observations":[
-["2023-11-20",1.18],
+{"key":"fred/BAMLC0A0CM","source":"FRED","id":"BAMLC0A0CM","label":"Investment-grade corporate OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLC0A0CM","title":"ICE BofA US Corporate Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-20 08:19:44-06","fetched_at":"2026-11-21T03:19:36Z","columns":["date","value"],"observations":[
 ["2023-11-21",1.17],
 ["2023-11-22",1.15],
 ["2023-11-23",1.15],
@@ -783,5 +782,6 @@
 ["2026-11-13",0.89],
 ["2026-11-16",0.9],
 ["2026-11-17",0.92],
-["2026-11-18",0.93]
+["2026-11-18",0.93],
+["2026-11-19",0.94]
 ]}
