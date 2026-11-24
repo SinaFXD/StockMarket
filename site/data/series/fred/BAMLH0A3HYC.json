@@ -1,7 +1,4 @@
-{"key":"fred/BAMLH0A3HYC","source":"FRED","id":"BAMLH0A3HYC","label":"CCC & lower high-yield OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLH0A3HYC","title":"ICE BofA CCC & Lower US High Yield Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-20 08:24:19-06","fetched_at":"2026-11-23T02:55:37Z","columns":["date","value"],"observations":[
-["2023-11-21",9.83],
-["2023-11-22",9.82],
-["2023-11-23",9.82],
+{"key":"fred/BAMLH0A3HYC","source":"FRED","id":"BAMLH0A3HYC","label":"CCC & lower high-yield OAS","block":"money_markets","url":"https://fred.stlouisfed.org/series/BAMLH0A3HYC","title":"ICE BofA CCC & Lower US High Yield Index Option-Adjusted Spread","units":"Percent","units_short":"%","frequency":"daily","seasonal_adjustment":"NSA","source_updated":"2026-11-23 09:03:32-06","fetched_at":"2026-11-24T06:11:27Z","columns":["date","value"],"observations":[
 ["2023-11-24",9.77],
 ["2023-11-27",9.76],
 ["2023-11-28",9.75],
@@ -784,5 +781,6 @@
 ["2026-11-16",13.1],
 ["2026-11-17",13.29],
 ["2026-11-18",13.53],
-["2026-11-19",13.61]
+["2026-11-19",13.61],
+["2026-11-20",14.02]
 ]}
