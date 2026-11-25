@@ -620,7 +620,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-21,SUPN,turnaround,Healthcare,1,41.2100,-29.726,-5.548,1.246,,,,,,,-4.089,down
 2026-10-21,AUPH,turnaround,Healthcare,1,16.9000,-10.473,-5.548,1.246,,,,,,,-0.211,
 2026-10-21,PGEN,turnaround,Healthcare,1,6.6000,,,,,,,,,,,
-2026-10-21,HRMY,positive,Healthcare,1,38.3100,,,,,,,,,,16.091,up
+2026-10-21,HRMY,positive,Healthcare,1,38.3100,-13.573,-5.548,1.246,,,,,,,16.091,up
 2026-10-21,PRGO,value_trap,Healthcare,1,15.9100,6.474,-5.548,1.246,,,,,,,3.388,
 2026-10-21,FTRE,positive,Healthcare,1,24.0600,,,,,,,,,,4.964,
 2026-10-21,AXGN,positive,Healthcare,1,36.4800,56.113,-5.548,1.246,,,,,,,-2.075,down
@@ -629,7 +629,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-21,INSP,turnaround,Healthcare,1,71.0700,,,,,,,,,,39.500,up
 2026-10-21,INSP,na,Healthcare,1,71.0700,,,,,,,,,,39.500,up
 2026-10-21,SGRY,negative,Healthcare,1,15.4000,75.065,-5.548,1.246,,,,,,,-21.676,down
-2026-10-21,ZYME,turnaround,Healthcare,1,28.1100,,,,,,,,,,-31.725,down
+2026-10-21,ZYME,turnaround,Healthcare,1,28.1100,-7.364,-5.548,1.246,,,,,,,-31.725,down
 2026-10-21,CAT,mixed,Industrials,1,740.2100,-24.512,-5.548,-2.169,,,,,,,10.541,up
 2026-10-21,RTX,mixed,Industrials,0,191.6000,3.053,-5.548,-2.169,,,,,,,7.261,up
 2026-10-21,GEV,na,Industrials,1,925.9200,-16.600,-5.548,-2.169,,,,,,,-0.452,down
@@ -1572,7 +1572,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-26,PLGO,positive,Financial Services,0,25.9900,8.003,-5.629,-0.660,,,,,,,-13.915,down
 2026-10-26,SRCE,mixed,Financial Services,0,87.8600,-1.889,-5.629,-0.660,,,,,,,4.213,up
 2026-10-26,ECPG,mixed,Financial Services,1,99.6400,4.065,-5.629,-0.660,,,,,,,4.007,up
-2026-10-26,HTH,boring,Financial Services,0,36.5700,,,,,,,,,,-6.947,down
+2026-10-26,HTH,boring,Financial Services,0,36.5700,-3.965,-5.629,-0.660,,,,,,,-6.947,down
 2026-10-26,TBBK,positive,Financial Services,1,50.8200,,,,,,,,,,1.184,
 2026-10-26,INTR,na,Financial Services,1,4.6800,,,,,,,,,,-2.927,down
 2026-10-26,LLY,positive,Healthcare,1,1279.1400,6.681,-5.629,0.078,,,,,,,-0.489,down
@@ -1677,11 +1677,11 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-26,VCEL,positive,Healthcare,1,43.0400,37.082,-5.629,0.078,,,,,,,14.159,up
 2026-10-26,PRGO,value_trap,Healthcare,1,15.8200,0.126,-5.629,0.078,,,,,,,3.388,
 2026-10-26,PGEN,turnaround,Healthcare,1,6.0400,,,,,,,,,,,
-2026-10-26,HRMY,positive,Healthcare,1,36.8300,,,,,,,,,,16.091,up
+2026-10-26,HRMY,positive,Healthcare,1,36.8300,-7.548,-5.629,0.078,,,,,,,16.091,up
 2026-10-26,NEO,positive,Healthcare,1,16.6900,,,,,,,,,,2.333,
 2026-10-26,TRLV,mixed,Healthcare,1,10.8200,,,,,,,,,,-957.779,down
 2026-10-26,INSP,turnaround,Healthcare,1,71.0100,,,,,,,,,,39.500,up
-2026-10-26,ZYME,turnaround,Healthcare,1,28.3700,,,,,,,,,,-9.967,down
+2026-10-26,ZYME,turnaround,Healthcare,1,28.3700,-1.198,-5.629,0.078,,,,,,,-9.967,down
 2026-10-26,BCRX,boring,Healthcare,1,7.8800,,,,,,,,,,13.636,up
 2026-10-26,CAT,mixed,Industrials,1,692.1300,-20.963,-5.629,-2.689,,,,,,,10.541,up
 2026-10-26,RTX,mixed,Industrials,0,197.4800,-1.372,-5.629,-2.689,,,,,,,6.598,up
