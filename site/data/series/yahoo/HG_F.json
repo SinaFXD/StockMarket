@@ -1,4 +1,4 @@
-{"key":"yahoo/HG_F","source":"Yahoo Finance","id":"HG=F","label":"COMEX copper futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/HG%3DF","title":"Copper Mar 27","units":"USD","units_short":"USD","frequency":"daily","exchange":"COMEX","via":"yfinance","fetched_at":"2026-11-25T04:57:42Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/HG_F","source":"Yahoo Finance","id":"HG=F","label":"COMEX copper futures","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/HG%3DF","title":"Copper Mar 27","units":"USD","units_short":"USD","frequency":"daily","exchange":"COMEX","via":"yfinance","fetched_at":"2026-11-26T04:14:35Z","columns":["date","close","adj_close"],"observations":[
 ["2000-08-30",0.885,0.885],
 ["2000-08-31",0.885,0.885],
 ["2000-09-01",0.889,0.889],
@@ -6586,5 +6586,6 @@
 ["2026-11-18",5.6595,5.6595],
 ["2026-11-19",5.625,5.625],
 ["2026-11-20",5.477,5.477],
-["2026-11-23",5.627,5.627]
+["2026-11-23",5.627,5.627],
+["2026-11-24",5.3625,5.3625]
 ]}
