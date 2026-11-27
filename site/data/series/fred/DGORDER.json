@@ -1,4 +1,4 @@
-{"key":"fred/DGORDER","source":"FRED","id":"DGORDER","label":"Durable goods orders","block":"confirmers","url":"https://fred.stlouisfed.org/series/DGORDER","title":"Manufacturers' New Orders: Durable Goods","units":"Millions of Dollars","units_short":"Mil. of $","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-11-25 07:34:00-06","fetched_at":"2026-11-26T04:14:35Z","columns":["date","value"],"observations":[
+{"key":"fred/DGORDER","source":"FRED","id":"DGORDER","label":"Durable goods orders","block":"confirmers","url":"https://fred.stlouisfed.org/series/DGORDER","title":"Manufacturers' New Orders: Durable Goods","units":"Millions of Dollars","units_short":"Mil. of $","frequency":"monthly","seasonal_adjustment":"SA","source_updated":"2026-11-25 07:34:00-06","fetched_at":"2026-11-27T04:21:52Z","columns":["date","value"],"observations":[
 ["1992-02-01",114535],
 ["1992-03-01",120025],
 ["1992-04-01",124470],

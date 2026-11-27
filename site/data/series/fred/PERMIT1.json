@@ -1,4 +1,4 @@
-{"key":"fred/PERMIT1","source":"FRED","id":"PERMIT1","label":"Building permits (1-unit)","block":"surveys","url":"https://fred.stlouisfed.org/series/PERMIT1","title":"New Privately-Owned Housing Units Authorized in Permit-Issuing Places: Single-Family Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-11-25 09:03:33-06","fetched_at":"2026-11-26T04:14:35Z","columns":["date","value"],"observations":[
+{"key":"fred/PERMIT1","source":"FRED","id":"PERMIT1","label":"Building permits (1-unit)","block":"surveys","url":"https://fred.stlouisfed.org/series/PERMIT1","title":"New Privately-Owned Housing Units Authorized in Permit-Issuing Places: Single-Family Units","units":"Thousands of Units","units_short":"Thous. of Units","frequency":"monthly","seasonal_adjustment":"SAAR","source_updated":"2026-11-25 09:03:33-06","fetched_at":"2026-11-27T04:21:52Z","columns":["date","value"],"observations":[
 ["1960-01-01",846],
 ["1960-02-01",868],
 ["1960-03-01",729],
