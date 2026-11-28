@@ -1,4 +1,4 @@
-{"key":"yahoo/GLD","source":"Yahoo Finance","id":"GLD","label":"GLD (Gold ETF)","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/GLD","title":"SPDR Gold Shares","units":"USD","units_short":"USD","frequency":"daily","exchange":"NYSEArca","via":"yfinance","fetched_at":"2026-11-27T04:21:52Z","columns":["date","close","adj_close"],"observations":[
+{"key":"yahoo/GLD","source":"Yahoo Finance","id":"GLD","label":"GLD (Gold ETF)","block":"prices_fx_equities","url":"https://finance.yahoo.com/quote/GLD","title":"SPDR Gold Shares","units":"USD","units_short":"USD","frequency":"daily","exchange":"NYSEArca","via":"yfinance","fetched_at":"2026-11-28T04:02:19Z","columns":["date","close","adj_close"],"observations":[
 ["2004-11-18",44.38,44.38],
 ["2004-11-19",44.78,44.78],
 ["2004-11-22",44.95,44.95],
@@ -5538,5 +5538,6 @@
 ["2026-11-20",322.87,322.87],
 ["2026-11-23",333.02,333.02],
 ["2026-11-24",325.45,325.45],
-["2026-11-25",327.45,327.45]
+["2026-11-25",327.45,327.45],
+["2026-11-27",334.4,334.4]
 ]}

@@ -496,7 +496,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-21,BKU,mixed,Financial Services,0,42.0800,0.689,-5.548,0.678,,,,,,,-2.411,down
 2026-10-21,AGO,value_trap,Financial Services,0,69.2700,7.189,-5.548,0.678,,,,,,,-3.385,down
 2026-10-21,PFS,mixed,Financial Services,0,22.5400,-2.307,-5.548,0.678,,,,,,,3.800,up
-2026-10-21,INTR,na,Financial Services,1,7.0700,,,,,,,,,,-3.011,down
+2026-10-21,INTR,na,Financial Services,1,7.0700,-46.110,-5.548,0.678,,,,,,,-3.011,down
 2026-10-21,FSK,negative,Financial Services,1,10.0800,10.119,-5.548,0.678,,,,,,,-1.489,down
 2026-10-21,CLBK,positive,Financial Services,0,10.6300,2.070,-5.548,0.678,,,,,,,82.343,up
 2026-10-21,LIFE,positive,Financial Services,1,44.2200,-26.413,-5.548,0.678,,,,,,,16.131,up
@@ -1114,7 +1114,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-26,TTAM,turnaround,Basic Materials,1,13.4200,-18.629,-5.629,-2.880,,,,,,,3.154,
 2026-10-26,IOSP,turnaround,Basic Materials,0,99.1800,,,,,,,,,,2.358,
 2026-10-26,NGVT,boring,Basic Materials,0,71.0300,,,,,,,,,,4.727,up
-2026-10-26,EXK,turnaround,Basic Materials,1,7.4900,,,,,,,,,,-31.864,down
+2026-10-26,EXK,turnaround,Basic Materials,1,7.4900,-18.158,-5.629,-2.880,,,,,,,-31.864,down
 2026-10-26,WS,mixed,Basic Materials,1,42.2300,,,,,,,,,,50.980,up
 2026-10-26,AMR,na,Basic Materials,1,159.0300,,,,,,,,,,-79.080,down
 2026-10-26,META,boring,Communication Services,1,630.5600,-5.227,-5.629,-0.241,,,,,,,-11.635,down
@@ -1397,7 +1397,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-26,GPOR,mixed,Energy,1,165.9600,-9.683,-5.629,-14.029,,,,,,,-2.505,down
 2026-10-26,EFXT,mixed,Energy,1,23.4200,-22.246,-5.629,-14.029,,,,,,,-9.151,down
 2026-10-26,BTU,mixed,Energy,1,22.3600,-24.016,-5.629,-14.029,,,,,,,-162.658,down
-2026-10-26,LBRT,mixed,Energy,1,16.0700,,,,,,,,,,-43.879,down
+2026-10-26,LBRT,mixed,Energy,1,16.0700,-27.380,-5.629,-14.029,,,,,,,-43.879,down
 2026-10-26,LPG,value_trap,Energy,1,55.1800,,,,,,,,,,25.437,up
 2026-10-26,LB,na,Energy,1,79.5800,-11.071,-5.629,-14.029,,,,,,,-2.027,down
 2026-10-26,VET,na,Energy,1,14.1000,,,,,,,,,,146.341,up
@@ -1574,7 +1574,7 @@ cohort,ticker,type,sector,vol_ok,entry,r20,spy20,etf20,r40,spy40,etf40,r60,spy60
 2026-10-26,ECPG,mixed,Financial Services,1,99.6400,4.065,-5.629,-0.660,,,,,,,4.007,up
 2026-10-26,HTH,boring,Financial Services,0,36.5700,-3.965,-5.629,-0.660,,,,,,,-6.947,down
 2026-10-26,TBBK,positive,Financial Services,1,50.8200,,,,,,,,,,1.184,
-2026-10-26,INTR,na,Financial Services,1,4.6800,,,,,,,,,,-2.927,down
+2026-10-26,INTR,na,Financial Services,1,4.6800,-21.154,-5.629,-0.660,,,,,,,-2.927,down
 2026-10-26,LLY,positive,Healthcare,1,1279.1400,6.681,-5.629,0.078,,,,,,,-0.489,down
 2026-10-26,JNJ,mixed,Healthcare,0,266.3000,1.408,-5.629,0.078,,,,,,,-4.630,down
 2026-10-26,ABBV,mixed,Healthcare,0,286.7400,0.596,-5.629,0.078,,,,,,,-1.314,down
